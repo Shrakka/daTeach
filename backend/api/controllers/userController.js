@@ -42,8 +42,9 @@ exports.getUser = function(req, res) {
 
 exports.populate = function(req, res) {
     var users = require('../data/populateUsers')
-    users.map( user => {
-        new User(user).save();
-    })
+    console.log(users[0])
+    //users.map( user => {
+    //    new User(user).save();
+    //})
     res.send("Populate OK")
 }
