@@ -10,8 +10,9 @@ exports.getUsers = function(req, res) {
 }
 
 exports.postUser = function(req, res) {
-
+    console.log(req.body)
     var user = new User(req.body)
+    console.log(user)
     user.save()
         .then(item => {
             res.send(req.body)
