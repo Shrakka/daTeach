@@ -10,6 +10,7 @@ module.exports = function(app) {
     app.route('/user/populate')
         .get(userController.populate)
 
-    // app.route('/user/:id')
-    //     .get(userController.getUser)
+    app.route('/user/:id')
+         .get(userController.getUser)
+         .delete(userController.deleteUser)
 }

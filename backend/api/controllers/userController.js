@@ -10,9 +10,7 @@ exports.getUsers = function(req, res) {
 }
 
 exports.postUser = function(req, res) {
-    console.log(req.body)
     var user = new User(req.body)
-    console.log(user)
     user.save()
         .then(item => {
             res.send(req.body)
@@ -20,11 +18,27 @@ exports.postUser = function(req, res) {
         .catch(err => {
             res.status(400).send("Error while adding user (POST)")
         })
-
 }
 
+exports.deleteUser = function(req, res) {
+    User.remove({_id: req.params.id}, (err, user) => {
+        if(err) {
+            res.send(err);
+        } else {
+            res.send("User deleted")
+        }
+    })
+}
 
-
+exports.getUser = function(req, res) {
+    User.findById(req.params.id, (err, user) => {
+        if(err) {
+            res.send(err);
+        } else {
+            res.send(user);
+        }
+    })
+}
 
 
 
