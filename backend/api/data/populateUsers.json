@@ -1,0 +1,38 @@
+[
+    {
+        "firstName": "Enzo",
+        "lastName": "Testa",
+        "email": "enzotesta@hotmail.fr",
+        "phone": "0674747372",
+        "sex": "M",
+        "move": "yes",
+        "city": "Paris",
+    
+        "teacher": 0,
+        "student": 0,
+    
+        "shortDescription": "Un bg",
+        "longDescription": "Mais vriament très$&é§§ bien",
+        "grade": "Computer Science",
+    
+        "lessons": []
+    },
+    {
+        "firstName": "Alexis",
+        "lastName": "Lozano",
+        "email": "alexisno@hotmail.fr",
+        "phone": "0674347372",
+        "sex": "M",
+        "move": "yes",
+        "city": "Paris",
+    
+        "teacher": 0,
+        "student": 0,
+    
+        "shortDescription": "Un bg",
+        "longDescription": "Mais vriament très$&é§§ bien",
+        "grade": "Computer Science",
+    
+        "lessons": [] 
+    }
+]
