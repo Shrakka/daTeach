@@ -9,6 +9,50 @@ exports.getUsers = function(req, res) {
     })
 }
 
+exports.postUser = function(req, res) {
+
+    var user = new User(req.body)
+    user.save()
+        .then(item => {
+            res.send(req.body)
+        })
+        .catch(err => {
+            res.status(400).send("Error while adding user (POST)")
+        })
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 exports.populate = function(req, res) {
 
     var user1 = new User({
@@ -63,6 +107,4 @@ exports.populate = function(req, res) {
     .catch(err => {
         res.status(400).send("Enzo nope")
     })
-
-
 }

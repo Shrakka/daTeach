@@ -5,11 +5,11 @@ module.exports = function(app) {
 
     app.route('/user')
         .get(userController.getUsers)
-    //    .post(userController.postUser)
+        .post(userController.postUser)
 
     app.route('/user/populate')
         .get(userController.populate)
-        
+
     // app.route('/user/:id')
     //     .get(userController.getUser)
 }
