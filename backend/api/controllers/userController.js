@@ -45,5 +45,5 @@ exports.populate = function(req, res) {
     users.map( user => {
         new User(user).save();
     })
-        res.send("Populate OK")
+    res.send("Populate OK")
 }
