@@ -4,20 +4,34 @@
 
 <ion-content padding>
   <div class="form" class="give-form">
-    <form (ngSubmit)="logForm()">
-        <ion-item>
-            <ion-label>Todo</ion-label>
-            <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input>
+      <div class="banner">Futur Banner here</div>  
+
+      <!-- IONIC FORM -->
+      <form (ngSubmit)="logForm()">
+
+          <ion-item>
+            <ion-select name="location" [(ngModel)]="formValue.location">
+              <ion-option value="currentPosition">Your current position</ion-option>
+              <ion-option value="metz">Metz</ion-option>
+              <ion-option value="paris">Paris</ion-option>
+            </ion-select>
           </ion-item>
+
+          <ion-item>
+            <ion-label>Moving preferences</ion-label>
+            <ion-input type="text" [(ngModel)]="formValue.move" name="move"></ion-input>
+          </ion-item>
+
           <ion-item>
             <ion-label>Description</ion-label>
-            <ion-textarea [(ngModel)]="todo.description" name="description"></ion-textarea>
+            <ion-textarea [(ngModel)]="formValue.description" name="description"></ion-textarea>
           </ion-item>
+
           <button ion-button type="submit" block>Add Todo</button>
-    </form>
-      <button ion-button color="secondary" (click)="goToResults()">Show results</button>
+      </form>
 
   </div>
+  <button ion-button color="secondary" (click)="goToResults()">Show results</button>
 </ion-content>
 
 <ion-footer>

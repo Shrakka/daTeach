@@ -14,10 +14,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'give-form.html',
 })
 export class GiveFormPage {
-
-  todo = {}
+  formValue = {}
   logForm() {
-    console.log(this.todo);
+    console.log(this.formValue);
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
