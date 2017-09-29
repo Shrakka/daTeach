@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { ProfilePage } from '../../pages/profile/profile';
+import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 @Component({
@@ -7,11 +6,13 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'header.html'
 })
 export class HeaderComponent {
+  @Input() title: String;
+
   constructor(public navCtrl: NavController) {
   }
 
   goToProfile() {
-    this.navCtrl.setRoot("ProfilePage");
+    this.navCtrl.setRoot('ProfilePage');
   }
 
 }

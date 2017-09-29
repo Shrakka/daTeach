@@ -1,38 +1,35 @@
-import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { ErrorHandler, NgModule } from '@angular/core';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
-
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { ComponentsModule } from '../components/components.module';
+import { ResultsPageModule } from '../pages/results/results.module';
+import { TakeFormPageModule } from '../pages/take-form/take-form.module';
+import { GiveFormPageModule } from '../pages/give-form/give-form.module';
+import { ProfilePageModule } from '../pages/profile/profile.module';
+import { HomePageModule } from '../pages/home/home.module';
+import { MessagesPageModule } from '../pages/messages/messages.module';
 
 @NgModule({
   declarations: [
-    MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    MyApp
   ],
   imports: [
-    ComponentsModule,
+    ResultsPageModule,
+    TakeFormPageModule,
+    GiveFormPageModule,
+    ProfilePageModule,
+    HomePageModule,
+    MessagesPageModule,
     BrowserModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    MyApp
   ],
   providers: [
     StatusBar,

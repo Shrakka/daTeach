@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ResultsPage } from '../results/results';
 
 /**
- * Generated class for the GiveformPage page.
+ * Generated class for the TakeFormPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,20 +10,20 @@ import { ResultsPage } from '../results/results';
 
 @IonicPage()
 @Component({
-  selector: 'page-giveform',
-  templateUrl: 'giveform.html',
+  selector: 'page-take-form',
+  templateUrl: 'take-form.html',
 })
-export class GiveformPage {
+export class TakeFormPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad GiveformPage');
+    console.log('ionViewDidLoad TakeFormPage');
   }
 
   goToResults() {
-    this.navCtrl.push("ResultsPage");
+    this.navCtrl.push('ResultsPage');
   }
 
 }

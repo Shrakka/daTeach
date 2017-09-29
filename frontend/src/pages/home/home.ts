@@ -1,24 +1,26 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { TakeformPage } from '../takeform/takeform';
-import { GiveformPage } from '../giveform/giveform';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+@IonicPage()
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  goToTakeform() {
-    this.navCtrl.push("TakeformPage")
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad HomePage');
   }
 
-  goToGiveform() {
-    this.navCtrl.push("GiveformPage")
+  goToTakeForm() {
+    this.navCtrl.push('TakeFormPage');
+  }
+
+  goToGiveForm() {
+    this.navCtrl.push('GiveFormPage');
   }
 
 }

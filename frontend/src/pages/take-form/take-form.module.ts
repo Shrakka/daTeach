@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { ProfilePage } from './profile';
+import { TakeFormPage } from './take-form';
 import { HeaderComponentModule } from '../../components/header/header.module';
 import { FooterComponentModule } from '../../components/footer/footer.module';
 
 @NgModule({
   declarations: [
-    ProfilePage,
+    TakeFormPage,
   ],
   imports: [
-    FooterComponentModule,
     HeaderComponentModule,
-    IonicPageModule.forChild(ProfilePage),
+    FooterComponentModule,
+    IonicPageModule.forChild(TakeFormPage),
   ],
 })
-export class ProfilePageModule {}
+export class TakeFormPageModule {}
