@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CalendarComponent } from './calendar/calendar';
+import { CalendarComponent } from './calendar';
 @NgModule({
 	declarations: [CalendarComponent],
 	imports: [],
