@@ -9,6 +9,7 @@ export class ResultComponent {
   @Input() lastname: string;
   @Input() picture: string;
   @Input() shortDescription: string;
+  @Input() lessons: any;
 
   constructor() {
   }

@@ -1,11 +1,16 @@
-<ion-card class="profile-result">
-  <div class="picture"><img [src]="picture"/></div>
-  <div class="bannerText">
-    <div class="name">
-      {{ firstname }} {{ lastname }}
+<ion-card>
+  <div class="profile-result">
+    <div class="picture"><img [src]="picture"/></div>
+    <div class="bannerText">
+      <div class="name">
+        {{ firstname }} {{ lastname }}
+      </div>
+      <div class="shortDescription">
+        {{ shortDescription }}
+      </div>
     </div>
-    <div class="shortDescription">
-      {{ shortDescription }}
-    </div>
+  </div>
+  <div class="badges-result">
+    <ion-badge *ngFor="let lesson of lessons" class="badge-result" >{{ lesson }}</ion-badge>
   </div>
 </ion-card>
