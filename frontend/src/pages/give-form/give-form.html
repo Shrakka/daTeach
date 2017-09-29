@@ -2,9 +2,9 @@
   <header title="Give Form"></header>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <div class="form" class="give-form">
-      <div class="banner">Futur Banner here</div>  
+      <profile-banner [firstname]="userProvider.firstname" [lastname]="userProvider.lastname" [picture]="userProvider.picture" [shortDescription]="userProvider.shortDescription"></profile-banner> 
 
       <!-- IONIC FORM -->
       <form (ngSubmit)="logForm()">
