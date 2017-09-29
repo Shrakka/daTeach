@@ -16,7 +16,8 @@ import { UserProvider } from '../../providers/user/user';
 })
 export class GiveFormPage {
   formValue = {}
-  logForm() {
+  
+  submitForm() {
     console.log(this.formValue);
   }
 
