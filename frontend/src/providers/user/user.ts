@@ -24,9 +24,10 @@ export class UserProvider {
 
 
   constructor(public http: Http) {
+    this.load();
   }
 
-  authentify() {
+  load() {
     this.firstname = 'Jon';
     this.lastname = 'Snow';
     this.age = 25;
