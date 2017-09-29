@@ -14,6 +14,7 @@ import { ProfilePageModule } from '../pages/profile/profile.module';
 import { HomePageModule } from '../pages/home/home.module';
 import { MessagesPageModule } from '../pages/messages/messages.module';
 import { UserProvider } from '../providers/user/user';
+import { ResultsProvider } from '../providers/results/results';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { UserProvider } from '../providers/user/user';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserProvider
+    UserProvider,
+    ResultsProvider
   ]
 })
 export class AppModule {}
