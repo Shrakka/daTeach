@@ -31,4 +31,12 @@ export class GiveFormPage {
     this.navCtrl.push('ResultsPage');
   }
 
+  selectedRegular() {
+
+  }
+
+  selectedPunctual() {
+    
+  }
+
 }
