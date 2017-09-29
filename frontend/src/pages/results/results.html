@@ -4,6 +4,8 @@
 
 <ion-content>
   <profile-banner [firstname]="userProvider.firstname" [lastname]="userProvider.lastname" [picture]="userProvider.picture" [shortDescription]="userProvider.shortDescription"></profile-banner>
+
+  <result *ngFor="let result of resultsProvider.results" [firstname]="result.firstname" [lastname]="result.lastname" [picture]="result.picture" [shortDescription]="result.shortDescription"></result>
 </ion-content>
 
 <ion-footer>
