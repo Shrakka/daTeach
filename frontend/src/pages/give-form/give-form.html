@@ -13,7 +13,7 @@
                   REGULAR
                 </ion-segment-button>
                 <ion-segment-button value="punctual" (ionSelect)="selectedPunctual()">
-                  ON-TIME
+                  ONE-TIME
                 </ion-segment-button>
             </ion-segment>
         </ion-item>
@@ -29,17 +29,13 @@
         </ion-item>
 
         <!-- MOVE BUTTONS -->
-        <ion-item>
-          <ion-label>Moving preferences:</ion-label>
           <div>
-            <button ion-button (click)="onverra">Move</button>
-            <button ion-button (click)="onverra">Host</button>
-            <button ion-button (click)="onverra">Both</button>
-
+            <div>Moving preferences</div>
+            <button ion-button [outline]="formValue.move !== 'move'" (click)="formValue.move = 'move'">Move</button>
+            <button ion-button [outline]="formValue.move !== 'host'" (click)="formValue.move = 'host'">Host</button>
+            <button ion-button [outline]="formValue.move !== 'both'" (click)="formValue.move = 'both'">Both</button>
           </div>
-          
-          <ion-input type="text" [(ngModel)]="formValue.move" name="move"></ion-input>
-        </ion-item>
+
 
         <!-- WHAT LESSONS -->
         <ion-item>
@@ -53,6 +49,11 @@
         <!-- LESSONS BADGES -->
         <div class="lessons-badges">
           <ion-badge *ngFor="let l of formValue.subject">{{ l }}</ion-badge>
+        </div>
+
+        <!-- CALENDAR -->
+        <div *ngIf="formValue.lessonType === 'punctual'">
+          CALENDAR
         </div>
 
         <!-- SUBMIT BUTTON -->

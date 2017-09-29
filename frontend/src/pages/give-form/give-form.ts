@@ -15,8 +15,12 @@ import { UserProvider } from '../../providers/user/user';
   templateUrl: 'give-form.html',
 })
 export class GiveFormPage {
-  formValue = {}
-  
+  formValue = {
+    lessonType: "regular",
+    move: 'move'
+  };
+
+
   submitForm() {
     console.log(this.formValue);
   }
