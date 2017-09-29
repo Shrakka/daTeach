@@ -1,3 +1,20 @@
 page-home {
 
 }
+
+.home-background {
+    background-image: url('../../assets/img/background-image.jpg');
+}
+
+.lessons-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+.take-button {
+    margin-bottom: 10px;
+}
+
+}

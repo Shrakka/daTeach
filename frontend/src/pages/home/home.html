@@ -2,9 +2,11 @@
   <header title="Home"></header>
 </ion-header>
 
-<ion-content padding>
-  <button ion-button color="primary" (click)="goToTakeForm()">I want to TAKE a lesson</button>
-  <button ion-button color="secondary" (click)="goToGiveForm()">I want to GIVE a lesson</button>
+<ion-content padding class="home-background">
+  <div class="lessons-buttons">
+    <button ion-button color="primary" class="take-button" (click)="goToTakeForm()">I want to TAKE a lesson</button>
+    <button ion-button color="secondary" class="give-button" (click)="goToGiveForm()">I want to GIVE a lesson</button>
+  </div>
 </ion-content>
 
 <ion-footer>
