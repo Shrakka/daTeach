@@ -1,22 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-/**
- * Generated class for the ResultComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'result',
   templateUrl: 'result.html'
 })
 export class ResultComponent {
-
-  text: string;
+  @Input() firstname: string;
+  @Input() lastname: string;
+  @Input() picture: string;
+  @Input() shortDescription: string;
 
   constructor() {
-    console.log('Hello ResultComponent Component');
-    this.text = 'Hello World';
   }
 
 }

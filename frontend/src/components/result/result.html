@@ -1,4 +1,11 @@
-<!-- Generated template for the ResultComponent component -->
-<div>
-  {{text}}
-</div>
+<ion-card class="profile-result">
+  <div class="picture"><img [src]="picture"/></div>
+  <div class="bannerText">
+    <div class="name">
+      {{ firstname }} {{ lastname }}
+    </div>
+    <div class="shortDescription">
+      {{ shortDescription }}
+    </div>
+  </div>
+</ion-card>
