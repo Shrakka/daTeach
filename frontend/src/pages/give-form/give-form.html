@@ -18,34 +18,46 @@
             </ion-segment>
         </ion-item>
 
-        <!-- LOCATION -->
-        <ion-item>
-          <ion-label>Location:</ion-label>
-          <ion-select name="location" [(ngModel)]="formValue.location">
-            <ion-option value="currentPosition">Your current position</ion-option>
-            <ion-option value="metz">Metz</ion-option>
-            <ion-option value="paris">Paris</ion-option>
-          </ion-select>
-        </ion-item>
+        <!-- LESSONS -->
+        <div padding>Lessons</div>
+        <ion-searchbar
+          [(ngModel)]="formValue.lesson"
+          [showCancelButton]="shoudShowCancel"
+          (ionInput)="searchLesson($event)"
+          (ionFocus)="onLessonFocus()"
+          animated="true"
+          placeholder="What would you like to teach?"
+          >
+        </ion-searchbar> 
 
+        <!-- LESSONS BADGES -->
+        <div class="lessons-badges">
+          <ion-badge *ngFor="let l of formValue.subject">{{ l }}</ion-badge>
+        </div>
+        <br/>
+
+        <!-- LOCATION -->
+        <div padding>Location</div>
+        <ion-searchbar
+        [(ngModel)]="formValue.location"
+        [showCancelButton]="shouldShowCancel"
+        (ionInput)="searchLocation($event)"
+        (ionFocus)="onLocationFocus()"
+        animated="true"
+        placeholder="Where will you give the lessons?"
+        >
+        </ion-searchbar>  
+
+  
         <!-- MOVE BUTTONS -->
-          <div>
-            <div>Moving preferences</div>
+          <div padding>Moving</div>
+          <div class="move-panel">
             <button ion-button [outline]="formValue.move !== 'move'" (click)="formValue.move = 'move'">Move</button>
             <button ion-button [outline]="formValue.move !== 'host'" (click)="formValue.move = 'host'">Host</button>
             <button ion-button [outline]="formValue.move !== 'both'" (click)="formValue.move = 'both'">Both</button>
           </div>
 
 
-        <!-- WHAT LESSONS -->
-        <ion-item>
-          <ion-label>Possible Subjects:</ion-label>
-          <ion-select name="subject" multiple="true" [(ngModel)]="formValue.subject">
-              <ion-option value="math">Maths</ion-option>
-              <ion-option value="physics">Physics</ion-option>
-              <ion-option value="english">English</ion-option>
-          </ion-select>
-        </ion-item>
         <!-- LESSONS BADGES -->
         <div class="lessons-badges">
           <ion-badge *ngFor="let l of formValue.subject">{{ l }}</ion-badge>
@@ -56,11 +68,14 @@
           CALENDAR
         </div>
 
-        <!-- SUBMIT BUTTON -->
-        <button ion-button (click)="submitForm()" block>Add Todo</button>
+        <br/>
 
-  </div>
-  <button ion-button color="secondary" (click)="goToResults()">Show results</button>
+      
+        <!-- SUBMIT BUTTON -->
+        <button ion-button class="result-button" (click)="goToResults()" block>Show results</button>
+      </div>
+  
+ 
 </ion-content>
 
 <ion-footer>

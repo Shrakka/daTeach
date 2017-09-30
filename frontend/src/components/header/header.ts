@@ -12,7 +12,7 @@ export class HeaderComponent {
   }
 
   goToProfile() {
-    this.navCtrl.setRoot('ProfilePage');
+    this.navCtrl.push('ProfilePage');
   }
 
 }

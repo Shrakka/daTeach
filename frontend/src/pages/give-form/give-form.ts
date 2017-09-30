@@ -21,10 +21,6 @@ export class GiveFormPage {
   };
 
 
-  submitForm() {
-    console.log(this.formValue);
-  }
-
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider) {
   }
 
@@ -33,6 +29,7 @@ export class GiveFormPage {
   }
 
   goToResults() {
+    console.log(this.formValue);
     this.navCtrl.push('ResultsPage');
   }
 
@@ -42,6 +39,22 @@ export class GiveFormPage {
 
   selectedPunctual() {
     
+  }
+
+  searchLesson($event){
+    console.log($event);
+  }
+
+  searchLocation($event){
+    console.log($event);
+  }
+
+  onLessonFocus(){
+
+  }
+
+  onLocationFocus(){
+
   }
 
 }

@@ -1,8 +1,17 @@
 page-give-form {
-
+    background-color: red;
+    opacity: 0.5;
 }
 
-.banner {
-    height: 2em;
+.result-button {
+    width: 2em;
+}
+
+.move-panel {
+    margin: 10em;
+    display: flex;
+    justify-content: center;
     background-color: red;
 }
+
+$searchbar-ios-background-color	: rgba(0, 0, 0, .2);
