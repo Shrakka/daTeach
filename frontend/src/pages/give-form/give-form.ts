@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
+import { LessonModalPage } from '../../pages/lesson-modal/lesson-modal';
 
 /**
  * Generated class for the GiveFormPage page.
@@ -15,13 +16,15 @@ import { UserProvider } from '../../providers/user/user';
   templateUrl: 'give-form.html',
 })
 export class GiveFormPage {
+  
   formValue = {
     lessonType: "regular",
-    move: 'move'
+    move: 'move',
+    lessons: []
   };
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
@@ -50,7 +53,13 @@ export class GiveFormPage {
   }
 
   onLessonFocus(){
-
+    const lessonModal = this.modalCtrl.create(LessonModalPage);
+    
+    lessonModal.onDidDismiss(data => {
+      this.formValue.lessons = data;
+      console.log(this.formValue.lessons);
+    })
+    lessonModal.present();
   }
 
   onLocationFocus(){

@@ -13,14 +13,17 @@ import { GiveFormPageModule } from '../pages/give-form/give-form.module';
 import { ProfilePageModule } from '../pages/profile/profile.module';
 import { HomePageModule } from '../pages/home/home.module';
 import { MessagesPageModule } from '../pages/messages/messages.module';
+import { LessonModalPageModule } from '../pages/lesson-modal/lesson-modal.module';
 import { UserProvider } from '../providers/user/user';
 import { ResultsProvider } from '../providers/results/results';
+
 
 @NgModule({
   declarations: [
     MyApp
   ],
   imports: [
+    LessonModalPageModule,
     ResultsPageModule,
     TakeFormPageModule,
     GiveFormPageModule,
