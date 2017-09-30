@@ -31,7 +31,7 @@ export class UserProvider {
     this.firstname = 'Jon';
     this.lastname = 'Snow';
     this.age = 25;
-    this.picture = '../../assets/img/profile.png';
+    this.picture = 'assets/img/profile.png';
     this.sex = 'M';
     this.email = 'j.snow@winterfell.com';
     this.phone = '01 23 45 67 89';
