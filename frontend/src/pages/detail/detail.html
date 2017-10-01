@@ -3,6 +3,20 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-card>
+    <div class="profile-overview">
+      <div class="profile-picture"><img [src]="picture"/></div>
+      <div class="detail-name">{{ firstname }} {{ lastname }}</div>
+      <div class="detail-shortDesc">{{ shortDescription }}</div>
+      <div class="detail-sep"></div>
+      <div class="detail-longDesc">{{ longDescription }}</div>
+    </div>
+  </ion-card>
+
+  <ion-label *ngIf="askmessage">Comment</ion-label>
+  <ion-textarea *ngIf="askmessage" [(ngModel)]="comment"></ion-textarea>
+
+  <button ion-button [disabled]="comment.length == 0 && askmessage">Send</button>
 </ion-content>
 
 <ion-footer>

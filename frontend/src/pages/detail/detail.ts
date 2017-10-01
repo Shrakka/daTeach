@@ -14,12 +14,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'detail.html',
 })
 export class DetailPage {
+  firstname: string;
+  lastname: string;
+  picture: string;
+  shortDescription: string;
+  lessons: string[];
+  comment: string = '';
+  askmessage: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.firstname = this.navParams.get('firstname');
+    this.lastname = this.navParams.get('lastname');
+    this.picture = this.navParams.get('picture');
+    this.shortDescription = this.navParams.get('shortDescription');
+    this.lessons = this.navParams.get('lessons');
+    this.longDescription = this.navParams.get('longDescription');
+    this.askmessage = this.navParams.get('askmessage');
   }
 
   ionViewDidLoad() {
-    console.log(this.navParams.get('firstname'));
   }
 
 }
