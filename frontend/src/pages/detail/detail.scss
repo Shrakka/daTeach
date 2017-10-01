@@ -1,0 +1,39 @@
+page-detail {
+
+}
+
+.profile-overview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
+}
+
+.profile-picture {
+  width: 40%;
+  margin-bottom: 2em;
+}
+
+.detail-name {
+  font-size: 1.5em;
+}
+
+.detail-shortDesc {
+  margin: 1em;
+  font-size: 1em;
+  color: #888888;
+}
+
+.detail-sep {
+  background-color: color($colors, primary);
+  height: 1px;
+  width: 30%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.detail-longDesc {
+  margin-top: 1em;
+  font-size: 1em;
+  text-align: justify;
+}

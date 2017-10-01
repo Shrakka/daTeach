@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { LessonModalPage } from '../../pages/lesson-modal/lesson-modal';
+import { LocationModalPage } from '../../pages/location-modal/location-modal';
 
 /**
  * Generated class for the GiveFormPage page.
@@ -16,10 +17,11 @@ import { LessonModalPage } from '../../pages/lesson-modal/lesson-modal';
   templateUrl: 'give-form.html',
 })
 export class GiveFormPage {
-  
+
   formValue = {
     lessonType: "regular",
     move: 'move',
+    location: '',
     lessons: []
   };
 
@@ -41,7 +43,7 @@ export class GiveFormPage {
   }
 
   selectedPunctual() {
-    
+
   }
 
   searchLesson($event){
@@ -54,7 +56,7 @@ export class GiveFormPage {
 
   onLessonFocus(){
     const lessonModal = this.modalCtrl.create(LessonModalPage);
-    
+
     lessonModal.onDidDismiss(data => {
       this.formValue.lessons = data;
       console.log(this.formValue.lessons);
@@ -63,7 +65,17 @@ export class GiveFormPage {
   }
 
   onLocationFocus(){
+    const locationModal = this.modalCtrl.create(LocationModalPage);
 
+    locationModal.onDidDismiss(data => {
+      this.formValue.location = data.name;
+    })
+    locationModal.present();
+  }
+
+  onDatesSelection($event) {
+    // EVENT = LIST DE DATE 
+    console.log($event);
   }
 
 }
