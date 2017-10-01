@@ -53,6 +53,11 @@ export class LessonModalPage {
   }
 
   closeModal() {
+    for(let s of this.suggestions) {
+      if(s.checked){
+        this.pickedLessons.push(s.name);
+      }
+    }
     this.viewCtrl.dismiss(this.pickedLessons);
   }
 
