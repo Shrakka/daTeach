@@ -14,6 +14,7 @@ import { ProfilePageModule } from '../pages/profile/profile.module';
 import { HomePageModule } from '../pages/home/home.module';
 import { MessagesPageModule } from '../pages/messages/messages.module';
 import { LessonModalPageModule } from '../pages/lesson-modal/lesson-modal.module';
+import { DetailPageModule } from '../pages/detail/detail.module';
 import { UserProvider } from '../providers/user/user';
 import { ResultsProvider } from '../providers/results/results';
 
@@ -23,6 +24,7 @@ import { ResultsProvider } from '../providers/results/results';
     MyApp
   ],
   imports: [
+    DetailPageModule,
     LessonModalPageModule,
     ResultsPageModule,
     TakeFormPageModule,

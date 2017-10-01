@@ -1,17 +1,18 @@
 import { Component, Input } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'result',
   templateUrl: 'result.html'
 })
 export class ResultComponent {
-  @Input() firstname: string;
-  @Input() lastname: string;
-  @Input() picture: string;
-  @Input() shortDescription: string;
-  @Input() lessons: any;
+  @Input() result: any;
 
-  constructor() {
+  constructor(public navCtrl: NavController) {
+  }
+
+  goToClient() {
+    this.navCtrl.push('DetailPage', this.result)
   }
 
 }
