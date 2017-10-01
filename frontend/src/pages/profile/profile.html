@@ -3,9 +3,63 @@
 </ion-header>
 
 <ion-content>
-  <profile-banner [firstname]="userProvider.firstname" [lastname]="userProvider.lastname" [picture]="userProvider.picture" [shortDescription]="userProvider.shortDescription"></profile-banner>
+
+<!-- <profile-banner [firstname]="userprovider.firstname" [lastname]="userprovider.lastname" [picture]="userprovider.picture" [shortdescription]="userprovider.shortdescription"></profile-banner> -->
+<div class="identite">
+	<div class="cover" style="background-image: url('../../assets/img/snowcover.jpg');"></div>
+	<div class="image">
+		<img src="../../assets/img/profile.png" alt="">
+		
+	</div>
+	<div class="nom">{{userProvider.firstname}} {{userProvider.lastname}}</div>
+
+	<ion-card>
+<!-- 
+	  <ion-card-header>
+	    Card Header
+	  </ion-card-header> -->
+
+	  <ion-card-content>
+	    	Mobile <br>{{userProvider.phone}}<br><br>
+	    	Email <br>{{userProvider.email}}
+	  </ion-card-content>
+
+	</ion-card>
+
+	<ion-card>
+
+	  <ion-card-header style='font-weight: bold;'>
+	    Infos
+	  </ion-card-header>
+
+	  <ion-card-content>
+  		<div class="details">
+	    	<div>Sex <br>{{userProvider.sex}}</div>
+	    	<div>Age <br>{{userProvider.age}}</div>
+	    	<div>Level <br>{{userProvider.level}}</div>
+	    </div>
+	  </ion-card-content>
+
+	</ion-card>
+
+	<ion-card>
+
+	  <ion-card-header style='font-weight: bold;'>
+	    Description
+	  </ion-card-header>
+
+	  <ion-card-content>
+  		{{userProvider.longDescription}}
+	  </ion-card-content>
+
+	</ion-card>
+
+</div>
+
 </ion-content>
 
 <ion-footer>
   <footer></footer>
 </ion-footer>
+
+
