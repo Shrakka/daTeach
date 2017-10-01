@@ -18,6 +18,7 @@ export class DetailPage {
   lastname: string;
   picture: string;
   shortDescription: string;
+  longDescription: string;
   lessons: string[];
   comment: string = '';
   askmessage: boolean;
