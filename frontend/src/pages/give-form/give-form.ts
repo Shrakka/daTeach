@@ -73,4 +73,9 @@ export class GiveFormPage {
     locationModal.present();
   }
 
+  onDatesSelection($event) {
+    // EVENT = LIST DE DATE 
+    console.log($event);
+  }
+
 }

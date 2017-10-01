@@ -12,4 +12,31 @@ page-give-form {
     background-color: red;
 }
 
-$searchbar-ios-background-color	: rgba(0, 0, 0, .2);
+
+.lesson-label {
+    padding-bottom: 0px;
+}
+.lessons-badges {
+    display: flex;
+    align-items: left;
+    margin-top: 0.5em;
+    justify-content: space-evenly;
+}
+
+.location-search {
+    margin-top: -2em;
+}
+.location-label {
+    padding-bottom: 0px;
+}
+
+.move-label {
+    padding-bottom: 0px;
+}
+.move-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
