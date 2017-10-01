@@ -17,7 +17,7 @@ import { LocationModalPage } from '../../pages/location-modal/location-modal';
   templateUrl: 'give-form.html',
 })
 export class GiveFormPage {
-  
+
   formValue = {
     lessonType: "regular",
     move: 'move',
@@ -43,7 +43,7 @@ export class GiveFormPage {
   }
 
   selectedPunctual() {
-    
+
   }
 
   searchLesson($event){
@@ -56,7 +56,7 @@ export class GiveFormPage {
 
   onLessonFocus(){
     const lessonModal = this.modalCtrl.create(LessonModalPage);
-    
+
     lessonModal.onDidDismiss(data => {
       this.formValue.lessons = data;
       console.log(this.formValue.lessons);

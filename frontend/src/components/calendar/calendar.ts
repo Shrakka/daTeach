@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 /**
  * Generated class for the CalendarComponent component.
@@ -13,6 +13,7 @@ import { Component } from '@angular/core';
 export class CalendarComponent {
   days: Array<string> = [];
   selecteds: Array<string> = [];
+  @Output() dates: EventEmitter<Array<string>> = new EventEmitter();
 
   constructor() {
     for (var i = 0; i < 10; i++) {
@@ -23,13 +24,16 @@ export class CalendarComponent {
   }
 
   dateToString(date: Date) {
-    var day = date.getDate() + '';
-    var month = Number(date.getMonth()) + 1 + '';
-    return ((day.length == 2) ? '' : '0') + day + '/' + ((month.length == 2) ? '' : '0') + month;
+    var day = ('0' + date.getDate() + '');
+    day = day.substring(day.length-2)
+    var month = '0' + (date.getMonth() + 1);
+    month = month.substring(month.length-2)
+    var year = date.getFullYear() % 2000;
+    return day + "/" + month + "/" + year;
   }
 
   pickDate(day: string, period: string) {
-    var date = day + ' ' + period;
+    var date = day + '-' + period;
     var index = this.selecteds.indexOf(date);
     if (index != -1) {
       this.selecteds.splice(index, 1)
@@ -37,10 +41,11 @@ export class CalendarComponent {
     else {
       this.selecteds.push(date)
     }
+    this.dates.emit(this.selecteds);
   }
 
   isSelected(day: string, period: string) {
-    return (this.selecteds.includes(day + ' ' + period)) ? 'selected' : '';
+    return (this.selecteds.includes(day + '-' + period)) ? 'selected' : '';
   }
 
 }
