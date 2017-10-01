@@ -15,6 +15,7 @@ import { HomePageModule } from '../pages/home/home.module';
 import { MessagesPageModule } from '../pages/messages/messages.module';
 import { LessonModalPageModule } from '../pages/lesson-modal/lesson-modal.module';
 import { DetailPageModule } from '../pages/detail/detail.module';
+import { LocationModalPageModule } from '../pages/location-modal/location-modal.module';
 import { UserProvider } from '../providers/user/user';
 import { ResultsProvider } from '../providers/results/results';
 
@@ -25,6 +26,7 @@ import { ResultsProvider } from '../providers/results/results';
   ],
   imports: [
     DetailPageModule,
+    LocationModalPageModule,
     LessonModalPageModule,
     ResultsPageModule,
     TakeFormPageModule,

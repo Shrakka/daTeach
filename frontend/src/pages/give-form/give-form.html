@@ -19,16 +19,18 @@
         </ion-item>
 
         <!-- LESSONS -->
-        <div padding>Lessons</div>
-        <ion-searchbar
-          [(ngModel)]="formValue.lesson"
-          [showCancelButton]="shoudShowCancel"
-          (ionInput)="searchLesson($event)"
-          (ionFocus)="onLessonFocus()"
-          animated="true"
-          placeholder="What would you like to teach?"
-          >
-        </ion-searchbar>
+        <div  class="lessons-search">
+          <div padding class="lesson-label">Lessons</div>
+          <ion-searchbar
+            [(ngModel)]="formValue.lesson"
+            [showCancelButton]="shoudShowCancel"
+            (ionInput)="searchLesson($event)"
+            (ionFocus)="onLessonFocus()"
+            animated="true"
+            placeholder="What would you like to teach?"
+            >
+          </ion-searchbar>
+        </div>
 
         <!-- LESSONS BADGES -->
         <div class="lessons-badges">
@@ -37,46 +39,44 @@
         <br/>
 
         <!-- LOCATION -->
-        <div padding>Location</div>
-        <ion-searchbar
-        [(ngModel)]="formValue.location"
-        [showCancelButton]="shouldShowCancel"
-        (ionInput)="searchLocation($event)"
-        (ionFocus)="onLocationFocus()"
-        animated="true"
-        placeholder="Where will you give the lessons?"
-        >
-        </ion-searchbar>
+        <div  class="location-search">
+          <div padding class="location-label">Location</div>
+          <ion-searchbar
+          [(ngModel)]="formValue.location"
+          [showCancelButton]="shouldShowCancel"
+          (ionInput)="searchLocation($event)"
+          (ionFocus)="onLocationFocus()"
+          animated="true"
+          placeholder="Where will you give the lessons?"
+          >
+          </ion-searchbar>
+        </div>
 
 
         <!-- MOVE BUTTONS -->
-          <div padding>Moving</div>
-          <div class="move-panel">
+        <div class="move-panel">
+          <div class="move-label" padding>Moving</div>
+          <div class="move-buttons">
             <button ion-button [outline]="formValue.move !== 'move'" (click)="formValue.move = 'move'">Move</button>
             <button ion-button [outline]="formValue.move !== 'host'" (click)="formValue.move = 'host'">Host</button>
             <button ion-button [outline]="formValue.move !== 'both'" (click)="formValue.move = 'both'">Both</button>
           </div>
-
-
-        <!-- LESSONS BADGES -->
-        <div class="lessons-badges">
-          <ion-badge *ngFor="let l of formValue.subject">{{ l }}</ion-badge>
         </div>
 
         <!-- CALENDAR -->
         <br/>
 
         <div *ngIf="formValue.lessonType === 'punctual'">
-          <div padding>Calendar</div>
+          <div padding class="calendar-label">Calendar</div>
           <calendar (dates)="onDatesSelection($event)"></calendar>
         </div>
 
-        <br/>
 
         <!-- SUBMIT BUTTON -->
-        <button ion-button class="result-button" (click)="goToResults()" block>Show results</button>
+        <div class="block-button">
+          <button ion-button class="result-button" (click)="goToResults()">Show results</button>
+        </div>
       </div>
-
 
 </ion-content>
 
