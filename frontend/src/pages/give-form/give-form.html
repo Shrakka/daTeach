@@ -4,8 +4,8 @@
 
 <ion-content>
   <div class="form" class="give-form">
-      <profile-banner [firstname]="userProvider.firstname" [lastname]="userProvider.lastname" [picture]="userProvider.picture" [shortDescription]="userProvider.shortDescription"></profile-banner> 
-      
+      <profile-banner [firstname]="userProvider.firstname" [lastname]="userProvider.lastname" [picture]="userProvider.picture" [shortDescription]="userProvider.shortDescription"></profile-banner>
+
         <!-- LESSON TYPE -->
         <ion-item>
           <ion-segment name="lessonType" [(ngModel)]="formValue.lessonType" color="primary">
@@ -28,7 +28,7 @@
           animated="true"
           placeholder="What would you like to teach?"
           >
-        </ion-searchbar> 
+        </ion-searchbar>
 
         <!-- LESSONS BADGES -->
         <div class="lessons-badges">
@@ -46,9 +46,9 @@
         animated="true"
         placeholder="Where will you give the lessons?"
         >
-        </ion-searchbar>  
+        </ion-searchbar>
 
-  
+
         <!-- MOVE BUTTONS -->
           <div padding>Moving</div>
           <div class="move-panel">
@@ -65,19 +65,19 @@
 
         <!-- CALENDAR -->
         <br/>
-        
+
         <div *ngIf="formValue.lessonType === 'punctual'">
           <div padding>Calendar</div>
-          <calendar></calendar>
+          <calendar (dates)="onDatesSelection($event)"></calendar>
         </div>
 
         <br/>
-        
+
         <!-- SUBMIT BUTTON -->
         <button ion-button class="result-button" (click)="goToResults()" block>Show results</button>
       </div>
-  
- 
+
+
 </ion-content>
 
 <ion-footer>
