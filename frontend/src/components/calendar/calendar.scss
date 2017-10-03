@@ -9,7 +9,7 @@
 }
 
 .am {
-  width: 10em;
+  width: 8em;
   height: 5em;
   background-color: #EEEEEE;
   display: flex;
@@ -21,7 +21,7 @@
 }
 
 .pm {
-  width: 10em;
+  width: 8em;
   height: 5em;
   background-color: #EEEEEE;
   border-bottom-left-radius: 0.5em;
@@ -38,4 +38,10 @@
 
 .calendar-give {
   background-color: color($colors, secondary);
+}
+
+.weekend {
+  background-color: #BBBBBB;
+  color: #FFFFFF;
+  border-color: #FFFFFF;
 }

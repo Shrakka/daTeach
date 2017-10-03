@@ -15,6 +15,7 @@ export class CalendarComponent {
   selecteds: Array<string> = [];
   @Input() mode: string;
   @Output() dates: EventEmitter<Array<string>> = new EventEmitter();
+  names = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
   constructor() {
     for (var i = 0; i < 10; i++) {
@@ -25,12 +26,12 @@ export class CalendarComponent {
   }
 
   dateToString(date: Date) {
+    var weekday = (date.getDay() == 0) ? 6 : date.getDay() - 1;
     var day = ('0' + date.getDate() + '');
     day = day.substring(day.length-2)
     var month = '0' + (date.getMonth() + 1);
     month = month.substring(month.length-2)
-    var year = date.getFullYear() % 2000;
-    return day + "/" + month + "/" + year;
+    return this.names[weekday] + '. ' + day + '/' + month;
   }
 
   pickDate(day: string, period: string) {
@@ -46,7 +47,11 @@ export class CalendarComponent {
   }
 
   isSelected(day: string, period: string) {
-    return (this.selecteds.includes(day + '-' + period)) ? 'selected calendar-' + this.mode : '';
+    return (this.selecteds.includes(day + '-' + period)) ? 'selected calendar-' + this.mode : this.isWeekend(day);
+  }
+
+  isWeekend(day: string) {
+    return (day[0] === 'S') ? 'weekend' : '';
   }
 
 }
