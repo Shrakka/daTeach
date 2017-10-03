@@ -47,7 +47,7 @@ export class TakeFormPage {
       }
     
       onLessonFocus(){
-        const lessonModal = this.modalCtrl.create(LessonModalPage);
+        const lessonModal = this.modalCtrl.create(LessonModalPage, {'give':false});
     
         lessonModal.onDidDismiss(data => {
           this.formValue.lessons = data;
@@ -57,7 +57,7 @@ export class TakeFormPage {
       }
     
       onLocationFocus(){
-        const locationModal = this.modalCtrl.create(LocationModalPage);
+        const locationModal = this.modalCtrl.create(LocationModalPage, {'give':false});
     
         locationModal.onDidDismiss(data => {
           this.formValue.location = data.name;

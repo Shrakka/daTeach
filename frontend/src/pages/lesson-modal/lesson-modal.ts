@@ -28,11 +28,15 @@ export class LessonModalPage {
   pickedLessons = [];
   searchQuery: string = '';
   suggestions = [];
+  give: boolean; // to precise if it's a give or taken form 
 
   
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
-  
+    
+    this.give = this. navParams.get('give');
+    console.log(this.give);
+
     for(let suggestion of this.RawSubjects) {
       this.suggestions.push({'name': suggestion, 'checked': false});
     }

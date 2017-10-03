@@ -22,9 +22,10 @@ export class LocationModalPage {
   searchQuery: string = '';
   pickedLocation = 'Ibiza';
   locations = [];
+  give: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
-    
+    this.give = navParams.get('give');
     
     for(let l of this.RawLocations){
       this.locations.push({'name': l, 'clicked':false});

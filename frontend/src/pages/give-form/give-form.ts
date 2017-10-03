@@ -48,7 +48,7 @@ export class GiveFormPage {
   }
 
   onLessonFocus(){
-    const lessonModal = this.modalCtrl.create(LessonModalPage);
+    const lessonModal = this.modalCtrl.create(LessonModalPage, {'give':true});
 
     lessonModal.onDidDismiss(data => {
       this.formValue.lessons = data;
@@ -58,7 +58,7 @@ export class GiveFormPage {
   }
 
   onLocationFocus(){
-    const locationModal = this.modalCtrl.create(LocationModalPage);
+    const locationModal = this.modalCtrl.create(LocationModalPage, {'give':true});
 
     locationModal.onDidDismiss(data => {
       this.formValue.location = data.name;

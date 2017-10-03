@@ -8,11 +8,11 @@
 
         <!-- LESSON TYPE -->
         <ion-item>
-          <ion-segment name="lessonType" [(ngModel)]="formValue.lessonType" color="primary">
-                <ion-segment-button value="regular" (ionSelect)="selectedRegular()">
+          <ion-segment color="secondary" name="lessonType" [(ngModel)]="formValue.lessonType" color="primary">
+                <ion-segment-button color="secondary" value="regular" (ionSelect)="selectedRegular()">
                   REGULAR
                 </ion-segment-button>
-                <ion-segment-button value="punctual" (ionSelect)="selectedPunctual()">
+                <ion-segment-button color="secondary" value="punctual" (ionSelect)="selectedPunctual()">
                   ONE-TIME
                 </ion-segment-button>
             </ion-segment>
@@ -34,7 +34,7 @@
 
         <!-- LESSONS BADGES -->
         <div class="lessons-badges">
-          <ion-badge *ngFor="let l of formValue.lessons">{{ l }}</ion-badge>
+          <ion-badge color="secondary" *ngFor="let l of formValue.lessons">{{ l }}</ion-badge>
         </div>
         <br/>
 
