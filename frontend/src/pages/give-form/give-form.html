@@ -8,11 +8,11 @@
 
         <!-- LESSON TYPE -->
         <ion-item>
-          <ion-segment color="secondary" name="lessonType" [(ngModel)]="formValue.lessonType" color="primary">
-                <ion-segment-button color="secondary" value="regular" (ionSelect)="selectedRegular()">
+          <ion-segment color="secondary" name="lessonType" [(ngModel)]="formValue.lessonType">
+                <ion-segment-button value="regular" (ionSelect)="selectedRegular()">
                   REGULAR
                 </ion-segment-button>
-                <ion-segment-button color="secondary" value="punctual" (ionSelect)="selectedPunctual()">
+                <ion-segment-button value="punctual" (ionSelect)="selectedPunctual()">
                   ONE-TIME
                 </ion-segment-button>
             </ion-segment>
@@ -68,7 +68,7 @@
 
         <div *ngIf="formValue.lessonType === 'punctual'">
           <div padding class="calendar-label">Calendar</div>
-          <calendar (dates)="onDatesSelection($event)"></calendar>
+          <calendar (dates)="onDatesSelection($event)" mode="give"></calendar>
         </div>
 
 

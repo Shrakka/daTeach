@@ -37,3 +37,24 @@ page-detail {
   font-size: 1em;
   text-align: justify;
 }
+
+.detail-textarea {
+  border: solid 1px #CCCCCC;
+  width: 96%;
+  margin: 2%;
+  border-radius: 0.2em;
+}
+
+textarea {
+  resize: none;
+  height: 5em;
+  min-width: 96%;
+}
+
+.detail-block-button {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

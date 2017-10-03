@@ -1,4 +1,4 @@
-<ion-card class="result-card" (click)="goToChat()">
+<ion-card [class]="((message.messages.length == 1) ? 'sent' : 'active') + '-card result-card card card-md'" (click)="goToChat()">
   <div class="profile-result">
     <div class="picture"><img [src]="message.picture"/></div>
     <div class="bannerText">
@@ -11,6 +11,6 @@
     </div>
   </div>
   <div class="badges-result">
-    <ion-badge *ngFor="let lesson of message.lessons" class="badge-result" >{{ lesson }}</ion-badge>
+    <ion-badge *ngFor="let lesson of message.lessons" class="badge-result" color="dark">{{ lesson }}</ion-badge>
   </div>
 </ion-card>

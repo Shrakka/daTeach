@@ -9,8 +9,10 @@ import { ResultsProvider } from '../../providers/results/results';
   templateUrl: 'results.html',
 })
 export class ResultsPage {
+  mode: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public resultsProvider: ResultsProvider) {
+    this.mode = this.navParams.get('mode')
   }
 
   ionViewDidLoad() {

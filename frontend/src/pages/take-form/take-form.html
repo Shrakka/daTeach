@@ -68,7 +68,7 @@
 
         <div *ngIf="formValue.lessonType === 'punctual'">
           <div padding class="calendar-label">Calendar</div>
-          <calendar (dates)="onDatesSelection($event)"></calendar>
+          <calendar (dates)="onDatesSelection($event)" mode="take"></calendar>
         </div>
 
 

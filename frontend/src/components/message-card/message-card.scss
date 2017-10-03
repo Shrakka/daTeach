@@ -1,3 +1,11 @@
 message-card {
 
 }
+
+.sent-card {
+  border-left: 4px solid color($colors, "secondary");
+}
+
+.active-card {
+  border-left: 4px solid color($colors, "primary");
+}

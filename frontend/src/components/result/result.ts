@@ -7,6 +7,7 @@ import { NavController } from 'ionic-angular';
 })
 export class ResultComponent {
   @Input() result: any;
+  @Input() mode: string;
 
   constructor(public navCtrl: NavController) {
   }

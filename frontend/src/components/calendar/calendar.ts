@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 /**
  * Generated class for the CalendarComponent component.
@@ -13,6 +13,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class CalendarComponent {
   days: Array<string> = [];
   selecteds: Array<string> = [];
+  @Input() mode: string;
   @Output() dates: EventEmitter<Array<string>> = new EventEmitter();
 
   constructor() {
@@ -45,7 +46,7 @@ export class CalendarComponent {
   }
 
   isSelected(day: string, period: string) {
-    return (this.selecteds.includes(day + '-' + period)) ? 'selected' : '';
+    return (this.selecteds.includes(day + '-' + period)) ? 'selected calendar-' + this.mode : '';
   }
 
 }

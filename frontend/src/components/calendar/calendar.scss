@@ -29,6 +29,13 @@
 }
 
 .selected {
-  background-color: color($colors, primary);
   color: white;
+}
+
+.calendar-take {
+  background-color: color($colors, primary);
+}
+
+.calendar-give {
+  background-color: color($colors, secondary);
 }

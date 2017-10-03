@@ -11,6 +11,6 @@
     </div>
   </div>
   <div class="badges-result">
-    <ion-badge *ngFor="let lesson of result.lessons" class="badge-result" >{{ lesson }}</ion-badge>
+    <ion-badge *ngFor="let lesson of result.lessons" class="badge-result" [color]="(mode === 'take') ? 'primary' : 'secondary'">{{ lesson }}</ion-badge>
   </div>
 </ion-card>

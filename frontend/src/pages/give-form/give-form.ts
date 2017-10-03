@@ -28,7 +28,7 @@ export class GiveFormPage {
 
   goToResults() {
     console.log(this.formValue);
-    this.navCtrl.push('ResultsPage');
+    this.navCtrl.push('ResultsPage', {mode: "give"});
   }
 
   selectedRegular() {
@@ -67,7 +67,7 @@ export class GiveFormPage {
   }
 
   onDatesSelection($event) {
-    // EVENT = LIST DE DATE 
+    // EVENT = LIST DE DATE
     console.log($event);
   }
 
