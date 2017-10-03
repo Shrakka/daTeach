@@ -11,7 +11,7 @@
       <div class="detail-sep"></div>
       <div class="detail-longDesc">{{ longDescription }}</div>
     </div>
-    <ion-textarea class="detail-textarea" *ngIf="askmessage" [(ngModel)]="comment" [placeholder]="'Enter your message for ' + firstname"></ion-textarea>
+    <textarea class="detail-textarea" *ngIf="askmessage" [(ngModel)]="comment" [placeholder]="'Enter your message for ' + firstname"></textarea>
     <div class="detail-block-button">
       <button ion-button [disabled]="comment.length == 0 && askmessage" (click)="sendMessage()">Send</button>
     </div>
