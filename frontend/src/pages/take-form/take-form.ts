@@ -57,7 +57,7 @@ export class TakeFormPage {
       }
 
       onLocationFocus(){
-        const locationModal = this.modalCtrl.create(LocationModalPage, {'give':false});
+        const locationModal = this.modalCtrl.create(LocationModalPage, {'give':false}, {showBackdrop: true});
 
         locationModal.onDidDismiss(data => {
           this.formValue.location = data.name;
