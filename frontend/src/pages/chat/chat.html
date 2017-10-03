@@ -1,0 +1,15 @@
+<ion-header>
+  <header title="Chat"></header>
+</ion-header>
+
+<ion-content padding>
+  <div *ngFor="let message of messages.messages" [class]="'message-container ' + ((message.user == 'me') ? 'me-message-container' : 'you-message-container')">
+    <div [class]="'both-message ' + ((message.user == 'me') ? 'me-message' : 'you-message')">
+        {{ message.message }}
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <footer></footer>
+</ion-footer>

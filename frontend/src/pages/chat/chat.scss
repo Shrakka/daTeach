@@ -1,0 +1,33 @@
+page-chat {
+
+}
+
+.me-message {
+  background-color: white;
+  color: #333333;
+
+}
+
+.you-message {
+  background-color: color($colors, primary);
+  color: white;
+}
+
+.both-message {
+  border-radius: 0.5em;
+  padding: 0.5em;
+  margin: 1em;
+  max-width: 60%;
+}
+
+.message-container {
+  display: flex;
+}
+
+.me-message-container {
+  flex-direction: row-reverse;
+}
+
+.you-message-container {
+  flex-direction: row;
+}

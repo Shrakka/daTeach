@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the MessagesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { UserProvider } from '../../providers/user/user';
+import { MessagesProvider } from '../../providers/messages/messages';
 
 @IonicPage()
 @Component({
@@ -14,8 +9,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'messages.html',
 })
 export class MessagesPage {
+  activeDiscussions = [];
+  sentMessages = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public messagesProvider: MessagesProvider) {
+    for (var message of this.messagesProvider.messages) {
+      if (message.messages.length == 1) {
+        this.sentMessages.push(message);
+      }
+      else {
+        this.activeDiscussions.push(message);
+      }
+    }
   }
 
   ionViewDidLoad() {

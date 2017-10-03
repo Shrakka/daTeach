@@ -2,7 +2,13 @@
   <header title="Messages"></header>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <profile-banner [firstname]="userProvider.firstname" [lastname]="userProvider.lastname" [picture]="userProvider.picture" [shortDescription]="userProvider.shortDescription"></profile-banner>
+
+  <ion-label padding>Active Discussions</ion-label>
+  <message-card *ngFor="let message of activeDiscussions" [message]="message"></message-card>
+  <ion-label padding>Sent Messages</ion-label>
+  <message-card *ngFor="let message of sentMessages" [message]="message"></message-card>
 </ion-content>
 
 <ion-footer>
