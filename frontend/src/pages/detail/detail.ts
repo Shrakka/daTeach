@@ -15,6 +15,7 @@ export class DetailPage {
   lessons: string[];
   comment: string = '';
   askmessage: boolean;
+  placeholder: string = ''
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
     this.firstname = this.navParams.get('firstname');
@@ -24,6 +25,7 @@ export class DetailPage {
     this.lessons = this.navParams.get('lessons');
     this.longDescription = this.navParams.get('longDescription');
     this.askmessage = this.navParams.get('askmessage');
+    this.placeholder = 'Enter your message for ' + this.firstname;
   }
 
   ionViewDidLoad() {
@@ -38,6 +40,9 @@ export class DetailPage {
           text: 'OK',
           role: 'cancel',
           handler: () => {
+            this.comment = "";
+            this.placeholder = "You can still send 1 more message to " + this.firstname;
+
             console.log('OK clicked');
           }
         }],
