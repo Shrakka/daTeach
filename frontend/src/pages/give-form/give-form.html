@@ -57,9 +57,9 @@
         <div class="move-panel">
           <div class="move-label" padding>Moving</div>
           <div class="move-buttons">
-            <button ion-button [outline]="formValue.move !== 'move'" (click)="formValue.move = 'move'">Move</button>
-            <button ion-button [outline]="formValue.move !== 'host'" (click)="formValue.move = 'host'">Host</button>
-            <button ion-button [outline]="formValue.move !== 'both'" (click)="formValue.move = 'both'">Both</button>
+            <button ion-button color="secondary" [outline]="formValue.move !== 'move'" (click)="formValue.move = 'move'">Move</button>
+            <button ion-button color="secondary" [outline]="formValue.move !== 'host'" (click)="formValue.move = 'host'">Host</button>
+            <button ion-button color="secondary" [outline]="formValue.move !== 'both'" (click)="formValue.move = 'both'">Both</button>
           </div>
         </div>
 
@@ -74,7 +74,7 @@
 
         <!-- SUBMIT BUTTON -->
         <div class="block-button">
-          <button ion-button class="result-button" (click)="goToResults()">Show results</button>
+          <button ion-button color="secondary" class="result-button" (click)="goToResults()">Show results</button>
         </div>
       </div>
 

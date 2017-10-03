@@ -4,13 +4,6 @@ import { UserProvider } from '../../providers/user/user';
 import { LessonModalPage } from '../../pages/lesson-modal/lesson-modal';
 import { LocationModalPage } from '../../pages/location-modal/location-modal';
 
-/**
- * Generated class for the GiveFormPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-give-form',

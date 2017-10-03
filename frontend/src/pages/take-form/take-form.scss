@@ -1,3 +1,49 @@
 page-take-form {
 
 }
+
+.result-button {
+    width: 4em;
+}
+
+.move-panel {
+    margin: 10em;
+    display: flex;
+    justify-content: center;
+    background-color: red;
+}
+
+
+.lesson-label {
+    padding-bottom: 0;
+}
+.lessons-badges {
+    display: flex;
+    align-items: left;
+    margin-top: 0.5em;
+    justify-content: space-evenly;
+}
+
+.location-search {
+    margin-top: -2em;
+}
+.location-label {
+    padding-bottom: 0px;
+}
+
+.move-label {
+    padding-bottom: 0px;
+}
+.move-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.block-button {
+    margin-top: 4em;
+    margin-bottom: 2em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

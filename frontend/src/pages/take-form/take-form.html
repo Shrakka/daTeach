@@ -2,8 +2,82 @@
   <header title="Take Form"></header>
 </ion-header>
 
-<ion-content padding>
-  <button ion-button color="primary" (click)="goToResults()">Show results</button>
+<ion-content>
+  <div class="form" class="give-form">
+      <profile-banner [firstname]="userProvider.firstname" [lastname]="userProvider.lastname" [picture]="userProvider.picture" [shortDescription]="userProvider.shortDescription"></profile-banner>
+
+        <!-- LESSON TYPE -->
+        <ion-item>
+          <ion-segment name="lessonType" [(ngModel)]="formValue.lessonType" color="primary">
+                <ion-segment-button value="regular" (ionSelect)="selectedRegular()">
+                  REGULAR
+                </ion-segment-button>
+                <ion-segment-button value="punctual" (ionSelect)="selectedPunctual()">
+                  ONE-TIME
+                </ion-segment-button>
+            </ion-segment>
+        </ion-item>
+
+        <!-- LESSONS -->
+        <div  class="lessons-search">
+          <div padding class="lesson-label">Lessons</div>
+          <ion-searchbar
+            [(ngModel)]="formValue.lesson"
+            [showCancelButton]="shoudShowCancel"
+            (ionInput)="searchLesson($event)"
+            (ionFocus)="onLessonFocus()"
+            animated="true"
+            placeholder="What would you like to teach?"
+            >
+          </ion-searchbar>
+        </div>
+
+        <!-- LESSONS BADGES -->
+        <div class="lessons-badges">
+          <ion-badge *ngFor="let l of formValue.lessons">{{ l }}</ion-badge>
+        </div>
+        <br/>
+
+        <!-- LOCATION -->
+        <div  class="location-search">
+          <div padding class="location-label">Location</div>
+          <ion-searchbar
+          [(ngModel)]="formValue.location"
+          [showCancelButton]="shouldShowCancel"
+          (ionInput)="searchLocation($event)"
+          (ionFocus)="onLocationFocus()"
+          animated="true"
+          placeholder="Where will you give the lessons?"
+          >
+          </ion-searchbar>
+        </div>
+
+
+        <!-- MOVE BUTTONS -->
+        <div class="move-panel">
+          <div class="move-label" padding>Moving</div>
+          <div class="move-buttons">
+            <button ion-button [outline]="formValue.move !== 'move'" (click)="formValue.move = 'move'">Move</button>
+            <button ion-button [outline]="formValue.move !== 'host'" (click)="formValue.move = 'host'">Host</button>
+            <button ion-button [outline]="formValue.move !== 'both'" (click)="formValue.move = 'both'">Both</button>
+          </div>
+        </div>
+
+        <!-- CALENDAR -->
+        <br/>
+
+        <div *ngIf="formValue.lessonType === 'punctual'">
+          <div padding class="calendar-label">Calendar</div>
+          <calendar (dates)="onDatesSelection($event)"></calendar>
+        </div>
+
+
+        <!-- SUBMIT BUTTON -->
+        <div class="block-button">
+          <button ion-button class="result-button" (click)="goToResults()">Show results</button>
+        </div>
+      </div>
+
 </ion-content>
 
 <ion-footer>

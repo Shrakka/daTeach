@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the TakeFormPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { UserProvider } from '../../providers/user/user';
+import { LessonModalPage } from '../../pages/lesson-modal/lesson-modal';
+import { LocationModalPage } from '../../pages/location-modal/location-modal';
 
 @IonicPage()
 @Component({
@@ -15,7 +11,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TakeFormPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  formValue = {
+    lessonType: "regular",
+    move: 'move',
+    location: '',
+    lessons: []
+  };
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
@@ -23,7 +26,48 @@ export class TakeFormPage {
   }
 
   goToResults() {
+    console.log(this.formValue);
     this.navCtrl.push('ResultsPage');
   }
+
+  selectedRegular() {
+    
+      }
+    
+      selectedPunctual() {
+    
+      }
+    
+      searchLesson($event){
+        console.log($event);
+      }
+    
+      searchLocation($event){
+        console.log($event);
+      }
+    
+      onLessonFocus(){
+        const lessonModal = this.modalCtrl.create(LessonModalPage);
+    
+        lessonModal.onDidDismiss(data => {
+          this.formValue.lessons = data;
+          console.log(this.formValue.lessons);
+        })
+        lessonModal.present();
+      }
+    
+      onLocationFocus(){
+        const locationModal = this.modalCtrl.create(LocationModalPage);
+    
+        locationModal.onDidDismiss(data => {
+          this.formValue.location = data.name;
+        })
+        locationModal.present();
+      }
+    
+      onDatesSelection($event) {
+        // EVENT = LIST DE DATE 
+        console.log($event);
+      }
 
 }
