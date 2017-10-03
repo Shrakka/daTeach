@@ -1,12 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the DetailPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -23,7 +16,7 @@ export class DetailPage {
   comment: string = '';
   askmessage: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
     this.firstname = this.navParams.get('firstname');
     this.lastname = this.navParams.get('lastname');
     this.picture = this.navParams.get('picture');
@@ -34,6 +27,22 @@ export class DetailPage {
   }
 
   ionViewDidLoad() {
+  }
+
+  sendMessage() {
+    const alert = this.alertCtrl.create({
+      title: 'Message sent',
+      message: this.firstname + ' will certainly contact you soon. You will be notified.',
+      buttons: [
+        {
+          text: 'OK',
+          role: 'cancel',
+          handler: () => {
+            console.log('OK clicked');
+          }
+        }],
+    })
+    alert.present();
   }
 
 }

@@ -13,7 +13,7 @@
     </div>
     <ion-textarea class="detail-textarea" *ngIf="askmessage" [(ngModel)]="comment" [placeholder]="'Enter your message for ' + firstname"></ion-textarea>
     <div class="detail-block-button">
-      <button ion-button [disabled]="comment.length == 0 && askmessage">Send</button>
+      <button ion-button [disabled]="comment.length == 0 && askmessage" (click)="sendMessage()">Send</button>
     </div>
   </ion-card>
 </ion-content>
