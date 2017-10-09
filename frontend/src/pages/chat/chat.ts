@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Socket } from 'ng-socket-io';
 import { UserProvider } from '../../providers/user/user';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the ChatPage page.
@@ -21,11 +22,26 @@ export class ChatPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private socket: Socket, public userProvider: UserProvider) {
     this.messages = this.navParams.get("message")
+
+    this.getMessages().subscribe(message => {
+      console.log(message)
+    });
   }
 
   ionViewDidLoad() {
     this.socket.connect();
-    this.socket.emit('set-name', this.userProvider.firstname + ' ' + this.userProvider.lastname);
   }
 
+  addMessage() {
+    this.socket.emit('addMessage', 'messagecontent', '59db4e8df8eed51ce8b293c8', '59da932e005ac447dd9dbb82');
+  }
+
+  getMessages() {
+    let observable = new Observable(observer => {
+      this.socket.on('message', (data) => {
+        observer.next(data);
+      });
+    })
+    return observable;
+  }
 }

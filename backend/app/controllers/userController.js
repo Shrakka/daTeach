@@ -37,7 +37,7 @@ exports.getUser = function(req, res) {
 
 exports.getUserDiscussions = function(req, res) {
   if (configAuth.apikey === req.query.apikey && req.user) {
-    Discussion.find({$or:[{'teacher': req.params.id}, {'student': req.params.id}]}, (err, discussions) => {
+    Discussion.find({$or:[{'user1': req.params.id}, {'user2': req.params.id}]}, (err, discussions) => {
       if (discussions) {
         res.send(discussions)
       }
