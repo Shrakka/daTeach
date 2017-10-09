@@ -17,7 +17,7 @@ module.exports = function(passport) {
   passport.use('local-signup', new LocalStrategy({
     usernameField : 'email',
     passwordField : 'password',
-    passReqToCallback : true
+    passReqToCallback : true,
   },
   function(req, email, password, done) {
     process.nextTick(function() {
@@ -61,6 +61,7 @@ module.exports = function(passport) {
       if (!user.validPassword(password)) {
         return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
       }
+      console.log(user)
       return done(null, user);
     });
   }));
