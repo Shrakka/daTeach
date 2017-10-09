@@ -13,7 +13,16 @@
       <ion-input [(ngModel)]="password" type="password"></ion-input>
     </ion-item>
     <button ion-button (click)="logIn()">Login</button>
-    <button ion-button >Login with Facebook</button>
+    <button ion-button (click)="logInFB()">Login with Facebook</button>
+    <ion-item>
+      <ion-label color="primary" stacked>Firstname</ion-label>
+      <ion-input [(ngModel)]="firstname" type="test"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Lastname</ion-label>
+      <ion-input [(ngModel)]="lastname" type="text"></ion-input>
+    </ion-item>
+    <button ion-button (click)="signUp()">Sign Up</button>
   </ion-card>
 </ion-content>
 

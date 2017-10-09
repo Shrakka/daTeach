@@ -21,6 +21,7 @@ import { LocationModalPageModule } from '../pages/location-modal/location-modal.
 import { UserProvider } from '../providers/user/user';
 import { ResultsProvider } from '../providers/results/results';
 import { MessagesProvider } from '../providers/messages/messages';
+import { BackendProvider } from '../providers/backend/backend';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { MessagesProvider } from '../providers/messages/messages';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
     ResultsProvider,
-    MessagesProvider
+    MessagesProvider,
+    BackendProvider
   ]
 })
 export class AppModule {}

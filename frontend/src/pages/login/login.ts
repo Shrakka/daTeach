@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -17,6 +18,8 @@ import { UserProvider } from '../../providers/user/user';
 export class LoginPage {
   email: string = 'email@email.org';
   password: string = 'password';
+  firstname: string = 'John';
+  lastname: string = 'Doe';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider) {
   }
@@ -25,9 +28,16 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
+  signUp() {
+    this.userProvider.signUp({'email': this.email, 'password': this.password, 'firstname': this.firstname, 'lastname': this.lastname});
+  }
+
   logIn() {
-    console.log(this.email, this.password)
     this.userProvider.logIn({'email': this.email, 'password': this.password});
+  }
+
+  logInFB() {
+    this.userProvider.logInFB()
   }
 
 }

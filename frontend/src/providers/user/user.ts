@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { RequestOptions } from '@angular/http';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+import { BackendProvider } from '../../providers/backend/backend';
 
 /*
   Generated class for the UserProvider provider.
@@ -26,7 +28,7 @@ export class UserProvider {
   user: Object;
 
 
-  constructor(public http: Http) {
+  constructor(public http: Http, private fb: Facebook, public backendProvider: BackendProvider) {
     this.load();
   }
 
@@ -44,15 +46,44 @@ export class UserProvider {
     this.isAuth = true;
   }
 
+  signUp(body) {
+    return new Promise(resolve => {
+      console.log(this.backendProvider.url + '/signup/?apikey=' + this.backendProvider.apikey)
+      var options = new RequestOptions({withCredentials: true});
+      this.http.post(this.backendProvider.url + '/signup/?apikey=' + this.backendProvider.apikey, body, options)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.user = data
+        });
+    });
+  }
+
   logIn(body) {
     return new Promise(resolve => {
-        var options = new RequestOptions({withCredentials: true});
-        this.http.post('http://localhost:8080/login', body, options)
-          .map(res => res.json())
-          .subscribe(data => {
-            this.user = data
-            console.log(this.user)
-          });
-      });
+      var options = new RequestOptions({withCredentials: true});
+      this.http.post(this.backendProvider.url + '/login/?apikey=' + this.backendProvider.apikey, body, options)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.user = data
+          console.log(data.public.firstname)
+        });
+    });
+  }
+
+  logInFB() {
+    this.fb.login(['public_profile', 'email'])
+      .then((res: FacebookLoginResponse) => {
+        this.fb.api('/me?fields=name,email', [])
+          .then((profile) => {
+            var body = {id: res.authResponse.userID, email: profile.email, firstname: profile.name.split(' ')[0], lastname: profile.name.split(' ')[1]};
+            console.log(this.backendProvider.url + '/facebook/?apikey=' + this.backendProvider.apikey)
+            var options = new RequestOptions({withCredentials: true});
+            this.http.post(this.backendProvider.url + '/facebook/?apikey=' + this.backendProvider.apikey, body, options)
+              .map(res => res.json())
+              .subscribe(data => {
+                this.user = data
+              });
+          })
+      })
   }
 }

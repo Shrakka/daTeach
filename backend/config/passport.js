@@ -36,7 +36,9 @@ module.exports = function(passport) {
           newUser.local.password = newUser.generateHash(password);
           newUser.save(function(err) {
             if (err) {
-              throw err;
+              return done(err);
+            }
+            else {
               return done(null, newUser);
             }
           });
@@ -61,42 +63,7 @@ module.exports = function(passport) {
       if (!user.validPassword(password)) {
         return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
       }
-      console.log(user)
       return done(null, user);
     });
   }));
-
-  passport.use(new FacebookStrategy({
-    clientID        : configAuth.facebookAuth.clientID,
-    clientSecret    : configAuth.facebookAuth.clientSecret,
-    callbackURL     : configAuth.facebookAuth.callbackURL,
-    profileFields: ['id', 'emails', 'name']
-  },
-  function(token, refreshToken, profile, done) {
-    process.nextTick(function() {
-      User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
-        if (err) {
-          return done(err);
-        }
-        if (user) {
-          return done(null, user);
-        }
-        else {
-          var newUser = new User();
-          newUser.public.email = profile.emails[0].value;
-          newUser.public.firstname = profile.name.givenName;
-          newUser.public.lastname = profile.name.familyName;
-          newUser.facebook.id    = profile.id;
-          newUser.facebook.token = token;
-          newUser.save(function(err) {
-            if (err) {
-              throw err;
-            }
-            return done(null, newUser);
-          });
-        }
-      });
-    });
-  }));
-
 }

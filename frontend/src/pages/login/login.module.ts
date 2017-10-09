@@ -3,6 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { LoginPage } from './login';
 import { HeaderComponentModule } from '../../components/header/header.module';
 import { FooterComponentModule } from '../../components/footer/footer.module';
+import { Facebook } from '@ionic-native/facebook';
 
 @NgModule({
   declarations: [
@@ -13,5 +14,8 @@ import { FooterComponentModule } from '../../components/footer/footer.module';
     FooterComponentModule,
     IonicPageModule.forChild(LoginPage),
   ],
+  providers: [
+    Facebook
+  ]
 })
 export class LoginPageModule {}

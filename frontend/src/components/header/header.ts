@@ -15,4 +15,8 @@ export class HeaderComponent {
     this.navCtrl.push('ProfilePage');
   }
 
+  goToLogin() {
+    this.navCtrl.push('LoginPage');
+  }
+
 }
