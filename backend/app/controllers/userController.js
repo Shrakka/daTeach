@@ -1,6 +1,7 @@
 var configAuth = require('../../config/auth');
 var mongoose = require('mongoose'),
   User = mongoose.model('User');
+  Discussion = mongoose.model('Discussion');
 
 exports.getUsers = function(req, res) {
   if (configAuth.apikey === req.query.apikey && req.user) {
@@ -23,6 +24,22 @@ exports.getUser = function(req, res) {
     User.findOne({_id: req.params.id}, (err, user) => {
       if (user) {
         res.send({'id':user._id, 'public':user.public})
+      }
+      else {
+        res.status(404).send('Error 404 - Not Found')
+      }
+    })
+  }
+  else {
+    res.status(403).send("Error 403 - Not authorized")
+  }
+}
+
+exports.getUserDiscussions = function(req, res) {
+  if (configAuth.apikey === req.query.apikey && req.user) {
+    Discussion.find({$or:[{'teacher': req.params.id}, {'student': req.params.id}]}, (err, discussions) => {
+      if (discussions) {
+        res.send(discussions)
       }
       else {
         res.status(404).send('Error 404 - Not Found')

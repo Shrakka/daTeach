@@ -1,7 +1,7 @@
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
-var User = require('../app/models/userModel');
 var configAuth = require('./auth');
+var User = require('../app/models/userModel');
 
 module.exports = function(passport) {
   passport.serializeUser(function(user, done) {

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Socket } from 'ng-socket-io';
+import { UserProvider } from '../../providers/user/user';
 
 /**
  * Generated class for the ChatPage page.
@@ -17,13 +19,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ChatPage {
   messages: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private socket: Socket, public userProvider: UserProvider) {
     this.messages = this.navParams.get("message")
-    console.log(this.messages)
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ChatPage');
+    this.socket.connect();
+    this.socket.emit('set-name', this.userProvider.firstname + ' ' + this.userProvider.lastname);
   }
 
 }

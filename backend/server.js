@@ -16,14 +16,17 @@ var session      = require('express-session');
 
 var configDB = require('./config/database.js');
 
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
 // configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database
 
+require('./app/models/userModel');
+require('./app/models/discussionModel');
+
 require('./config/passport')(passport); // pass passport for configuration
-require('./config/socket')(io)
+require('./config/socket')(io);
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
@@ -39,7 +42,8 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // routes ======================================================================
 require('./app/routes/authRoutes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 require('./app/routes/userRoutes.js')(app); // load our routes and pass in our app and fully configured passport
+require('./app/routes/discussionRoutes.js')(app); // load our routes and pass in our app and fully configured passport
 
 // launch ======================================================================
-app.listen(port);
+server.listen(port);
 console.log('The magic happens on port ' + port);
