@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 
+import { LoginPageModule } from '../pages/login/login.module';
 import { ChatPageModule } from '../pages/chat/chat.module';
 import { ResultsPageModule } from '../pages/results/results.module';
 import { TakeFormPageModule } from '../pages/take-form/take-form.module';
@@ -27,6 +28,7 @@ import { MessagesProvider } from '../providers/messages/messages';
     MyApp
   ],
   imports: [
+    LoginPageModule,
     ChatPageModule,
     DetailPageModule,
     LocationModalPageModule,

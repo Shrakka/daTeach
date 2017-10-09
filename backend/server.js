@@ -19,6 +19,9 @@ var configDB = require('./config/database.js');
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
+var cors = require('cors')
+app.use(cors())
+
 // configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database
 
@@ -34,7 +37,11 @@ app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser()); // get information from html forms
 
 // required for passport
-app.use(session({ secret: 'thesessionsecret' })); // session secret
+app.use(session({
+  secret: 'thesessionsecret',
+  resave: true,
+  saveUninitialized: true
+})); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessionsrequire('./config')
 app.use(flash()); // use connect-flash for flash messages stored in session

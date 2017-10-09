@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
   Discussion = mongoose.model('Discussion');
 
 exports.getUsers = function(req, res) {
+  console.log(req.user)
   if (configAuth.apikey === req.query.apikey && req.user) {
     User.find({}, (err, users) => {
       if (users) {

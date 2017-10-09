@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { RequestOptions } from '@angular/http';
 
 /*
   Generated class for the UserProvider provider.
@@ -22,6 +23,8 @@ export class UserProvider {
   level: string;
   isAuth: boolean;
 
+  user: Object;
+
 
   constructor(public http: Http) {
     this.load();
@@ -41,4 +44,15 @@ export class UserProvider {
     this.isAuth = true;
   }
 
+  logIn(body) {
+    return new Promise(resolve => {
+        var options = new RequestOptions({withCredentials: true});
+        this.http.post('http://localhost:8080/login', body, options)
+          .map(res => res.json())
+          .subscribe(data => {
+            this.user = data
+            console.log(this.user)
+          });
+      });
+  }
 }
