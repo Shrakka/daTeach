@@ -16,10 +16,14 @@ var session      = require('express-session');
 
 var configDB = require('./config/database.js');
 
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 // configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database
 
 require('./config/passport')(passport); // pass passport for configuration
+require('./config/socket')(io)
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
@@ -29,7 +33,7 @@ app.use(bodyParser()); // get information from html forms
 // required for passport
 app.use(session({ secret: 'thesessionsecret' })); // session secret
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
+app.use(passport.session()); // persistent login sessionsrequire('./config')
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
