@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { RequestOptions } from '@angular/http';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
-import { BackendProvider } from '../../providers/backend/backend';
+import { BackendProvider } from '../backend/backend';
 
 /*
   Generated class for the UserProvider provider.
@@ -25,7 +25,7 @@ export class UserProvider {
   level: string;
   isAuth: boolean;
 
-  user: Object;
+  user;
 
 
   constructor(public http: Http, private fb: Facebook, public backendProvider: BackendProvider) {
@@ -52,7 +52,6 @@ export class UserProvider {
 
   signUp(body) {
     return new Promise(resolve => {
-      console.log(this.backendProvider.url + '/signup/?apikey=' + this.backendProvider.apikey)
       var options = new RequestOptions({withCredentials: true});
       this.http.post(this.backendProvider.url + '/signup/?apikey=' + this.backendProvider.apikey, body, options)
         .map(res => res.json())
@@ -81,7 +80,6 @@ export class UserProvider {
         this.fb.api('/me?fields=name,email,gender,birthday', [])
           .then((profile) => {
             var birthyear= -1;
-            console.log(profile.birthday)
             if (profile.birthday != null) {
               birthyear = profile.birthday.split('/')[profile.birthday.split('/').length-1];
             }

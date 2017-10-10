@@ -22,6 +22,7 @@ import { UserProvider } from '../providers/user/user';
 import { ResultsProvider } from '../providers/results/results';
 import { MessagesProvider } from '../providers/messages/messages';
 import { BackendProvider } from '../providers/backend/backend';
+import { DiscussionProvider } from '../providers/discussion/discussion';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { BackendProvider } from '../providers/backend/backend';
     UserProvider,
     ResultsProvider,
     MessagesProvider,
-    BackendProvider
+    BackendProvider,
+    DiscussionProvider
   ]
 })
 export class AppModule {}
