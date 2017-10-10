@@ -17,9 +17,9 @@ This is the repository of the mobile app project of the class Mobile Apps & Serv
 #### Documentation
 
 * [**Tuto** : Build a RESTful API with node](https://www.codementor.io/olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd)
-* [** Tuto ** : Authentication with node](https://scotch.io/tutorials/easy-node-authentication-setup-and-local)
-* [** Doc** : Passport (auth library)](http://passportjs.org/docs)
-* [** Doc ** : Mongoose (db library)](http://mongoosejs.com/docs/guide.html)
+* [**Tuto** : Authentication with node](https://scotch.io/tutorials/easy-node-authentication-setup-and-local)
+* [**Doc** : Passport (auth library)](http://passportjs.org/docs)
+* [**Doc** : Mongoose (db library)](http://mongoosejs.com/docs/guide.html)
 
 #### Routes
 
