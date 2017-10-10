@@ -7,7 +7,6 @@ var app      = express();
 var port     = process.env.PORT || 8080;
 var mongoose = require('mongoose');
 var passport = require('passport');
-var flash    = require('connect-flash');
 
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -35,6 +34,10 @@ require('./config/socket')(io);
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser()); // get information from html forms
+app.use(function(err, req, res, next){
+  console.log(err)
+  res.status(400).send('Error 400 - Not valid data')
+});
 
 // required for passport
 app.use(session({
@@ -44,7 +47,6 @@ app.use(session({
 })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessionsrequire('./config')
-app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
 require('./app/routes/authRoutes.js')(app, passport); // load our routes and pass in our app and fully configured passport

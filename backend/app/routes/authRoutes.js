@@ -9,7 +9,7 @@ module.exports = function(app, passport) {
   });
 
   app.post('/login', passport.authenticate('local-login'),
-  function(req,res) {
+  function(req, res) {
     res.redirect('/user/' + req.user._id + '/?apikey=' + req.query.apikey)
   });
 

@@ -20,6 +20,7 @@ exports.getUsers = function(req, res) {
 }
 
 exports.getUser = function(req, res) {
+  console.log(req.user)
   if (configAuth.apikey === req.query.apikey && req.user) {
     User.findOne({_id: req.params.id}, (err, user) => {
       if (user) {
