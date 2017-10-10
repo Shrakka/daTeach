@@ -15,6 +15,13 @@ exports.facebook = function(req, res) {
         newUser.public.firstname = req.body.firstname;
         newUser.public.lastname = req.body.lastname;
         newUser.facebook.id = req.body.id;
+        newUser.public.birthyear = req.body.birthyear;
+        newUser.public.gender = req.body.gender;
+        newUser.public.picture = '';
+        newUser.public.phone = '';
+        newUser.public.shortDescription = '';
+        newUser.public.longDescription = '';
+        newUser.public.level = '';
         newUser.save(function(err) {
           if (err) {
             res.status(500).send("Error 500 -Internal server error")

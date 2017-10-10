@@ -22,6 +22,18 @@
       <ion-label color="primary" stacked>Lastname</ion-label>
       <ion-input [(ngModel)]="lastname" type="text"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Birthyear</ion-label>
+      <ion-input [(ngModel)]="birthyear" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Gender</ion-label>
+      <ion-select [(ngModel)]="gender">
+        <ion-option value="M">Male</ion-option>
+        <ion-option value="F">Female</ion-option>
+        <ion-option value="N/A">N/A</ion-option>
+      </ion-select>
+    </ion-item>
     <button ion-button (click)="signUp()">Sign Up</button>
   </ion-card>
 </ion-content>

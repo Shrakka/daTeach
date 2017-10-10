@@ -20,6 +20,8 @@ export class LoginPage {
   password: string = 'password';
   firstname: string = 'John';
   lastname: string = 'Doe';
+  birthyear: number = 1990;
+  gender: string = 'M';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider) {
   }
@@ -29,7 +31,7 @@ export class LoginPage {
   }
 
   signUp() {
-    this.userProvider.signUp({'email': this.email, 'password': this.password, 'firstname': this.firstname, 'lastname': this.lastname});
+    this.userProvider.signUp({'email': this.email, 'password': this.password, 'firstname': this.firstname, 'lastname': this.lastname, 'birthyear': this.birthyear, 'gender': this.gender});
   }
 
   logIn() {

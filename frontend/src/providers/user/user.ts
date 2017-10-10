@@ -13,12 +13,12 @@ import { BackendProvider } from '../../providers/backend/backend';
 */
 @Injectable()
 export class UserProvider {
-  firstname: string;
-  lastname: string;
-  age: number;
+  firstname: string; //
+  lastname: string; //
+  age: number; //
   picture: string;
-  sex: string;
-  email: string;
+  sex: string; //
+  email: string; //
   phone: string;
   shortDescription: string;
   longDescription: string;
@@ -36,7 +36,7 @@ export class UserProvider {
     this.firstname = 'Jon';
     this.lastname = 'Snow';
     this.age = 25;
-    this.picture = 'assets/img/profile.png';
+    this.picture = 'assets/img/unknownprofile.png';
     this.sex = 'M';
     this.email = 'j.snow@winterfell.com';
     this.phone = '01 23 45 67 89';
@@ -44,6 +44,10 @@ export class UserProvider {
     this.longDescription = 'Long Description...'
     this.level = 'Bac+3';
     this.isAuth = true;
+  }
+
+  getAge(birthyear: number) {
+    return (birthyear === -1) ? '' : (new Date()).getFullYear() - birthyear
   }
 
   signUp(body) {
@@ -54,6 +58,7 @@ export class UserProvider {
         .map(res => res.json())
         .subscribe(data => {
           this.user = data
+          this.user.public.age = this.getAge(this.user.public.birthyear)
         });
     });
   }
@@ -65,7 +70,7 @@ export class UserProvider {
         .map(res => res.json())
         .subscribe(data => {
           this.user = data
-          console.log(data.public.firstname)
+          this.user.public.age = this.getAge(this.user.public.birthyear)
         });
     });
   }
@@ -73,10 +78,18 @@ export class UserProvider {
   logInFB() {
     this.fb.login(['public_profile', 'email'])
       .then((res: FacebookLoginResponse) => {
-        this.fb.api('/me?fields=name,email', [])
+        this.fb.api('/me?fields=name,email,gender,birthday', [])
           .then((profile) => {
-            var body = {id: res.authResponse.userID, email: profile.email, firstname: profile.name.split(' ')[0], lastname: profile.name.split(' ')[1]};
-            console.log(this.backendProvider.url + '/facebook/?apikey=' + this.backendProvider.apikey)
+            var birthyear= -1;
+            console.log(profile.birthday)
+            if (profile.birthday != null) {
+              birthyear = profile.birthday.split('/')[profile.birthday.split('/').length-1];
+            }
+            var gender = 'N/A';
+            if (profile.gender != null) {
+              gender = (profile.gender === 'male') ? 'M' : 'F';
+            }
+            var body = {id: res.authResponse.userID, email: profile.email, firstname: profile.name.split(' ')[0], lastname: profile.name.split(' ')[1], birthyear: birthyear, gender: gender};
             var options = new RequestOptions({withCredentials: true});
             this.http.post(this.backendProvider.url + '/facebook/?apikey=' + this.backendProvider.apikey, body, options)
               .map(res => res.json())
