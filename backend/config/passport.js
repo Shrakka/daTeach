@@ -17,7 +17,7 @@ module.exports = function(passport) {
   passport.use('local-signup', new LocalStrategy({
     usernameField : 'email',
     passwordField : 'password',
-    passReqToCallback : true
+    passReqToCallback : true,
   },
   function(req, email, password, done) {
     process.nextTick(function() {
@@ -26,17 +26,26 @@ module.exports = function(passport) {
           return done(err);
         }
         if (user) {
-          return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+          return done(null, false, { message: 'Email already token.' });
         }
         else {
           var newUser = new User();
           newUser.public.email = email;
           newUser.public.firstname = req.body.firstname;
           newUser.public.lastname = req.body.lastname;
+          newUser.public.birthyear = req.body.birthyear;
+          newUser.public.gender = req.body.gender;
+          newUser.public.picture = 'assets/img/unknownprofile.png';
+          newUser.public.phone = '';
+          newUser.public.shortDescription = '';
+          newUser.public.longDescription = '';
+          newUser.public.level = '';
           newUser.local.password = newUser.generateHash(password);
           newUser.save(function(err) {
             if (err) {
-              throw err;
+              return done(err);
+            }
+            else {
               return done(null, newUser);
             }
           });
@@ -56,46 +65,12 @@ module.exports = function(passport) {
         return done(err);
       }
       if (!user) {
-        return done(null, false, req.flash('loginMessage', 'No user found.'));
+        return done(null, false, { message: 'Incorrect email.' });
       }
       if (!user.validPassword(password)) {
-        return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
+        return done(null, false, { message: 'Incorrect password.' });
       }
       return done(null, user);
     });
   }));
-
-  passport.use(new FacebookStrategy({
-    clientID        : configAuth.facebookAuth.clientID,
-    clientSecret    : configAuth.facebookAuth.clientSecret,
-    callbackURL     : configAuth.facebookAuth.callbackURL,
-    profileFields: ['id', 'emails', 'name']
-  },
-  function(token, refreshToken, profile, done) {
-    process.nextTick(function() {
-      User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
-        if (err) {
-          return done(err);
-        }
-        if (user) {
-          return done(null, user);
-        }
-        else {
-          var newUser = new User();
-          newUser.public.email = profile.emails[0].value;
-          newUser.public.firstname = profile.name.givenName;
-          newUser.public.lastname = profile.name.familyName;
-          newUser.facebook.id    = profile.id;
-          newUser.facebook.token = token;
-          newUser.save(function(err) {
-            if (err) {
-              throw err;
-            }
-            return done(null, newUser);
-          });
-        }
-      });
-    });
-  }));
-
 }

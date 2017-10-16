@@ -5,14 +5,21 @@ var userSchema = mongoose.Schema({
   public: {
     email: String,
     firstname: String,
-    lastname: String
+    lastname: String,
+    birthyear: Number,
+    gender: String,
+    // ---------- //
+    picture: String,
+    phone: String,
+    shortDescription: String,
+    longDescription: String,
+    level: String
   },
   local: {
-    password: String,
+    password: String
   },
   facebook: {
-    id: String,
-    token: String,
+    id: String
   },
 });
 

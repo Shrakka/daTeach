@@ -6,4 +6,7 @@ module.exports = function(app) {
 
   app.route('/discussion')
     .post(discussionController.postDiscussion)
+
+  app.route('/discussion/user/:id')
+    .get(discussionController.getDiscussionUser)
 }

@@ -1,23 +1,18 @@
+var configAuth = require('../../config/auth');
+var authController = require('../controllers/authController');
+
 module.exports = function(app, passport) {
 
-  app.post('/signup', passport.authenticate('local-signup', {
-    successRedirect : '/user',
-    failureRedirect : '/user',
-    failureFlash : true
-  }));
+  app.post('/signup', passport.authenticate('local-signup'),
+  function(req,res) {
+    res.redirect('/user/' + req.user._id + '/?apikey=' + req.query.apikey)
+  });
 
-  app.post('/login', passport.authenticate('local-login', {
-    successRedirect : '/user',
-    failureRedirect : '/user',
-    failureFlash : true
-  }));
+  app.post('/login', passport.authenticate('local-login'),
+  function(req, res) {
+    res.redirect('/user/' + req.user._id + '/?apikey=' + req.query.apikey)
+  });
 
-  app.get('/auth/facebook', passport.authenticate('facebook', {
-    scope : 'email'
-  }));
-
-  app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-    successRedirect : '/user',
-    failureRedirect : '/user'
-  }));
+  app.route('/facebook')
+    .post(authController.facebook)
 }

@@ -6,7 +6,4 @@ module.exports = function(app) {
 
   app.route('/user/:id')
     .get(userController.getUser)
-
-  app.route('/user/:id/discussion')
-    .get(userController.getUserDiscussions)
 }

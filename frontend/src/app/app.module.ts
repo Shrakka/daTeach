@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 
+import { LoginPageModule } from '../pages/login/login.module';
 import { ChatPageModule } from '../pages/chat/chat.module';
 import { ResultsPageModule } from '../pages/results/results.module';
 import { TakeFormPageModule } from '../pages/take-form/take-form.module';
@@ -21,6 +22,8 @@ import { LocationModalPageModule } from '../pages/location-modal/location-modal.
 import { UserProvider } from '../providers/user/user';
 import { ResultsProvider } from '../providers/results/results';
 import { MessagesProvider } from '../providers/messages/messages';
+import { BackendProvider } from '../providers/backend/backend';
+import { DiscussionProvider } from '../providers/discussion/discussion';
 
 
 @NgModule({
@@ -28,6 +31,7 @@ import { MessagesProvider } from '../providers/messages/messages';
     MyApp
   ],
   imports: [
+    LoginPageModule,
     ChatPageModule,
     DetailPageModule,
     LocationModalPageModule,
@@ -53,7 +57,9 @@ import { MessagesProvider } from '../providers/messages/messages';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
     ResultsProvider,
-    MessagesProvider
+    MessagesProvider,
+    BackendProvider,
+    DiscussionProvider
   ]
 })
 export class AppModule {}
