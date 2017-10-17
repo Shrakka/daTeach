@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NavController } from 'ionic-angular'; 
+import { NavController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 
 @Component({
@@ -16,8 +16,7 @@ export class HeaderComponent {
     if(this.userProvider.user) {
       this.navCtrl.push('ProfilePage');
     } else {
-      this.navCtrl.push('ProfilePage');
-      //this.navCtrl.push('LoginPage');
+      this.navCtrl.push('LoginPage');
     }
   }
 
