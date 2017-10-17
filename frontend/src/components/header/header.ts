@@ -13,10 +13,10 @@ export class HeaderComponent {
   }
 
   goToProfile() {
-    if(this.userProvider.user == null) {
-      this.navCtrl.push('LoginPage');
-    } else {
+    if(this.userProvider.user) {
       this.navCtrl.push('ProfilePage');
+    } else {
+      this.navCtrl.push('LoginPage');
     }
   }
 
