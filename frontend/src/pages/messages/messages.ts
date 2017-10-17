@@ -14,7 +14,7 @@ export class MessagesPage {
   sentMessages = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public messagesProvider: MessagesProvider, public discussionProvider: DiscussionProvider) {
-    discussionProvider.getUserDiscussions(this.userProvider.user.id);
+    //discussionProvider.getUserDiscussions(this.userProvider.user.id);
     console.log(discussionProvider.discussions)
     for (var message of this.messagesProvider.messages) {
       if (message.messages.length == 1) {
