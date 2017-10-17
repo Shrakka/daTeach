@@ -10,20 +10,11 @@ import { DiscussionProvider } from '../../providers/discussion/discussion';
   templateUrl: 'messages.html',
 })
 export class MessagesPage {
-  activeDiscussions = [];
-  sentMessages = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public messagesProvider: MessagesProvider, public discussionProvider: DiscussionProvider) {
-    discussionProvider.getUserDiscussions(this.userProvider.user.id);
-    console.log(discussionProvider.discussions)
-    for (var message of this.messagesProvider.messages) {
-      if (message.messages.length == 1) {
-        this.sentMessages.push(message);
-      }
-      else {
-        this.activeDiscussions.push(message);
-      }
-    }
+    this.discussionProvider.getUserDiscussions(this.userProvider.user.id);
+    console.log(this.discussionProvider.inactiveDiscussions)
+    console.log(this.discussionProvider.activeDiscussions)
   }
 
   ionViewDidLoad() {

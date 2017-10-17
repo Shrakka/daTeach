@@ -18,10 +18,11 @@ import { Observable } from 'rxjs/Observable';
 })
 
 export class ChatPage {
-  messages: any;
+  discussion: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private socket: Socket, public userProvider: UserProvider) {
-    this.messages = this.navParams.get("message")
+    this.discussion = this.navParams.get("discussion")
+    console.log(this.discussion)
 
     this.getMessages().subscribe(message => {
       console.log(message)

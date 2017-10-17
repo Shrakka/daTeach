@@ -4,6 +4,7 @@
 
 <ion-content>
   <profile-banner [firstname]="userProvider.firstname" [lastname]="userProvider.lastname" [picture]="userProvider.picture" [shortDescription]="userProvider.shortDescription"></profile-banner>
+  <button ion-button (click)="createLesson()">Create lesson</button>
 
   <result *ngFor="let lesson of lessonProvider.lessons" [result]="lesson" [mode]="mode"></result>
 </ion-content>

@@ -12,13 +12,13 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'message-card.html'
 })
 export class MessageCardComponent {
-  @Input() message: any;
+  @Input() discussion: any;
 
   constructor(public navCtrl: NavController) {
   }
 
   goToChat() {
-    this.navCtrl.push('ChatPage', {"message": this.message});
+    this.navCtrl.push('ChatPage', {"discussion": this.discussion});
   }
 
 }

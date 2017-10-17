@@ -1,16 +1,13 @@
-<ion-card [class]="((message.messages.length == 1) ? 'sent' : 'active') + '-card result-card card card-md'" (click)="goToChat()">
+<ion-card [class]="((discussion.discussion.messages.length == 1) ? 'sent' : 'active') + '-card result-card card card-md'" (click)="goToChat()">
   <div class="profile-result">
-    <div class="picture"><img [src]="message.picture"/></div>
+    <div class="picture"><img [src]="discussion.user.public.picture"/></div>
     <div class="bannerText">
       <div class="name">
-        {{ message.firstname }} {{ message.lastname }}
+        {{ discussion.user.public.firstname }} {{ discussion.user.public.lastname }}
       </div>
       <div class="shortDescription">
-        {{ message.messages[message.messages.length - 1].message }}
+        {{ discussion.discussion.messages[discussion.discussion.messages.length - 1].content }}
       </div>
     </div>
-  </div>
-  <div class="badges-result">
-    <ion-badge *ngFor="let lesson of message.lessons" class="badge-result" color="dark">{{ lesson }}</ion-badge>
   </div>
 </ion-card>

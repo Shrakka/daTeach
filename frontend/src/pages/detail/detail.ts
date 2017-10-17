@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { LessonProvider } from '../../providers/lesson/lesson';
+import { DiscussionProvider } from '../../providers/discussion/discussion';
+import { UserProvider } from '../../providers/user/user';
 
 @IonicPage()
 @Component({
@@ -7,41 +10,29 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
   templateUrl: 'detail.html',
 })
 export class DetailPage {
-  firstname: string;
-  lastname: string;
-  picture: string;
-  shortDescription: string;
-  longDescription: string;
-  lessons: string[];
-  comment: string = '';
-  askmessage: boolean;
-  placeholder: string = ''
+  comment: string;
+  placeholder: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
-    this.firstname = this.navParams.get('firstname');
-    this.lastname = this.navParams.get('lastname');
-    this.picture = this.navParams.get('picture');
-    this.shortDescription = this.navParams.get('shortDescription');
-    this.lessons = this.navParams.get('lessons');
-    this.longDescription = this.navParams.get('longDescription');
-    this.askmessage = this.navParams.get('askmessage');
-    this.placeholder = 'Enter your message for ' + this.firstname;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public lessonProvider: LessonProvider, public discussionProvider: DiscussionProvider, public userProvider: UserProvider) {
+    this.comment = "";
+    this.placeholder = "";
   }
 
   ionViewDidLoad() {
   }
 
   sendMessage() {
+    this.discussionProvider.postDiscussion({user1: this.userProvider.user.id, user2: this.lessonProvider.lesson.user.id, message: 'First message'})
     const alert = this.alertCtrl.create({
       title: 'Message sent',
-      message: this.firstname + ' will certainly contact you soon. You will be notified.',
+      message: this.lessonProvider.lesson.user.public.firstname + ' will certainly contact you soon. You will be notified.',
       buttons: [
         {
           text: 'OK',
           role: 'cancel',
           handler: () => {
             this.comment = "";
-            this.placeholder = "You can still send 1 more message to " + this.firstname;
+            this.placeholder = "You can still send 1 more message to " + this.lessonProvider.lesson.user.public.firstname;
 
             console.log('OK clicked');
           }

@@ -5,7 +5,6 @@ var discussionSchema = mongoose.Schema({
   user2: String, // id
   messages: [
     {
-      time: Date,
       author: String, // id
       content: String
     }

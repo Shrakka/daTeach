@@ -23,7 +23,8 @@ exports.getDiscussion = function(req, res) {
 
 exports.postDiscussion = function(req, res) {
   if (configAuth.apikey === req.query.apikey && req.user) {
-    var discussion = new Discussion(req.body)
+    var discussion = new Discussion({user1: req.body.user1, user2: req.body.user2})
+    discussion.messages.push({author: req.body.user1, content: req.body.message})
     discussion.save()
       .then(item => {
         res.send(discussion)
@@ -53,7 +54,7 @@ exports.getDiscussionUser = function(req, res) {
         Promise.all(usersQueries).then((users) => {
           var data = []
           for (var i = 0; i < discussions.length; i++) {
-            data.push({discussion: discussions[i], user: users[i].public})
+            data.push({discussion: discussions[i], user: {id: users[i].id, public: users[i].public}})
           }
           res.send(data)
         })

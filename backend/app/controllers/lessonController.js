@@ -36,7 +36,7 @@ exports.postLessonRequest = function(req, res) {
         Promise.all(usersQueries).then((users) => {
           var data = []
           for (var i = 0; i < lessons.length; i++) {
-            data.push({lesson: lessons[i], user: users[i].public})
+            data.push({lesson: lessons[i], user: {id: users[i].id, public: users[i].public}})
           }
           res.send(data)
         })

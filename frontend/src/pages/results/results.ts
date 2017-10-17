@@ -10,12 +10,18 @@ import { LessonProvider } from '../../providers/lesson/lesson';
 })
 export class ResultsPage {
   mode: string;
+  form;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public lessonProvider: LessonProvider) {
-    this.mode = this.navParams.get('mode')
+    this.mode = this.navParams.get('mode');
+    this.form = this.navParams.get('form');
   }
 
   ionViewDidLoad() {
+  }
+
+  createLesson() {
+    this.lessonProvider.postLesson(this.form);
   }
 
 }

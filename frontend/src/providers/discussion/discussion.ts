@@ -13,19 +13,40 @@ import { BackendProvider } from '../backend/backend';
 */
 @Injectable()
 export class DiscussionProvider {
-  discussions;
+  inactiveDiscussions;
+  activeDiscussions;
 
   constructor(public http: Http, public userProvider: UserProvider, public backendProvider: BackendProvider) {
     console.log('Hello DiscussionProvider Provider');
+    this.inactiveDiscussions = [];
+    this.activeDiscussions = [];
   }
 
-  postLesson(body) {
+  postDiscussion(body) {
     return new Promise(resolve => {
       var options = new RequestOptions({withCredentials: true});
-      this.http.post(this.backendProvider.url + '/lesson/?apikey=' + this.backendProvider.apikey, body, options)
+      this.http.post(this.backendProvider.url + '/discussion/?apikey=' + this.backendProvider.apikey, body, options)
         .map(res => res.json())
         .subscribe(data => {
           console.log(data);
+        });
+    });
+  }
+
+  getUserDiscussions(id: string) {
+    return new Promise(resolve => {
+      var options = new RequestOptions({withCredentials: true});
+      this.http.get(this.backendProvider.url + '/discussion/user/' + id + '/?apikey=' + this.backendProvider.apikey, options)
+        .map(res => res.json())
+        .subscribe(data => {
+          for (var discussion of data) {
+            if (discussion.discussion.messages.length == 1) {
+              this.inactiveDiscussions.push(discussion);
+            }
+            else {
+              this.activeDiscussions.push(discussion);
+            }
+          }
         });
     });
   }

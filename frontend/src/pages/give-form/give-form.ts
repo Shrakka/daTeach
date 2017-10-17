@@ -30,7 +30,7 @@ export class GiveFormPage {
 
   goToResults() {
     console.log(this.formValue);
-    this.navCtrl.push('ResultsPage', {mode: "give"});
+    this.navCtrl.push('ResultsPage', {mode: "give", form: this.formValue});
   }
 
   selectedRegular() {

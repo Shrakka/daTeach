@@ -14,6 +14,7 @@ import { RequestOptions } from '@angular/http';
 @Injectable()
 export class LessonProvider {
   lessons;
+  lesson;
 
   constructor(public http: Http, public userProvider: UserProvider, public backendProvider: BackendProvider) {
   }

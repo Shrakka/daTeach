@@ -30,7 +30,7 @@ export class TakeFormPage {
 
   goToResults() {
     this.lessonProvider.postLessonRequest(this.formValue);
-    this.navCtrl.push('ResultsPage', {mode: "take"});
+    this.navCtrl.push('ResultsPage', {mode: "take", form: this.formValue});
   }
 
   selectedRegular() {

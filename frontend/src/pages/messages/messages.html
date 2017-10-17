@@ -3,12 +3,12 @@
 </ion-header>
 
 <ion-content>
-  <profile-banner [firstname]="userProvider.firstname" [lastname]="userProvider.lastname" [picture]="userProvider.picture" [shortDescription]="userProvider.shortDescription"></profile-banner>
+  <profile-banner [firstname]="userProvider.user.public.firstname" [lastname]="userProvider.user.public.lastname" [picture]="userProvider.user.public.picture" [shortDescription]="userProvider.user.public.shortDescription"></profile-banner>
 
   <ion-label padding>Active Discussions</ion-label>
-  <message-card *ngFor="let message of activeDiscussions" [message]="message"></message-card>
+  <message-card *ngFor="let discussion of discussionProvider.activeDiscussions" [discussion]="discussion"></message-card>
   <ion-label padding>Sent Messages</ion-label>
-  <message-card *ngFor="let message of sentMessages" [message]="message"></message-card>
+  <message-card *ngFor="let discussion of discussionProvider.inactiveDiscussions" [discussion]="discussion"></message-card>
 </ion-content>
 
 <ion-footer>

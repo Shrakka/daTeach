@@ -1,12 +1,12 @@
 <ion-card class="result-card" (click)="goToClient()">
   <div class="profile-result">
-    <div class="picture"><img [src]="result.user.picture"/></div>
+    <div class="picture"><img [src]="result.user.public.picture"/></div>
     <div class="bannerText">
       <div class="name">
-        {{ result.user.firstname }} {{ result.user.lastname }}
+        {{ result.user.public.firstname }} {{ result.user.public.lastname }}
       </div>
       <div class="shortDescription">
-        {{ result.user.shortDescription }}
+        {{ result.user.public.shortDescription }}
       </div>
     </div>
   </div>
