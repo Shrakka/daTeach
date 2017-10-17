@@ -8,9 +8,12 @@
         {{ message.content }}
     </div>
   </div>
-  <button ion-button (click)="addMessage()">Send</button>
 </ion-content>
 
 <ion-footer>
+  <ion-item>
+    <ion-input [(ngModel)]="newmessage" type="text" placeholder="Enter your message..."></ion-input>
+    <ion-icon item-end name="send" (click)="addMessage()" color=primary></ion-icon>
+  </ion-item>
   <footer></footer>
 </ion-footer>

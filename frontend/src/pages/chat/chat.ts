@@ -19,13 +19,14 @@ import { Observable } from 'rxjs/Observable';
 
 export class ChatPage {
   result: any;
+  newmessage: string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private socket: Socket, public userProvider: UserProvider) {
     this.result = this.navParams.get("result")
     console.log(this.result)
 
     this.getMessages().subscribe(message => {
-      console.log(message)
+      this.result.discussion.messages.push(message)
     });
   }
 
@@ -34,7 +35,8 @@ export class ChatPage {
   }
 
   addMessage() {
-    this.socket.emit('addMessage', {content: 'content', discussion: '3', author: '59dcb239af1cc72c4a2d8733'});
+    this.socket.emit('addMessage', {content: this.newmessage, discussion: this.result.discussion._id, author: this.userProvider.user.id});
+    this.newmessage = '';
   }
 
   getMessages() {
