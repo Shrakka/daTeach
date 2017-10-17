@@ -11,7 +11,7 @@ import { ViewController } from 'ionic-angular';
 export class EditProfilePage {
    field:any;
   constructor(public viewCtrl: ViewController, public navParams: NavParams, public userProvider: UserProvider) {
-   this.field=navParams.data.field;
+   this.field = navParams.data.field;
   }
 
   ionViewDidLoad() {
@@ -20,6 +20,7 @@ export class EditProfilePage {
     this.viewCtrl.dismiss();
   }
   editprofile(myevent){
+    this.userProvider.updateUser();
     this.viewCtrl.dismiss();
   }
 

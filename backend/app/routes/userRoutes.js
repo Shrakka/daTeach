@@ -6,4 +6,6 @@ module.exports = function(app) {
 
   app.route('/user/:id')
     .get(userController.getUser)
+    .put(userController.putUser)
+
 }

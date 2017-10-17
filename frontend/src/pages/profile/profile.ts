@@ -12,6 +12,7 @@ import { EditProfilePage } from '../profile/editprofile/editprofile';
 })
 export class ProfilePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider,public popoverCtrl: PopoverController) {
+    console.log(userProvider.user);
   }
 
   ionViewDidLoad() {
