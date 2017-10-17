@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
-import { ResultsProvider } from '../../providers/results/results';
+import { LessonProvider } from '../../providers/lesson/lesson';
 
 @IonicPage()
 @Component({
@@ -11,7 +11,7 @@ import { ResultsProvider } from '../../providers/results/results';
 export class ResultsPage {
   mode: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public resultsProvider: ResultsProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public lessonProvider: LessonProvider) {
     this.mode = this.navParams.get('mode')
   }
 

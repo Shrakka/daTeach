@@ -5,7 +5,7 @@
 <ion-content>
   <profile-banner [firstname]="userProvider.firstname" [lastname]="userProvider.lastname" [picture]="userProvider.picture" [shortDescription]="userProvider.shortDescription"></profile-banner>
 
-  <result *ngFor="let result of resultsProvider.results" [result]="result" [mode]="mode"></result>
+  <result *ngFor="let lesson of lessonProvider.lessons" [result]="lesson" [mode]="mode"></result>
 </ion-content>
 
 <ion-footer>

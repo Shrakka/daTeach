@@ -12,10 +12,12 @@ import { LocationModalPage } from '../../pages/location-modal/location-modal';
 export class GiveFormPage {
 
   formValue = {
-    lessonType: "regular",
-    move: 'move',
+    role: 'student',
+    type: 'regular',
+    moving: 'move',
+    lessons: [],
     location: '',
-    lessons: []
+    dates: []
   };
 
 
@@ -68,7 +70,7 @@ export class GiveFormPage {
 
   onDatesSelection($event) {
     // EVENT = LIST DE DATE
-    console.log($event);
+    this.formValue.dates = $event;
   }
 
 }

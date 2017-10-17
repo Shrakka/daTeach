@@ -1,16 +1,16 @@
 <ion-card class="result-card" (click)="goToClient()">
   <div class="profile-result">
-    <div class="picture"><img [src]="result.picture"/></div>
+    <div class="picture"><img [src]="result.user.picture"/></div>
     <div class="bannerText">
       <div class="name">
-        {{ result.firstname }} {{ result.lastname }}
+        {{ result.user.firstname }} {{ result.user.lastname }}
       </div>
       <div class="shortDescription">
-        {{ result.shortDescription }}
+        {{ result.user.shortDescription }}
       </div>
     </div>
   </div>
   <div class="badges-result">
-    <ion-badge *ngFor="let lesson of result.lessons" class="badge-result" [color]="(mode === 'take') ? 'primary' : 'secondary'">{{ lesson }}</ion-badge>
+    <ion-badge *ngFor="let l of result.lesson.lessons" class="badge-result" [color]="(mode === 'take') ? 'primary' : 'secondary'">{{ l }}</ion-badge>
   </div>
 </ion-card>
