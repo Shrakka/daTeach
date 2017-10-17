@@ -14,8 +14,7 @@ export class ResultComponent {
   }
 
   goToClient() {
-    this.lessonProvider.lesson = this.result
-    this.navCtrl.push('DetailPage')
+    this.navCtrl.push('DetailPage', {result: this.result})
   }
 
 }

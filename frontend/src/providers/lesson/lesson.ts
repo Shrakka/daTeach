@@ -13,8 +13,8 @@ import { RequestOptions } from '@angular/http';
 */
 @Injectable()
 export class LessonProvider {
-  lessons;
-  lesson;
+  results;
+  request;
 
   constructor(public http: Http, public userProvider: UserProvider, public backendProvider: BackendProvider) {
   }
@@ -24,7 +24,7 @@ export class LessonProvider {
       var options = new RequestOptions({withCredentials: true});
       var students = (form.role === 'student') ? [this.userProvider.user.id] : [];
       var teachers = (form.role === 'teacher') ? [this.userProvider.user.id] : [];
-      var body = {author: {id: this.userProvider.user.id, role: form.role}, students: students, teachers: teachers, lessons: form.lessons, location: form.location, moving: form.moving, dates: form.dates};
+      var body = {author: {id: this.userProvider.user.id, role: form.role}, students: students, teachers: teachers, topics: form.topics, location: form.location, moving: form.moving, dates: form.dates, type: form.type};
       this.http.post(this.backendProvider.url + '/lesson/?apikey=' + this.backendProvider.apikey, body, options)
         .map(res => res.json())
         .subscribe(data => {
@@ -36,11 +36,12 @@ export class LessonProvider {
   postLessonRequest(form) {
     return new Promise(resolve => {
       var options = new RequestOptions({withCredentials: true});
-      var body = {role: form.role, lessons: form.lessons, location: form.location, moving: form.moving, dates: form.dates};
-      this.http.post(this.backendProvider.url + '/lesson/request/?apikey=' + this.backendProvider.apikey, body, options)
+      this.request = {role: form.role, location: form.location, moving: form.moving, dates: form.dates, type: form.type, topics: form.topics};
+      this.http.post(this.backendProvider.url + '/lesson/request/?apikey=' + this.backendProvider.apikey, this.request, options)
         .map(res => res.json())
         .subscribe(data => {
-          this.lessons = data
+          this.results = data
+          console.log(this.results)
         });
     });
   }

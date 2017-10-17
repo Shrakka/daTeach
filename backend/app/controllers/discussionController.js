@@ -23,7 +23,7 @@ exports.getDiscussion = function(req, res) {
 
 exports.postDiscussion = function(req, res) {
   if (configAuth.apikey === req.query.apikey && req.user) {
-    var discussion = new Discussion({user1: req.body.user1, user2: req.body.user2})
+    var discussion = new Discussion({user1: req.body.user1, user2: req.body.user2, lesson: req.body.lesson})
     discussion.messages.push({author: req.body.user1, content: req.body.message})
     discussion.save()
       .then(item => {

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { LessonProvider } from '../../providers/lesson/lesson';
-import { LessonModalPage } from '../../pages/lesson-modal/lesson-modal';
+import { TopicModalPage } from '../../pages/topic-modal/topic-modal';
 import { LocationModalPage } from '../../pages/location-modal/location-modal';
 
 @IonicPage()
@@ -16,7 +16,7 @@ export class TakeFormPage {
     role: 'student',
     type: 'regular',
     moving: 'move',
-    lessons: [],
+    topics: [],
     location: '',
     dates: []
   };
@@ -30,7 +30,7 @@ export class TakeFormPage {
 
   goToResults() {
     this.lessonProvider.postLessonRequest(this.formValue);
-    this.navCtrl.push('ResultsPage', {mode: "take", form: this.formValue});
+    this.navCtrl.push('ResultsPage', {mode: "take"});
   }
 
   selectedRegular() {
@@ -41,7 +41,7 @@ export class TakeFormPage {
 
   }
 
-  searchLesson($event){
+  searchTopic($event){
     console.log($event);
   }
 
@@ -49,14 +49,14 @@ export class TakeFormPage {
     console.log($event);
   }
 
-  onLessonFocus(){
-    const lessonModal = this.modalCtrl.create(LessonModalPage, {'give':false});
+  onTopicFocus(){
+    const topicModal = this.modalCtrl.create(TopicModalPage, {'give':false});
 
-    lessonModal.onDidDismiss(data => {
-      this.formValue.lessons = data;
-      console.log(this.formValue.lessons);
+    topicModal.onDidDismiss(data => {
+      this.formValue.topics = data;
+      console.log(this.formValue.topics);
     })
-    lessonModal.present();
+    topicModal.present();
   }
 
   onLocationFocus(){

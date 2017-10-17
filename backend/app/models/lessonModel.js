@@ -5,12 +5,13 @@ var lessonSchema = mongoose.Schema({
     id: String, // id
     role: String // student, teacher
   },
-  students: [], // ids
-  teachers: [], // ids
-  lessons: [],
+  students: Array, // ids
+  teachers: Array, // ids
+  topics: Array,
   location: String,
   moving: String, // move, host, both
-  dates: []
+  dates: Array,
+  type: String
 });
 
 module.exports = mongoose.model('Lesson', lessonSchema);

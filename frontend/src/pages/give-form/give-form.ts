@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
-import { LessonModalPage } from '../../pages/lesson-modal/lesson-modal';
+import { LessonProvider } from '../../providers/lesson/lesson';
+import { TopicModalPage } from '../../pages/topic-modal/topic-modal';
 import { LocationModalPage } from '../../pages/location-modal/location-modal';
 
 @IonicPage()
@@ -12,16 +13,16 @@ import { LocationModalPage } from '../../pages/location-modal/location-modal';
 export class GiveFormPage {
 
   formValue = {
-    role: 'student',
+    role: 'teacher',
     type: 'regular',
     moving: 'move',
-    lessons: [],
+    topics: [],
     location: '',
     dates: []
   };
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider) {
   }
 
   ionViewDidLoad() {
@@ -29,8 +30,8 @@ export class GiveFormPage {
   }
 
   goToResults() {
-    console.log(this.formValue);
-    this.navCtrl.push('ResultsPage', {mode: "give", form: this.formValue});
+    this.lessonProvider.postLessonRequest(this.formValue);
+    this.navCtrl.push('ResultsPage', {mode: "give"});
   }
 
   selectedRegular() {
@@ -41,7 +42,7 @@ export class GiveFormPage {
 
   }
 
-  searchLesson($event){
+  searchTopic($event){
     console.log($event);
   }
 
@@ -49,14 +50,14 @@ export class GiveFormPage {
     console.log($event);
   }
 
-  onLessonFocus(){
-    const lessonModal = this.modalCtrl.create(LessonModalPage, {'give':true});
+  onTopicFocus(){
+    const topicModal = this.modalCtrl.create(TopicModalPage, {'give':true});
 
-    lessonModal.onDidDismiss(data => {
-      this.formValue.lessons = data;
-      console.log(this.formValue.lessons);
+    topicModal.onDidDismiss(data => {
+      this.formValue.topics = data;
+      console.log(this.formValue.topics);
     })
-    lessonModal.present();
+    topicModal.present();
   }
 
   onLocationFocus(){

@@ -13,13 +13,11 @@ import { BackendProvider } from '../backend/backend';
 */
 @Injectable()
 export class DiscussionProvider {
-  inactiveDiscussions;
-  activeDiscussions;
+  results;
 
   constructor(public http: Http, public userProvider: UserProvider, public backendProvider: BackendProvider) {
     console.log('Hello DiscussionProvider Provider');
-    this.inactiveDiscussions = [];
-    this.activeDiscussions = [];
+    this.results = [];
   }
 
   postDiscussion(body) {
@@ -39,16 +37,7 @@ export class DiscussionProvider {
       this.http.get(this.backendProvider.url + '/discussion/user/' + id + '/?apikey=' + this.backendProvider.apikey, options)
         .map(res => res.json())
         .subscribe(data => {
-          this.inactiveDiscussions = []
-          this.activeDiscussions = []
-          for (var discussion of data) {
-            if (discussion.discussion.messages.length == 1) {
-              this.inactiveDiscussions.push(discussion);
-            }
-            else {
-              this.activeDiscussions.push(discussion);
-            }
-          }
+          this.results = data
         });
     });
   }

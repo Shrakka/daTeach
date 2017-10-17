@@ -18,23 +18,23 @@
             </ion-segment>
         </ion-item>
 
-        <!-- LESSONS -->
-        <div  class="lessons-search">
-          <div padding class="lesson-label">Lessons</div>
+        <!-- TOPICS -->
+        <div  class="topics-search">
+          <div padding class="topics-label">Topics</div>
           <ion-searchbar
-            [(ngModel)]="formValue.lesson"
+            [(ngModel)]="formValue.topic"
             [showCancelButton]="shoudShowCancel"
-            (ionInput)="searchLesson($event)"
-            (ionFocus)="onLessonFocus()"
+            (ionInput)="searchTopic($event)"
+            (ionFocus)="onTopicFocus()"
             animated="true"
             placeholder="What would you like to teach?"
             >
           </ion-searchbar>
         </div>
 
-        <!-- LESSONS BADGES -->
-        <div class="lessons-badges">
-          <ion-badge *ngFor="let l of formValue.lessons">{{ l }}</ion-badge>
+        <!-- TOPICS BADGES -->
+        <div class="topics-badges">
+          <ion-badge *ngFor="let t of formValue.topics">{{ t }}</ion-badge>
         </div>
         <br/>
 

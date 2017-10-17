@@ -5,15 +5,15 @@
 <ion-content padding>
   <ion-card>
     <div class="profile-overview">
-      <div class="profile-picture"><img [src]="lessonProvider.lesson.user.public.picture"/></div>
-      <div class="detail-name">{{ lessonProvider.lesson.user.public.firstname }} {{ lessonProvider.lesson.user.public.lastname }}</div>
-      <div class="detail-shortDesc">{{ lessonProvider.lesson.user.public.shortDescription }}</div>
+      <div class="profile-picture"><img [src]="result.user.public.picture"/></div>
+      <div class="detail-name">{{ result.user.public.firstname }} {{ result.user.public.lastname }}</div>
+      <div class="detail-shortDesc">{{ result.user.public.shortDescription }}</div>
       <div class="detail-sep"></div>
-      <div class="detail-longDesc">{{ lessonProvider.lesson.user.public.longDescription }}</div>
+      <div class="detail-longDesc">{{ result.user.public.longDescription }}</div>
     </div>
-    <textarea class="detail-textarea" *ngIf="lessonProvider.lesson.user.public.askmessage" [(ngModel)]="comment" [placeholder]='placeholder'></textarea>
+    <textarea class="detail-textarea" *ngIf="result.user.public.askmessage" [(ngModel)]="comment" [placeholder]='placeholder'></textarea>
     <div class="detail-block-button">
-      <button ion-button [disabled]="comment.length == 0 && askmessage" (click)="sendMessage()">Send</button>
+      <button ion-button [disabled]="comment.length == 0 && result.user.public.askmessage" (click)="sendMessage()">Send</button>
     </div>
   </ion-card>
 </ion-content>

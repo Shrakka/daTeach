@@ -3,10 +3,10 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 
 @IonicPage()
 @Component({
-  selector: 'page-lesson-modal',
-  templateUrl: 'lesson-modal.html',
+  selector: 'page-topic-modal',
+  templateUrl: 'topic-modal.html',
 })
-export class LessonModalPage {
+export class TopicModalPage {
 
   RawSubjects = [  // THIS INSTANCE WILL BE REMOVED
     'Mathematics',
@@ -25,15 +25,15 @@ export class LessonModalPage {
     'Enclume'
   ]
 
-  pickedLessons = [];
+  pickedTopics = [];
   searchQuery: string = '';
   suggestions = [];
-  give: boolean; // to precise if it's a give or taken form 
+  give: boolean; // to precise if it's a give or taken form
 
-  
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
-    
+
     this.give = this. navParams.get('give');
     console.log(this.give);
 
@@ -44,7 +44,7 @@ export class LessonModalPage {
   }
 
   search($event){
-    console.log(this.pickedLessons);
+    console.log(this.pickedTopics);
   }
 
   onCancel($event) {
@@ -53,16 +53,16 @@ export class LessonModalPage {
 
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LessonModalPage');
+    console.log('ionViewDidLoad TopicModalPage');
   }
 
   closeModal() {
     for(let s of this.suggestions) {
       if(s.checked){
-        this.pickedLessons.push(s.name);
+        this.pickedTopics.push(s.name);
       }
     }
-    this.viewCtrl.dismiss(this.pickedLessons);
+    this.viewCtrl.dismiss(this.pickedTopics);
   }
 
 }
