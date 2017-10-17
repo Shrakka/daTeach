@@ -1,0 +1,48 @@
+<!-- <ion-header>
+  <header title="EditProfile"></header>
+</ion-header> -->
+
+<ion-content>
+	<div class="editcontent">
+	<ion-list [ngSwitch]="field">
+	
+	<!-- <p *ngSwitchDefault>Standard diet</p> -->
+  <ion-item *ngSwitchCase="'Contacts'">
+    <ion-label stacked>Mobile</ion-label>
+    <ion-input type="tel" value="{{userProvider.phone}}"></ion-input>
+  </ion-item>
+
+  <ion-item *ngSwitchCase="'Contacts'">
+    <ion-label stacked>Email</ion-label>
+    <ion-input type="email" value="{{userProvider.email}}"></ion-input>
+  </ion-item>
+
+  <ion-item *ngSwitchCase="'Infos'">
+    <ion-label stacked>Sex</ion-label>
+    <ion-input type="text" value="{{userProvider.sex}}"></ion-input>
+  </ion-item>
+  <ion-item *ngSwitchCase="'Infos'">
+    <ion-label stacked>Age</ion-label>
+    <ion-input type="text" value="{{userProvider.age}}"></ion-input>
+  </ion-item>
+  <ion-item *ngSwitchCase="'Infos'">
+    <ion-label stacked>Level</ion-label>
+    <ion-input type="text" value="{{userProvider.level}}"></ion-input>
+  </ion-item>
+  <ion-item *ngSwitchCase="'Description'">
+    <ion-label stacked>Description</ion-label>
+    <ion-input type="text" value="{{userProvider.description}}"></ion-input>
+  </ion-item>
+
+</ion-list>
+
+<button ion-button clear (click)="closepopover($event)">CLOSE</button>
+<button ion-button clear (click)="editprofile($event)">EDIT</button>
+</div>
+</ion-content>
+
+<!-- <ion-footer>
+  <footer></footer>
+</ion-footer> -->
+
+

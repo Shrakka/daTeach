@@ -13,6 +13,7 @@ import { ResultsPageModule } from '../pages/results/results.module';
 import { TakeFormPageModule } from '../pages/take-form/take-form.module';
 import { GiveFormPageModule } from '../pages/give-form/give-form.module';
 import { ProfilePageModule } from '../pages/profile/profile.module';
+import { EditProfilePageModule } from '../pages/profile/editprofile/editprofile.module';
 import { HomePageModule } from '../pages/home/home.module';
 import { MessagesPageModule } from '../pages/messages/messages.module';
 import { LessonModalPageModule } from '../pages/lesson-modal/lesson-modal.module';
@@ -39,6 +40,7 @@ import { DiscussionProvider } from '../providers/discussion/discussion';
     TakeFormPageModule,
     GiveFormPageModule,
     ProfilePageModule,
+    EditProfilePageModule,
     HomePageModule,
     MessagesPageModule,
     HttpModule,
