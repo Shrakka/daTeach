@@ -1,12 +1,12 @@
-<ion-card [class]="((discussion.discussion.messages.length == 1) ? 'sent' : 'active') + '-card result-card card card-md'" (click)="goToChat()">
+<ion-card [class]="((result.discussion.messages.length == 1) ? 'sent' : 'active') + '-card result-card card card-md'" (click)="goToChat()">
   <div class="profile-result">
-    <div class="picture"><img [src]="discussion.user.public.picture"/></div>
+    <div class="picture"><img [src]="result.user.public.picture"/></div>
     <div class="bannerText">
       <div class="name">
-        {{ discussion.user.public.firstname }} {{ discussion.user.public.lastname }}
+        {{ result.user.public.firstname }} {{ result.user.public.lastname }}
       </div>
       <div class="shortDescription">
-        {{ discussion.discussion.messages[discussion.discussion.messages.length - 1].content }}
+        {{ result.discussion.messages[result.discussion.messages.length - 1].content }}
       </div>
     </div>
   </div>

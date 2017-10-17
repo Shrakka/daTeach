@@ -3,7 +3,7 @@
 </ion-header>
 
 <ion-content padding>
-  <div *ngFor="let message of discussion.discussion.messages" [class]="'message-container ' + ((message.author == userProvider.user.id) ? 'me-message-container' : 'you-message-container')">
+  <div *ngFor="let message of result.discussion.messages" [class]="'message-container ' + ((message.author == userProvider.user.id) ? 'me-message-container' : 'you-message-container')">
     <div [class]="'both-message ' + ((message.author == userProvider.user.id) ? 'me-message' : 'you-message')">
         {{ message.content }}
     </div>
