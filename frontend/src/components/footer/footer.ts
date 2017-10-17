@@ -18,7 +18,8 @@ export class FooterComponent {
     if(this.userProvider.user) {
       this.navCtrl.push('MessagesPage');
     } else {
-      this.navCtrl.push('LoginPage');
+      this.navCtrl.push('MessagesPage');
+      //this.navCtrl.push('LoginPage');
     }
   }
 }

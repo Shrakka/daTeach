@@ -16,7 +16,8 @@ export class HeaderComponent {
     if(this.userProvider.user) {
       this.navCtrl.push('ProfilePage');
     } else {
-      this.navCtrl.push('LoginPage');
+      this.navCtrl.push('ProfilePage');
+      //this.navCtrl.push('LoginPage');
     }
   }
 
