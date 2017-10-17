@@ -53,7 +53,7 @@ exports.getDiscussionUser = function(req, res) {
         Promise.all(usersQueries).then((users) => {
           var data = []
           for (var i = 0; i < discussions.length; i++) {
-            data.push({discussion: discussions[i], user: users[i]})
+            data.push({discussion: discussions[i], user: users[i].public})
           }
           res.send(data)
         })

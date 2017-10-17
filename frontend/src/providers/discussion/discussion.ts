@@ -19,13 +19,13 @@ export class DiscussionProvider {
     console.log('Hello DiscussionProvider Provider');
   }
 
-  getUserDiscussions(id: string) {
+  postLesson(body) {
     return new Promise(resolve => {
       var options = new RequestOptions({withCredentials: true});
-      this.http.get(this.backendProvider.url + '/discussion/user/' + id + '/?apikey=' + this.backendProvider.apikey, options)
+      this.http.post(this.backendProvider.url + '/lesson/?apikey=' + this.backendProvider.apikey, body, options)
         .map(res => res.json())
         .subscribe(data => {
-          this.discussions = data
+          console.log(data);
         });
     });
   }

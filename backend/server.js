@@ -26,6 +26,7 @@ mongoose.connect(configDB.url); // connect to our database
 
 require('./app/models/userModel');
 require('./app/models/discussionModel');
+require('./app/models/lessonModel');
 
 require('./config/passport')(passport); // pass passport for configuration
 require('./config/socket')(io);
@@ -50,8 +51,9 @@ app.use(passport.session()); // persistent login sessionsrequire('./config')
 
 // routes ======================================================================
 require('./app/routes/authRoutes.js')(app, passport); // load our routes and pass in our app and fully configured passport
-require('./app/routes/userRoutes.js')(app); // load our routes and pass in our app and fully configured passport
-require('./app/routes/discussionRoutes.js')(app); // load our routes and pass in our app and fully configured passport
+require('./app/routes/userRoutes.js')(app);
+require('./app/routes/discussionRoutes.js')(app);
+require('./app/routes/lessonRoutes.js')(app);
 
 // launch ======================================================================
 server.listen(port);
