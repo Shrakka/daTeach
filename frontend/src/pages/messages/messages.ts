@@ -13,8 +13,6 @@ export class MessagesPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public messagesProvider: MessagesProvider, public discussionProvider: DiscussionProvider) {
     this.discussionProvider.getUserDiscussions(this.userProvider.user.id);
-    console.log(this.discussionProvider.inactiveDiscussions)
-    console.log(this.discussionProvider.activeDiscussions)
   }
 
   ionViewDidLoad() {

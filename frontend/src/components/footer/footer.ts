@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { UserProvider } from '../../providers/user/user';
 
 @Component({
   selector: 'footer',
   templateUrl: 'footer.html'
 })
 export class FooterComponent {
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private userProvider: UserProvider) {
   }
 
   goToHome() {
@@ -14,6 +15,10 @@ export class FooterComponent {
   }
 
   goToMessages() {
-    this.navCtrl.setRoot('MessagesPage');
+    if(this.userProvider.user) {
+      this.navCtrl.push('MessagesPage');
+    } else {
+      this.navCtrl.push('LoginPage');
+    }
   }
 }

@@ -33,3 +33,29 @@ exports.getUser = function(req, res) {
     res.status(403).send("Error 403 - Not authorized")
   }
 }
+
+  exports.putUser = function(req, res) {
+    if (configAuth.apikey === req.query.apikey) {
+      if(req.body !== null) {
+        User.findById(req.body.id, (err, user) => {
+          if (err) {
+            res.status(404).send('Error 404 - User not found')
+          } else {
+            user.public = req.body.public;
+            user.save((err, updatedUser) => {
+              if (err) {
+                res.status(404).send('Error 404 - Error occured');
+              } else {
+                res.send(updatedUser.public);
+              }
+            });
+          }
+        });
+      }else {
+        res.status(404).send('Error 404 - Not Found')
+      }
+    }
+    else {
+      res.status(403).send("Error 403 - Not authorized")
+    }
+  }

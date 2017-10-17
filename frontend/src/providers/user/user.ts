@@ -5,12 +5,6 @@ import { RequestOptions } from '@angular/http';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { BackendProvider } from '../backend/backend';
 
-/*
-  Generated class for the UserProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class UserProvider {
   firstname: string; //
@@ -25,7 +19,7 @@ export class UserProvider {
   level: string;
   isAuth: boolean;
 
-  user;
+  user: any;
 
 
   constructor(public http: Http, private fb: Facebook, public backendProvider: BackendProvider) {
@@ -56,6 +50,7 @@ export class UserProvider {
       this.http.post(this.backendProvider.url + '/signup/?apikey=' + this.backendProvider.apikey, body, options)
         .map(res => res.json())
         .subscribe(data => {
+          console.log("LOGIN", data);
           this.user = data
           this.user.public.age = this.getAge(this.user.public.birthyear)
         });
@@ -97,4 +92,16 @@ export class UserProvider {
           })
       })
   }
+
+  updateUser() {
+    console.log("Update user");
+    return new Promise(resolve => {
+      var options = new RequestOptions({withCredentials: true});
+      this.http.put(this.backendProvider.url + '/user/' + this.user.id + '/?apikey=' + this.backendProvider.apikey, this.user, options)
+      .map(res => res.json())
+      .subscribe(data =>
+      console.log(data));
+    });
+  }
+
 }
