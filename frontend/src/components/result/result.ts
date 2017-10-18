@@ -17,4 +17,23 @@ export class ResultComponent {
     this.navCtrl.push('DetailPage', {result: this.result})
   }
 
+  getColor(key: string, value: string) {
+    if (key === 'topic') {
+      if (this.lessonProvider.request.topics.includes(value)) {
+        return (this.mode === 'take') ? 'primary' : 'secondary'
+      }
+      else {
+        return 'light';
+      }
+    }
+    else {
+      if (value === this.lessonProvider.request[key]) {
+        return (this.mode === 'take') ? 'primary' : 'secondary'
+      }
+      else {
+        return 'light';
+      }
+    }
+  }
+
 }

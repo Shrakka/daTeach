@@ -24,4 +24,10 @@
 
 .badge-result {
   margin: 0.2em;
+  border-radius: 0.2em;
+}
+
+.all-badges-result {
+  display: flex;
+  justify-content: space-between;
 }

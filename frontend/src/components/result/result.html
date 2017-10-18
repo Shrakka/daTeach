@@ -10,7 +10,13 @@
       </div>
     </div>
   </div>
-  <div class="badges-result">
-    <ion-badge *ngFor="let l of result.lesson.lessons" class="badge-result" [color]="(mode === 'take') ? 'primary' : 'secondary'">{{ l }}</ion-badge>
+  <div class="all-badges-result">
+    <div class="badges-result">
+      <ion-badge *ngFor="let topic of result.lesson.topics" class="badge-result" [color]="getColor('topic', topic)">{{ topic.toUpperCase() }}</ion-badge>
+    </div>
+    <div class="badges-result">
+      <ion-badge class="badge-result" [color]="getColor('location', result.lesson.location)">{{ result.lesson.location.toUpperCase() }}</ion-badge>
+      <ion-badge class="badge-result" [color]="getColor('moving', result.lesson.moving)">{{ result.lesson.moving.toUpperCase() }}</ion-badge>
+    </div>
   </div>
 </ion-card>
