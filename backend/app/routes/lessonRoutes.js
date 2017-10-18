@@ -6,4 +6,7 @@ module.exports = function(app) {
 
   app.route('/lesson/request')
     .post(lessonController.postLessonRequest)
+
+  app.route('/lesson/user/:id')
+    .get(lessonController.getLessonUser)
 }

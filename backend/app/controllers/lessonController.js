@@ -50,3 +50,19 @@ exports.postLessonRequest = function(req, res) {
     res.status(403).send("Error 403 - Not authorized")
   }
 }
+
+exports.getLessonUser = function(req, res) {
+  if (configAuth.apikey === req.query.apikey && req.user) {
+    Lesson.find({author.id: req.params.id}, (err, lessons) => {
+      if (lessons) {
+        res.send(lessons)
+      }
+      else {
+        res.status(404).send('Error 404 - Not Found')
+      }
+    })
+  }
+  else {
+    res.status(403).send("Error 403 - Not authorized")
+  }
+}
