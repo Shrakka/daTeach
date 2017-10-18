@@ -41,6 +41,9 @@ export class LessonProvider {
         .map(res => res.json())
         .subscribe(data => {
           this.results = data
+          for (let result of this.results) {
+            result.user.public.age = this.userProvider.getAge(result.user.public.birthyear)
+          }
           console.log(this.results)
         });
     });
