@@ -20,8 +20,4 @@ export class HeaderComponent {
     }
   }
 
-  goToLogin() {
-    this.navCtrl.push('LoginPage');
-  }
-
 }

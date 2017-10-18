@@ -15,11 +15,11 @@ export class FooterComponent {
   }
 
   goToMessages() {
-    if(this.userProvider.user) {
+    if (this.userProvider.user) {
       this.navCtrl.push('MessagesPage');
-    } else {
-      this.navCtrl.push('MessagesPage');
-      //this.navCtrl.push('LoginPage');
+    }
+    else {
+      this.navCtrl.push('LoginPage');
     }
   }
 }
