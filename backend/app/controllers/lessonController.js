@@ -53,7 +53,7 @@ exports.postLessonRequest = function(req, res) {
 
 exports.getLessonUser = function(req, res) {
   if (configAuth.apikey === req.query.apikey && req.user) {
-    Lesson.find({author.id: req.params.id}, (err, lessons) => {
+    Lesson.find({'author.id': req.params.id}, (err, lessons) => {
       if (lessons) {
         res.send(lessons)
       }
