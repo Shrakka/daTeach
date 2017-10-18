@@ -7,7 +7,7 @@
 
   <ion-label padding>Active Discussions</ion-label>
   <message-card *ngFor="let result of activeDiscussions()" [result]="result"></message-card>
-  <ion-label padding>Sent Messages</ion-label>
+  <ion-label padding>Inactive Discussions</ion-label>
   <message-card *ngFor="let result of inactiveDiscussions()" [result]="result"></message-card>
 </ion-content>
 
