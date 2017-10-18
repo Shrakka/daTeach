@@ -15,6 +15,7 @@ import { RequestOptions } from '@angular/http';
 export class LessonProvider {
   results;
   request;
+  lessons;
 
   constructor(public http: Http, public userProvider: UserProvider, public backendProvider: BackendProvider) {
   }
@@ -45,6 +46,17 @@ export class LessonProvider {
             result.user.public.age = this.userProvider.getAge(result.user.public.birthyear)
           }
           console.log(this.results)
+        });
+    });
+  }
+
+  getUserLessons(id: string) {
+    return new Promise(resolve => {
+      var options = new RequestOptions({withCredentials: true});
+      this.http.get(this.backendProvider.url + '/lesson/user/' + id + '/?apikey=' + this.backendProvider.apikey, options)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.lessons = data
         });
     });
   }

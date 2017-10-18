@@ -1,0 +1,19 @@
+<ion-card class="result-card">
+  <div class="profile-result">
+    <div class="bannerText">
+      <div class="name">
+        Lesson offer
+      </div>
+    </div>
+  </div>
+  <div class="all-badges-result">
+    <div class="badges-result">
+      <ion-badge *ngFor="let topic of lesson.topics" class="badge-result" color="primary">{{ topic.toUpperCase().substring(0,3) }}</ion-badge>
+    </div>
+    <div class="badges-result">
+      <ion-badge class="badge-result" color="primary">{{ lesson.type.toUpperCase() }}</ion-badge>
+      <ion-badge class="badge-result" color="primary">{{ lesson.location.toUpperCase() }}</ion-badge>
+      <ion-badge class="badge-result" color="primary">{{ lesson.moving.toUpperCase() }}</ion-badge>
+    </div>
+  </div>
+</ion-card>
