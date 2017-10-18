@@ -22,4 +22,13 @@ export class FooterComponent {
       this.navCtrl.push('LoginPage');
     }
   }
+
+  goToLessons() {
+    if (this.userProvider.user) {
+      this.navCtrl.push('LessonsPage');
+    }
+    else {
+      this.navCtrl.push('LoginPage');
+    }
+  }
 }

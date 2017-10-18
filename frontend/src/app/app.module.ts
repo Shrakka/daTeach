@@ -8,6 +8,7 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 
+import { LessonsPageModule } from '../pages/lessons/lessons.module';
 import { LoginPageModule } from '../pages/login/login.module';
 import { ChatPageModule } from '../pages/chat/chat.module';
 import { ResultsPageModule } from '../pages/results/results.module';
@@ -31,6 +32,7 @@ import { LessonProvider } from '../providers/lesson/lesson';
     MyApp
   ],
   imports: [
+    LessonsPageModule,
     LoginPageModule,
     ChatPageModule,
     DetailPageModule,
