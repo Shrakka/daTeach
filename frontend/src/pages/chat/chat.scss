@@ -31,3 +31,14 @@ page-chat {
 .you-message-container {
   flex-direction: row;
 }
+
+.chat-panel {
+  display: flex;
+  background-color: white;
+  align-items: center;
+}
+
+.chat-send-icon {
+  font-size: 2em;
+  margin-right: 0.4em;
+}

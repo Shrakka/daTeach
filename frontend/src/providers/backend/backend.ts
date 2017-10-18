@@ -9,7 +9,7 @@ export class BackendProvider {
 
   constructor(public http: Http) {
     console.log('Hello BackendProvider Provider');
-    this.url = 'http://localhost:8080';
+    this.url = 'http://10.42.0.1:8080';
     this.apikey = 'VxWSMnBRcTTGXMFRzAoAcyFQLDYZ8pQW';
   }
 
