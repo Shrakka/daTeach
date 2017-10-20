@@ -4,9 +4,11 @@
 
 <ion-content>
   <div class="form take-form">
-    <div *ngIf="userProvider.user">
+
+    <!-- PROFILE BANNER NOT NECESSARY HERE -->
+    <!-- <div *ngIf="userProvider.user">
       <profile-banner [firstname]="userProvider.user.public.firstname" [lastname]="userProvider.user.public.lastname" [picture]="userProvider.user.public.picture" [shortDescription]="userProvider.user.public.shortDescription"></profile-banner>
-    </div>
+    </div> -->
 
         <!-- LESSON TYPE -->
         <ion-item>
@@ -36,7 +38,7 @@
 
         <!-- TOPICS BADGES -->
         <div class="topics-badges">
-          <ion-badge *ngFor="let t of takeForm.topics">{{ t }}</ion-badge>
+          <ion-badge *ngFor="let topic of takeForm.topics">{{ topic }}</ion-badge>
         </div>
         <br/>
 
@@ -59,9 +61,9 @@
         <div class="move-panel">
           <div class="move-label" padding>Moving</div>
           <div class="move-buttons">
-            <button ion-button [outline]="takeForm.move !== 'move'" (click)="takeForm.move = 'move'">Move</button>
-            <button ion-button [outline]="takeForm.move !== 'host'" (click)="takeForm.move = 'host'">Host</button>
-            <button ion-button [outline]="takeForm.move !== 'both'" (click)="takeForm.move = 'both'">Both</button>
+            <button ion-button [outline]="takeForm.moving !== 'move'" (click)="setMoving('move')">Move</button>
+            <button ion-button [outline]="takeForm.moving !== 'host'" (click)="setMoving('host')">Host</button>
+            <button ion-button [outline]="takeForm.moving !== 'both'" (click)="setMoving('both')">Both</button>
           </div>
         </div>
 

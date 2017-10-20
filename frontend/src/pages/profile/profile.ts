@@ -19,7 +19,7 @@ export class ProfilePage {
   }
 
   modifyprofile(myEvent){
-    let fieldname=myEvent.currentTarget.children[0].innerText;
+    let fieldname = myEvent.currentTarget.children[0].innerText;
   	let popover = this.popoverCtrl.create(EditProfilePage, {field:fieldname});
     popover.present({
       ev: myEvent

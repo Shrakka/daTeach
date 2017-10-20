@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { LessonProvider } from '../../providers/lesson/lesson';
 import { TopicModalPage } from '../../pages/topic-modal/topic-modal';
@@ -14,7 +14,8 @@ export class TakeFormPage {
 
   takeForm: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider, public alertCtrl: AlertController) {
+    // INIT FORM
     this.takeForm =   {
     role: 'student',
     type: 'regular',
@@ -24,16 +25,12 @@ export class TakeFormPage {
     dates: []
     }
 
+    // LOAD PROVIDER
     this.lessonProvider.getTopics();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TakeFormPage');
-  }
-
-  goToResults() {
-    this.lessonProvider.postLessonRequest(this.takeForm);
-    this.navCtrl.push('ResultsPage', {mode: "take"});
   }
 
   selectedRegular() {
@@ -44,17 +41,13 @@ export class TakeFormPage {
 
   }
 
-  searchTopic($event){
-    console.log($event);
-  }
-
-  searchLocation($event){
-    console.log($event);
+  setMoving(moving){
+    this.takeForm.moving = moving;
+    console.log(this.takeForm);
   }
 
   onTopicFocus(){
     const topicModal = this.modalCtrl.create(TopicModalPage, {'give':false});
-
     topicModal.onDidDismiss(data => {
       this.takeForm.topics = data;
       console.log(this.takeForm.topics);
@@ -64,7 +57,6 @@ export class TakeFormPage {
 
   onLocationFocus(){
     const locationModal = this.modalCtrl.create(LocationModalPage, {'give':false}, {showBackdrop: true});
-
     locationModal.onDidDismiss(data => {
       this.takeForm.location = data.name;
     })
@@ -74,6 +66,20 @@ export class TakeFormPage {
   onDatesSelection($event) {
     // EVENT = LIST DE DATE
     this.takeForm.dates = $event;
+  }
+
+  goToResults() {
+    if(this.takeForm.location === '' || this.takeForm.topics === []){
+      const alert = this.alertCtrl.create({
+        title:'Complete the form',
+        subTitle:'Please fill the empty fields to continue',
+        buttons: ['OK']
+      });
+      alert.present();
+    } else {
+      this.lessonProvider.postLessonRequest(this.takeForm);
+      this.navCtrl.push('ResultsPage', {mode: "take"});
+    }
   }
 
 }
