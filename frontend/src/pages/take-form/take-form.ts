@@ -12,16 +12,17 @@ import { LocationModalPage } from '../../pages/location-modal/location-modal';
 })
 export class TakeFormPage {
 
-  formValue = {
+  takeForm: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider) {
+    this.takeForm =   {
     role: 'student',
     type: 'regular',
     moving: 'move',
     topics: [],
     location: '',
     dates: []
-  };
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider) {
+    }
   }
 
   ionViewDidLoad() {
@@ -29,7 +30,7 @@ export class TakeFormPage {
   }
 
   goToResults() {
-    this.lessonProvider.postLessonRequest(this.formValue);
+    this.lessonProvider.postLessonRequest(this.takeForm);
     this.navCtrl.push('ResultsPage', {mode: "take"});
   }
 
@@ -53,8 +54,8 @@ export class TakeFormPage {
     const topicModal = this.modalCtrl.create(TopicModalPage, {'give':false});
 
     topicModal.onDidDismiss(data => {
-      this.formValue.topics = data;
-      console.log(this.formValue.topics);
+      this.takeForm.topics = data;
+      console.log(this.takeForm.topics);
     })
     topicModal.present();
   }
@@ -63,14 +64,14 @@ export class TakeFormPage {
     const locationModal = this.modalCtrl.create(LocationModalPage, {'give':false}, {showBackdrop: true});
 
     locationModal.onDidDismiss(data => {
-      this.formValue.location = data.name;
+      this.takeForm.location = data.name;
     })
     locationModal.present();
   }
 
   onDatesSelection($event) {
     // EVENT = LIST DE DATE
-    this.formValue.dates = $event;
+    this.takeForm.dates = $event;
   }
 
 }

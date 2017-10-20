@@ -9,4 +9,7 @@ module.exports = function(app) {
 
   app.route('/lesson/user/:id')
     .get(lessonController.getLessonUser)
+
+  app.route('/lesson/topics')
+    .get(lessonController.getTopics)
 }

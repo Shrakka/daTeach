@@ -66,3 +66,14 @@ exports.getLessonUser = function(req, res) {
     res.status(403).send("Error 403 - Not authorized")
   }
 }
+
+  exports.getTopics = function(req, res){
+    if (configAuth.apikey === req.query.apikey && req.user) {
+      var topics = require('../topics.json');
+      res.send(topics);
+    }
+    else {
+      res.status(403).send("Error 403 - Not authorized")
+    }
+  }
+
