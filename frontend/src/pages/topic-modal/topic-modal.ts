@@ -26,7 +26,6 @@ export class TopicModalPage {
   }
 
   search($event){
-    var topic = this.topics.filter(obj => obj.name.toLowerCase().includes(this.searchQuery.toLowerCase()));
     this.suggestions.map(obj => {
       if(!obj.name.toLowerCase().includes(this.searchQuery.toLowerCase())){
         obj.hidden = true;
@@ -42,7 +41,7 @@ export class TopicModalPage {
 
 
   getVisibleSuggestions() {
-    return this.suggestions.filter(obj => !obj.hidden)
+    return (this.suggestions.filter(obj => !obj.hidden)).slice(0,9);
   }
 
   ionViewDidLoad() {

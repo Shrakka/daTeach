@@ -7,7 +7,7 @@
 
 
 <ion-content>
-  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="search($event)" (ionCancel)="onCancel($event)" placeholder="What would you like to teach"> </ion-searchbar>
+  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="search($event)" (ionCancel)="onCancel($event)" placeholder="Not in the list? Search here!"> </ion-searchbar>
 
   <ion-list>
     <ion-item *ngFor="let suggestion of getVisibleSuggestions()">  
