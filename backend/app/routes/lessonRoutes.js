@@ -4,6 +4,9 @@ module.exports = function(app) {
   app.route('/lesson')
     .post(lessonController.postLesson)
 
+  app.route('/lesson/:id')
+    .put(lessonController.putLesson)
+
   app.route('/lesson/request')
     .post(lessonController.postLessonRequest)
 

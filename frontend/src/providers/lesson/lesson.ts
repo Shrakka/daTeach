@@ -25,7 +25,7 @@ export class LessonProvider {
       var options = new RequestOptions({withCredentials: true});
       var students = (form.role === 'student') ? [this.userProvider.user.id] : [];
       var teachers = (form.role === 'teacher') ? [this.userProvider.user.id] : [];
-      var body = {author: {id: this.userProvider.user.id, role: form.role}, students: students, teachers: teachers, topics: form.topics, location: form.location, moving: form.moving, dates: form.dates, type: form.type};
+      var body = {author: {id: this.userProvider.user.id, role: form.role}, students: students, teachers: teachers, topics: form.topics, location: form.location, moving: form.moving, dates: form.dates, type: form.type, active: true};
       this.http.post(this.backendProvider.url + '/lesson/?apikey=' + this.backendProvider.apikey, body, options)
         .map(res => res.json())
         .subscribe(data => {
@@ -57,6 +57,23 @@ export class LessonProvider {
         .map(res => res.json())
         .subscribe(data => {
           this.lessons = data
+          for (let lesson of this.lessons) {
+            for (let user of lesson.users) {
+              user.public.age = this.userProvider.getAge(user.public.birthyear)
+            }
+          }
+          console.log(this.lessons)
+        });
+    });
+  }
+
+  addPeople(body, id) {
+    return new Promise(resolve => {
+      var options = new RequestOptions({withCredentials: true});
+      this.http.put(this.backendProvider.url + '/lesson/' + id + '/?apikey=' + this.backendProvider.apikey, body, options)
+        .map(res => res.json())
+        .subscribe(data => {
+          console.log(data)
         });
     });
   }
