@@ -29,9 +29,13 @@
     <ion-label stacked>Level</ion-label>
     <ion-input type="text" [(ngModel)]="userProvider.user.public.level" placeholder ="{{ userProvider.user.public.level }}"></ion-input>
   </ion-item>
-  <ion-item *ngSwitchCase="'Description'">
-    <ion-label stacked>Description</ion-label>
-    <ion-input type="text" [(ngModel)]="userProvider.user.public.longDescription" placeholder ="{{ userProvider.user.public.longDescription }}"></ion-input>
+  <ion-item *ngSwitchCase="'Who are you ?'">
+      <ion-label stacked>Who are you ?</ion-label>
+      <ion-input type="text" [(ngModel)]="userProvider.user.public.shortDescription" placeholder ="{{ userProvider.user.public.shortDescription }}"></ion-input>
+    </ion-item>
+  <ion-item *ngSwitchCase="'Introduce yourself'">
+    <ion-label stacked>Introduce yourself</ion-label>
+    <ion-input type="text" [(ngModel)]="userProvider.user.public.longDescription" placeholder ="{{ userProvider.user.public.longDescription || ''}}"></ion-input>
   </ion-item>
 
 </ion-list>

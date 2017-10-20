@@ -27,9 +27,9 @@ exports.postLessonRequest = function(req, res) {
       if (lessons) {
         var usersQueries = []
 
-        lessons.forEach((discussion) => {
+        lessons.forEach((lesson) => {
           usersQueries.push(
-            User.findOne({_id: discussion.author.id})
+            User.findOne({_id: lesson.author.id})
           );
         });
 
@@ -81,33 +81,13 @@ exports.getLessonUser = function(req, res) {
   }
 }
 
-exports.putLesson = function(req, res) {
-  if (configAuth.apikey === req.query.apikey && req.user) {
-    if (req.body.role === 'student') {
-      Lesson.findByIdAndUpdate (
-        req.params.id,
-        {$push: {"students": req.body.people}},
-        {safe: true, upsert: true, new : true},
-        function(err, model) {
-            console.log(err);
-        }
-      )
-    }
-    else if (req.body.role === 'teacher') {
-      Lesson.findByIdAndUpdate (
-        req.params.id,
-        {$push: {"teachers": req.body.people}},
-        {safe: true, upsert: true, new : true},
-        function(err, model) {
-            console.log(err);
-        }
-      )
+  exports.getTopics = function(req, res){
+    var topics = require('../../config/topics.json');
+    console.log(topics);
+    if (configAuth.apikey === req.query.apikey) {
+      res.send(topics);
     }
     else {
       res.status(403).send("Error 403 - Not authorized")
     }
   }
-  else {
-    res.status(403).send("Error 403 - Not authorized")
-  }
-}

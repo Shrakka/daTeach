@@ -1,14 +1,18 @@
 <ion-header>
-  <header title="Take Form"></header>
+  <header title="Take a lesson"></header>
 </ion-header>
 
 <ion-content>
-  <div class="form" class="give-form">
-      <profile-banner [firstname]="userProvider.firstname" [lastname]="userProvider.lastname" [picture]="userProvider.picture" [shortDescription]="userProvider.shortDescription"></profile-banner>
+  <div class="form take-form">
+
+    <!-- PROFILE BANNER NOT NECESSARY HERE -->
+    <!-- <div *ngIf="userProvider.user">
+      <profile-banner [firstname]="userProvider.user.public.firstname" [lastname]="userProvider.user.public.lastname" [picture]="userProvider.user.public.picture" [shortDescription]="userProvider.user.public.shortDescription"></profile-banner>
+    </div> -->
 
         <!-- LESSON TYPE -->
         <ion-item>
-          <ion-segment name="lessonType" [(ngModel)]="formValue.lessonType" color="primary">
+          <ion-segment name="lessonType" [(ngModel)]="takeForm.type" color="primary">
                 <ion-segment-button value="regular" (ionSelect)="selectedRegular()">
                   REGULAR
                 </ion-segment-button>
@@ -22,7 +26,7 @@
         <div  class="topics-search">
           <div padding class="topics-label">Topics</div>
           <ion-searchbar
-            [(ngModel)]="formValue.topic"
+            [(ngModel)]="takeForm.topics"
             [showCancelButton]="shoudShowCancel"
             (ionInput)="searchTopic($event)"
             (ionFocus)="onTopicFocus()"
@@ -34,7 +38,7 @@
 
         <!-- TOPICS BADGES -->
         <div class="topics-badges">
-          <ion-badge *ngFor="let t of formValue.topics">{{ t }}</ion-badge>
+          <ion-badge *ngFor="let topic of takeForm.topics">{{ topic }}</ion-badge>
         </div>
         <br/>
 
@@ -42,7 +46,7 @@
         <div  class="location-search">
           <div padding class="location-label">Location</div>
           <ion-searchbar
-          [(ngModel)]="formValue.location"
+          [(ngModel)]="takeForm.location"
           [showCancelButton]="shouldShowCancel"
           (ionInput)="searchLocation($event)"
           (ionFocus)="onLocationFocus()"
@@ -57,16 +61,16 @@
         <div class="move-panel">
           <div class="move-label" padding>Moving</div>
           <div class="move-buttons">
-            <button ion-button [outline]="formValue.move !== 'move'" (click)="formValue.move = 'move'">Move</button>
-            <button ion-button [outline]="formValue.move !== 'host'" (click)="formValue.move = 'host'">Host</button>
-            <button ion-button [outline]="formValue.move !== 'both'" (click)="formValue.move = 'both'">Both</button>
+            <button ion-button [outline]="takeForm.moving !== 'move'" (click)="setMoving('move')">Move</button>
+            <button ion-button [outline]="takeForm.moving !== 'host'" (click)="setMoving('host')">Host</button>
+            <button ion-button [outline]="takeForm.moving !== 'both'" (click)="setMoving('both')">Both</button>
           </div>
         </div>
 
         <!-- CALENDAR -->
         <br/>
 
-        <div *ngIf="formValue.lessonType === 'punctual'">
+        <div *ngIf="takeForm.type === 'punctual'">
           <div padding class="calendar-label">Calendar</div>
           <calendar (dates)="onDatesSelection($event)" mode="take"></calendar>
         </div>

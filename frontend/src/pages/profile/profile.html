@@ -41,15 +41,21 @@
 	</ion-card>
 
 	<ion-card (click)="modifyprofile($event)">
+			<ion-card-header style='font-weight: bold;'>
+			Who are you ?
+			</ion-card-header>
+			<ion-card-content >
+				{{userProvider.user.public.shortDescription || 'This will be the description displayed on your announces. Make it punch! (100 characters max)'}}
+			</ion-card-content>
+		</ion-card>
 
+	<ion-card (click)="modifyprofile($event)">
 	  <ion-card-header style='font-weight: bold;'>
-	    Description
+	    Introduce yourself
 	  </ion-card-header>
-
 	  <ion-card-content>
-  		{{userProvider.user.public.longDescription}}
+  		{{userProvider.user.public.longDescription || 'Write more about yourself! What are you looking for? If you are a student, what are do you want to learn? If you are a teacher, why are you the best ?'}}
 	  </ion-card-content>
-
 	</ion-card>
 
 </div>

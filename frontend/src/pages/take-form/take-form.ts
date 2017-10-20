@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { LessonProvider } from '../../providers/lesson/lesson';
 import { TopicModalPage } from '../../pages/topic-modal/topic-modal';
@@ -12,25 +12,25 @@ import { LocationModalPage } from '../../pages/location-modal/location-modal';
 })
 export class TakeFormPage {
 
-  formValue = {
+  takeForm: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider, public alertCtrl: AlertController) {
+    // INIT FORM
+    this.takeForm =   {
     role: 'student',
     type: 'regular',
     moving: 'move',
     topics: [],
     location: '',
     dates: []
-  };
+    }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider) {
+    // LOAD PROVIDER
+    this.lessonProvider.getTopics();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TakeFormPage');
-  }
-
-  goToResults() {
-    this.lessonProvider.postLessonRequest(this.formValue);
-    this.navCtrl.push('ResultsPage', {mode: "take"});
   }
 
   selectedRegular() {
@@ -41,36 +41,45 @@ export class TakeFormPage {
 
   }
 
-  searchTopic($event){
-    console.log($event);
-  }
-
-  searchLocation($event){
-    console.log($event);
+  setMoving(moving){
+    this.takeForm.moving = moving;
+    console.log(this.takeForm);
   }
 
   onTopicFocus(){
     const topicModal = this.modalCtrl.create(TopicModalPage, {'give':false});
-
     topicModal.onDidDismiss(data => {
-      this.formValue.topics = data;
-      console.log(this.formValue.topics);
+      this.takeForm.topics = data;
+      console.log(this.takeForm.topics);
     })
     topicModal.present();
   }
 
   onLocationFocus(){
     const locationModal = this.modalCtrl.create(LocationModalPage, {'give':false}, {showBackdrop: true});
-
     locationModal.onDidDismiss(data => {
-      this.formValue.location = data.name;
+      this.takeForm.location = data.name;
     })
     locationModal.present();
   }
 
   onDatesSelection($event) {
     // EVENT = LIST DE DATE
-    this.formValue.dates = $event;
+    this.takeForm.dates = $event;
+  }
+
+  goToResults() {
+    if(this.takeForm.location === '' || this.takeForm.topics === []){
+      const alert = this.alertCtrl.create({
+        title:'Complete the form',
+        subTitle:'Please fill the empty fields to continue',
+        buttons: ['OK']
+      });
+      alert.present();
+    } else {
+      this.lessonProvider.postLessonRequest(this.takeForm);
+      this.navCtrl.push('ResultsPage', {mode: "take"});
+    }
   }
 
 }
