@@ -81,13 +81,46 @@ exports.getLessonUser = function(req, res) {
   }
 }
 
-  exports.getTopics = function(req, res){
-    var topics = require('../../config/topics.json');
-    console.log(topics);
-    if (configAuth.apikey === req.query.apikey) {
-      res.send(topics);
+
+exports.putLesson = function(req, res) {
+  if (configAuth.apikey === req.query.apikey && req.user) {
+    if (req.body.role === 'student') {
+      Lesson.findByIdAndUpdate (
+        req.params.id,
+        {$push: {"students": req.body.people}},
+        {safe: true, upsert: true, new : true},
+        function(err, model) {
+            console.log(err);
+        }
+      )
     }
-    else {
-      res.status(403).send("Error 403 - Not authorized")
-    }
+    else if (req.body.role === 'teacher') {
+      Lesson.findByIdAndUpdate (
+        req.params.id,
+        {$push: {"teachers": req.body.people}},
+        {safe: true, upsert: true, new : true},
+        function(err, model) {
+            console.log(err);
+        }
+      )
+     }
+     else {
+       res.status(403).send("Error 403 - Not authorized")
+     }
+   }
+  else {
+    res.status(403).send("Error 403 - Not authorized")
   }
+}
+
+
+exports.getTopics = function(req, res){
+  var topics = require('../../config/topics.json');
+  console.log(topics);
+  if (configAuth.apikey === req.query.apikey) {
+    res.send(topics);
+  }
+  else {
+    res.status(403).send("Error 403 - Not authorized")
+  }
+}

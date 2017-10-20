@@ -18,11 +18,11 @@ import { LessonProvider } from '../../providers/lesson/lesson';
 export class LessonsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public lessonProvider: LessonProvider) {
-    this.lessonProvider.getUserLessons(this.userProvider.user.id)
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LessonsPage');
+    this.lessonProvider.getUserLessons(this.userProvider.user.id)
   }
 
 }
