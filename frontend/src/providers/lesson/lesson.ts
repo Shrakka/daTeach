@@ -16,6 +16,7 @@ export class LessonProvider {
   results;
   request;
   lessons;
+  topics;
 
   constructor(public http: Http, public userProvider: UserProvider, public backendProvider: BackendProvider) {
   }
@@ -61,4 +62,15 @@ export class LessonProvider {
     });
   }
 
+  getTopics() {
+    return new Promise(resolve => {
+      var options = new RequestOptions({withCredentials: true});
+      this.http.get(this.backendProvider.url + '/lesson/topics/?apikey=' + this.backendProvider.apikey, options)
+        .map(res => res.json())
+        .subscribe(data => {
+          //console.log(data);
+          this.topics = data
+        });
+      });
+    }
 }

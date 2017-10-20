@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { LessonProvider } from '../../providers/lesson/lesson';
 
 @IonicPage()
 @Component({
@@ -7,24 +8,7 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
   templateUrl: 'topic-modal.html',
 })
 export class TopicModalPage {
-
-  RawSubjects = [  // THIS INSTANCE WILL BE REMOVED
-    'Mathematics',
-    'Physics',
-    'English',
-    'Flute a bec',
-    'Accrobranche',
-    'Violon',
-    'Freesbee',
-    'Trotinette',
-    'Omelette du fromage',
-    'Sciences et techniques',
-    'Japonais (et ouais)',
-    'Encore',
-    'Encore',
-    'Enclume'
-  ]
-
+  topics = [];
   pickedTopics = [];
   searchQuery: string = '';
   suggestions = [];
@@ -32,19 +16,24 @@ export class TopicModalPage {
 
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public lessonProvider: LessonProvider) {
     this.give = this. navParams.get('give');
-    console.log(this.give);
+    this.topics = this.lessonProvider.topics.topics;
 
-    for(let suggestion of this.RawSubjects) {
-      this.suggestions.push({'name': suggestion, 'checked': false});
+    for(let topic of this.topics) {
+      this.suggestions.push({'name': topic.name, 'checked': false, 'hidden': false});
     }
-    this.suggestions = this.suggestions.slice(0,8);
   }
 
   search($event){
-    console.log(this.pickedTopics);
+    var topic = this.topics.filter(obj => obj.name.toLowerCase().includes(this.searchQuery.toLowerCase()));
+    this.suggestions.map(obj => {
+      if(!obj.name.toLowerCase().includes(this.searchQuery.toLowerCase())){
+        obj.hidden = true;
+      } else {
+        obj.hidden = false;
+      }
+    });
   }
 
   onCancel($event) {
@@ -52,17 +41,16 @@ export class TopicModalPage {
   }
 
 
+  getVisibleSuggestions() {
+    return this.suggestions.filter(obj => !obj.hidden)
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad TopicModalPage');
   }
 
   closeModal() {
-    for(let s of this.suggestions) {
-      if(s.checked){
-        this.pickedTopics.push(s.name);
-      }
-    }
-    this.viewCtrl.dismiss(this.pickedTopics);
+    this.viewCtrl.dismiss(this.suggestions.filter(obj => obj.checked).map(obj => obj.name));
   }
 
 }

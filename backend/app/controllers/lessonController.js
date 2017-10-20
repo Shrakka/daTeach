@@ -27,9 +27,9 @@ exports.postLessonRequest = function(req, res) {
       if (lessons) {
         var usersQueries = []
 
-        lessons.forEach((discussion) => {
+        lessons.forEach((lesson) => {
           usersQueries.push(
-            User.findOne({_id: discussion.author.id})
+            User.findOne({_id: lesson.author.id})
           );
         });
 
@@ -68,8 +68,9 @@ exports.getLessonUser = function(req, res) {
 }
 
   exports.getTopics = function(req, res){
-    if (configAuth.apikey === req.query.apikey && req.user) {
-      var topics = require('../topics.json');
+    var topics = require('../../config/topics.json');
+    console.log(topics);
+    if (configAuth.apikey === req.query.apikey) {
       res.send(topics);
     }
     else {

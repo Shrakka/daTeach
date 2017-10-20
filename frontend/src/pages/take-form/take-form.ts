@@ -23,6 +23,8 @@ export class TakeFormPage {
     location: '',
     dates: []
     }
+
+    this.lessonProvider.getTopics();
   }
 
   ionViewDidLoad() {
