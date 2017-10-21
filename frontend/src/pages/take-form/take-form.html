@@ -72,7 +72,7 @@
 
         <div *ngIf="takeForm.type === 'punctual'">
           <div padding class="calendar-label">Calendar</div>
-          <calendar (dates)="onDatesSelection($event)" mode="take"></calendar>
+          <calendar (dates)="onDatesSelection($event)" mode="take" [initdates]="[]" [modifiable]="true"></calendar>
         </div>
 
 
