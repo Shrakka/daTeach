@@ -70,7 +70,7 @@
 
         <div *ngIf="giveForm.type === 'punctual'">
           <div padding class="calendar-label">Calendar</div>
-          <calendar (dates)="onDatesSelection($event)" mode="give"></calendar>
+          <calendar (dates)="onDatesSelection($event)" mode="give" [initdates]="[]" [modifiable]="true"></calendar>
         </div>
 
 

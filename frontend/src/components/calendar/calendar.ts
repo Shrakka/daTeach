@@ -11,10 +11,15 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: 'calendar.html'
 })
 export class CalendarComponent {
-  days: Array<string> = [];
-  selecteds: Array<string> = [];
+
+  // Format date: 'Mon. 23/10-AM'
+
+  @Input() initdates;
+  @Input() modifiable: boolean;
   @Input() mode: string;
   @Output() dates: EventEmitter<Array<string>> = new EventEmitter();
+  days: Array<string> = [];
+  selecteds: Array<string> = [];
   names = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
   constructor() {
@@ -23,6 +28,10 @@ export class CalendarComponent {
       tomorrow.setDate(tomorrow.getDate() + i);
       this.days.push(this.dateToString(tomorrow));
     }
+  }
+
+  ngOnInit() {
+    this.selecteds = this.initdates;
   }
 
   dateToString(date: Date) {
@@ -35,15 +44,17 @@ export class CalendarComponent {
   }
 
   pickDate(day: string, period: string) {
-    var date = day + '-' + period;
-    var index = this.selecteds.indexOf(date);
-    if (index != -1) {
-      this.selecteds.splice(index, 1)
+    if (this.modifiable) {
+      var date = day + '-' + period;
+      var index = this.selecteds.indexOf(date);
+      if (index != -1) {
+        this.selecteds.splice(index, 1)
+      }
+      else {
+        this.selecteds.push(date)
+      }
+      this.dates.emit(this.selecteds);
     }
-    else {
-      this.selecteds.push(date)
-    }
-    this.dates.emit(this.selecteds);
   }
 
   isSelected(day: string, period: string) {
