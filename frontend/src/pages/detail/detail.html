@@ -13,7 +13,7 @@
     </div>
     <div *ngIf="result.lesson.type === 'punctual'">
       <div padding class="calendar-label">Calendar</div>
-      <calendar mode="take" [initdates]="[]" [modifiable]="false"></calendar>
+      <calendar mode="take" [initdates]="result.lesson.dates" [modifiable]="false"></calendar>
     </div>
     <textarea class="detail-textarea" *ngIf="result.user.public.askmessage" [(ngModel)]="comment" [placeholder]='placeholder'></textarea>
     <div class="detail-block-button">
