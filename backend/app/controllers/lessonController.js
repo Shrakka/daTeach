@@ -22,7 +22,8 @@ exports.postLesson = function(req, res) {
 }
 
 exports.postLessonRequest = function(req, res) {
-  if (configAuth.apikey === req.query.apikey && req.user) {
+  var matcher = require('../matcher')
+  if (configAuth.apikey === req.query.apikey) {
     Lesson.find({}, (err, lessons) => {
       if (lessons) {
         var usersQueries = []
@@ -38,7 +39,7 @@ exports.postLessonRequest = function(req, res) {
           for (var i = 0; i < lessons.length; i++) {
             data.push({lesson: lessons[i], user: {id: users[i].id, public: users[i].public}})
           }
-          res.send(data)
+          res.send(matcher.match(req.body, data));
         })
       }
       else {
