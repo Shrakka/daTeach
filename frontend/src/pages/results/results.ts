@@ -36,6 +36,14 @@ export class ResultsPage {
       alert.present();
     } else {
       this.lessonProvider.postLesson(this.lessonProvider.request);
+      this.created = true;
+      var message = this.mode === 'take' ? 'Your lesson request has been sucessfully created. It can be seen by teachers who correspond to your criteria. They will contact you if interested.' : 'Your lesson proposal has been sucessfully created. It can be seen by students who correspond to your criteria. They will contact you if interested.';
+      const alert = this.alertCtrl.create({
+        title:'Success!',
+        subTitle: message,
+        buttons: ['OK']
+      });
+      alert.present();
     }
     
   }
