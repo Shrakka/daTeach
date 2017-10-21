@@ -9,8 +9,8 @@
   
   <result *ngFor="let result of lessonProvider.results" [result]="result" [mode]="mode"></result>
 
-  <button *ngIf="this.mode === 'take'" ion-button (click)="createLesson()">No matching teacher? Create your request</button>
-  <button *ngIf="this.mode === 'give'" ion-button (click)="createLesson()">Create your lesson announce</button>
+  <button *ngIf="this.mode === 'take'" ion-button color="primary" (click)="createLesson()">No matching teacher? Create your request</button>
+  <button *ngIf="this.mode === 'give'" ion-button color="secondary" (click)="createLesson()">Create your lesson announce</button>
 
 </ion-content>
 
