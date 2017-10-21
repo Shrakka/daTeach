@@ -22,7 +22,7 @@ exports.postLesson = function(req, res) {
 }
 
 exports.postLessonRequest = function(req, res) {
-  var matcher = require('../matcher')
+  var matcher = require('../logic/matcher')
   if (configAuth.apikey === req.query.apikey) {
     Lesson.find({}, (err, lessons) => {
       if (lessons) {
