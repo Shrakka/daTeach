@@ -26,7 +26,6 @@ export class GiveFormPage {
       };
 
     this.lessonProvider.getTopics();
-  
   }
 
   ionViewDidLoad() {console.log('ionViewDidLoad GiveFormPage');}
@@ -62,7 +61,7 @@ export class GiveFormPage {
   }
 
   goToResults() {
-    if(this.giveForm.location === '' || this.giveForm.topics === []){
+    if(this.giveForm.location === '' || this.giveForm.topics.length === 0){
       const alert = this.alertCtrl.create({
         title:'Complete the form',
         subTitle:'Please fill the empty fields to continue',
@@ -70,9 +69,17 @@ export class GiveFormPage {
       });
       alert.present();
     } else {
-      this.lessonProvider.postLessonRequest(this.giveForm);
-      this.navCtrl.push('ResultsPage', {mode: "give"});
+        if(this.giveForm.type === 'punctual' && this.giveForm.dates.length === 0) {
+          const alert = this.alertCtrl.create({
+            title:'Choose a date',
+            subTitle:'Please select at least one date you would be available to facilitate matching',
+            buttons: ['OK']
+          });
+          alert.present();
+        } else {
+          this.lessonProvider.postLessonRequest(this.giveForm);
+          this.navCtrl.push('ResultsPage', {mode: "take"});
+        }
+      }
     }
   }
-
-}

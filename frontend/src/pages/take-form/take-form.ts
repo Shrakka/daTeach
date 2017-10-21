@@ -69,7 +69,7 @@ export class TakeFormPage {
   }
 
   goToResults() {
-    if(this.takeForm.location === '' || this.takeForm.topics === []){
+    if(this.takeForm.location === '' || this.takeForm.topics.length === 0){
       const alert = this.alertCtrl.create({
         title:'Complete the form',
         subTitle:'Please fill the empty fields to continue',
@@ -77,8 +77,17 @@ export class TakeFormPage {
       });
       alert.present();
     } else {
-      this.lessonProvider.postLessonRequest(this.takeForm);
-      this.navCtrl.push('ResultsPage', {mode: "take"});
+      if(this.takeForm.type === 'punctual' && this.takeForm.dates.length === 0) {
+        const alert = this.alertCtrl.create({
+          title:'Choose a date',
+          subTitle:'Please select at least one date you would be available to facilitate matching',
+          buttons: ['OK']
+        });
+        alert.present();
+      } else {
+        this.lessonProvider.postLessonRequest(this.takeForm);
+        this.navCtrl.push('ResultsPage', {mode: "take"});
+      }
     }
   }
 

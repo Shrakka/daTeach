@@ -10,9 +10,11 @@ import { LessonProvider } from '../../providers/lesson/lesson';
 })
 export class ResultsPage {
   mode: string;
+  created: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public lessonProvider: LessonProvider, public alertCtrl: AlertController) {
     this.mode = this.navParams.get('mode');
+    this.created = false;
   }
 
   ionViewDidLoad() {
