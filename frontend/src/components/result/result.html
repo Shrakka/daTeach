@@ -1,13 +1,13 @@
 <ion-card class="result-card" (click)="goToClient()">
   <div class="profile-result">
     <div class="picture"><img [src]="result.user.public.picture"/></div>
-    <div class="bannerText">
-      <div class="name">
-        {{ result.user.public.firstname }} {{ result.user.public.lastname }} <span class="shortDescription">({{ result.user.public.gender }} - {{ result.user.public.age }})</span>
-      </div>
-      <div class="shortDescription">
-        {{ result.user.public.shortDescription }}
-      </div>
+      <div class="bannerText">
+        <div class="name">
+          {{ result.user.public.firstname }} {{ result.user.public.lastname }} <span class="shortDescription">({{ result.user.public.gender }} - {{ result.user.public.age }})</span>
+        </div>
+        <div class="shortDescription">
+          {{ result.user.public.shortDescription }}
+        </div>
     </div>
   </div>
   <div class="all-badges-result">
