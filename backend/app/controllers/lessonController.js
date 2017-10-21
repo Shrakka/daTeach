@@ -2,6 +2,7 @@ var configAuth = require('../../config/auth');
 var mongoose = require('mongoose'),
   Lesson = mongoose.model('Lesson');
   User = mongoose.model('User');
+  Discussion = mongoose.model('Discussion');
 
 mongoose.Promise = require('bluebird');
 
@@ -58,18 +59,46 @@ exports.getLessonUser = function(req, res) {
       if (lessons) {
         var usersQueries = []
 
-        lessons.forEach((discussion) => {
+        lessons.forEach((lesson) => {
           usersQueries.push(
-            User.find({$or:[{_id: {$in: discussion.students}}, {_id: {$in: discussion.teachers}}]})
+            User.find({$or:[{_id: {$in: lesson.students}}, {_id: {$in: lesson.teachers}}]})
           );
         });
 
-        Promise.all(usersQueries).then((userslists) => {
-          var data = []
+        Promise.all(usersQueries).then((userlists) => {
+          var discussionsQueries = []
+
           for (var i = 0; i < lessons.length; i++) {
-            data.push({lesson: lessons[i], users: userslists[i].map((user) => {return {id: user.id, public: user.public}})})
+            for (var user of userlists[i]) {
+              if (user.id !== req.params.id) {
+                discussionsQueries.push(
+                  Discussion.findOne({$and: [{lesson: lessons[i]._id}, {$or: [{$and: [{user1: user.id}, {user2: req.params.id}]}, {$and: [{user1: req.params.id}, {user2: user.id}]}]}]})
+                )
+              }
+            }
           }
-          res.send(data)
+
+          Promise.all(discussionsQueries).then((discussions) => {
+            var data = []
+            for (var i = 0; i < lessons.length; i++) {
+              data.push({lesson: lessons[i], users: userlists[i].map((user) => {return {id: user.id, public: user.public, discussion: user.discussion}})})
+            }
+
+            for (var i = 0; i < data.length; i++) {
+              for (var user of data[i].users) {
+                user.discussion = "myself"
+                if (user.id !== req.params.id) {
+                  for (var discussion of discussions) {
+                    if (discussion.lesson == data[i].lesson._id && ((discussion.user1 == user.id && discussion.user2 == req.params.id) || (discussion.user2 == user.id && discussion.user1 == req.params.id))) {
+                      user.discussion = discussion
+                    }
+                  }
+                }
+              }
+            }
+
+            res.send(data)
+          })
         })
       }
       else {
@@ -81,7 +110,6 @@ exports.getLessonUser = function(req, res) {
     res.status(403).send("Error 403 - Not authorized")
   }
 }
-
 
 exports.putLesson = function(req, res) {
   if (configAuth.apikey === req.query.apikey && req.user) {

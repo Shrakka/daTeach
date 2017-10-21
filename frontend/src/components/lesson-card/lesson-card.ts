@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UserProvider } from '../../providers/user/user';
+import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'lesson-card',
@@ -11,7 +12,7 @@ export class LessonCardComponent {
   users: any;
 
 
-  constructor(public userProvider: UserProvider) {}
+  constructor(public userProvider: UserProvider, public navCtrl: NavController) {}
 
   ngOnInit() {
     this.users = []
@@ -33,6 +34,11 @@ export class LessonCardComponent {
         }
       })
     }
+  }
+
+  goToChat(user) {
+    var result = {user: user, discussion: user.discussion}
+    this.navCtrl.push('ChatPage', {"result": result});
   }
 
 }

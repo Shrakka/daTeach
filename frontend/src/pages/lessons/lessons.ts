@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { LessonProvider } from '../../providers/lesson/lesson';
+import { DiscussionProvider } from '../../providers/discussion/discussion';
 
 /**
  * Generated class for the LessonsPage page.
@@ -17,7 +18,7 @@ import { LessonProvider } from '../../providers/lesson/lesson';
 })
 export class LessonsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public lessonProvider: LessonProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public lessonProvider: LessonProvider, public discussionProvider: DiscussionProvider) {
   }
 
   ionViewDidLoad() {
