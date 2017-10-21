@@ -25,6 +25,7 @@ export class DetailPage {
 
   sendMessage() {
     this.discussionProvider.postDiscussion({user1: this.userProvider.user.id, user2: this.result.user.id, lesson: this.result.lesson._id, message: 'First message'})
+    this.lessonProvider.addPeople({people: this.userProvider.user.id, role: (this.result.lesson.teachers.includes(this.result.user.id)) ? 'student' : 'teacher'}, this.result.lesson._id)
     const alert = this.alertCtrl.create({
       title: 'Message sent',
       message: this.result.user.public.firstname + ' will certainly contact you soon. You will be notified.',

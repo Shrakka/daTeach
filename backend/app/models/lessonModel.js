@@ -11,7 +11,8 @@ var lessonSchema = mongoose.Schema({
   location: String,
   moving: String, // move, host, both
   dates: Array,
-  type: String
+  type: String,
+  active: Boolean
 });
 
 module.exports = mongoose.model('Lesson', lessonSchema);

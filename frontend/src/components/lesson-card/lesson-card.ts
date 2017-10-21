@@ -1,19 +1,38 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { UserProvider } from '../../providers/user/user';
 
-/**
- * Generated class for the LessonCardComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'lesson-card',
   templateUrl: 'lesson-card.html'
 })
 export class LessonCardComponent {
-  @Input() lesson;
+  @Input() result;
+  author: any;
+  users: any;
 
-  constructor() {
+
+  constructor(public userProvider: UserProvider) {}
+
+  ngOnInit() {
+    this.users = []
+    if (this.userProvider.user.id === this.result.lesson.author.id) {
+      this.result.users.map((user) => {
+        if (user.id === this.result.lesson.author.id) {
+          this.author = user
+        }
+        else {
+          this.users.push(user)
+        }
+      })
+    }
+    else {
+      this.users.push(this.userProvider.user)
+      this.result.users.map((user) => {
+        if (user.id === this.result.lesson.author.id) {
+          this.author = user
+        }
+      })
+    }
   }
 
 }

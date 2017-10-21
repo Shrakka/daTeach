@@ -54,9 +54,23 @@ exports.postLessonRequest = function(req, res) {
 
 exports.getLessonUser = function(req, res) {
   if (configAuth.apikey === req.query.apikey && req.user) {
-    Lesson.find({'author.id': req.params.id}, (err, lessons) => {
+    Lesson.find({$or:[{'teachers': req.params.id},{'students': req.params.id}]}, (err, lessons) => {
       if (lessons) {
-        res.send(lessons)
+        var usersQueries = []
+
+        lessons.forEach((discussion) => {
+          usersQueries.push(
+            User.find({$or:[{_id: {$in: discussion.students}}, {_id: {$in: discussion.teachers}}]})
+          );
+        });
+
+        Promise.all(usersQueries).then((userslists) => {
+          var data = []
+          for (var i = 0; i < lessons.length; i++) {
+            data.push({lesson: lessons[i], users: userslists[i].map((user) => {return {id: user.id, public: user.public}})})
+          }
+          res.send(data)
+        })
       }
       else {
         res.status(404).send('Error 404 - Not Found')
@@ -68,14 +82,46 @@ exports.getLessonUser = function(req, res) {
   }
 }
 
-  exports.getTopics = function(req, res){
-    var topics = require('../../config/topics.json');
-    console.log(topics);
-    if (configAuth.apikey === req.query.apikey) {
-      res.send(topics);
-    }
-    else {
-      res.status(403).send("Error 403 - Not authorized")
-    }
-  }
 
+exports.putLesson = function(req, res) {
+  if (configAuth.apikey === req.query.apikey && req.user) {
+    if (req.body.role === 'student') {
+      Lesson.findByIdAndUpdate (
+        req.params.id,
+        {$push: {"students": req.body.people}},
+        {safe: true, upsert: true, new : true},
+        function(err, model) {
+            console.log(err);
+        }
+      )
+    }
+    else if (req.body.role === 'teacher') {
+      Lesson.findByIdAndUpdate (
+        req.params.id,
+        {$push: {"teachers": req.body.people}},
+        {safe: true, upsert: true, new : true},
+        function(err, model) {
+            console.log(err);
+        }
+      )
+     }
+     else {
+       res.status(403).send("Error 403 - Not authorized")
+     }
+   }
+  else {
+    res.status(403).send("Error 403 - Not authorized")
+  }
+}
+
+
+exports.getTopics = function(req, res){
+  var topics = require('../../config/topics.json');
+  console.log(topics);
+  if (configAuth.apikey === req.query.apikey) {
+    res.send(topics);
+  }
+  else {
+    res.status(403).send("Error 403 - Not authorized")
+  }
+}
