@@ -26,4 +26,12 @@ export class LessonsPage {
     this.lessonProvider.getUserLessons(this.userProvider.user.id)
   }
 
+  activeLessons() {
+    return this.lessonProvider.lessons.filter((result) => {return result.lesson.active})
+  }
+
+  inactiveLessons() {
+    return this.lessonProvider.lessons.filter((result) => {return !result.lesson.active})
+  }
+
 }

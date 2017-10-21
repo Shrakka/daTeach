@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UserProvider } from '../../providers/user/user';
+import { LessonProvider } from '../../providers/lesson/lesson';
 import { NavController } from 'ionic-angular';
 
 @Component({
@@ -12,7 +13,7 @@ export class LessonCardComponent {
   users: any;
 
 
-  constructor(public userProvider: UserProvider, public navCtrl: NavController) {}
+  constructor(public userProvider: UserProvider, public navCtrl: NavController, public lessonProvider: LessonProvider) {}
 
   ngOnInit() {
     this.users = []
@@ -39,6 +40,16 @@ export class LessonCardComponent {
   goToChat(user) {
     var result = {user: user, discussion: user.discussion}
     this.navCtrl.push('ChatPage', {"result": result});
+  }
+
+  desactivate(id) {
+    if (this.users.length == 0) {
+      console.log('delete')
+      this.lessonProvider.deleteLesson(id);
+    }
+    else {
+      this.lessonProvider.desactivate(id);
+    }
   }
 
 }

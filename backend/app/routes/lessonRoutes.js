@@ -6,6 +6,7 @@ module.exports = function(app) {
 
   app.route('/lesson/:id')
     .put(lessonController.putLesson)
+    .delete(lessonController.deleteLesson)
 
   app.route('/lesson/request')
     .post(lessonController.postLessonRequest)

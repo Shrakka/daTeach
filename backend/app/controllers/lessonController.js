@@ -113,41 +113,70 @@ exports.getLessonUser = function(req, res) {
 
 exports.putLesson = function(req, res) {
   if (configAuth.apikey === req.query.apikey && req.user) {
-    if (req.body.role === 'student') {
+    if ('role' in req.body) {
+      if (req.body.role === 'student') {
+        Lesson.findByIdAndUpdate (
+          req.params.id,
+          {$push: {"students": req.body.people}},
+          {safe: true, upsert: true, new : true},
+          function(err, model) {
+              console.log(err);
+              res.send({message: "Updated"})
+          }
+        )
+      }
+      else if (req.body.role === 'teacher') {
+        Lesson.findByIdAndUpdate (
+          req.params.id,
+          {$push: {"teachers": req.body.people}},
+          {safe: true, upsert: true, new : true},
+          function(err, model) {
+              console.log(err);
+              res.send({message: "Updated"})
+          }
+        )
+      }
+      else {
+        res.status(403).send("Error 403 - Not authorized")
+      }
+    }
+    else if ('active' in req.body) {
       Lesson.findByIdAndUpdate (
         req.params.id,
-        {$push: {"students": req.body.people}},
+        {$set: {'active': req.body.active}},
         {safe: true, upsert: true, new : true},
         function(err, model) {
             console.log(err);
+            res.send({message: "Updated"})
         }
       )
     }
-    else if (req.body.role === 'teacher') {
-      Lesson.findByIdAndUpdate (
-        req.params.id,
-        {$push: {"teachers": req.body.people}},
-        {safe: true, upsert: true, new : true},
-        function(err, model) {
-            console.log(err);
-        }
-      )
-     }
-     else {
-       res.status(403).send("Error 403 - Not authorized")
-     }
-   }
+    else {
+      res.status(400).send('Error 400 - Not valid data')
+    }
+  }
   else {
     res.status(403).send("Error 403 - Not authorized")
   }
 }
-
 
 exports.getTopics = function(req, res){
   var topics = require('../../config/topics.json');
   console.log(topics);
   if (configAuth.apikey === req.query.apikey) {
     res.send(topics);
+  }
+  else {
+    res.status(403).send("Error 403 - Not authorized")
+  }
+}
+
+exports.deleteLesson = function(req, res){
+  if (configAuth.apikey === req.query.apikey && req.user) {
+    Lesson.remove({_id: req.params.id}, (err) => {
+      if (err) return handleError(err);
+      res.send({message: "Deleted"})
+    })
   }
   else {
     res.status(403).send("Error 403 - Not authorized")

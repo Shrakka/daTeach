@@ -15,7 +15,7 @@ import { RequestOptions } from '@angular/http';
 export class LessonProvider {
   results;
   request;
-  lessons;
+  lessons = [];
   topics;
 
   constructor(public http: Http, public userProvider: UserProvider, public backendProvider: BackendProvider) {
@@ -72,6 +72,28 @@ export class LessonProvider {
     return new Promise(resolve => {
       var options = new RequestOptions({withCredentials: true});
       this.http.put(this.backendProvider.url + '/lesson/' + id + '/?apikey=' + this.backendProvider.apikey, body, options)
+        .map(res => res.json())
+        .subscribe(data => {
+          console.log(data)
+        });
+    });
+  }
+
+  desactivate(id) {
+    return new Promise(resolve => {
+      var options = new RequestOptions({withCredentials: true});
+      this.http.put(this.backendProvider.url + '/lesson/' + id + '/?apikey=' + this.backendProvider.apikey, {active: false}, options)
+        .map(res => res.json())
+        .subscribe(data => {
+          console.log(data)
+        });
+    });
+  }
+
+  deleteLesson(id) {
+    return new Promise(resolve => {
+      var options = new RequestOptions({withCredentials: true});
+      this.http.delete(this.backendProvider.url + '/lesson/' + id + '/?apikey=' + this.backendProvider.apikey, options)
         .map(res => res.json())
         .subscribe(data => {
           console.log(data)
