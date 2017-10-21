@@ -85,6 +85,7 @@ export class TakeFormPage {
         });
         alert.present();
       } else {
+        this.lessonProvider.request = this.takeForm;
         this.lessonProvider.postLessonRequest(this.takeForm);
         this.navCtrl.push('ResultsPage', {mode: "take"});
       }

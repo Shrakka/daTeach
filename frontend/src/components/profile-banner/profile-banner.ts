@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { LessonProvider } from '../../providers/lesson/lesson';
+import { UserProvider } from '../../providers/user/user'
 
 @Component({
   selector: 'profile-banner',
@@ -6,12 +8,10 @@ import { Component, Input } from '@angular/core';
 })
 
 export class ProfileBannerComponent {
-  @Input() firstname: string;
-  @Input() lastname: string;
-  @Input() picture: string;
-  @Input() shortDescription: string;
-
-  constructor() {
+  constructor(public userProvider: UserProvider, public lessonProvider: LessonProvider) {
   }
 
+  getColor() {
+    return this.lessonProvider.request.role === 'student' ? 'secondary' : 'primary'
+  }
 }

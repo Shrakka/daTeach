@@ -1,11 +1,26 @@
-<div class="profile-banner">
-  <div class="picture"><img [src]="picture"/></div>
-  <div class="bannerText">
-    <div class="name">
-      {{ firstname }} {{ lastname }}
-    </div>
-    <div class="shortDescription">
-      {{ shortDescription }}
+<div class="profile-banner-container">
+  
+  <div class="profile-banner">
+    <div class="picture"><img [src]="userProvider.user.public.picture"/></div>
+    <div class="bannerText">
+      <div class="name">
+        {{ userProvider.user.public.firstname }} {{ userProvider.user.public.lastname }}
+      </div>
+      <div class="shortDescription">
+        {{ userProvider.user.public.shortDescription }}
+      </div>
     </div>
   </div>
+
+  <div class="all-badges-result">
+    <div class="badges-result">
+      <ion-badge *ngFor="let topic of lessonProvider.request.topics" class="badge-result" [color]="getColor()">{{ topic.toUpperCase().substring(0,3) }}</ion-badge>
+    </div>
+    <div class="badges-result">
+      <ion-badge class="badge-result" [color]="getColor()">{{ lessonProvider.request.type.toUpperCase() }}</ion-badge>
+      <ion-badge class="badge-result" [color]="getColor()">{{ lessonProvider.request.location.toUpperCase() }}</ion-badge>
+      <ion-badge class="badge-result" [color]="getColor()">{{ lessonProvider.request.moving.toUpperCase() }}</ion-badge>
+    </div>
+  </div>
+
 </div>

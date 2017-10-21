@@ -77,6 +77,7 @@ export class GiveFormPage {
           });
           alert.present();
         } else {
+          this.lessonProvider.request = this.giveForm;
           this.lessonProvider.postLessonRequest(this.giveForm);
           this.navCtrl.push('ResultsPage', {mode: "take"});
         }

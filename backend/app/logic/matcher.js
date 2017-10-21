@@ -1,7 +1,11 @@
 module.exports = {
 
     match: function(query, base) {
-        return base.filter(course => {
+        return base
+        .filter(course => {
+            return true; // course.lesson.active 
+        })
+        .filter(course => {
             return course.lesson.author.role !== query.role;
         })
         .filter(course => {
@@ -102,6 +106,6 @@ function sortLessons(query) {
                 break;
         }
         
-        return score1 - score2;
+        return score2 - score1;
     }
 }
