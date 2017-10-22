@@ -1,0 +1,41 @@
+lesson-card {
+}
+
+.result-card {
+  margin-top: 2em;
+}
+
+.picture-user-lesson-card {
+  width: 3em;
+  height: 3em;
+  margin: 0.5em 1em 0.5em 1em;
+}
+
+.user-lesson-card {
+  background-color: color($colors, light);
+}
+
+.lesson-card-lesson {
+  display: flex;
+}
+
+.lesson-discussion {
+  min-height: 100%;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4em;
+}
+
+.lesson-info {
+  flex-grow: 1;
+}
+
+.lesson-info-profile {
+  display: flex;
+}
+
+.profile-result {
+  flex-grow: 1;
+}

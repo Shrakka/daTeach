@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-icon padding-left name="arrow-back" (click)="closeModal()"></ion-icon>
+    <ion-title>Select Topics</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="search($event)" (ionCancel)="onCancel($event)" placeholder="Not in the list? Search here!"> </ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let suggestion of getVisibleSuggestions()">  
+      <ion-label> {{ suggestion.name }}</ion-label>
+      <ion-checkbox [color]="give ? 'secondary' : 'primary'" [(ngModel)]="suggestion.checked"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button [color]="give ? 'secondary' : 'primary'" (click)="closeModal()" block>OK</button>
+
+</ion-content>
+
+
+<ion-footer>
+  <footer></footer>
+</ion-footer>

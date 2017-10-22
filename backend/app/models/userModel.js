@@ -13,7 +13,8 @@ var userSchema = mongoose.Schema({
     phone: String,
     shortDescription: String,
     longDescription: String,
-    level: String
+    level: String,
+    askmessage: Boolean
   },
   local: {
     password: String

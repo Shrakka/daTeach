@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { LessonProvider } from '../../providers/lesson/lesson';
 
 @Component({
   selector: 'result',
@@ -9,11 +10,30 @@ export class ResultComponent {
   @Input() result: any;
   @Input() mode: string;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public lessonProvider: LessonProvider) {
   }
 
   goToClient() {
-    this.navCtrl.push('DetailPage', this.result)
+    this.navCtrl.push('DetailPage', {result: this.result})
+  }
+
+  getColor(key: string, value: string) {
+    if (key === 'topic') {
+      if (this.lessonProvider.request.topics.includes(value)) {
+        return (this.mode === 'take') ? 'primary' : 'secondary'
+      }
+      else {
+        return 'light';
+      }
+    }
+    else {
+      if (value === this.lessonProvider.request[key]) {
+        return (this.mode === 'take') ? 'primary' : 'secondary'
+      }
+      else {
+        return 'light';
+      }
+    }
   }
 
 }

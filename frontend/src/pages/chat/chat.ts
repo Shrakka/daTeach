@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { Socket } from 'ng-socket-io';
 import { UserProvider } from '../../providers/user/user';
 import { Observable } from 'rxjs/Observable';
@@ -18,13 +18,27 @@ import { Observable } from 'rxjs/Observable';
 })
 
 export class ChatPage {
-  messages: any;
+  result: any;
+  newmessage: string = '';
+  @ViewChild(Content) content: Content;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private socket: Socket, public userProvider: UserProvider) {
-    this.messages = this.navParams.get("message")
+    this.result = this.navParams.get("result")
+    console.log(this.result)
 
     this.getMessages().subscribe(message => {
-      console.log(message)
+      this.result.discussion.messages.push(message)
+      this.scrollToBottom();
+    });
+  }
+
+  ionViewWillEnter(): void {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom() {
+    setTimeout(() => {
+      this.content.scrollToBottom();
     });
   }
 
@@ -33,13 +47,18 @@ export class ChatPage {
   }
 
   addMessage() {
-    this.socket.emit('addMessage', {content: 'content', discussion: '59dcb5808295b8311804e3d0', author: '59dcb239af1cc72c4a2d8733'});
+    if (this.newmessage !== '') {
+      this.socket.emit('addMessage', {content: this.newmessage, discussion: this.result.discussion._id, author: this.userProvider.user.id});
+      this.newmessage = '';
+    }
   }
 
   getMessages() {
     let observable = new Observable(observer => {
       this.socket.on('message', (data) => {
-        observer.next(data);
+        if (data.discussion === this.result.discussion._id) {
+          observer.next({author: data.author, content: data.content});
+        }
       });
     })
     return observable;

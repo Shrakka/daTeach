@@ -14,7 +14,7 @@ page-chat {
 }
 
 .both-message {
-  border-radius: 0.5em;
+  border-radius: 0.2em;
   padding: 0.5em;
   margin: 1em;
   max-width: 60%;
@@ -30,4 +30,15 @@ page-chat {
 
 .you-message-container {
   flex-direction: row;
+}
+
+.chat-panel {
+  display: flex;
+  background-color: white;
+  align-items: center;
+}
+
+.chat-send-icon {
+  font-size: 2em;
+  margin-right: 0.4em;
 }

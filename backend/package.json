@@ -4,7 +4,8 @@
   "description": "The backend for MASProject",
   "main": "server.js",
   "scripts": {
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "watch": "nodemon server.js"
   },
   "author": "alexislozano",
   "license": "ISC",

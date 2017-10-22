@@ -40,6 +40,7 @@ module.exports = function(passport) {
           newUser.public.shortDescription = '';
           newUser.public.longDescription = '';
           newUser.public.level = '';
+          newUser.public.askmessage = true;
           newUser.local.password = newUser.generateHash(password);
           newUser.save(function(err) {
             if (err) {

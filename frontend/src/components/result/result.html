@@ -1,16 +1,23 @@
 <ion-card class="result-card" (click)="goToClient()">
   <div class="profile-result">
-    <div class="picture"><img [src]="result.picture"/></div>
-    <div class="bannerText">
-      <div class="name">
-        {{ result.firstname }} {{ result.lastname }}
-      </div>
-      <div class="shortDescription">
-        {{ result.shortDescription }}
-      </div>
+    <div class="picture"><img [src]="result.user.public.picture"/></div>
+      <div class="bannerText">
+        <div class="name">
+          {{ result.user.public.firstname }} {{ result.user.public.lastname }} <span class="shortDescription">({{ result.user.public.gender }} - {{ result.user.public.age }})</span>
+        </div>
+        <div class="shortDescription">
+          {{ result.user.public.shortDescription }}
+        </div>
     </div>
   </div>
-  <div class="badges-result">
-    <ion-badge *ngFor="let lesson of result.lessons" class="badge-result" [color]="(mode === 'take') ? 'primary' : 'secondary'">{{ lesson }}</ion-badge>
+  <div class="all-badges-result">
+    <div class="badges-result">
+      <ion-badge *ngFor="let topic of result.lesson.topics" class="badge-result" [color]="getColor('topic', topic)">{{ topic.toUpperCase().substring(0,3) }}</ion-badge>
+    </div>
+    <div class="badges-result">
+      <ion-badge class="badge-result" [color]="getColor('type', result.lesson.type)">{{ result.lesson.type.toUpperCase() }}</ion-badge>
+      <ion-badge class="badge-result" [color]="getColor('location', result.lesson.location)">{{ result.lesson.location.toUpperCase() }}</ion-badge>
+      <ion-badge class="badge-result" [color]="getColor('moving', result.lesson.moving)">{{ result.lesson.moving.toUpperCase() }}</ion-badge>
+    </div>
   </div>
 </ion-card>

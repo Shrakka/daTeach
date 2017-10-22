@@ -3,9 +3,9 @@ var mongoose = require('mongoose');
 var discussionSchema = mongoose.Schema({
   user1: String, // id
   user2: String, // id
+  lesson: String, // id
   messages: [
     {
-      time: Date,
       author: String, // id
       content: String
     }

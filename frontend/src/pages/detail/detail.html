@@ -5,15 +5,20 @@
 <ion-content padding>
   <ion-card>
     <div class="profile-overview">
-      <div class="profile-picture"><img [src]="picture"/></div>
-      <div class="detail-name">{{ firstname }} {{ lastname }}</div>
-      <div class="detail-shortDesc">{{ shortDescription }}</div>
+      <div class="profile-picture"><img [src]="result.user.public.picture"/></div>
+      <div class="detail-name">{{ result.user.public.firstname }} {{ result.user.public.lastname }}</div>
+      <div class="detail-shortDesc">{{ result.user.public.shortDescription }}</div>
       <div class="detail-sep"></div>
-      <div class="detail-longDesc">{{ longDescription }}</div>
+      <div class="detail-longDesc">{{ result.user.public.longDescription }}</div>
     </div>
-    <textarea class="detail-textarea" *ngIf="askmessage" [(ngModel)]="comment" [placeholder]='placeholder'></textarea>
+    <div *ngIf="result.lesson.type === 'punctual'">
+      <div padding class="calendar-label">Calendar</div>
+      <div padding class="calendar-label">{{ result.user.public.firstname}} is available these days:</div>
+      <calendar mode="take" [initdates]="result.lesson.dates" [modifiable]="false"></calendar>
+    </div>
+    <textarea class="detail-textarea" [(ngModel)]="comment" [placeholder]='placeholder'></textarea>
     <div class="detail-block-button">
-      <button ion-button [disabled]="comment.length == 0 && askmessage" (click)="sendMessage()">Send</button>
+      <button ion-button [disabled]="comment.length == 0 && result.user.public.askmessage" (click)="sendMessage()">Send</button>
     </div>
   </ion-card>
 </ion-content>

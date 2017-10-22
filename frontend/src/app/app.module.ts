@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -7,6 +8,7 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 
+import { LessonsPageModule } from '../pages/lessons/lessons.module';
 import { LoginPageModule } from '../pages/login/login.module';
 import { ChatPageModule } from '../pages/chat/chat.module';
 import { ResultsPageModule } from '../pages/results/results.module';
@@ -16,14 +18,13 @@ import { ProfilePageModule } from '../pages/profile/profile.module';
 import { EditProfilePageModule } from '../pages/profile/editprofile/editprofile.module';
 import { HomePageModule } from '../pages/home/home.module';
 import { MessagesPageModule } from '../pages/messages/messages.module';
-import { LessonModalPageModule } from '../pages/lesson-modal/lesson-modal.module';
+import { TopicModalPageModule } from '../pages/topic-modal/topic-modal.module';
 import { DetailPageModule } from '../pages/detail/detail.module';
 import { LocationModalPageModule } from '../pages/location-modal/location-modal.module';
 import { UserProvider } from '../providers/user/user';
-import { ResultsProvider } from '../providers/results/results';
-import { MessagesProvider } from '../providers/messages/messages';
 import { BackendProvider } from '../providers/backend/backend';
 import { DiscussionProvider } from '../providers/discussion/discussion';
+import { LessonProvider } from '../providers/lesson/lesson';
 
 
 @NgModule({
@@ -31,11 +32,12 @@ import { DiscussionProvider } from '../providers/discussion/discussion';
     MyApp
   ],
   imports: [
+    LessonsPageModule,
     LoginPageModule,
     ChatPageModule,
     DetailPageModule,
     LocationModalPageModule,
-    LessonModalPageModule,
+    TopicModalPageModule,
     ResultsPageModule,
     TakeFormPageModule,
     GiveFormPageModule,
@@ -56,10 +58,9 @@ import { DiscussionProvider } from '../providers/discussion/discussion';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
-    ResultsProvider,
-    MessagesProvider,
     BackendProvider,
-    DiscussionProvider
+    DiscussionProvider,
+    LessonProvider
   ]
 })
 export class AppModule {}

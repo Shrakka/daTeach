@@ -1,0 +1,14 @@
+<ion-header>
+  <header title="Lessons"></header>
+</ion-header>
+
+<ion-content>
+  <ion-label padding>Active Lessons</ion-label>
+  <lesson-card *ngFor="let result of activeLessons()" [result]="result"></lesson-card>
+  <ion-label padding>Inactive Lessons</ion-label>
+  <lesson-card *ngFor="let result of inactiveLessons()" [result]="result"></lesson-card>
+</ion-content>
+
+<ion-footer>
+  <footer></footer>
+</ion-footer>

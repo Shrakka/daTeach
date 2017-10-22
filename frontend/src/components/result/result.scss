@@ -1,11 +1,11 @@
 .result-card {
   cursor: pointer;
-  padding-right: 0.5em;
 }
 
 .profile-result {
   display: flex;
   align-items: center;
+  padding-right: 0.5em;
 }
 
 .picture {
@@ -24,4 +24,14 @@
 
 .badge-result {
   margin: 0.2em;
+  margin-left: 0.4em;
+  margin-right: 0.4em;
+  border-radius: 0.2em;
+  font-size: 8px;
+}
+
+.all-badges-result {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
 }

@@ -1,5 +1,11 @@
-.profile-banner {
+.profile-banner-container {
+  margin-top: 0;
   box-shadow: 0 0 5px grey;
+  background-color: white;
+}
+
+.profile-banner {
+  // box-shadow: 0 0 5px grey;
   display: flex;
   align-items: center;
   background-color: white;
@@ -13,4 +19,22 @@
 
 .shortDescription {
   color: #888888;
+}
+
+.badges-result {
+  display: flex;
+}
+
+.badge-result {
+  margin: 0.2em;
+  margin-left: 0.4em;
+  margin-right: 0.4em;
+  border-radius: 0.2em;
+  font-size: 8px;
+}
+
+.all-badges-result {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
 }

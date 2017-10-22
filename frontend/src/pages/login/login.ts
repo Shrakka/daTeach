@@ -32,14 +32,23 @@ export class LoginPage {
 
   signUp() {
     this.userProvider.signUp({'email': this.email, 'password': this.password, 'firstname': this.firstname, 'lastname': this.lastname, 'birthyear': this.birthyear, 'gender': this.gender});
+    if(!this.userProvider.user){
+      this.navCtrl.pop();
+    }
   }
 
   logIn() {
     this.userProvider.logIn({'email': this.email, 'password': this.password});
+    if(!this.userProvider.user){
+      this.navCtrl.pop();
+    }
   }
 
   logInFB() {
-    this.userProvider.logInFB()
+    this.userProvider.logInFB();
+    if(!this.userProvider.user){
+      this.navCtrl.pop();
+    }
   }
 
 }

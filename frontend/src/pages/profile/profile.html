@@ -11,7 +11,7 @@
 		<img src="../assets/img/profile.png" alt="">
 		
 	</div>
-	<div class="nom">{{userProvider.firstname}} {{userProvider.lastname}}</div>
+	<div class="nom">{{userProvider.user.public.firstname}} {{userProvider.user.public.lastname}}</div>
 
 	<ion-card (click)="modifyprofile($event)">
 	 <ion-card-header style='font-weight: bold;'>
@@ -19,8 +19,8 @@
 	  </ion-card-header>
 
 	  <ion-card-content>
-	    	Mobile <br>{{userProvider.phone}}<br><br>
-	    	Email <br>{{userProvider.email}}
+	    	Mobile <br>{{userProvider.user.public.phone}}<br><br>
+	    	Email <br>{{userProvider.user.public.email}}
 	  </ion-card-content>
 
 	</ion-card>
@@ -32,24 +32,30 @@
 
 	  <ion-card-content>
   		<div class="details">
-	    	<div>Sex <br>{{userProvider.sex}}</div>
-	    	<div>Age <br>{{userProvider.age}}</div>
-	    	<div>Level <br>{{userProvider.level}}</div>
+	    	<div>Sex <br>{{userProvider.user.public.gender}}</div>
+	    	<div>Age <br>{{userProvider.user.public.age}}</div>
+	    	<div>Level <br>{{userProvider.user.public.level}}</div>
 	    </div>
 	  </ion-card-content>
 
 	</ion-card>
 
 	<ion-card (click)="modifyprofile($event)">
+			<ion-card-header style='font-weight: bold;'>
+			Who are you ?
+			</ion-card-header>
+			<ion-card-content >
+				{{userProvider.user.public.shortDescription || 'This will be the description displayed on your announces. Make it punch! (100 characters max)'}}
+			</ion-card-content>
+		</ion-card>
 
+	<ion-card (click)="modifyprofile($event)">
 	  <ion-card-header style='font-weight: bold;'>
-	    Description
+	    Introduce yourself
 	  </ion-card-header>
-
 	  <ion-card-content>
-  		{{userProvider.longDescription}}
+  		{{userProvider.user.public.longDescription || 'Write more about yourself! What are you looking for? If you are a student, what are do you want to learn? If you are a teacher, why are you the best ?'}}
 	  </ion-card-content>
-
 	</ion-card>
 
 </div>
