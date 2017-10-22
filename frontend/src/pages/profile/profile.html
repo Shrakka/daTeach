@@ -6,10 +6,9 @@
 
 <!-- <profile-banner [firstname]="userprovider.firstname" [lastname]="userprovider.lastname" [picture]="userprovider.picture" [shortdescription]="userprovider.shortdescription"></profile-banner> -->
 <div class="identite">
-	<div class="cover" style="background-image: url('../assets/img/snowcover.jpg');"></div>
+	<div (click)="coverEdit()" class="cover" [style.backgroundImage]="'url(' + bannerURL + ')'"></div>
 	<div class="image">
-		<img src="../assets/img/profile.png" alt="">
-		
+		<img (click)="photoEdit()" [src]="userProvider.user.public.picture" alt="">
 	</div>
 	<div class="nom">{{userProvider.user.public.firstname}} {{userProvider.user.public.lastname}}</div>
 
