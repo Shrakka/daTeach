@@ -13,7 +13,7 @@ import { EditProfilePage } from '../profile/editprofile/editprofile';
 export class ProfilePage {
 
   public bannerURL;
-  
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider,public popoverCtrl: PopoverController, public alertCtrl: AlertController) {
     console.log(userProvider.user);
@@ -56,7 +56,7 @@ export class ProfilePage {
           }
         }
       ]
-      
+
     });
     alert.present();
   }
@@ -76,7 +76,7 @@ export class ProfilePage {
         {
           text: 'Set',
           handler: data => {
-            this.bannerURL = '../assets/img/' + data.url;
+            this.bannerURL = 'assets/img/' + data.url;
           }
         },
         {
@@ -87,7 +87,7 @@ export class ProfilePage {
           }
         }
       ]
-      
+
     });
     alert.present();
   }
