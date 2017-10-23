@@ -5,7 +5,7 @@
         {"key":"phy", "name":"Physics"},
         {"key":"chi", "name":"Chemistry"},
         {"key":"fre", "name":"French"},
-        {"key":"his", "name":"Histoire"},
+        {"key":"his", "name":"History"},
         {"key":"geo", "name":"Geography"},
         {"key":"tec", "name":"Technologies"},
         {"key":"lit", "name":"Litterature"},

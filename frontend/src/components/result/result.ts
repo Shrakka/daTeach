@@ -20,7 +20,7 @@ export class ResultComponent {
   getColor(key: string, value: string) {
     if (key === 'topic') {
       if (this.lessonProvider.request.topics.includes(value)) {
-        return (this.mode === 'take') ? 'primary' : 'secondary'
+        return (this.mode === 'give') ? 'primary' : 'secondary'
       }
       else {
         return 'light';
@@ -28,7 +28,7 @@ export class ResultComponent {
     }
     else {
       if (value === this.lessonProvider.request[key]) {
-        return (this.mode === 'take') ? 'primary' : 'secondary'
+        return (this.mode === 'give') ? 'primary' : 'secondary'
       }
       else {
         return 'light';

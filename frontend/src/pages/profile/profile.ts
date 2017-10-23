@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { PopoverController } from 'ionic-angular';
 import { EditProfilePage } from '../profile/editprofile/editprofile';
@@ -11,11 +11,16 @@ import { EditProfilePage } from '../profile/editprofile/editprofile';
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider,public popoverCtrl: PopoverController) {
+
+  public bannerURL;
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider,public popoverCtrl: PopoverController, public alertCtrl: AlertController) {
     console.log(userProvider.user);
   }
 
   ionViewDidLoad() {
+    this.bannerURL = 'assets/img/orange.jpg';
   }
 
   modifyprofile(myEvent){
@@ -26,6 +31,65 @@ export class ProfilePage {
     });
   }
 
-  // }
+  photoEdit() {
+    const alert = this.alertCtrl.create({
+      title: 'Login',
+      inputs: [
+        {
+          name: 'url',
+          placeholder: 'New URL'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Set',
+          handler: data => {
+            this.userProvider.user.public.picture = 'assets/img/' + data.url;
+            this.userProvider.updateUser();
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+
+    });
+    alert.present();
+  }
+
+
+  coverEdit() {
+    const alert = this.alertCtrl.create({
+      title: 'Login',
+      inputs: [
+        {
+          name: 'url',
+          placeholder: 'New URL',
+          type: 'textarea'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Set',
+          handler: data => {
+            this.bannerURL = 'assets/img/' + data.url;
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+
+    });
+    alert.present();
+  }
 
 }

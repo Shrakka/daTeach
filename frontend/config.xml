@@ -80,9 +80,7 @@
     </platform>
     <allow-navigation href="http://10.42.0.1:8100" />
     <allow-navigation href="http://10.42.0.1:8101" />
-    <allow-navigation href="http://10.69.3.24:8100" />
-    <allow-navigation href="http://192.168.156.1:8100" />
-    <engine name="android" spec="^6.2.3" />
+    <engine name="android" spec="^6.3.0" />
     <engine name="ios" spec="^4.5.2" />
     <plugin name="cordova-plugin-device" spec="^1.1.6" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />

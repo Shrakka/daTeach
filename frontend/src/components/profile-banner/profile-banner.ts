@@ -12,6 +12,6 @@ export class ProfileBannerComponent {
   }
 
   getColor() {
-    return this.lessonProvider.request.role === 'student' ? 'secondary' : 'primary'
+    return this.lessonProvider.request.role === 'student' ? 'primary' : 'secondary'
   }
 }
