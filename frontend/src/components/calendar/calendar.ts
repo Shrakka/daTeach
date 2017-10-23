@@ -28,10 +28,9 @@ export class CalendarComponent {
       tomorrow.setDate(tomorrow.getDate() + i);
       this.days.push(this.dateToString(tomorrow));
     }
-    this.selecteds = [];
   }
 
-  ngOnInit() {
+  ngOnViewInit() {
     this.selecteds = this.initdates;
   }
 
