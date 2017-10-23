@@ -10,7 +10,7 @@
   <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="search($event)" (ionCancel)="onCancel($event)" placeholder="What would you like to teach"> </ion-searchbar>
 
 
-    <ion-item>    
+    <ion-item  (click)="getposition()" style="cursor:pointer;">    
       <ion-icon name="locate" item-start></ion-icon>
       <ion-label>Your current position</ion-label>
     </ion-item>
