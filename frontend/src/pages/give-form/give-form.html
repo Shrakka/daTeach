@@ -4,7 +4,7 @@
 
 <ion-content>
   <div class="form" class="give-form">
-    
+
       <!-- PROFILE BANNER NOT NECESSARY HERE -->
       <!-- <div *ngIf="userProvider.user">
         <profile-banner [firstname]="userProvider.user.public.firstname" [lastname]="userProvider.user.public.lastname" [picture]="userProvider.user.public.picture" [shortDescription]="userProvider.user.public.shortDescription"></profile-banner>
@@ -56,8 +56,8 @@
 
 
         <!-- MOVE BUTTONS -->
-        <div class="move-panel">
-          <div class="move-label" padding>Moving</div>
+        <div class="move-panel" padding>
+          <div class="move-label">Moving</div>
           <div class="move-buttons">
             <button ion-button color="secondary" [outline]="giveForm.moving !== 'move'" (click)="setMoving('move')">Move</button>
             <button ion-button color="secondary" [outline]="giveForm.moving !== 'host'" (click)="setMoving('host')">Host</button>
@@ -75,8 +75,8 @@
 
 
         <!-- SUBMIT BUTTON -->
-        <div class="block-button">
-          <button ion-button color="secondary" class="result-button" (click)="goToResults()">Show results</button>
+        <div class="button-panel">
+          <button ion-button color="secondary" (click)="goToResults()">Show results</button>
         </div>
       </div>
 

@@ -1,27 +1,20 @@
-page-take-form {
-
-}
-
-.result-button {
-    width: 4em;
+page-give-form {
 }
 
 .move-panel {
-    margin: 10em;
-    display: flex;
-    justify-content: center;
-    background-color: red;
+    width: 100%;
 }
 
 
 .topic-label {
     padding-bottom: 0;
 }
+
 .topics-badges {
     display: flex;
     align-items: left;
     margin-top: 0.5em;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .location-search {
@@ -32,18 +25,15 @@ page-take-form {
 }
 
 .move-label {
-    padding-bottom: 0px;
+    margin-bottom: 16px;
 }
 .move-buttons {
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
-.block-button {
-    margin-top: 4em;
-    margin-bottom: 2em;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.button-panel {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
