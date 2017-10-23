@@ -47,7 +47,13 @@ import { LessonProvider } from '../providers/lesson/lesson';
     MessagesPageModule,
     HttpModule,
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      platforms: {
+        ios: {
+          statusbarPadding: true,
+        }
+      }
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
