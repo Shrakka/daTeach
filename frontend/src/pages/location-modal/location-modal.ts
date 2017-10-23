@@ -23,7 +23,7 @@ export class LocationModalPage {
   ];
 
   searchQuery: string = '';
-  pickedLocation = 'Ibiza';
+  pickedLocation = {'name':'Ibiza', 'clicked':false};
   locations = [];
   give: boolean;
 
@@ -55,7 +55,9 @@ export class LocationModalPage {
   chooseLocation(location) {
     console.log(location);
     this.pickedLocation = location;
+     // debugger;
     this.closeModal();
+   
   }
 
   getposition() {
@@ -63,14 +65,13 @@ export class LocationModalPage {
       .then((resp) => {
        console.log('latitude', resp.coords.latitude);
        console.log('longitude', resp.coords.longitude);
-       // alert(resp.coords.latitude + ", " + resp.coords.longitude);
 
        var requestUrl="https://maps.googleapis.com/maps/api/geocode/json?latlng="+resp.coords.latitude+","+resp.coords.longitude+
        "&key=AIzaSyCvYUJBCSnda6uaadmkzlRtDIeWE7QSPlU";
-
        this.http.get(requestUrl).map(res => res.json()).subscribe(data => {
-        this.pickedLocation={name: data.results[0].formatted_address, clicked:false};
+        this.pickedLocation={'name': data.results[0].formatted_address, 'clicked':false};
         this.closeModal();
+        
         });
 
 
