@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\assets",
+    "\\src\\assets\\img",
+    "\\src\\components",
+    "\\src\\pages",
+    "\\src\\pages\\home",
+    "\\src\\pages\\profile",
+    "\\src\\providers",
+    "\\src\\providers\\user"
+  ],
+  "SelectedNode": "\\src\\pages\\profile\\profile.scss",
+  "PreviewInSolutionExplorer": false
+}
