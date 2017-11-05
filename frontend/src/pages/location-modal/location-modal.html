@@ -7,7 +7,8 @@
 
 
 <ion-content>
-  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="search($event)" (ionCancel)="onCancel($event)" placeholder="What would you like to teach"> </ion-searchbar>
+  <ion-searchbar [(ngModel)]="autocomplete.query" [showCancelButton]="true"
+   (ionInput)="updateSearch($event)" (ionCancel)="closeModal() " placeholder="Enter an address"> </ion-searchbar>
 
 
     <ion-item  (click)="getposition()" style="cursor:pointer;">    
@@ -16,10 +17,10 @@
     </ion-item>
 
   <ion-list>
-    <ion-item *ngFor="let location of locations" (click)="chooseLocation(location)" >
+    <ion-item *ngFor="let item of autocompleteItems" tappable (click)="chooseLocation(item)" >
       <ion-icon name="" item-start></ion-icon>
       <ion-label>
-        {{ location.name }}
+        {{ item.name }}
       </ion-label>
     </ion-item>
   </ion-list>
