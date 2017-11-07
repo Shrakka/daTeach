@@ -3,9 +3,13 @@
 </ion-header>
 
 <ion-content>
-  <ion-label padding>Active Lessons</ion-label>
+  <div class="legend">
+    <ion-badge color='primary'>Lessons I take</ion-badge>
+    <ion-badge color='secondary'>Lessons I give</ion-badge>
+  </div>
+  <ion-label class="lessons-labels">Active Lessons</ion-label>
   <lesson-card *ngFor="let result of activeLessons()" [result]="result"></lesson-card>
-  <ion-label padding>Inactive Lessons</ion-label>
+  <ion-label class="lessons-labels">Inactive Lessons</ion-label>
   <lesson-card *ngFor="let result of inactiveLessons()" [result]="result"></lesson-card>
 </ion-content>
 

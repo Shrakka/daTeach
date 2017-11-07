@@ -39,3 +39,16 @@ lesson-card {
 .profile-result {
   flex-grow: 1;
 }
+
+
+.give-lesson-card {
+  border-left: 4px solid color($colors, "secondary");
+}
+
+.take-lesson-card {
+  border-left: 4px solid color($colors, "primary");
+}
+
+.inactive-lesson-card {
+  border-left: 4px solid color($colors, "disable");
+}
