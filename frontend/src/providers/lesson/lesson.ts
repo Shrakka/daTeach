@@ -80,6 +80,11 @@ export class LessonProvider {
   }
 
   desactivate(id) {
+    this.lessons.map(lesson => {
+      if(lesson.id === id){
+        lesson.active = false;
+      }}
+    )
     return new Promise(resolve => {
       var options = new RequestOptions({withCredentials: true});
       this.http.put(this.backendProvider.url + '/lesson/' + id + '/?apikey=' + this.backendProvider.apikey, {active: false}, options)
@@ -91,6 +96,10 @@ export class LessonProvider {
   }
 
   deleteLesson(id) {
+    let index = this.lessons.findIndex( lesson => {
+      return lesson.id === id;
+    })
+    console.log(index);
     return new Promise(resolve => {
       var options = new RequestOptions({withCredentials: true});
       this.http.delete(this.backendProvider.url + '/lesson/' + id + '/?apikey=' + this.backendProvider.apikey, options)

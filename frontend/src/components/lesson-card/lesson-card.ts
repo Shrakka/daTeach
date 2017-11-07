@@ -48,7 +48,7 @@ export class LessonCardComponent {
       this.lessonProvider.deleteLesson(id);
     }
     else {
-      this.lessonProvider.desactivate(id);
+      this.lessonProvider.desactivate(id); 
     }
   }
 

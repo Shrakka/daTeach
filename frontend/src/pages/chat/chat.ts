@@ -28,7 +28,7 @@ export class ChatPage {
 
     this.getMessages().subscribe(message => {
       this.result.discussion.messages.push(message)
-      this.scrollToBottom();
+     // this.scrollToBottom();
     });
   }
 
