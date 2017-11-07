@@ -6,7 +6,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { StatusBar } from '@ionic-native/status-bar';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
+import { TranslateModule } from 'ng2-translate/ng2-translate';
+import { TranslateLoader, TranslateStaticLoader } from 'ng2-translate/src/translate.service';
+import { Globalization } from '@ionic-native/globalization';
 
 import { MyApp } from './app.component';
 
@@ -28,6 +31,9 @@ import { BackendProvider } from '../providers/backend/backend';
 import { DiscussionProvider } from '../providers/discussion/discussion';
 import { LessonProvider } from '../providers/lesson/lesson';
 
+export function createTranslateLoader(http: Http) {
+	return new TranslateStaticLoader(http, 'assets/i18n', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -55,6 +61,11 @@ import { LessonProvider } from '../providers/lesson/lesson';
           statusbarPadding: true,
         }
       }
+    }),
+    TranslateModule.forRoot({
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [Http]
     })
   ],
   bootstrap: [IonicApp],
@@ -66,6 +77,7 @@ import { LessonProvider } from '../providers/lesson/lesson';
     SplashScreen,
     Geolocation,
     NativeGeocoder,
+    Globalization,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
     BackendProvider,
