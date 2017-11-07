@@ -16,7 +16,7 @@ import { UserProvider } from '../../providers/user/user';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  email: string = 'email@email.org';
+  email: string = 'alexis@email.org';
   password: string = 'password';
   firstname: string = 'John';
   lastname: string = 'Doe';
@@ -28,13 +28,6 @@ export class LoginPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
-  }
-
-  signUp() {
-    this.userProvider.signUp({'email': this.email, 'password': this.password, 'firstname': this.firstname, 'lastname': this.lastname, 'birthyear': this.birthyear, 'gender': this.gender});
-    if(!this.userProvider.user){
-      this.navCtrl.pop();
-    }
   }
 
   logIn() {
@@ -49,6 +42,10 @@ export class LoginPage {
     if(!this.userProvider.user){
       this.navCtrl.pop();
     }
+  }
+
+  goToSignup() {
+    this.navCtrl.push('SignupPage');
   }
 
 }
