@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { UserProvider } from '../../providers/user/user';
 
 /**
  * Generated class for the SignupPage page.
@@ -21,7 +22,7 @@ export class SignupPage {
   birthyear: number = 1990;
   gender: string = 'M';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider) {
   }
 
   ionViewDidLoad() {
