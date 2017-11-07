@@ -43,7 +43,7 @@ export class ProfilePage {
         {
           text: 'Set',
           handler: data => {
-            this.userProvider.user.public.picture = 'assets/img/' + data.url;
+            this.userProvider.user.public.picture = 'assets/img/' + data.url + '.png';
             this.userProvider.updateUser();
           }
         },
