@@ -44,11 +44,16 @@ export class LessonCardComponent {
 
   desactivate(id) {
     if (this.users.length == 0) {
-      console.log('delete')
+      this.lessonProvider.lessons = this.lessonProvider.lessons.filter((result) => {return result.lesson._id != id})
       this.lessonProvider.deleteLesson(id);
     }
     else {
-      this.lessonProvider.desactivate(id); 
+      this.lessonProvider.lessons.map((result) => {
+        if (result.lesson._id == id) {
+          result.lesson.active = false;
+        }
+      })
+      this.lessonProvider.desactivate(id);
     }
   }
 

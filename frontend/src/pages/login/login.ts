@@ -16,7 +16,7 @@ import { UserProvider } from '../../providers/user/user';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  email: string = 'email@email.org';
+  email: string = 'alexis@email.org';
   password: string = 'password';
   firstname: string = 'John';
   lastname: string = 'Doe';
