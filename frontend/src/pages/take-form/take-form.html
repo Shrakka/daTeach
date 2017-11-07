@@ -46,7 +46,7 @@
         <div  class="location-search">
           <div padding class="location-label">Location</div>
           <ion-searchbar
-          [(ngModel)]="takeForm.location"
+          [(ngModel)]="takeForm.location.fullAddress"
           [showCancelButton]="shouldShowCancel"
           (ionInput)="searchLocation($event)"
           (ionFocus)="onLocationFocus()"

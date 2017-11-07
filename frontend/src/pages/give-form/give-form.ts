@@ -21,7 +21,7 @@ export class GiveFormPage {
       type: 'regular',
       moving: 'move',
       topics: [],
-      location: '',
+      location: [],
       dates: []
       };
 
@@ -50,7 +50,7 @@ export class GiveFormPage {
   onLocationFocus(){
     const locationModal = this.modalCtrl.create(LocationModalPage, {'give':true});
     locationModal.onDidDismiss(data => {
-      this.giveForm.location = data.name;
+      this.giveForm.location = data;
     })
     locationModal.present();
   }

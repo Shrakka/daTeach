@@ -21,7 +21,7 @@ export class TakeFormPage {
     type: 'regular',
     moving: 'move',
     topics: [],
-    location: '',
+    location: [],
     dates: []
     }
 
@@ -58,7 +58,7 @@ export class TakeFormPage {
   onLocationFocus(){
     const locationModal = this.modalCtrl.create(LocationModalPage, {'give':false}, {showBackdrop: true});
     locationModal.onDidDismiss(data => {
-      this.takeForm.location = data.name;
+      this.takeForm.location = data;
     })
     locationModal.present();
   }
