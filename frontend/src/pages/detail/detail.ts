@@ -41,4 +41,8 @@ export class DetailPage {
     alert.present();
   }
 
+  goToLogin(){
+    this.navCtrl.push('LoginPage');
+  }
+
 }

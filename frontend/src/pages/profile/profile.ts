@@ -16,8 +16,7 @@ export class ProfilePage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider,public popoverCtrl: PopoverController, public alertCtrl: AlertController) {
-    console.log(userProvider.user);
-  }
+    }
 
   ionViewDidLoad() {
     this.bannerURL = 'assets/img/orange.jpg';
