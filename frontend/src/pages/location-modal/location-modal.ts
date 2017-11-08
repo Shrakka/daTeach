@@ -44,19 +44,12 @@ export class LocationModalPage {
     for(let l of this.RawLocations){
       this.autocompleteItems.push({'town': l, 'fullAddress':l, 'position':'', 'clicked':false});
     }
+    this.updateSearch();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LocationModalPage');
   }
-
-  // search($event){
-  //   console.log();
-  // }
-
-  // onCancel($event) {
-
-  // }
 
   closeModal() {
         this.viewCtrl.dismiss(this.pickedLocation);
@@ -106,26 +99,23 @@ export class LocationModalPage {
   }
 
   updateSearch() {
-    if (this.autocomplete.query == '') {
-      this.autocompleteItems = [];
-      return;
-    }
 
     let me = this;
-    this.service.getPlacePredictions({ input: this.autocomplete.query,  componentRestrictions: {country: 'FR'} }, 
+    this.service.getPlacePredictions({ input: (this.autocomplete.query === '' ? 'metz': this.autocomplete.query),  componentRestrictions: {country: ['FR', 'US']} }, 
       function (predictions, status) {
         me.autocompleteItems = []; 
         me.zone.run(function () {
           if(predictions!=null){
                predictions.forEach(function (prediction) {
+                 var t;
                  if(prediction.terms.length>3){
-                     var t=prediction.terms[2].value
+                    t=prediction.terms[2].value
                  }else if(prediction.terms.length==3){
-                      var t=prediction.terms[1].value
+                    t=prediction.terms[1].value
                   }else if(prediction.terms.length==2){
-                      var t=prediction.terms[0].value
+                    t=prediction.terms[0].value
                   }else{
-                      var t=prediction.terms[0].value
+                    t=prediction.terms[0].value
                   }
                
                  me.autocompleteItems.push({'town': t, 'fullAddress':prediction.description, 'position':'', 'clicked':false});

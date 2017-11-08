@@ -41,7 +41,7 @@ export class TopicModalPage {
 
 
   getVisibleSuggestions() {
-    return (this.suggestions.filter(obj => !obj.hidden)).slice(0,9);
+    return (this.suggestions.filter(obj => !obj.hidden)).slice(0,7);
   }
 
   ionViewDidLoad() {
