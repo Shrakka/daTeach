@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { LessonProvider } from '../../providers/lesson/lesson';
 import { TopicModalPage } from '../../pages/topic-modal/topic-modal';
 import { LocationModalPage } from '../../pages/location-modal/location-modal';
+
+declare var google;
 
 @IonicPage()
 @Component({
@@ -11,11 +13,16 @@ import { LocationModalPage } from '../../pages/location-modal/location-modal';
   templateUrl: 'give-form.html',
 })
 export class GiveFormPage {
+  
+  @ViewChild('map') mapElement: ElementRef;
+  map: any;
 
   giveForm: any;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider,
+     public alertCtrl: AlertController,private googleMaps: GoogleMaps) {
     this.giveForm =   {
       role: 'teacher',
       type: 'regular',
@@ -28,7 +35,10 @@ export class GiveFormPage {
     this.lessonProvider.getTopics();
   }
 
-  ionViewDidLoad() {console.log('ionViewDidLoad GiveFormPage');}
+  ionViewDidLoad() {
+     this.loadMap();
+    console.log('ionViewDidLoad GiveFormPage');
+  }
   selectedRegular() {}
   selectedPunctual() {}
 
@@ -58,6 +68,18 @@ export class GiveFormPage {
   onDatesSelection($event) {
     // EVENT = LIST DE DATE
     this.giveForm.dates = $event;
+  }
+   loadMap() {
+
+    let latLng = new google.maps.LatLng(-34.9290, 138.6010);
+ 
+    let mapOptions = {
+      center: latLng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+ 
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
   }
 
   goToResults() {
