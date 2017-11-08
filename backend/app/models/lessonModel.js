@@ -8,7 +8,15 @@ var lessonSchema = mongoose.Schema({
   students: Array, // ids
   teachers: Array, // ids
   topics: Array,
-  location: String,
+  location: {
+    town:String,
+    fullAddress:String,
+    position:{
+      lat:String,
+      long:String
+    }
+    clicked:Boolean
+  },
   moving: String, // move, host, both
   dates: Array,
   type: String,
