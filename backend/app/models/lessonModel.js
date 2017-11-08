@@ -14,7 +14,7 @@ var lessonSchema = mongoose.Schema({
     position:{
       lat:String,
       long:String
-    }
+    },
     clicked:Boolean
   },
   moving: String, // move, host, both
