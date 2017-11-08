@@ -20,7 +20,7 @@
     <ion-item *ngFor="let item of autocompleteItems" tappable (click)="chooseLocation(item)" >
       <ion-icon name="" item-start></ion-icon>
       <ion-label>
-        {{ item.name }}
+        {{ item.fullAddress}}
       </ion-label>
     </ion-item>
   </ion-list>

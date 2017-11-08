@@ -24,7 +24,7 @@ export class LocationModalPage {
   ];
 
   // searchQuery: string = '';
-  pickedLocation = {'name':'Ibiza', 'clicked':false};
+  pickedLocation = {'town':'Ibiza', 'fullAddress':'Ibiza', 'position':{}, 'clicked':false};
   // locations = [];
   give: boolean;
 
@@ -42,7 +42,7 @@ export class LocationModalPage {
     this.give = navParams.get('give');
     
     for(let l of this.RawLocations){
-      this.autocompleteItems.push({'name': l, 'clicked':false});
+      this.autocompleteItems.push({'town': l, 'fullAddress':l, 'position':'', 'clicked':false});
     }
   }
 
@@ -64,6 +64,14 @@ export class LocationModalPage {
 
   chooseLocation(location) {
     console.log(location);
+    if(location.position==""){
+      var requestUrl=" https://maps.googleapis.com/maps/api/geocode/json?address="+location.fullAddress+"&key=AIzaSyCvYUJBCSnda6uaadmkzlRtDIeWE7QSPlU";
+      this.http.get(requestUrl).map(res => res.json()).subscribe(data => {
+          var position=data.results[0].geometry.location;
+          location.position={'lat':position.lat,'long':position.lng}
+          });
+    }
+
     this.pickedLocation = location;
      // debugger;
     this.closeModal();
@@ -79,7 +87,8 @@ export class LocationModalPage {
        var requestUrl="https://maps.googleapis.com/maps/api/geocode/json?latlng="+resp.coords.latitude+","+resp.coords.longitude+
        "&key=AIzaSyCvYUJBCSnda6uaadmkzlRtDIeWE7QSPlU";
        this.http.get(requestUrl).map(res => res.json()).subscribe(data => {
-        this.pickedLocation={'name': data.results[0].formatted_address, 'clicked':false};
+        var town=data.results[0].address_components[2].long_name;
+        this.pickedLocation={'town':town, 'fullAddress': data.results[0].formatted_address, 'position':{'lat':resp.coords.latitude,'long':resp.coords.longitude},'clicked':false};
         this.closeModal();
         
         });
@@ -107,9 +116,21 @@ export class LocationModalPage {
       function (predictions, status) {
         me.autocompleteItems = []; 
         me.zone.run(function () {
-          predictions.forEach(function (prediction) {
-            me.autocompleteItems.push({'name': prediction.description, 'clicked':false});
-          });
+          if(predictions!=null){
+               predictions.forEach(function (prediction) {
+                 if(prediction.terms.length>3){
+                     var t=prediction.terms[2].value
+                 }else if(prediction.terms.length==3){
+                      var t=prediction.terms[1].value
+                  }else if(prediction.terms.length==2){
+                      var t=prediction.terms[0].value
+                  }else{
+                      var t=prediction.terms[0].value
+                  }
+               
+                 me.autocompleteItems.push({'town': t, 'fullAddress':prediction.description, 'position':'', 'clicked':false});
+               });
+          }
         });
       });
   }
