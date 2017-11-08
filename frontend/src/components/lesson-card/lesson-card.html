@@ -1,4 +1,4 @@
-<ion-card [class]="((result.lesson.active) ? 'active' : 'sent') + '-card result-card card card-md'">
+<ion-card [class]="(result.lesson.active ? (result.lesson.author.role === 'student' ? 'take-lesson' : 'give-lesson') : 'inactive-lesson') + '-card result-card card card-md'">
   <div class="lesson-card-lesson">
     <div class="lesson-info">
       <div class="lesson-info-profile">
@@ -22,12 +22,12 @@
       </div>
       <div class="all-badges-result">
         <div class="badges-result">
-          <ion-badge *ngFor="let topic of result.lesson.topics" class="badge-result" [color]="(result.lesson.active)?'primary':'secondary'">{{ topic.toUpperCase().substring(0,3) }}</ion-badge>
+          <ion-badge *ngFor="let topic of result.lesson.topics" class="badge-result" [color]="(result.lesson.active ? (result.lesson.author.role === 'student' ? 'primary' : 'secondary') : 'disable')">{{ topic.toUpperCase().substring(0,3) }}</ion-badge>
         </div>
         <div class="badges-result">
-          <ion-badge class="badge-result" [color]="(result.lesson.active)?'primary':'secondary'">{{ result.lesson.type.toUpperCase() }}</ion-badge>
-          <ion-badge class="badge-result" [color]="(result.lesson.active)?'primary':'secondary'">{{ result.lesson.location.toUpperCase() }}</ion-badge>
-          <ion-badge class="badge-result" [color]="(result.lesson.active)?'primary':'secondary'">{{ result.lesson.moving.toUpperCase() }}</ion-badge>
+          <ion-badge class="badge-result" [color]="(result.lesson.active ? (result.lesson.author.role === 'student' ? 'primary' : 'secondary') : 'disable')">{{ result.lesson.type.toUpperCase() }}</ion-badge>
+          <ion-badge class="badge-result" [color]="(result.lesson.active ? (result.lesson.author.role === 'student' ? 'primary' : 'secondary') : 'disable')">{{ result.lesson.location.toUpperCase() }}</ion-badge>
+          <ion-badge class="badge-result" [color]="(result.lesson.active ? (result.lesson.author.role === 'student' ? 'primary' : 'secondary') : 'disable')">{{ result.lesson.moving.toUpperCase() }}</ion-badge>
         </div>
       </div>
     </div>

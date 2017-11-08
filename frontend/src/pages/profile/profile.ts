@@ -16,8 +16,7 @@ export class ProfilePage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider,public popoverCtrl: PopoverController, public alertCtrl: AlertController) {
-    console.log(userProvider.user);
-  }
+    }
 
   ionViewDidLoad() {
     this.bannerURL = 'assets/img/orange.jpg';
@@ -44,7 +43,7 @@ export class ProfilePage {
         {
           text: 'Set',
           handler: data => {
-            this.userProvider.user.public.picture = 'assets/img/' + data.url;
+            this.userProvider.user.public.picture = 'assets/img/' + data.url + '.png';
             this.userProvider.updateUser();
           }
         },

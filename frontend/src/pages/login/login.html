@@ -3,38 +3,24 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <ion-item>
+  <ion-card class="login-card">
+    <div class="login-title">Please log in</div>
+    <ion-item class="login-item">
       <ion-label color="primary" stacked>Email</ion-label>
       <ion-input [(ngModel)]="email" type="email"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item class="login-item">
       <ion-label color="primary" stacked>Password</ion-label>
       <ion-input [(ngModel)]="password" type="password"></ion-input>
     </ion-item>
-    <button ion-button (click)="logIn()">Login</button>
-    <button ion-button (click)="logInFB()">Login with Facebook</button>
-    <ion-item>
-      <ion-label color="primary" stacked>Firstname</ion-label>
-      <ion-input [(ngModel)]="firstname" type="test"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked>Lastname</ion-label>
-      <ion-input [(ngModel)]="lastname" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked>Birthyear</ion-label>
-      <ion-input [(ngModel)]="birthyear" type="number"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked>Gender</ion-label>
-      <ion-select [(ngModel)]="gender">
-        <ion-option value="M">Male</ion-option>
-        <ion-option value="F">Female</ion-option>
-        <ion-option value="N/A">N/A</ion-option>
-      </ion-select>
-    </ion-item>
-    <button ion-button (click)="signUp()">Sign Up</button>
+    <div class="login-buttons">
+      <button ion-button (click)="logIn()" class="login-button">Log in</button>
+      <button ion-button (click)="logInFB()" color="facebook" class="login-button">
+        <ion-icon name="logo-facebook" class="login-button-icon"></ion-icon>
+        Login with Facebook
+      </button>
+      <button ion-button (click)="goToSignup()" class="login-button" color="secondary">Do not have an account ?</button>
+    </div>
   </ion-card>
 </ion-content>
 

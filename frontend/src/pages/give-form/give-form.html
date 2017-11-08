@@ -24,7 +24,7 @@
 
         <!-- TOPICS -->
         <div  class="topics-search">
-          <div padding class="topic-label">Topics</div>
+          <div padding class="topic-label">Topic(s)</div>
           <ion-searchbar
             [(ngModel)]="giveForm.topic"
             [showCancelButton]="shoudShowCancel"
@@ -43,7 +43,7 @@
 
         <!-- LOCATION -->
         <div  class="location-search">
-          <div padding class="location-label">Location</div>
+          <div padding class="location-label">City or location</div>
           <ion-searchbar
           [(ngModel)]="giveForm.location.fullAddress"
           [showCancelButton]="shouldShowCancel"
@@ -57,10 +57,10 @@
 
         <!-- MOVE BUTTONS -->
         <div class="move-panel" padding>
-          <div class="move-label">Moving</div>
+          <div class="move-label">Preference for the lesson</div>
           <div class="move-buttons">
-            <button ion-button color="secondary" [outline]="giveForm.moving !== 'move'" (click)="setMoving('move')">Move</button>
-            <button ion-button color="secondary" [outline]="giveForm.moving !== 'host'" (click)="setMoving('host')">Host</button>
+            <button ion-button color="secondary" [outline]="giveForm.moving !== 'move'" (click)="setMoving('move')">I move</button>
+            <button ion-button color="secondary" [outline]="giveForm.moving !== 'host'" (click)="setMoving('host')">I host</button>
             <button ion-button color="secondary" [outline]="giveForm.moving !== 'both'" (click)="setMoving('both')">Both</button>
           </div>
         </div>
