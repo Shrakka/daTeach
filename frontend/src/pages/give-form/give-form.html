@@ -3,7 +3,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="form" class="give-form">
+  <div class="form" class="give-form" >
 
       <!-- PROFILE BANNER NOT NECESSARY HERE -->
       <!-- <div *ngIf="userProvider.user">
@@ -26,7 +26,7 @@
         </ion-item>
 
         <!-- TOPICS -->
-        <div  class="topics-search">
+        <div  class="topics-search" *ngIf="giveForm.type !== 'nearby'">
           <div padding class="topic-label">Topic(s)</div>
           <ion-searchbar
             [(ngModel)]="giveForm.topic"
@@ -39,13 +39,13 @@
         </div>
 
         <!-- TOPICS BADGES -->
-        <div class="topics-badges">
+        <div class="topics-badges" >
           <ion-badge color="secondary" *ngFor="let t of giveForm.topics">{{ t }}</ion-badge>
         </div>
-        <br/>
+        <br  *ngIf="giveForm.type !== 'nearby'"/>
 
         <!-- LOCATION -->
-        <div  class="location-search">
+        <div  class="location-search" *ngIf="giveForm.type !== 'nearby'">
           <div padding class="location-label">City or location</div>
           <ion-searchbar
           [(ngModel)]="giveForm.location.fullAddress"
@@ -59,7 +59,7 @@
 
 
         <!-- MOVE BUTTONS -->
-        <div class="move-panel" padding>
+        <div class="move-panel" padding *ngIf="giveForm.type !== 'nearby'">
           <div class="move-label">Preference for the lesson</div>
           <div class="move-buttons">
             <button ion-button color="secondary" [outline]="giveForm.moving !== 'move'" (click)="setMoving('move')">I move</button>
@@ -69,39 +69,25 @@
         </div>
 
         <!-- CALENDAR -->
-        <br/>
+        <br *ngIf="giveForm.type !== 'nearby'"/>
 
         <div *ngIf="giveForm.type === 'punctual'">
           <div padding class="calendar-label">Calendar</div>
           <calendar (dates)="onDatesSelection($event)" mode="give" [initdates]="[]" [modifiable]="true"></calendar>
         </div>
 
-          <!-- GOOGLE MAP -->
-        <br/>
-
-        <div *ngIf="giveForm.type === 'nearby'">
-          <ion-header>
-            <ion-navbar>
-              <ion-title>
-                Map
-              </ion-title>
-              <ion-buttons end>
-                <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
-              </ion-buttons> 
-            </ion-navbar>
-          </ion-header>
- 
-          <ion-content>
-            <div #map id="map"></div> 
-          </ion-content>
-        </div>
+         
+        
 
 
         <!-- SUBMIT BUTTON -->
-        <div class="button-panel">
+        <div class="button-panel" *ngIf="giveForm.type !== 'nearby'">
           <button ion-button color="secondary" (click)="goToResults()">Show results</button>
         </div>
       </div>
+
+       <!-- GOOGLE MAP -->
+       <div #map id="map" *ngIf="giveForm.type === 'nearby'"></div> 
 
 </ion-content>
 

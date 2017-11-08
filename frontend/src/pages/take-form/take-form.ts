@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { LessonProvider } from '../../providers/lesson/lesson';
 import { TopicModalPage } from '../../pages/topic-modal/topic-modal';
 import { LocationModalPage } from '../../pages/location-modal/location-modal';
+
+declare var google; 
 
 @IonicPage()
 @Component({
@@ -11,6 +13,9 @@ import { LocationModalPage } from '../../pages/location-modal/location-modal';
   templateUrl: 'take-form.html',
 })
 export class TakeFormPage {
+
+ @ViewChild('map') mapElement: ElementRef;
+  map: any;
 
   takeForm: any;
 
@@ -41,6 +46,10 @@ export class TakeFormPage {
 
   }
 
+   selectedNearby() {
+    this.loadMap();
+   }
+
   setMoving(moving){
     this.takeForm.moving = moving;
     console.log(this.takeForm);
@@ -68,6 +77,22 @@ export class TakeFormPage {
     this.takeForm.dates = $event;
   }
 
+  loadMap() {
+
+    let latLng = new google.maps.LatLng(-34.9290, 138.6010);
+ 
+    let mapOptions = {
+      center: latLng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    
+     setTimeout(() => {
+      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    }, 200);
+    
+  }
+  
   goToResults() {
     if(this.takeForm.location === '' || this.takeForm.topics.length === 0){
       const alert = this.alertCtrl.create({

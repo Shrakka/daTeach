@@ -22,7 +22,7 @@ export class GiveFormPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider,
-     public alertCtrl: AlertController,private googleMaps: GoogleMaps) {
+     public alertCtrl: AlertController) {
     this.giveForm =   {
       role: 'teacher',
       type: 'regular',
@@ -36,11 +36,15 @@ export class GiveFormPage {
   }
 
   ionViewDidLoad() {
-     this.loadMap();
+   
     console.log('ionViewDidLoad GiveFormPage');
   }
   selectedRegular() {}
   selectedPunctual() {}
+
+   selectedNearby() {
+    this.loadMap();
+   }
 
   setMoving(moving){
     this.giveForm.moving = moving;
@@ -78,8 +82,11 @@ export class GiveFormPage {
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
- 
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    
+     setTimeout(() => {
+      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    }, 200);
+    
   }
 
   goToResults() {
