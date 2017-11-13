@@ -88,8 +88,8 @@
   "ALERT_NOTREGISTERED_TEXT": "Connecte toi pour créer ta propre annonce",
   "ALERT_MESSAGESEND_TITLE": "Message envoyé!",
   "ALERT_MESSAGESEND_TEXT": "Message envoyé avec succès. Vous receverez un message si l'utilisateur est interessé.",
-  "ALERT_CALENDAR_TITLE": "Choose a date",
-  "ALERT_CALENDAR_TEXT": "Please select at least one date you would be available to facilitate matching",
+  "ALERT_CALENDAR_TITLE": "Choisis une date",
+  "ALERT_CALENDAR_TEXT": "Choisis une date à laquelle tu serais disponible",
 
 
   "TOPIC_MAT":"Mathématiques",

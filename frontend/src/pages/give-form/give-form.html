@@ -26,7 +26,7 @@
         <div  class="topics-search">
           <div padding class="topic-label">{{ 'FORM_TOPICS' | translate }}</div>
           <ion-searchbar
-            [(ngModel)]="giveForm.topic"
+            [(ngModel)]="topicsDisplay"
             [showCancelButton]="shoudShowCancel"
             (ionFocus)="onTopicFocus()"
             animated="true"
