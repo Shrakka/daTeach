@@ -41,7 +41,7 @@ export class ResultsPage {
       this.created = true;
       var message = this.mode === 'take' ? (this.translate.get('ALERT_CREATEAD_TAKE_TEXT') as any).value : (this.translate.get('ALERT_CREATED_GIVE_TEXT') as any).value;
       const alert = this.alertCtrl.create({
-        title:(this.translate.get('ALERT_CREATED_TITLE') as any).value,
+        title:(this.translate.get('ALERT_CREATEAD_TITLE') as any).value,
         subTitle: message,
         buttons: ['OK']
       });
