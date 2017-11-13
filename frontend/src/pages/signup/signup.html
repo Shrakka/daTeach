@@ -4,37 +4,37 @@
 
 <ion-content padding>
   <ion-card class="login-card">
-    <div class="login-title">Please sign up</div>
+    <div class="login-title">{{ 'SIGNUP_SIGN' | translate }}</div>
     <ion-item class="login-item">
-      <ion-label color="primary" stacked>Email</ion-label>
+      <ion-label color="primary" stacked>{{ 'SIGNUP_EMAIL' | translate }}</ion-label>
       <ion-input [(ngModel)]="email" type="email"></ion-input>
     </ion-item>
     <ion-item class="login-item">
-      <ion-label color="primary" stacked>Password</ion-label>
+      <ion-label color="primary" stacked>{{ 'SIGNUP_PASSWORD' | translate }}</ion-label>
       <ion-input [(ngModel)]="password" type="password"></ion-input>
     </ion-item>
     <ion-item class="login-item">
-      <ion-label color="primary" stacked>Firstname</ion-label>
+      <ion-label color="primary" stacked>{{ 'SIGNUP_FIRSTNAME' | translate }}</ion-label>
       <ion-input [(ngModel)]="firstname" type="test"></ion-input>
     </ion-item>
     <ion-item class="login-item">
-      <ion-label color="primary" stacked>Lastname</ion-label>
+      <ion-label color="primary" stacked>{{ 'SIGNUP_LASTNAME' | translate }}</ion-label>
       <ion-input [(ngModel)]="lastname" type="text"></ion-input>
     </ion-item>
     <ion-item class="login-item">
-      <ion-label color="primary" stacked>Birthyear</ion-label>
+      <ion-label color="primary" stacked>{{ 'SIGNUP_BIRTHYEAR' | translate }}</ion-label>
       <ion-input [(ngModel)]="birthyear" type="number"></ion-input>
     </ion-item>
     <ion-item class="login-item">
-      <ion-label color="primary" stacked>Gender</ion-label>
+      <ion-label color="primary" stacked>{{ 'SIGNUP_GENDER' | translate }}</ion-label>
       <ion-select [(ngModel)]="gender">
-        <ion-option value="M">Male</ion-option>
-        <ion-option value="F">Female</ion-option>
-        <ion-option value="N/A">N/A</ion-option>
+        <ion-option value="M">{{ 'SIGNUP_MALE' | translate }}</ion-option>
+        <ion-option value="F">{{ 'SIGNUP_FEMALE' | translate }}</ion-option>
+        <ion-option value="N/A">{{ 'SIGNUP_NA' | translate }}</ion-option>
       </ion-select>
     </ion-item>
     <div class="login-buttons">
-      <button ion-button (click)="signUp()" class="login-button">Sign Up</button>
+      <button ion-button (click)="signUp()" class="login-button">{{ 'SIGNUP_BUTTON' | translate }}</button>
     </div>
 
   </ion-card>
