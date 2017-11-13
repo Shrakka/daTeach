@@ -1,4 +1,4 @@
-{  
+{
   "HOME_TAKE": "I want to take a lesson",
   "HOME_GIVE": "I want to give a lesson",
 
@@ -40,6 +40,7 @@
   "PROFILE_LEVEL": "Level",
   "PROFILE_SHORTDESCRIPTION": "Looking for?",
   "PROFILE_LONGDESCRIPTION": "Introduce yourself!",
+  "PROFILE_LOGOUT": "Log out",
 
   "FORM_REGULAR": "Regular",
   "FORM_PUNCTUAL": "One-time",
