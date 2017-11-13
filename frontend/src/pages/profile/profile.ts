@@ -91,4 +91,8 @@ export class ProfilePage {
     alert.present();
   }
 
+  logout() {
+    this.navCtrl.setRoot('LoginPage');
+  }
+
 }
