@@ -73,6 +73,7 @@
 
   "RESULT_NOTEACHER": "No matching teacher? create your request",
   "RESULT_NOSTUDENT": "No matching student? create your ad",
+  "RESULT_NOENTRIES": "Sorry, no results were found for your request...",
 
   "DETAIL_LOGINTOCHAT": "Log in to chat!",
   "DETAIL_PLACEHOLDER": "Write a short message to present you and explain what you are looking for.",

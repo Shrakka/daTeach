@@ -9,6 +9,10 @@
 
   <result *ngFor="let result of lessonProvider.results" [result]="result" [mode]="mode"></result>
 
+  <div *ngIf="lessonProvider.results">
+    {{ 'RESULT_NOENTRIES' | translate}}
+  </div>
+
   <div *ngIf="!created">
     <button *ngIf="mode === 'take'" ion-button color="primary" (click)="createLesson()">{{ 'RESULT_NOTEACHER' | translate }}</button>
     <button *ngIf="mode === 'give'" ion-button color="secondary" (click)="createLesson()">{{ 'RESULT_NOSTUDENT' | translate }}</button>

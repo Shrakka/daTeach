@@ -38,7 +38,7 @@
   "PROFILE_SEX": "Genre",
   "PROFILE_AGE": "Age",
   "PROFILE_LEVEL": "Niveau",
-  "PROFILE_SHORTDESCRIPTION": "Que cherches-tu ?",
+  "PROFILE_SHORTDESCRIPTION": "Que recherches-tu ?",
   "PROFILE_LONGDESCRIPTION": "Présente toi",
   "PROFILE_LOGOUT": "Déconnexion",
 
@@ -54,11 +54,11 @@
   "FORM_MOVE": "JE ME DEPLACE",
   "FORM_HOST": "JE RECOIS",
   "FORM_BOTH": "INDIFFERENT",
-  "FORM_SHOWRESULTS": "RESULTATS",
+  "FORM_SHOWRESULTS": "Résultats",
   "FORM_CALENDAR": "Calendrier",
 
   "TOPIC_HEADER": "Sujets",
-  "TOPIC_SEARCH": "Pas dans la liste? Cherche ici!",
+  "TOPIC_SEARCH": "Pas dans la liste ? Cherche ici !",
 
   "LOCATION_HEADER": "Adresse",
   "LOCATION_SEARCH": "Entrer une adresse",
@@ -66,13 +66,15 @@
 
   "LESSONS_ACTIVE": "Cours actifs",
   "LESSONS_INACTIVE": "Cours inactifs",
-  "LESSONS_TAKE": "Cours que je donne",
-  "LESSONS_GIVE": "Cours que je prend",
+  "LESSONS_TAKE": "Cours que je prends",
+  "LESSONS_GIVE": "Cours que je donne",
 
   "DISCUSSION_ENTERMESSAGE": "Envoyer un message...",
 
-  "RESULT_NOTEACHER": "Pas interessé? Crée ta propre requête !",
-  "RESULT_NOSTUDENT": "Pas interessé? Crée ta propre leçon",
+  "RESULT_NOTEACHER": "Pas interessé ? Crée ta propre requête !",
+  "RESULT_NOSTUDENT": "Pas interessé ? Crée ta propre leçon",
+  "RESULT_NOENTRIES": "Nous sommes désolés, nous n'avons trouvé aucun resultats correspondant à votre demande...",
+
 
   "DETAIL_LOGINTOCHAT": "Connecte toi pour discuter",
   "DETAIL_PLACEHOLDER": "Envoye un premier message. Profites-en pour te présenter et expliquer ce que tu recherches",
