@@ -5,7 +5,7 @@
   "LOGIN_LOG":"Please log in",
   "LOGIN_EMAIL":"Email",
   "LOGIN_PASSWORD":"Password",
-  "LOGIN_LOGBUTTON": "Connexion",
+  "LOGIN_LOGBUTTON": "Connection",
   "LOGIN_FACEBOOK":"Login with facebook",
   "LOGIN_NOACCOUNT":"Do not have an account?",
 
@@ -45,8 +45,8 @@
   "FORM_REGULAR": "Regular",
   "FORM_PUNCTUAL": "One-time",
   "FORM_TOPICS": "Topic(s)",
-  "FORM_TOPICS_DESCRIPTION_GIVE": "What would you like to teach",
-  "FORM_TOPICS_DESCRIPTION_TAKE": "What would you like to learn",
+  "FORM_TOPICS_DESCRIPTION_GIVE": "What would you like to teach?",
+  "FORM_TOPICS_DESCRIPTION_TAKE": "What would you like to learn?",
   "FORM_LOCATION": "City or location",
   "FORM_LOCATION_DESCRIPTION_GIVE": "Where will you give the lesson?",
   "FORM_LOCATION_DESCRIPTION_TAKE": "Where will you take the lesson?",
@@ -71,12 +71,12 @@
 
   "DISCUSSION_ENTERMESSAGE": "Your message here...",
 
-  "RESULT_NOTEACHER": "No matching teacher? create your request",
-  "RESULT_NOSTUDENT": "No matching student? create your ad",
+  "RESULT_NOTEACHER": "No matching teacher? Create your request",
+  "RESULT_NOSTUDENT": "No matching student? Create your ad",
   "RESULT_NOENTRIES": "Sorry, no results were found for your request...",
 
   "DETAIL_LOGINTOCHAT": "Log in to chat!",
-  "DETAIL_PLACEHOLDER": "Write a short message to present you and explain what you are looking for.",
+  "DETAIL_PLACEHOLDER": "Write a short message to introduce yourself and explain what you are looking for.",
   "DETAIL_SEND": "SEND",
   "DETAIL_AVAILABLE": "is available these days",
 
@@ -105,7 +105,7 @@
   "TOPIC_HIS":"History",
   "TOPIC_GEO":"Geography",
   "TOPIC_TEC":"Engineering",
-  "TOPIC_LIT":"Litterature",
+  "TOPIC_LIT":"Literature",
   "TOPIC_BIO":"Biology",
   "TOPIC_SPA":"Spanish",
   "TOPIC_RUS":"Russian",
