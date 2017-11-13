@@ -13,7 +13,7 @@ import { RequestOptions } from '@angular/http';
 */
 @Injectable()
 export class LessonProvider {
-  results;
+  results = [];
   request;
   lessons = [];
   topics;
