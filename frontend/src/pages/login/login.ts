@@ -32,16 +32,12 @@ export class LoginPage {
 
   logIn() {
     this.userProvider.logIn({'email': this.email, 'password': this.password});
-    if(!this.userProvider.user){
-      this.navCtrl.pop();
-    }
+    this.navCtrl.setRoot('HomePage');
   }
 
   logInFB() {
     this.userProvider.logInFB();
-    if(!this.userProvider.user){
-      this.navCtrl.pop();
-    }
+    this.navCtrl.setRoot('HomePage');
   }
 
   goToSignup() {
