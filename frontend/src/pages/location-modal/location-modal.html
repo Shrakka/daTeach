@@ -8,7 +8,7 @@
 
 <ion-content>
   <ion-searchbar [(ngModel)]="autocomplete.query" [showCancelButton]="true"
-   (ionInput)="updateSearch($event)" (ionCancel)="closeModal() " placeholder="'LOCATION_SEARCH' | translate"> </ion-searchbar>
+   (ionInput)="updateSearch($event)" (ionCancel)="closeModal() " [placeholder]="'LOCATION_SEARCH' | translate"> </ion-searchbar>
 
 
     <ion-item  (click)="getposition()" style="cursor:pointer;">

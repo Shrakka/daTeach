@@ -7,7 +7,7 @@
 
 
 <ion-content>
-  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="search($event)" (ionCancel)="onCancel($event)" placeholder="'TOPIC_SEARCH' : translate"> </ion-searchbar>
+  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="search($event)" (ionCancel)="onCancel($event)" [placeholder]="'TOPIC_SEARCH' | translate"> </ion-searchbar>
 
   <ion-list>
     <ion-item *ngFor="let suggestion of getVisibleSuggestions()">
