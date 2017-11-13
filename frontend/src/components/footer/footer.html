@@ -1,13 +1,16 @@
 <ion-toolbar>
   <ion-buttons>
-    <button ion-button icon-only (click)="goToLessons()">
-        <ion-icon color="dark" name="archive"></ion-icon>
+    <button (click)="goToLessons()" class="footer-button">
+        <ion-icon color="dark" name="archive" class="footer-icon"></ion-icon>
+        {{ 'FOOTER_LESSONS' | translate }}
     </button>
-    <button ion-button icon-only (click)="goToHome()">
-        <ion-icon color="dark" name="home"></ion-icon>
+    <button (click)="goToHome()" class="footer-button">
+        <ion-icon color="dark" name="home" class="footer-icon"></ion-icon>
+        {{ 'FOOTER_HOME' | translate }}
     </button>
-    <button ion-button icon-only (click)="goToMessages()">
-        <ion-icon color="dark" name="text"></ion-icon>
+    <button (click)="goToMessages()" class="footer-button">
+        <ion-icon color="dark" name="text" class="footer-icon"></ion-icon>
+        {{ 'FOOTER_MESSAGES' | translate }}
     </button>
   </ion-buttons>
 </ion-toolbar>
