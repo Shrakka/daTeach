@@ -32,7 +32,8 @@ export class LoginPage {
 
   logIn() {
     this.userProvider.logIn({'email': this.email, 'password': this.password});
-    this.navCtrl.setRoot('HomePage');
+    //this.navCtrl.setRoot('HomePage');
+    this.navCtrl.pop();
   }
 
   logInFB() {
