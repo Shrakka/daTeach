@@ -12,20 +12,20 @@
       <div class="detail-longDesc">{{ result.user.public.longDescription }}</div>
     </div>
     <div *ngIf="result.lesson.type === 'punctual'">
-      <div padding class="calendar-label">Calendar</div>
-      <div padding class="calendar-label">{{ result.user.public.firstname}} is available these days:</div>
+      <div padding class="calendar-label">{{ 'FORM_CALENDAR' | translate }}</div>
+      <div padding class="calendar-label">{{ result.user.public.firstname}} {{ 'DETAIL_AVAILABLE' | translate }}</div>
       <calendar mode="take" [initdates]="result.lesson.dates" [modifiable]="false"></calendar>
     </div>
-    
+
     <div *ngIf="userProvider.user">
       <textarea class="detail-textarea" [(ngModel)]="comment" [placeholder]='placeholder'></textarea>
       <div class="detail-block-button">
-        <button ion-button [disabled]="comment.length == 0 && result.user.public.askmessage" (click)="sendMessage()">Send</button>
+        <button ion-button [disabled]="comment.length == 0 && result.user.public.askmessage" (click)="sendMessage()">{{ 'DETAIL_SEND' | translate }}</button>
       </div>
     </div>
     <div *ngIf="!userProvider.user">
         <div class="detail-block-button">
-            <button ion-button (click)="goToLogin()">Log in to chat!</button>
+            <button ion-button (click)="goToLogin()">{{ 'DETAIL_LOGINTOCHAT' | translate }}</button>
         </div>
     </div>
 

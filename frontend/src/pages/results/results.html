@@ -6,12 +6,12 @@
     <div *ngIf="userProvider.user">
         <profile-banner></profile-banner>
     </div>
-  
+
   <result *ngFor="let result of lessonProvider.results" [result]="result" [mode]="mode"></result>
-  
+
   <div *ngIf="!created">
-    <button *ngIf="mode === 'take'" ion-button color="primary" (click)="createLesson()"  >No matching teacher? Create your request</button>
-    <button *ngIf="mode === 'give'" ion-button color="secondary" (click)="createLesson()">No matching student? Create your lesson!</button>
+    <button *ngIf="mode === 'take'" ion-button color="primary" (click)="createLesson()">{{ 'RESULT_NOTEACHER' | translate }}</button>
+    <button *ngIf="mode === 'give'" ion-button color="secondary" (click)="createLesson()">{{ 'RESULT_NOSTUDENT' | translate }}</button>
   </div>
 
 </ion-content>
