@@ -9,6 +9,7 @@ import { sysOptions } from '../../app/i18n.constants';
   templateUrl: 'home.html',
 })
 export class HomePage {
+  sysOptions: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public translate: TranslateService) {
     this.sysOptions = sysOptions;
