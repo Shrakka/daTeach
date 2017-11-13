@@ -4,6 +4,7 @@ import { UserProvider } from '../../providers/user/user';
 import { LessonProvider } from '../../providers/lesson/lesson';
 import { TopicModalPage } from '../../pages/topic-modal/topic-modal';
 import { LocationModalPage } from '../../pages/location-modal/location-modal';
+import { TranslateService } from 'ng2-translate';
 
 @IonicPage()
 @Component({
@@ -13,8 +14,9 @@ import { LocationModalPage } from '../../pages/location-modal/location-modal';
 export class TakeFormPage {
 
   takeForm: any;
+  topicsDisplay: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider, public alertCtrl: AlertController, public translate: TranslateService) {
     // INIT FORM
     this.takeForm =   {
     role: 'student',
@@ -24,6 +26,7 @@ export class TakeFormPage {
     location: [],
     dates: []
     }
+    this.topicsDisplay = []
 
     // LOAD PROVIDER
     this.lessonProvider.getTopics();
@@ -49,7 +52,8 @@ export class TakeFormPage {
   onTopicFocus(){
     const topicModal = this.modalCtrl.create(TopicModalPage, {'give':false});
     topicModal.onDidDismiss(data => {
-      this.takeForm.topics = data;
+      this.takeForm.topics = data.map(obj => obj.key);
+      this.topicsDisplay = data.map(obj => obj.name);
       console.log(this.takeForm.topics);
     })
     topicModal.present();
@@ -59,6 +63,7 @@ export class TakeFormPage {
     const locationModal = this.modalCtrl.create(LocationModalPage, {'give':false}, {showBackdrop: true});
     locationModal.onDidDismiss(data => {
       this.takeForm.location = data;
+      console.log(data)
     })
     locationModal.present();
   }
@@ -71,16 +76,16 @@ export class TakeFormPage {
   goToResults() {
     if(this.takeForm.location === '' || this.takeForm.topics.length === 0){
       const alert = this.alertCtrl.create({
-        title:'Complete the form',
-        subTitle:'Please fill the empty fields to continue',
+        title:(this.translate.get("ALERT_COMPLETE_TITLE") as any).value,
+        subTitle:(this.translate.get("ALERT_COMPLETE_TEXT") as any).value,
         buttons: ['OK']
       });
       alert.present();
     } else {
       if(this.takeForm.type === 'punctual' && this.takeForm.dates.length === 0) {
         const alert = this.alertCtrl.create({
-          title:'Choose a date',
-          subTitle:'Please select at least one date you would be available to facilitate matching',
+          title:(this.translate.get("ALERT_CALENDAR_TITLE") as any).value,
+          subTitle:(this.translate.get("ALERT_CALENDAR_TEXT") as any).value,
           buttons: ['OK']
         });
         alert.present();

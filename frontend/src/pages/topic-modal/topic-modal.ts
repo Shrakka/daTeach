@@ -50,7 +50,7 @@ export class TopicModalPage {
   }
 
   closeModal() {
-    this.viewCtrl.dismiss(this.suggestions.filter(obj => obj.checked).map(obj => obj.key));
+    this.viewCtrl.dismiss(this.suggestions.filter(obj => obj.checked));
   }
 
 }

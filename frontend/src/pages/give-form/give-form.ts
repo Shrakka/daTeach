@@ -14,6 +14,7 @@ import { TranslateService } from 'ng2-translate';
 export class GiveFormPage {
 
   giveForm: any;
+  topicsDisplay: any;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider, public alertCtrl: AlertController, public translate: TranslateService) {
@@ -25,6 +26,8 @@ export class GiveFormPage {
       location: [],
       dates: []
       };
+      
+      this.topicsDisplay = []
 
     this.lessonProvider.getTopics();
   }
@@ -42,7 +45,8 @@ export class GiveFormPage {
     const topicModal = this.modalCtrl.create(TopicModalPage, {'give':true});
 
     topicModal.onDidDismiss(data => {
-      this.giveForm.topics = data;
+      this.giveForm.topics = data.map(obj => obj.key);
+      this.topicsDisplay = data.map(obj => obj.name);
       console.log(this.giveForm.topics);
     })
     topicModal.present();
