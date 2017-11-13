@@ -16,8 +16,8 @@ import { TranslateModule } from 'ng2-translate/ng2-translate';
     ProfileBannerComponentModule,
     HeaderComponentModule,
     FooterComponentModule,
+    TranslateModule,
     IonicPageModule.forChild(ResultsPage),
-    TranslateModule
   ],
 })
 export class ResultsPageModule {}
