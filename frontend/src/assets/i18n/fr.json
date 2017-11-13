@@ -7,7 +7,7 @@
   "LOGIN_PASSWORD":"Mot de passe",
   "LOGIN_LOGBUTTON": "Se connecter",
   "LOGIN_FACEBOOK":"Connexion avec Facebook",
-  "LOGIN_NOACCOUNT":"Pas encore de compte?",
+  "LOGIN_NOACCOUNT":"Pas encore de compte ?",
 
   "SIGNUP_SIGN":"Inscription",
   "SIGNUP_EMAIL":"Email",
@@ -30,17 +30,17 @@
   "PROFILE_SEX": "Genre",
   "PROFILE_AGE": "Age",
   "PROFILE_LEVEL": "Niveau",
-  "PROFILE_SHORTDESCRIPTION": "Que cherches-tu?",
+  "PROFILE_SHORTDESCRIPTION": "Que cherches-tu ?",
   "PROFILE_LONGDESCRIPTION": "Présente toi",
 
   "FORM_REGULAR": "Regulier",
   "FORM_PUNCTUAL": "Ponctuel",
   "FORM_TOPICS": "Sujet(s)",
-  "FORM_TOPICS_DESCRIPTION_GIVE": "Que souhaites-tu enseigner?",
-  "FORM_TOPICS_DESCRIPTION_TAKE": "Que souhaites-tu apprendre?",
+  "FORM_TOPICS_DESCRIPTION_GIVE": "Que souhaites-tu enseigner ?",
+  "FORM_TOPICS_DESCRIPTION_TAKE": "Que souhaites-tu apprendre ?",
   "FORM_LOCATION": "Adresse ou ville",
-  "FORM_LOCATION_DESCRIPTION_GIVE": "Où se déroulera la lesson?",
-  "FORM_LOCATION_DESCRIPTION_TAKE": "Où se déroulera la lesson?",
+  "FORM_LOCATION_DESCRIPTION_GIVE": "Où se déroulera la leçon ?",
+  "FORM_LOCATION_DESCRIPTION_TAKE": "Où se déroulera la leçon ?",
   "FORM_PREFERENCE": "Préférence de déplacement",
   "FORM_MOVE": "JE ME DEPLACE",
   "FORM_HOST": "JE RECOIS",
@@ -59,22 +59,23 @@
   "LESSONS_TAKE": "Cours que je donne",
   "LESSONS_GIVE": "Cours que je prend",
 
-  "DISCUSSION_ENTERMESSAGE": "Ecris un message...",
+  "DISCUSSION_ENTERMESSAGE": "Envoyer un message...",
 
-  "RESULT_NOTEACHER": "Ecris un message...",
+  "RESULT_NOTEACHER": "Pas interessé? Crée ta propre requête !",
+  "RESULT_NOSTUDENT": "Pas interessé? Crée ta propre leçon",
 
   "DETAIL_LOGINTOCHAT": "Connecte toi pour discuter",
-  "DETAIL_PLACEHOLDER": "Envoye un premier message. Profites en pour te présenter et expliquer ce que tu recherches",
+  "DETAIL_PLACEHOLDER": "Envoye un premier message. Profites-en pour te présenter et expliquer ce que tu recherches",
   "DETAIL_SEND": "Envoyer",
 
   "ALERT_COMPLETE_TITLE":"Complète le formulaire",
   "ALERT_COMPLETE_TEXT":"Merci de compléter le formulaire pour continuer.",
-  "ALERT_CREATEAD_TITLE": "Success!",
-  "ALERT_CREATEAD_GIVE_TEXT": "Your lesson proposal has been sucessfully created. It can be seen by students who correspond to your criteria.",
-  "ALERT_CREATEAD_TAKE_TEXT": "Your lesson request has been sucessfully created. It can be seen by teachers who correspond to your criteria.",
-  "ALERT_NOTREGISTERED_TITLE": "Not registered yet?",
-  "ALERT_NOTREGISTERED_TEXT": "To create your personal announce, please sign up or log in.",
-  "ALERT_MESSAGESEND_TITLE": "Message sent",
-  "ALERT_MESSAGESEND_TEXT": "Your message has been sent successfully. You will soon receive an answer and be notified."
+  "ALERT_CREATEAD_TITLE": "Félicitations!",
+  "ALERT_CREATEAD_GIVE_TEXT": "Votre leçon a été créée avec succès. Elle peut être consulté par les étudiants correspondant à tes critères.",
+  "ALERT_CREATEAD_TAKE_TEXT": "Votre leçon a été créee avec succès. Elle peut être consulté par les professeurs correspondant à tes critères.",
+  "ALERT_NOTREGISTERED_TITLE": "Pas encore connecté ?",
+  "ALERT_NOTREGISTERED_TEXT": "Connecte toi pour créer ta propre annonce",
+  "ALERT_MESSAGESEND_TITLE": "Message envoyé!",
+  "ALERT_MESSAGESEND_TEXT": "Message envoyé avec succès. Vous receverez un message si l'utilisateur est interessé."
 
 }
