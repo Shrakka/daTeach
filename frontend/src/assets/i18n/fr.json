@@ -76,8 +76,25 @@
   "ALERT_NOTREGISTERED_TITLE": "Pas encore connecté ?",
   "ALERT_NOTREGISTERED_TEXT": "Connecte toi pour créer ta propre annonce",
   "ALERT_MESSAGESEND_TITLE": "Message envoyé!",
-  "ALERT_MESSAGESEND_TEXT": "Message envoyé avec succès. Vous receverez un message si l'utilisateur est interessé."
+  "ALERT_MESSAGESEND_TEXT": "Message envoyé avec succès. Vous receverez un message si l'utilisateur est interessé.",
 
-  
+  "TOPIC_MAT":"Mathématiques",
+  "TOPIC_ENG":"Anglais",
+  "TOPIC_PHY":"Physiques",
+  "TOPIC_CHE":"Chimie",
+  "TOPIC_FRE":"Français",
+  "TOPIC_HIS":"Histoire",
+  "TOPIC_GEO":"Géographie",
+  "TOPIC_TEC":"Technologie",
+  "TOPIC_LIT":"Littérature",
+  "TOPIC_BIO":"Biologie",
+  "TOPIC_SPA":"Espagnol",
+  "TOPIC_RUS":"Russe",
+  "TOPIC_SOC":"Sociologie",
+  "TOPIC_ECO":"Economie",
+  "TOPIC_ART":"Arts plastiques",
+  "TOPIC_DAN":"Dance",
+  "TOPIC_SOF":"Developement informatique",
+  "TOPIC_CS:":"Informatique"
 
 }

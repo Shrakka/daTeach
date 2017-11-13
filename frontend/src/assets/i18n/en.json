@@ -76,6 +76,24 @@
   "ALERT_NOTREGISTERED_TITLE": "Not registered yet?",
   "ALERT_NOTREGISTERED_TEXT": "To create your personal announce, please sign up or log in.",
   "ALERT_MESSAGESEND_TITLE": "Message sent",
-  "ALERT_MESSAGESEND_TEXT": "Your message has been sent successfully. You will soon receive an answer and be notified."
+  "ALERT_MESSAGESEND_TEXT": "Your message has been sent successfully. You will soon receive an answer and be notified.",
 
+  "TOPIC_MAT":"Mathematics",
+  "TOPIC_ENG":"English",
+  "TOPIC_PHY":"Physics",
+  "TOPIC_CHE":"Chemistry",
+  "TOPIC_FRE":"French",
+  "TOPIC_HIS":"History",
+  "TOPIC_GEO":"Geography",
+  "TOPIC_TEC":"Engineering",
+  "TOPIC_LIT":"Litterature",
+  "TOPIC_BIO":"Biology",
+  "TOPIC_SPA":"Spanish",
+  "TOPIC_RUS":"Russian",
+  "TOPIC_SOC":"Sociology",
+  "TOPIC_ECO":"Economics",
+  "TOPIC_ART":"Arts",
+  "TOPIC_DAN":"Dance",
+  "TOPIC_SOF":"Software development",
+  "TOPIC_CS:":"Computer science"
 }
