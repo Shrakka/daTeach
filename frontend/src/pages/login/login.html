@@ -4,22 +4,22 @@
 
 <ion-content padding>
   <ion-card class="login-card">
-    <div class="login-title">Please log in</div>
+    <div class="login-title">{{ 'LOGIN_LOG' | translate }}</div>
     <ion-item class="login-item">
-      <ion-label color="primary" stacked>Email</ion-label>
+      <ion-label color="primary" stacked>{{ 'LOGIN_EMAIL' | translate }}</ion-label>
       <ion-input [(ngModel)]="email" type="email"></ion-input>
     </ion-item>
     <ion-item class="login-item">
-      <ion-label color="primary" stacked>Password</ion-label>
+      <ion-label color="primary" stacked>{{ 'LOGIN_PASSWORD' | translate }}</ion-label>
       <ion-input [(ngModel)]="password" type="password"></ion-input>
     </ion-item>
     <div class="login-buttons">
-      <button ion-button (click)="logIn()" class="login-button">Log in</button>
+      <button ion-button (click)="logIn()" class="login-button">{{ 'LOGIN_LOGBUTTON' | translate }}</button>
       <button ion-button (click)="logInFB()" color="facebook" class="login-button">
         <ion-icon name="logo-facebook" class="login-button-icon"></ion-icon>
-        Login with Facebook
+        {{ 'LOGIN_FACEBOOK' | translate }}
       </button>
-      <button ion-button (click)="goToSignup()" class="login-button" color="secondary">Do not have an account ?</button>
+      <button ion-button (click)="goToSignup()" class="login-button" color="secondary">{{ 'LOGIN_NOACCOUNT' | translate }}</button>
     </div>
   </ion-card>
 </ion-content>

@@ -4,6 +4,7 @@ import { LoginPage } from './login';
 import { HeaderComponentModule } from '../../components/header/header.module';
 import { FooterComponentModule } from '../../components/footer/footer.module';
 import { Facebook } from '@ionic-native/facebook';
+import { TranslateModule } from 'ng2-translate/ng2-translate';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { Facebook } from '@ionic-native/facebook';
     HeaderComponentModule,
     FooterComponentModule,
     IonicPageModule.forChild(LoginPage),
+    TranslateModule
   ],
   providers: [
     Facebook

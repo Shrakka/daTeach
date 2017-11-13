@@ -1,4 +1,81 @@
-{
+{  
   "HOME_TAKE": "I want to take a lesson",
-  "HOME_GIVE": "I want to give a lesson"
+  "HOME_GIVE": "I want to give a lesson",
+
+  "LOGIN_LOG":"Please log in",
+  "LOGIN_EMAIL":"Email",
+  "LOGIN_PASSWORD":"Password",
+  "LOGIN_LOGBUTTON": "Connexion",
+  "LOGIN_FACEBOOK":"Login with facebook",
+  "LOGIN_NOACCOUNT":"Do not have an account?",
+
+  "SIGNUP_SIGN":"Please sign up",
+  "SIGNUP_EMAIL":"Email",
+  "SIGNUP_PASSWORD":"Password",
+  "SIGNUP_FIRSTNAME":"Firstname",
+  "SIGNUP_LASTNAME": "Lastname",
+  "SIGNUP_BIRTHYEAR":"Birthyear",
+  "SIGNUP_GENDER":"Gender",
+  "SIGNUP_MALE":"Male",
+  "SIGNUP_FEMALE":"Female",
+  "SIGNUP_NA":"Other",
+  "SIGNUP_BUTTON":"Sign up",
+
+  "COMPONENT_HOME": "Home",
+
+  "PROFILE_CONTACTS": "Contacts",
+  "PROFILE_MOBILE": "Mobile",
+  "PROFILE_INFOS": "Infos",
+  "PROFILE_EMAIL": "Email",
+  "PROFILE_SEX": "Gender",
+  "PROFILE_AGE": "Age",
+  "PROFILE_LEVEL": "Level",
+  "PROFILE_SHORTDESCRIPTION": "Looking for?",
+  "PROFILE_LONGDESCRIPTION": "Introduce yourself!",
+
+  "FORM_REGULAR": "Regular",
+  "FORM_PUNCTUAL": "One-time",
+  "FORM_TOPICS": "Topic(s)",
+  "FORM_TOPICS_DESCRIPTION_GIVE": "What would you like to teach",
+  "FORM_TOPICS_DESCRIPTION_TAKE": "What would you like to learn",
+  "FORM_LOCATION": "City or location",
+  "FORM_LOCATION_DESCRIPTION_GIVE": "Where will you give the lesson?",
+  "FORM_LOCATION_DESCRIPTION_TAKE": "Where will you take the lesson?",
+  "FORM_PREFERENCE": "Preference for the lesson",
+  "FORM_MOVE": "I MOVE",
+  "FORM_HOST": "I HOST",
+  "FORM_BOTH": "BOTH",
+  "FORM_SHOWRESULTS": "SHOW RESULTS",
+  "FORM_CALENDAR": "Calendar",
+
+  "TOPIC_HEADER": "Select topics",
+  "TOPIC_SEARCH": "Not in the list? Search here!",
+
+  "LOCATION_HEADER": "Select a location",
+  "LOCATION_SEARCH": "Enter an address",
+
+  "LESSONS_ACTIVE": "Active lessons",
+  "LESSONS_INACTIVE": "Inactive lessons",
+  "LESSONS_TAKE": "Lessons I take",
+  "LESSONS_GIVE": "Lessons I give",
+
+  "DISCUSSION_ENTERMESSAGE": "Enter a message...",
+
+  "RESULT_NOTEACHER": "No matching teacher? create your request",
+  "RESULT_NOSTUDENT": "No matching student? create your ad",
+
+  "DETAIL_LOGINTOCHAT": "Log in to chat!",
+  "DETAIL_PLACEHOLDER": "Write a short message to present you and explain what you are looking for.",
+  "DETAIL_SEND": "SEND",
+
+  "ALERT_COMPLETE_TITLE":"Complete the form",
+  "ALERT_COMPLETE_TEXT":"Please fill the empty fields to continue. Thanks!",
+  "ALERT_CREATEAD_TITLE": "Success!",
+  "ALERT_CREATEAD_GIVE_TEXT": "Your lesson proposal has been sucessfully created. It can be seen by students who correspond to your criteria.",
+  "ALERT_CREATEAD_TAKE_TEXT": "Your lesson request has been sucessfully created. It can be seen by teachers who correspond to your criteria.",
+  "ALERT_NOTREGISTERED_TITLE": "Not registered yet?",
+  "ALERT_NOTREGISTERED_TEXT": "To create your personal announce, please sign up or log in.",
+  "ALERT_MESSAGESEND_TITLE": "Message sent",
+  "ALERT_MESSAGESEND_TEXT": "Your message has been sent successfully. You will soon receive an answer and be notified."
+
 }
