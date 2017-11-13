@@ -21,7 +21,7 @@ export class TopicModalPage {
     this.topics = this.lessonProvider.topics.topics;
 
     for(let topic of this.topics) {
-      this.suggestions.push({'name': topic.name, 'checked': false, 'hidden': false});
+      this.suggestions.push({'name': topic, 'checked': false, 'hidden': false});
     }
   }
 
