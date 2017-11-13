@@ -21,7 +21,15 @@
   "SIGNUP_NA":"Other",
   "SIGNUP_BUTTON":"Sign up",
 
-  "COMPONENT_HOME": "Home",
+  "TITLE_HOME": "Home",
+  "TITLE_TAKE": "Take lessons",
+  "TITLE_GIVE": "Give lessons",
+  "TITLE_RESULTS": "Results",
+  "TITLE_DETAIL": "Details",
+  "TITLE_LESSONS": "Your lessons",
+  "TITLE_PROFILE": "Your profile",
+  "TITLE_LOGIN": "Log In",
+  "TITLE_SIGNUP": "Sign Up",
 
   "PROFILE_CONTACTS": "Contacts",
   "PROFILE_MOBILE": "Mobile",
@@ -53,6 +61,7 @@
 
   "LOCATION_HEADER": "Select a location",
   "LOCATION_SEARCH": "Enter an address",
+  "LOCATION_POSITION": "Your current position",
 
   "LESSONS_ACTIVE": "Active lessons",
   "LESSONS_INACTIVE": "Inactive lessons",
@@ -67,6 +76,7 @@
   "DETAIL_LOGINTOCHAT": "Log in to chat!",
   "DETAIL_PLACEHOLDER": "Write a short message to present you and explain what you are looking for.",
   "DETAIL_SEND": "SEND",
+  "DETAIL_AVAILABLE": "is available these days",
 
   "ALERT_COMPLETE_TITLE":"Complete the form",
   "ALERT_COMPLETE_TEXT":"Please fill the empty fields to continue. Thanks!",
@@ -77,6 +87,9 @@
   "ALERT_NOTREGISTERED_TEXT": "To create your personal announce, please sign up or log in.",
   "ALERT_MESSAGESEND_TITLE": "Message sent",
   "ALERT_MESSAGESEND_TEXT": "Your message has been sent successfully. You will soon receive an answer and be notified.",
+  "ALERT_CALENDAR_TITLE": "Choose a date",
+  "ALERT_CALENDAR_TEXT": "Please select at least one date you would be available to facilitate matching",
+
 
   "TOPIC_MAT":"Mathematics",
   "TOPIC_ENG":"English",

@@ -21,7 +21,15 @@
   "SIGNUP_NA":"Autre",
   "SIGNUP_BUTTON":"Inscription",
 
-  "COMPONENT_HOME": "",
+  "TITLE_HOME": "",
+  "TITLE_TAKE": "Choisir un cours",
+  "TITLE_GIVE": "Donner un cours",
+  "TITLE_RESULTS": "Resultats",
+  "TITLE_DETAIL": "Détails",
+  "TITLE_LESSONS": "Mes cours",
+  "TITLE_PROFILE": "Mon profil",
+  "TITLE_LOGIN": "Se connecter",
+  "TITLE_SIGNUP": "S'inscrire",
 
   "PROFILE_CONTACTS": "Contact",
   "PROFILE_MOBILE": "Téléphone",
@@ -53,6 +61,7 @@
 
   "LOCATION_HEADER": "Adresse",
   "LOCATION_SEARCH": "Entrer une adresse",
+  "LOCATION_POSITION": "Votre position",
 
   "LESSONS_ACTIVE": "Cours actifs",
   "LESSONS_INACTIVE": "Cours inactifs",
@@ -67,6 +76,7 @@
   "DETAIL_LOGINTOCHAT": "Connecte toi pour discuter",
   "DETAIL_PLACEHOLDER": "Envoye un premier message. Profites-en pour te présenter et expliquer ce que tu recherches",
   "DETAIL_SEND": "Envoyer",
+  "DETAIL_AVAILABLE": "est disponible ces jours :",
 
   "ALERT_COMPLETE_TITLE":"Complète le formulaire",
   "ALERT_COMPLETE_TEXT":"Merci de compléter le formulaire pour continuer.",
@@ -77,6 +87,9 @@
   "ALERT_NOTREGISTERED_TEXT": "Connecte toi pour créer ta propre annonce",
   "ALERT_MESSAGESEND_TITLE": "Message envoyé!",
   "ALERT_MESSAGESEND_TEXT": "Message envoyé avec succès. Vous receverez un message si l'utilisateur est interessé.",
+  "ALERT_CALENDAR_TITLE": "Choose a date",
+  "ALERT_CALENDAR_TEXT": "Please select at least one date you would be available to facilitate matching",
+
 
   "TOPIC_MAT":"Mathématiques",
   "TOPIC_ENG":"Anglais",

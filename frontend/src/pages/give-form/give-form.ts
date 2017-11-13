@@ -4,6 +4,7 @@ import { UserProvider } from '../../providers/user/user';
 import { LessonProvider } from '../../providers/lesson/lesson';
 import { TopicModalPage } from '../../pages/topic-modal/topic-modal';
 import { LocationModalPage } from '../../pages/location-modal/location-modal';
+import { TranslateService } from 'ng2-translate';
 
 @IonicPage()
 @Component({
@@ -15,7 +16,7 @@ export class GiveFormPage {
   giveForm: any;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider, public alertCtrl: AlertController, public translate: TranslateService) {
     this.giveForm =   {
       role: 'teacher',
       type: 'regular',
@@ -63,16 +64,16 @@ export class GiveFormPage {
   goToResults() {
     if(this.giveForm.location === '' || this.giveForm.topics.length === 0){
       const alert = this.alertCtrl.create({
-        title:'Complete the form',
-        subTitle:'Please fill the empty fields to continue',
+        title: (this.translate.get("ALERT_COMPLETE_TITLE") as any).value,
+        subTitle:(this.translate.get("ALERT_COMPLETE_TEXT") as any).value,
         buttons: ['OK']
       });
       alert.present();
     } else {
         if(this.giveForm.type === 'punctual' && this.giveForm.dates.length === 0) {
           const alert = this.alertCtrl.create({
-            title:'Choose a date',
-            subTitle:'Please select at least one date you would be available to facilitate matching',
+            title: (this.translate.get("ALERT_CALENDAR_TITLE") as any).value,
+            subTitle:(this.translate.get("ALERT_CALENDAR_TEXT") as any).value,
             buttons: ['OK']
           });
           alert.present();
