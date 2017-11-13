@@ -91,6 +91,10 @@
   "ALERT_CALENDAR_TITLE": "Choose a date",
   "ALERT_CALENDAR_TEXT": "Please select at least one date you would be available to facilitate matching",
 
+  "FOOTER_LESSONS": "LESSONS",
+  "FOOTER_HOME": "HOME",
+  "FOOTER_MESSAGES": "MESSAGES",
+
 
   "TOPIC_MAT":"Mathematics",
   "TOPIC_ENG":"English",

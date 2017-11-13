@@ -91,6 +91,9 @@
   "ALERT_CALENDAR_TITLE": "Choisis une date",
   "ALERT_CALENDAR_TEXT": "Choisis une date à laquelle tu serais disponible",
 
+  "FOOTER_LESSONS": "COURS",
+  "FOOTER_HOME": "MENU",
+  "FOOTER_MESSAGES": "MESSAGES",
 
   "TOPIC_MAT":"Mathématiques",
   "TOPIC_ENG":"Anglais",
