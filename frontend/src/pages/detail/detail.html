@@ -6,7 +6,7 @@
   <ion-card>
     <div class="profile-overview">
       <div class="profile-picture"><img [src]="result.user.public.picture"/></div>
-      <div class="detail-name">{{ result.user.public.firstname }} {{ result.user.public.lastname }}</div>
+      <div class="detail-name">{{ result.user.public.firstname }} {{ result.user.public.lastname }} <span class="detail-age">({{ result.user.public.gender }} - {{ result.user.public.age }})</span></div>
       <div class="detail-shortDesc">{{ result.user.public.shortDescription }}</div>
       <div class="detail-sep"></div>
       <div class="detail-longDesc">{{ result.user.public.longDescription }}</div>

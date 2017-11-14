@@ -11,6 +11,10 @@
   border-left: solid 4px color($colors, secondary);
 }
 
+.card-inactive {
+  border-left: solid 4px color($colors, disable);
+}
+
 .card-primary-picture {
   min-width: 50px;
   max-width: 50px;
