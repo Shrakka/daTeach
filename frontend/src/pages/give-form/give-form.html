@@ -47,16 +47,10 @@
         <br  *ngIf="giveForm.type !== 'nearby'"/>
 
         <!-- LOCATION -->
-<<<<<<< HEAD
+
         <div  class="location-search" *ngIf="giveForm.type !== 'nearby'">
-          <div padding class="location-label">City or location</div>
-||||||| merged common ancestors
-        <div  class="location-search">
-          <div padding class="location-label">City or location</div>
-=======
-        <div  class="location-search">
           <div padding class="location-label">{{ 'FORM_LOCATION' | translate }}</div>
->>>>>>> master
+
           <ion-searchbar
           [(ngModel)]="giveForm.location.fullAddress"
           [showCancelButton]="shouldShowCancel"
@@ -69,16 +63,10 @@
 
 
         <!-- MOVE BUTTONS -->
-<<<<<<< HEAD
+
         <div class="move-panel" padding *ngIf="giveForm.type !== 'nearby'">
-          <div class="move-label">Preference for the lesson</div>
-||||||| merged common ancestors
-        <div class="move-panel" padding>
-          <div class="move-label">Preference for the lesson</div>
-=======
-        <div class="move-panel" padding>
           <div class="move-label">{{ 'FORM_PREFERENCE' | translate}}</div>
->>>>>>> master
+
           <div class="move-buttons">
             <button ion-button color="secondary" [outline]="giveForm.moving !== 'move'" (click)="setMoving('move')">{{ 'FORM_MOVE' | translate}}</button>
             <button ion-button color="secondary" [outline]="giveForm.moving !== 'host'" (click)="setMoving('host')">{{ 'FORM_HOST' | translate}}</button>
@@ -99,16 +87,10 @@
 
 
         <!-- SUBMIT BUTTON -->
-<<<<<<< HEAD
+
         <div class="button-panel" *ngIf="giveForm.type !== 'nearby'">
-          <button ion-button color="secondary" (click)="goToResults()">Show results</button>
-||||||| merged common ancestors
-        <div class="button-panel">
-          <button ion-button color="secondary" (click)="goToResults()">Show results</button>
-=======
-        <div class="button-panel">
           <button ion-button color="secondary" (click)="goToResults()">{{ 'FORM_SHOWRESULTS' | translate }}</button>
->>>>>>> master
+
         </div>
       </div>
 
