@@ -1,4 +1,4 @@
-<ion-card [class]="'card-' + (result.lesson.author.role === 'student' ? 'token' : 'given') + ' card-md'">
+<ion-card [class]="'card-' + ((result.lesson.active) ? ((result.lesson.author.role) === 'student' ? 'token' : 'given') : 'inactive') + ' card-md'">
   <div class="card-both card-primary">
     <div class="card-primary-picture"><img [src]="author.public.picture"/></div>
     <div class="card-info">
