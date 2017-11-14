@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Geolocation } from '@ionic-native/geolocation';
 import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { LessonProvider } from '../../providers/lesson/lesson';
@@ -19,7 +20,7 @@ export class TakeFormPage {
 
   takeForm: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController,private geolocation: Geolocation, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider, public alertCtrl: AlertController) {
     // INIT FORM
     this.takeForm =   {
     role: 'student',
@@ -46,8 +47,36 @@ export class TakeFormPage {
 
   }
 
+  getLatLng(){
+    this.geolocation.getCurrentPosition()
+      .then((resp) => {
+       console.log('latitude', resp.coords.latitude);
+       console.log('longitude', resp.coords.longitude);
+        this.loadMap({lat:resp.coords.latitude,lng:resp.coords.longitude});
+       // return
+       // var requestUrl="https://maps.googleapis.com/maps/api/geocode/json?latlng="+resp.coords.latitude+","+resp.coords.longitude+
+       // "&key=AIzaSyCvYUJBCSnda6uaadmkzlRtDIeWE7QSPlU";
+       // this.http.get(requestUrl).map(res => res.json()).subscribe(data => {
+       //  var town=data.results[0].address_components[2].long_name;
+       //  this.pickedLocation={'town':town, 'fullAddress': data.results[0].formatted_address, 'position':{'lat':resp.coords.latitude,'long':resp.coords.longitude},'clicked':false};
+       //  this.closeModal();
+        
+       //  });
+
+
+      //  this.nativeGeocoder.reverseGeocode(resp.coords.latitude, resp.coords.longitude)
+      // .then((result: NativeGeocoderReverseResult) => console.log(JSON.stringify(result)))
+      // .catch((error: any) => console.log(error));
+      
+     })
+      .catch((error) => {
+    console.log('Error getting location', error);});
+
+  }
+
    selectedNearby() {
-    this.loadMap();
+    this.getLatLng();
+   
    }
 
   setMoving(moving){
@@ -77,9 +106,18 @@ export class TakeFormPage {
     this.takeForm.dates = $event;
   }
 
-  loadMap() {
-    
-    let latLng = new google.maps.LatLng(-34.9290, 138.6010);
+  addMarker(latlng,map,label){
+     var marker = new google.maps.Marker({
+          position: latlng,
+          map: map,
+          label: label
+        });
+  }
+
+  loadMap(LatLng) {
+    // let LatLng=this.getLatLng()
+    // var a=0;
+    let latLng = new google.maps.LatLng(LatLng.lat, LatLng.lng);
  
     let mapOptions = {
       center: latLng,
@@ -89,6 +127,7 @@ export class TakeFormPage {
     
      setTimeout(() => {
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+      this.addMarker(latLng,this.map,'Me');
     }, 200);
     
   }
