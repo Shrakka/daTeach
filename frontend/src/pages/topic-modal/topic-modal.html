@@ -1,7 +1,9 @@
 <ion-header>
   <ion-navbar>
-    <ion-icon padding-left name="arrow-back" (click)="closeModal()"></ion-icon>
-    <ion-title>{{ 'TOPIC_HEADER' | translate }}</ion-title>
+    <div class="modal-header">
+      <ion-icon padding-left name="arrow-back" (click)="closeModal()" class="modal-header-icon"></ion-icon>
+      <ion-title>{{ 'TOPIC_HEADER' | translate }}</ion-title>
+    </div>
   </ion-navbar>
 </ion-header>
 
@@ -16,7 +18,9 @@
     </ion-item>
   </ion-list>
 
-  <button ion-button [color]="give ? 'secondary' : 'primary'" (click)="closeModal()" block>OK</button>
+  <div class="not-interested-button">
+    <button ion-button [color]="give ? 'secondary' : 'primary'" (click)="closeModal()">OK</button>
+  </div>
 
 </ion-content>
 
