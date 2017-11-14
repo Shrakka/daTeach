@@ -26,7 +26,7 @@ export class GiveFormPage {
       location: [],
       dates: []
       };
-      
+
       this.topicsDisplay = []
 
     this.lessonProvider.getTopics();
@@ -40,7 +40,7 @@ export class GiveFormPage {
     this.giveForm.moving = moving;
     console.log(this.giveForm);
   }
-  
+
   onTopicFocus(){
     const topicModal = this.modalCtrl.create(TopicModalPage, {'give':true});
 
