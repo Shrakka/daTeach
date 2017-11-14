@@ -110,7 +110,7 @@ export class TakeFormPage {
      var image = {
       url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
       // This marker is 20 pixels wide by 32 pixels high.
-      size: new google.maps.Size(50, 60),
+      size: new google.maps.Size(100, 60),
       // The origin for this image is (0, 0).
       origin: new google.maps.Point(0, 0),
 
@@ -155,7 +155,7 @@ export class TakeFormPage {
       for( var i=0; i<this.lessonProvider.results.length;i++){
         let lessonObj=this.lessonProvider.results[i];
         let latlng=lessonObj.lesson.location.position;
-        this.addMarker({lat:parseFloat(latlng.lat),lng:parseFloat(latlng.long)},this.map,'lesson'+i,lessonObj);
+        this.addMarker({lat:parseFloat(latlng.lat),lng:parseFloat(latlng.long)},this.map,lessonObj.lesson.topics[0],lessonObj);
       }
       this.addMarker(latLng,this.map,'Me','');
     }, 200);
