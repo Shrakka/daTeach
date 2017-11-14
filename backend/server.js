@@ -21,6 +21,19 @@ var io = require('socket.io')(server);
 var cors = require('cors')
 app.use(cors({ origin: true , credentials :  true}))
 
+// Multer 
+var multer = require('multer');
+var storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './public/photos');
+  },
+  filename: function(req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now())
+  }
+});
+app.use(multer({storage: storage}).single('photo'));
+
+
 // configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database
 

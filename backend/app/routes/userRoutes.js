@@ -8,4 +8,7 @@ module.exports = function(app) {
     .get(userController.getUser)
     .put(userController.putUser)
 
+  app.route('/photo/:id')
+    .post(userController.postPhoto)
+
 }
