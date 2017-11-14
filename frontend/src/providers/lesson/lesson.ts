@@ -38,7 +38,11 @@ export class LessonProvider {
   postLessonRequest(form) {
     return new Promise(resolve => {
       var options = new RequestOptions({withCredentials: true});
-      this.request = {role: form.role, location: form.location, moving: form.moving, dates: form.dates, type: form.type, topics: form.topics};
+      this.request = {role: form.role, location: form.location, moving: form.moving, dates: form.dates, type: form.type, topics: form.topics, usage:''};
+      
+      if(form.usage!=''){//Only for Gmaps request
+        this.request.usage='Gmaps';
+      }
       this.http.post(this.backendProvider.url + '/lesson/request/?apikey=' + this.backendProvider.apikey, this.request, options)
         .map(res => res.json())
         .subscribe(data => {

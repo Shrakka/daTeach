@@ -53,20 +53,6 @@ export class TakeFormPage {
        console.log('latitude', resp.coords.latitude);
        console.log('longitude', resp.coords.longitude);
         this.loadMap({lat:resp.coords.latitude,lng:resp.coords.longitude});
-       // return
-       // var requestUrl="https://maps.googleapis.com/maps/api/geocode/json?latlng="+resp.coords.latitude+","+resp.coords.longitude+
-       // "&key=AIzaSyCvYUJBCSnda6uaadmkzlRtDIeWE7QSPlU";
-       // this.http.get(requestUrl).map(res => res.json()).subscribe(data => {
-       //  var town=data.results[0].address_components[2].long_name;
-       //  this.pickedLocation={'town':town, 'fullAddress': data.results[0].formatted_address, 'position':{'lat':resp.coords.latitude,'long':resp.coords.longitude},'clicked':false};
-       //  this.closeModal();
-        
-       //  });
-
-
-      //  this.nativeGeocoder.reverseGeocode(resp.coords.latitude, resp.coords.longitude)
-      // .then((result: NativeGeocoderReverseResult) => console.log(JSON.stringify(result)))
-      // .catch((error: any) => console.log(error));
       
      })
       .catch((error) => {
@@ -75,6 +61,8 @@ export class TakeFormPage {
   }
 
    selectedNearby() {
+    let Gform={role: '', location: '', moving: '', dates: '', type: '', topics: '', usage:'Gmaps'};
+    this.lessonProvider.postLessonRequest(Gform);
     this.getLatLng();
    
    }
@@ -128,6 +116,9 @@ export class TakeFormPage {
      setTimeout(() => {
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
       this.addMarker(latLng,this.map,'Me');
+      for( var lesson in this.lessonProvider.results){
+        var t=0;
+      }
     }, 200);
     
   }

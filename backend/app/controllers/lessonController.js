@@ -40,7 +40,11 @@ exports.postLessonRequest = function(req, res) {
           for (var i = 0; i < lessons.length; i++) {
             data.push({lesson: lessons[i], user: {id: users[i].id, public: users[i].public}})
           }
-          res.send(matcher.match(req.body, data));
+          if (req.body.usage=='Gmaps') {
+              res.send(data);
+          }else{
+             res.send(matcher.match(req.body, data));
+        }
         })
       }
       else {
