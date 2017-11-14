@@ -72,26 +72,26 @@
   "DISCUSSION_ENTERMESSAGE": "Envoyer un message...",
 
   "RESULT_NOTEACHER": "Pas interessé ? Crée ta propre requête !",
-  "RESULT_NOSTUDENT": "Pas interessé ? Crée ta propre leçon",
+  "RESULT_NOSTUDENT": "Pas interessé ? Crée ta propre leçon !",
   "RESULT_NOENTRIES": "Je suis désolé, je n'ai trouvé aucun résultat correspondant à ta demande...",
 
 
   "DETAIL_LOGINTOCHAT": "Connecte-toi pour discuter",
-  "DETAIL_PLACEHOLDER": "Envoie un premier message. Profites-en pour te présenter et expliquer ce que tu recherches",
+  "DETAIL_PLACEHOLDER": "Envoie un premier message. Profites-en pour te présenter et expliquer ce que tu recherches.",
   "DETAIL_SEND": "Envoyer",
   "DETAIL_AVAILABLE": "est disponible ces jours :",
 
   "ALERT_COMPLETE_TITLE":"Complète le formulaire",
   "ALERT_COMPLETE_TEXT":"Merci de compléter le formulaire pour continuer.",
-  "ALERT_CREATEAD_TITLE": "Félicitations !",
-  "ALERT_CREATEAD_GIVE_TEXT": "Ta leçon a été créée avec succès. Elle peut être consultée par les étudiants correspondant à tes critères.",
-  "ALERT_CREATEAD_TAKE_TEXT": "Ta leçon a été créee avec succès. Elle peut être consultée par les professeurs correspondant à tes critères.",
+  "ALERT_CREATED_TITLE": "Félicitations !",
+  "ALERT_CREATED_GIVE_TEXT": "Ta leçon a été créée avec succès. Elle peut être consultée par les étudiants correspondant à tes critères.",
+  "ALERT_CREATED_TAKE_TEXT": "Ta leçon a été créee avec succès. Elle peut être consultée par les professeurs correspondant à tes critères.",
   "ALERT_NOTREGISTERED_TITLE": "Pas encore connecté ?",
   "ALERT_NOTREGISTERED_TEXT": "Connecte-toi pour créer ta propre annonce",
   "ALERT_MESSAGESEND_TITLE": "Message envoyé !",
   "ALERT_MESSAGESEND_TEXT": "Message envoyé avec succès. Tu recevras un message si l'utilisateur est interessé.",
   "ALERT_CALENDAR_TITLE": "Choisis une date",
-  "ALERT_CALENDAR_TEXT": "Choisis une date à laquelle tu sera disponible",
+  "ALERT_CALENDAR_TEXT": "Choisis une date à laquelle tu seras disponible",
 
   "FOOTER_LESSONS": "COURS",
   "FOOTER_HOME": "MENU",
