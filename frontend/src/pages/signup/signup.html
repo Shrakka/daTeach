@@ -33,6 +33,10 @@
         <ion-option value="N/A">{{ 'SIGNUP_NA' | translate }}</ion-option>
       </ion-select>
     </ion-item>
+    <div class="login-spinner-error">
+      <ion-spinner *ngIf="userProvider.spinner"></ion-spinner>
+      <div *ngIf="oneTimeClicked && !userProvider.isAuth && !userProvider.spinner" class="no-results">{{ 'SIGNUP_FAIL' | translate }}</div>
+    </div>
     <div class="login-buttons">
       <button ion-button (click)="signUp()" class="login-button">{{ 'SIGNUP_BUTTON' | translate }}</button>
     </div>

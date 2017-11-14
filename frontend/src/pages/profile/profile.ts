@@ -92,6 +92,7 @@ export class ProfilePage {
   }
 
   logout() {
+    this.userProvider.isAuth = false;
     this.navCtrl.push('LoginPage');
   }
 
