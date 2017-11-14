@@ -1,25 +1,24 @@
-<div class="profile-banner-container">
-  
-  <div class="profile-banner">
-    <div class="picture"><img [src]="userProvider.user.public.picture"/></div>
-    <div class="bannerText">
-      <div class="name">
+<div class="profile-banner">
+  <div class="card-both card-primary">
+    <div class="card-primary-picture"><img [src]="userProvider.user.public.picture"/></div>
+    <div class="card-info">
+      <div class="card-name">
         {{ userProvider.user.public.firstname }} {{ userProvider.user.public.lastname }}
       </div>
-      <div class="shortDescription">
+      <div class="card-short-desc">
         {{ userProvider.user.public.shortDescription }}
       </div>
     </div>
   </div>
 
-  <div class="all-badges-result">
-    <div class="badges-result">
-      <ion-badge *ngFor="let topic of lessonProvider.request.topics" class="badge-result" [color]="getColor()">{{ topic.toUpperCase().substring(0,3) }}</ion-badge>
+  <div class="card-badges">
+    <div>
+      <ion-badge *ngFor="let topic of lessonProvider.request.topics" class="card-badge" [color]="getColor()">{{ topic }}</ion-badge>
     </div>
-    <div class="badges-result">
-      <ion-badge class="badge-result" [color]="getColor()">{{ lessonProvider.request.type.toUpperCase() }}</ion-badge>
-      <ion-badge class="badge-result" [color]="getColor()">{{ lessonProvider.request.location.town.toUpperCase() }}</ion-badge>
-      <ion-badge class="badge-result" [color]="getColor()">{{ lessonProvider.request.moving.toUpperCase() }}</ion-badge>
+    <div>
+      <ion-badge class="card-badge" [color]="getColor()">{{ lessonProvider.request.type.toUpperCase() }}</ion-badge>
+      <ion-badge class="card-badge" [color]="getColor()">{{ lessonProvider.request.location.town.toUpperCase() }}</ion-badge>
+      <ion-badge class="card-badge" [color]="getColor()">{{ lessonProvider.request.moving.toUpperCase() }}</ion-badge>
     </div>
   </div>
 

@@ -1,55 +1,43 @@
-<ion-card [class]="(result.lesson.active ? (result.lesson.author.role === 'student' ? 'take-lesson' : 'give-lesson') : 'inactive-lesson') + '-card result-card card card-md'">
-  <div class="lesson-card-lesson">
-    <div class="lesson-info">
-      <div class="lesson-info-profile">
-        <div class="profile-result">
-          <div class="picture"><img [src]="author.public.picture"/></div>
-          <div class="bannerText">
-            <div class="name">
-              {{ author.public.firstname }} {{ author.public.lastname }} <span class="shortDescription">({{ author.public.gender }} - {{ author.public.age }})</span>
-            </div>
-            <div class="shortDescription" *ngIf="userProvider.user.id !== author.id">
-              {{ author.discussion.messages[author.discussion.messages.length - 1].content }}
-            </div>
-          </div>
-        </div>
-        <div *ngIf="userProvider.user.id !== author.id" class="lesson-discussion" (click)="goToChat(author)">
-          <ion-icon color="dark" name="text"></ion-icon>
-        </div>
-        <div *ngIf="result.lesson.active && userProvider.user.id == author.id" class="lesson-discussion" (click)="desactivate(result.lesson._id)">
-          <ion-icon color="dark" name="close"></ion-icon>
-        </div>
+<ion-card [class]="'card-' + (result.lesson.author.role === 'student' ? 'token' : 'given') + ' card-md'">
+  <div class="card-both card-primary">
+    <div class="card-primary-picture"><img [src]="author.public.picture"/></div>
+    <div class="card-info">
+      <div class="card-name">
+        {{ author.public.firstname }} {{ author.public.lastname }} <span class="card-short-desc">({{ author.public.gender }} - {{ author.public.age }})</span>
       </div>
-      <div class="all-badges-result">
-        <div class="badges-result">
-          <ion-badge *ngFor="let topic of result.lesson.topics" class="badge-result" [color]="(result.lesson.active ? (result.lesson.author.role === 'student' ? 'primary' : 'secondary') : 'disable')">{{ topic.toUpperCase().substring(0,3) }}</ion-badge>
-        </div>
-        <div class="badges-result">
-          <ion-badge class="badge-result" [color]="(result.lesson.active ? (result.lesson.author.role === 'student' ? 'primary' : 'secondary') : 'disable')">{{ result.lesson.type.toUpperCase() }}</ion-badge>
-          <ion-badge class="badge-result" [color]="(result.lesson.active ? (result.lesson.author.role === 'student' ? 'primary' : 'secondary') : 'disable')">{{ result.lesson.location.town.toUpperCase() }}</ion-badge>
-          <ion-badge class="badge-result" [color]="(result.lesson.active ? (result.lesson.author.role === 'student' ? 'primary' : 'secondary') : 'disable')">{{ result.lesson.moving.toUpperCase() }}</ion-badge>
-        </div>
+      <div class="card-short-desc" *ngIf="userProvider.user.id !== author.id">
+        {{ author.discussion.messages[author.discussion.messages.length - 1].content }}
       </div>
     </div>
+    <div *ngIf="userProvider.user.id !== author.id" class="card-icon" (click)="goToChat(author)">
+      <ion-icon color="dark" name="text"></ion-icon>
+    </div>
+    <div *ngIf="result.lesson.active && userProvider.user.id == author.id" class="card-icon" (click)="desactivate(result.lesson._id)">
+      <ion-icon color="dark" name="close"></ion-icon>
+    </div>
   </div>
-  <div *ngFor="let user of users" class="user-lesson-card">
-    <div class="lesson-card-lesson">
-      <div class="lesson-info">
-        <div class="profile-result">
-          <div class="picture-user-lesson-card"><img [src]="user.public.picture"/></div>
-          <div class="bannerText">
-            <div class="name">
-              {{ user.public.firstname }} {{ user.public.lastname }} <span class="shortDescription">({{ user.public.gender }} - {{ user.public.age }})</span>
-            </div>
-            <div class="shortDescription" *ngIf="userProvider.user.id !== user.id">
-              {{ user.discussion.messages[user.discussion.messages.length - 1].content }}
-            </div>
-          </div>
-        </div>
+  <div class="card-badges">
+    <div>
+      <ion-badge *ngFor="let topic of result.lesson.topics" class="card-badge" [color]="(result.lesson.active ? (result.lesson.author.role === 'student' ? 'primary' : 'secondary') : 'disable')">{{ topic }}</ion-badge>
+    </div>
+    <div>
+      <ion-badge class="card-badge" [color]="(result.lesson.active ? (result.lesson.author.role === 'student' ? 'primary' : 'secondary') : 'disable')">{{ result.lesson.type.toUpperCase() }}</ion-badge>
+      <ion-badge class="card-badge" [color]="(result.lesson.active ? (result.lesson.author.role === 'student' ? 'primary' : 'secondary') : 'disable')">{{ result.lesson.location.town.toUpperCase() }}</ion-badge>
+      <ion-badge class="card-badge" [color]="(result.lesson.active ? (result.lesson.author.role === 'student' ? 'primary' : 'secondary') : 'disable')">{{ result.lesson.moving.toUpperCase() }}</ion-badge>
+    </div>
+  </div>
+  <div *ngFor="let user of users" class="card-both card-secondary">
+    <div class="card-secondary-picture"><img [src]="user.public.picture"/></div>
+    <div class="card-info">
+      <div class="card-name">
+        {{ user.public.firstname }} {{ user.public.lastname }} <span class="card-short-desc">({{ user.public.gender }} - {{ user.public.age }})</span>
       </div>
-      <div *ngIf="userProvider.user.id !== user.id" class="lesson-discussion" (click)="goToChat(user)">
-        <ion-icon color="dark" name="text"></ion-icon>
+      <div class="card-short-desc" *ngIf="userProvider.user.id !== user.id">
+        {{ user.discussion.messages[user.discussion.messages.length - 1].content }}
       </div>
+    </div>
+    <div *ngIf="userProvider.user.id !== user.id" class="card-icon" (click)="goToChat(user)">
+      <ion-icon color="dark" name="text"></ion-icon>
     </div>
   </div>
 </ion-card>

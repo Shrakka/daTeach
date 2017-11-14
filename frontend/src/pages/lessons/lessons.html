@@ -7,9 +7,9 @@
     <ion-badge color='primary'>{{ 'LESSONS_TAKE' | translate }}</ion-badge>
     <ion-badge color='secondary'>{{ 'LESSONS_GIVE' | translate }}</ion-badge>
   </div>
-  <ion-label class="lessons-labels">{{ 'LESSONS_ACTIVE' | translate }}</ion-label>
+  <ion-label padding>{{ 'LESSONS_ACTIVE' | translate }}</ion-label>
   <lesson-card *ngFor="let result of activeLessons()" [result]="result"></lesson-card>
-  <ion-label class="lessons-labels">{{ 'LESSONS_INACTIVE' | translate }}</ion-label>
+  <ion-label padding>{{ 'LESSONS_INACTIVE' | translate }}</ion-label>
   <lesson-card *ngFor="let result of inactiveLessons()" [result]="result"></lesson-card>
 </ion-content>
 

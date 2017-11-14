@@ -1,23 +1,23 @@
-<ion-card class="result-card" (click)="goToClient()">
-  <div class="profile-result">
-    <div class="picture"><img [src]="result.user.public.picture"/></div>
-      <div class="bannerText">
-        <div class="name">
-          {{ result.user.public.firstname }} {{ result.user.public.lastname }} <span class="shortDescription">({{ result.user.public.gender }} - {{ result.user.public.age }})</span>
+<ion-card class="card-md" (click)="goToClient()">
+  <div class="card-both card-primary">
+    <div class="card-primary-picture"><img [src]="result.user.public.picture"/></div>
+      <div class="card-info">
+        <div class="card-name">
+          {{ result.user.public.firstname }} {{ result.user.public.lastname }} <span class="card-short-desc">({{ result.user.public.gender }} - {{ result.user.public.age }})</span>
         </div>
-        <div class="shortDescription">
+        <div class="card-short-desc">
           {{ result.user.public.shortDescription }}
         </div>
     </div>
   </div>
-  <div class="all-badges-result">
-    <div class="badges-result">
-      <ion-badge *ngFor="let topic of result.lesson.topics" class="badge-result" [color]="getColor('topic', topic)">{{ topic.toUpperCase().substring(0,3) }}</ion-badge>
+  <div class="card-badges">
+    <div>
+      <ion-badge *ngFor="let topic of result.lesson.topics" class="card-badge" [color]="getColor('topic', topic)">{{ topic }}</ion-badge>
     </div>
-    <div class="badges-result">
-      <ion-badge class="badge-result" [color]="getColor('type', result.lesson.type)">{{ result.lesson.type.toUpperCase() }}</ion-badge>
-      <ion-badge class="badge-result" [color]="getColor('location', result.lesson.location.town)">{{ result.lesson.location.town.toUpperCase() }}</ion-badge>
-      <ion-badge class="badge-result" [color]="getColor('moving', result.lesson.moving)">{{ result.lesson.moving.toUpperCase() }}</ion-badge>
+    <div>
+      <ion-badge class="card-badge" [color]="getColor('type', result.lesson.type)">{{ result.lesson.type.toUpperCase() }}</ion-badge>
+      <ion-badge class="card-badge" [color]="getColor('location', result.lesson.location.town)">{{ result.lesson.location.town.toUpperCase() }}</ion-badge>
+      <ion-badge class="card-badge" [color]="getColor('moving', result.lesson.moving)">{{ result.lesson.moving.toUpperCase() }}</ion-badge>
     </div>
   </div>
 </ion-card>
