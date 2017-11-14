@@ -127,8 +127,10 @@ export class TakeFormPage {
      setTimeout(() => {
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
       this.addMarker(latLng,this.map,'Me');
-      for( var lesson in this.lessonProvider.results){
-        var t=0;
+      for( var i=0; i<this.lessonProvider.results.length;i++){
+        let lessonObj=this.lessonProvider.results[i];
+        let latlng=lessonObj.lesson.location.position;
+        this.addMarker({lat:parseFloat(latlng.lat),lng:parseFloat(latlng.long)},this.map,'lesson'+i);
       }
     }, 200);
     
