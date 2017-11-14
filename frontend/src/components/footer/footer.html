@@ -2,7 +2,7 @@
   <ion-buttons>
     <button (click)="goToLessons()" class="footer-button">
         <div class="footer-icon-badge">
-          <div *ngIf="userProvider.user" class="footer-badge">23</div>
+          <div *ngIf="userProvider.user && discussionProvider.number > 0" class="footer-badge">{{ discussionProvider.number }}</div>
           <ion-icon color="dark" name="archive" class="footer-icon"></ion-icon>
         </div>
         {{ 'FOOTER_LESSONS' | translate }}

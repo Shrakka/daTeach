@@ -8,22 +8,20 @@ import { DiscussionProvider } from '../../providers/discussion/discussion';
   templateUrl: 'footer.html'
 })
 export class FooterComponent {
-  discNumber: number;
+  interval: any;
 
   constructor(public navCtrl: NavController, private userProvider: UserProvider, private discussionProvider: DiscussionProvider) {
   }
 
   ngOnInit() {
-    if (this.userProvider.user) {
-      this.discussionProvider.getUserDiscussions(this.userProvider.user.id);
-      this.discNumber = this.discussionProvider.results.length;
+    if (!this.discussionProvider.isPolling) {
+      this.discussionProvider.isPolling = true;
+      this.interval = setInterval(() => {
+        if (this.userProvider.user) {
+          this.discussionProvider.getUserDiscussionsNumber();
+        }
+      }, 5000);
     }
-    setInterval(() => {
-      if (this.userProvider.user) {
-        this.discussionProvider.getUserDiscussions(this.userProvider.user.id);
-        this.discNumber = this.discussionProvider.results.length;
-      }
-    }, 5000);
   }
 
   goToHome() {

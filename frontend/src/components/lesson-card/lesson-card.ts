@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UserProvider } from '../../providers/user/user';
 import { LessonProvider } from '../../providers/lesson/lesson';
+import { DiscussionProvider } from '../../providers/discussion/discussion';
 import { NavController } from 'ionic-angular';
 
 @Component({
@@ -13,7 +14,7 @@ export class LessonCardComponent {
   users: any;
 
 
-  constructor(public userProvider: UserProvider, public navCtrl: NavController, public lessonProvider: LessonProvider) {}
+  constructor(public userProvider: UserProvider, public navCtrl: NavController, public lessonProvider: LessonProvider, private discussionProvider: DiscussionProvider) {}
 
   ngOnInit() {
     this.users = []
@@ -38,6 +39,9 @@ export class LessonCardComponent {
   }
 
   goToChat(user) {
+    if (this.hasNotSeen(user)) {
+      this.discussionProvider.putDiscussion({discussion: user.discussion._id, user: this.userProvider.user.id, seen: true});
+    }
     var result = {user: user, discussion: user.discussion}
     this.navCtrl.push('ChatPage', {"result": result});
   }
@@ -55,6 +59,17 @@ export class LessonCardComponent {
       })
       this.lessonProvider.desactivate(id);
     }
+  }
+
+  getMessageColor(user: any) {
+    if (this.hasNotSeen(user)) {
+      return 'secondary';
+    }
+    return 'dark';
+  }
+
+  hasNotSeen(user) {
+    return (this.userProvider.user.id === user.discussion.user1 && !user.discussion.seen1) || (this.userProvider.user.id === user.discussion.user2 && !user.discussion.seen2)
   }
 
 }
