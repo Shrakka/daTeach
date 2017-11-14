@@ -36,33 +36,36 @@ export class ProfilePage {
   }
 
   photoEdit() {
-    const alert = this.alertCtrl.create({
-      title: 'Login',
-      inputs: [
-        {
-          name: 'url',
-          placeholder: 'New URL'
-        },
-      ],
-      buttons: [
-        {
-          text: 'Set',
-          handler: data => {
-            this.userProvider.user.public.picture = 'assets/img/' + data.url + '.png';
-            this.userProvider.updateUser();
-          }
-        },
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        }
-      ]
+    // const alert = this.alertCtrl.create({
+    //   title: 'Login',
+    //   inputs: [
+    //     {
+    //       name: 'url',
+    //       placeholder: 'New URL'
+    //     },
+    //   ],
+    //   buttons: [
+    //     {
+    //       text: 'Set',
+    //       handler: data => {
+    //         this.userProvider.user.public.picture = 'assets/img/' + data.url + '.png';
+    //         this.userProvider.updateUser();
+    //       }
+    //     },
+    //     {
+    //       text: 'Cancel',
+    //       role: 'cancel',
+    //       handler: data => {
+    //         console.log('Cancel clicked');
+    //       }
+    //     }
+    //   ]
 
-    });
-    alert.present();
+    // });
+    // alert.present();
+    this.presentActionSheet();
+
+
   }
 
   coverEdit() {
@@ -134,7 +137,7 @@ export class ProfilePage {
     var options = {
       quality: 100,
       sourceType: sourceType,
-      saveToPhotoAlbum: false,
+      saveToPhotoAlbum: true,
       correctOrientation: true
     };
    
@@ -146,12 +149,15 @@ export class ProfilePage {
           .then(filePath => {
             let correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
             let currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
-            this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+            let fileName = this.createFileName();
+            this.copyFileToLocalDir(correctPath, currentName, fileName);
           });
       } else {
         var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
         var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
-        this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+        let fileName = this.createFileName();
+        console.log(correctPath, currentName, fileName);
+        this.copyFileToLocalDir(correctPath, currentName, fileName);
       }
     }, (err) => {
       this.presentToast('Error while selecting image.');
@@ -171,6 +177,7 @@ private copyFileToLocalDir(namePath, currentName, newFileName) {
   this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
     this.lastImage = newFileName;
     console.log(this.lastImage);
+    this.sendPhoto();
   }, error => {
     this.presentToast('Error while storing file.');
   });
@@ -194,5 +201,34 @@ public pathForImage(img) {
     return cordova.file.dataDirectory + img;
   }
 }
+
+  public sendPhoto() {
+    var url = "http://192.168.2.1:8080/photo/" + this.userProvider.user.id;
+    var targetPath = this.pathForImage(this.lastImage);
+    var fileName = this.lastImage;
+
+    var options = {
+      fileKey:"photo",
+      fileName: fileName,
+      chunkedMode: false,
+      mimeType: "multipart/form-data",
+      params: {'fileName': fileName}
+    };
+
+    const fileTransfer: TransferObject = this.transfer.create();
+
+    this.loading = this.loading = this.loadingCtrl.create({
+      content: "Uploading photo..."
+    });
+    this.loading.present();
+
+    fileTransfer.upload(targetPath, url, options).then(data => {
+      this.loading.dismissAll()
+      this.presentToast('Image succesful uploaded.');
+    }, err => {
+      this.loading.dismissAll()
+      this.presentToast('Error while uploading file.');
+    });
+  }
 
 }

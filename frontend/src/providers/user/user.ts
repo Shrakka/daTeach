@@ -104,7 +104,7 @@ export class UserProvider {
     });
   }
 
-  sendPhoto() {
+  sendPhoto(path) {
     
   }
 

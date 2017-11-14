@@ -8,7 +8,7 @@
 <div class="identite">
 	<div (click)="coverEdit()" class="cover" [style.backgroundImage]="'url(' + bannerURL + ')'"></div>
 	<div class="image">
-		<img (click)="photoEdit()" [src]="userProvider.user.public.picture" alt="">
+		<img (click)="photoEdit()" [src]="userProvider.user.public.picture" alt="" class="profile-photo-cirle">
 	</div>
 	<div class="nom">{{userProvider.user.public.firstname}} {{userProvider.user.public.lastname}}</div>
 
@@ -60,13 +60,13 @@
   <div class="button-panel">
     <button ion-button color="secondary" (click)="logout()">{{ 'PROFILE_LOGOUT' | translate }}</button>
 	</div>
-	
+	<!--
 	<div class="button-panel">
     <button ion-button color="primary" (click)="presentActionSheet()">PHOTOPHOTO</button>
 	</div>
-	
 	<img [src]="pathForImage(lastImage)" style="width: 100%" [hidden]="lastImage === null">
 	<img src="http://localhost:8080/public/photos/photo-1510665660953" style="width: 100%"/>
+-->
 </div>
 
 </ion-content>
