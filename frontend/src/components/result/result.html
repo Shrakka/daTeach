@@ -16,7 +16,7 @@
     </div>
     <div>
       <ion-badge class="card-badge" [color]="getColor('type', result.lesson.type)">{{ result.lesson.type.toUpperCase() }}</ion-badge>
-      <ion-badge class="card-badge" [color]="getColor('location', result.lesson.location.town)">{{ result.lesson.location.town.toUpperCase() }}</ion-badge>
+      <ion-badge class="card-badge" [color]="getColor('town', result.lesson.location.town)">{{ result.lesson.location.town.toUpperCase() }}</ion-badge>
       <ion-badge class="card-badge" [color]="getColor('moving', result.lesson.moving)">{{ result.lesson.moving.toUpperCase() }}</ion-badge>
     </div>
   </div>

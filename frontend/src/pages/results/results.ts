@@ -16,7 +16,6 @@ export class ResultsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public lessonProvider: LessonProvider, public alertCtrl: AlertController, public translate: TranslateService) {
     this.mode = this.navParams.get('mode');
     this.created = false;
-    console.log(this.lessonProvider.results)
   }
 
   ionViewDidLoad() {
