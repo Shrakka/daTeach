@@ -1,15 +1,15 @@
 <ion-header>
-  <header title="Lessons"></header>
+  <header [title]="'TITLE_LESSONS' | translate"></header>
 </ion-header>
 
 <ion-content>
   <div class="legend">
-    <ion-badge color='primary'>Lessons I take</ion-badge>
-    <ion-badge color='secondary'>Lessons I give</ion-badge>
+    <ion-badge color='primary'>{{ 'LESSONS_TAKE' | translate }}</ion-badge>
+    <ion-badge color='secondary'>{{ 'LESSONS_GIVE' | translate }}</ion-badge>
   </div>
-  <ion-label class="lessons-labels">Active Lessons</ion-label>
+  <ion-label padding>{{ 'LESSONS_ACTIVE' | translate }}</ion-label>
   <lesson-card *ngFor="let result of activeLessons()" [result]="result"></lesson-card>
-  <ion-label class="lessons-labels">Inactive Lessons</ion-label>
+  <ion-label padding>{{ 'LESSONS_INACTIVE' | translate }}</ion-label>
   <lesson-card *ngFor="let result of inactiveLessons()" [result]="result"></lesson-card>
 </ion-content>
 

@@ -1,23 +1,18 @@
 <ion-header>
-  <header title="Take a lesson"></header>
+  <header [title]="'TITLE_TAKE' | translate"></header>
 </ion-header>
 
 <ion-content>
   <div class="form take-form">
 
-    <!-- PROFILE BANNER NOT NECESSARY HERE -->
-    <!-- <div *ngIf="userProvider.user">
-      <profile-banner [firstname]="userProvider.user.public.firstname" [lastname]="userProvider.user.public.lastname" [picture]="userProvider.user.public.picture" [shortDescription]="userProvider.user.public.shortDescription"></profile-banner>
-    </div> -->
-
         <!-- LESSON TYPE -->
         <ion-item>
           <ion-segment name="lessonType" [(ngModel)]="takeForm.type" color="primary">
                 <ion-segment-button value="regular" (ionSelect)="selectedRegular()">
-                  REGULAR
+                    {{ 'FORM_REGULAR' | translate }}
                 </ion-segment-button>
                 <ion-segment-button value="punctual" (ionSelect)="selectedPunctual()">
-                  ONE-TIME
+                    {{ 'FORM_PUNCTUAL' | translate }}
                 </ion-segment-button>
                <ion-segment-button value="nearby" (ionSelect)="selectedNearby()">
                   NEARBY
@@ -26,15 +21,17 @@
         </ion-item>
 
         <!-- TOPICS -->
+
         <div  class="topics-search" *ngIf="takeForm.type !== 'nearby'">
-          <div padding class="topics-label">Topic(s)</div>
+          <div padding class="topics-label">{{ 'FORM_TOPICS' | translate }}</div>
+
           <ion-searchbar
-            [(ngModel)]="takeForm.topics"
+            [(ngModel)]="topicsDisplay"
             [showCancelButton]="shoudShowCancel"
             (ionInput)="searchTopic($event)"
             (ionFocus)="onTopicFocus()"
             animated="true"
-            placeholder="What would you like to learn?"
+            [placeholder]="'FORM_TOPICS_DESCRIPTION_TAKE' | translate"
             >
           </ion-searchbar>
         </div>
@@ -48,26 +45,29 @@
 
         <!-- LOCATION -->
         <div  class="location-search" *ngIf="takeForm.type !== 'nearby'">
-          <div padding class="location-label">City or location</div>
+          <div padding class="location-label">{{ 'FORM_LOCATION' | translate }}</div>
+
           <ion-searchbar
           [(ngModel)]="takeForm.location.fullAddress"
           [showCancelButton]="shouldShowCancel"
           (ionInput)="searchLocation($event)"
           (ionFocus)="onLocationFocus()"
           animated="true"
-          placeholder="Where will you take the lessons?"
+          [placeholder]="'FORM_LOCATION_DESCRIPTION_TAKE' | translate"
           >
           </ion-searchbar>
         </div>
 
 
         <!-- MOVE BUTTONS -->
+
         <div class="move-panel" *ngIf="takeForm.type !== 'nearby'">
-          <div class="move-label" padding>Preference for the lesson</div>
+          <div class="move-label" padding>{{ 'FORM_PREFERENCE' | translate}}</div>
+
           <div class="move-buttons">
-            <button ion-button [outline]="takeForm.moving !== 'move'" (click)="setMoving('move')">I move</button>
-            <button ion-button [outline]="takeForm.moving !== 'host'" (click)="setMoving('host')">I host</button>
-            <button ion-button [outline]="takeForm.moving !== 'both'" (click)="setMoving('both')">Both</button>
+            <button ion-button [outline]="takeForm.moving !== 'move'" (click)="setMoving('move')">{{ 'FORM_MOVE' | translate}}</button>
+            <button ion-button [outline]="takeForm.moving !== 'host'" (click)="setMoving('host')">{{ 'FORM_HOST' | translate}}</button>
+            <button ion-button [outline]="takeForm.moving !== 'both'" (click)="setMoving('both')">{{ 'FORM_BOTH' | translate}}</button>
           </div>
         </div>
 
@@ -75,15 +75,18 @@
         <br  *ngIf="takeForm.type !== 'nearby'"/>
 
         <div *ngIf="takeForm.type === 'punctual'">
-          <div padding class="calendar-label">Calendar</div>
-          <calendar (dates)="onDatesSelection($event)" mode="take" [initdates]="[]" [modifiable]="true"></calendar>
+          <div padding class="calendar-label">{{ 'FORM_CALENDAR' | translate }}</div>
+          <calendar (datesEmitter)="onDatesSelection($event)" mode="take" [dates]="takeForm.dates" [modifiable]="true"></calendar>
         </div>
 
 
         <!-- SUBMIT BUTTON -->
+
         <div class="button-panel" *ngIf="takeForm.type !== 'nearby'">
-          <button ion-button color="primary" (click)="goToResults()">Show results</button>
+          <button ion-button color="primary" (click)="goToResults()">{{ 'FORM_SHOWRESULTS' | translate }}</button>
+
         </div>
+        
       </div>
    <div #map id="map" *ngIf="takeForm.type === 'nearby'"></div> 
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { LessonProvider } from '../../providers/lesson/lesson';
+import { TranslateService } from 'ng2-translate';
 
 @IonicPage()
 @Component({
@@ -16,12 +17,12 @@ export class TopicModalPage {
 
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public lessonProvider: LessonProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public lessonProvider: LessonProvider, public translate: TranslateService) {
     this.give = this. navParams.get('give');
     this.topics = this.lessonProvider.topics.topics;
 
     for(let topic of this.topics) {
-      this.suggestions.push({'name': topic.name, 'checked': false, 'hidden': false});
+      this.suggestions.push({'key': topic, 'name': (this.translate.get('TOPIC_' + topic) as any).value, 'checked': false, 'hidden': false});
     }
   }
 
@@ -49,7 +50,7 @@ export class TopicModalPage {
   }
 
   closeModal() {
-    this.viewCtrl.dismiss(this.suggestions.filter(obj => obj.checked).map(obj => obj.name));
+    this.viewCtrl.dismiss(this.suggestions.filter(obj => obj.checked));
   }
 
 }

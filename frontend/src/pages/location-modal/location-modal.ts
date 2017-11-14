@@ -24,7 +24,7 @@ export class LocationModalPage {
   ];
 
   // searchQuery: string = '';
-  pickedLocation = {'town':'Ibiza', 'fullAddress':'Ibiza', 'position':{}, 'clicked':false};
+  pickedLocation = {};
   // locations = [];
   give: boolean;
 
@@ -40,7 +40,7 @@ export class LocationModalPage {
     };
 
     this.give = navParams.get('give');
-    
+
     for(let l of this.RawLocations){
       this.autocompleteItems.push({'town': l, 'fullAddress':l, 'position':'', 'clicked':false});
     }
@@ -52,8 +52,8 @@ export class LocationModalPage {
   }
 
   closeModal() {
-        this.viewCtrl.dismiss(this.pickedLocation);
-      }
+    this.viewCtrl.dismiss(this.pickedLocation);
+  }
 
   chooseLocation(location) {
     console.log(location);
@@ -68,7 +68,7 @@ export class LocationModalPage {
     this.pickedLocation = location;
      // debugger;
     this.closeModal();
-   
+
   }
 
   getposition() {
@@ -83,27 +83,27 @@ export class LocationModalPage {
         var town=data.results[0].address_components[2].long_name;
         this.pickedLocation={'town':town, 'fullAddress': data.results[0].formatted_address, 'position':{'lat':resp.coords.latitude,'long':resp.coords.longitude},'clicked':false};
         this.closeModal();
-        
+
         });
 
 
       //  this.nativeGeocoder.reverseGeocode(resp.coords.latitude, resp.coords.longitude)
       // .then((result: NativeGeocoderReverseResult) => console.log(JSON.stringify(result)))
       // .catch((error: any) => console.log(error));
-      
+
      })
       .catch((error) => {
     console.log('Error getting location', error);});
 
-    
+
   }
 
   updateSearch() {
 
     let me = this;
-    this.service.getPlacePredictions({ input: (this.autocomplete.query === '' ? 'metz': this.autocomplete.query),  componentRestrictions: {country: ['FR', 'US']} }, 
+    this.service.getPlacePredictions({ input: (this.autocomplete.query === '' ? 'metz': this.autocomplete.query),  componentRestrictions: {country: ['FR', 'US']} },
       function (predictions, status) {
-        me.autocompleteItems = []; 
+        me.autocompleteItems = [];
         me.zone.run(function () {
           if(predictions!=null){
                predictions.forEach(function (prediction) {
@@ -117,7 +117,7 @@ export class LocationModalPage {
                   }else{
                     t=prediction.terms[0].value
                   }
-               
+
                  me.autocompleteItems.push({'town': t, 'fullAddress':prediction.description, 'position':'', 'clicked':false});
                });
           }

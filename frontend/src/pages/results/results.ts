@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { LessonProvider } from '../../providers/lesson/lesson';
+import { TranslateService } from 'ng2-translate';
 
 @IonicPage()
 @Component({
@@ -12,10 +13,9 @@ export class ResultsPage {
   public mode: string;
   public created: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public lessonProvider: LessonProvider, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public lessonProvider: LessonProvider, public alertCtrl: AlertController, public translate: TranslateService) {
     this.mode = this.navParams.get('mode');
     this.created = false;
-    console.log(this.mode)
   }
 
   ionViewDidLoad() {
@@ -24,8 +24,8 @@ export class ResultsPage {
   createLesson() {
     if(!this.userProvider.user){
       const alert = this.alertCtrl.create({
-        title:'Not registered yet?',
-        subTitle:'To create your personal announce, please sign up or log in.',
+        title:(this.translate.get('ALERT_NOTREGISTERED_TITLE') as any).value,
+        subTitle:(this.translate.get('ALERT_NOTREGISTERED_TEXT') as any).value,
         buttons: [{
           text: 'OK',
           role: 'cancel',
@@ -38,15 +38,15 @@ export class ResultsPage {
     } else {
       this.lessonProvider.postLesson(this.lessonProvider.request);
       this.created = true;
-      var message = this.mode === 'take' ? 'Your lesson request has been sucessfully created. It can be seen by teachers who correspond to your criteria.' : 'Your lesson proposal has been sucessfully created. It can be seen by students who correspond to your criteria.';
+      var message = this.mode === 'take' ? (this.translate.get('ALERT_CREATED_TAKE_TEXT') as any).value : (this.translate.get('ALERT_CREATED_GIVE_TEXT') as any).value;
       const alert = this.alertCtrl.create({
-        title:'Success!',
+        title:(this.translate.get('ALERT_CREATED_TITLE') as any).value,
         subTitle: message,
         buttons: ['OK']
       });
       alert.present();
     }
-    
+
   }
 
 }

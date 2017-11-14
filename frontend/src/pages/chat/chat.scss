@@ -16,12 +16,15 @@ page-chat {
 .both-message {
   border-radius: 0.2em;
   padding: 0.5em;
-  margin: 1em;
   max-width: 60%;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
 
 .message-container {
   display: flex;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .me-message-container {
@@ -41,4 +44,11 @@ page-chat {
 .chat-send-icon {
   font-size: 2em;
   margin-right: 0.4em;
+}
+
+.chat-picture {
+  width: 3em;
+  height: 3em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
 }

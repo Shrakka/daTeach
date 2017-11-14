@@ -1,5 +1,5 @@
 <ion-header>
-  <header title="Give Form"></header>
+  <header [title]="'TITLE_GIVE' | translate"></header>
 </ion-header>
 
 <ion-content>
@@ -14,10 +14,10 @@
         <ion-item>
           <ion-segment color="secondary" name="lessonType" [(ngModel)]="giveForm.type">
                 <ion-segment-button value="regular" (ionSelect)="selectedRegular()">
-                  REGULAR
+                  {{ 'FORM_REGULAR' | translate }}
                 </ion-segment-button>
                 <ion-segment-button value="punctual" (ionSelect)="selectedPunctual()">
-                  ONE-TIME
+                  {{ 'FORM_PUNCTUAL' | translate }}
                 </ion-segment-button>
                 <ion-segment-button value="nearby" (ionSelect)="selectedNearby()">
                   NEARBY
@@ -26,14 +26,16 @@
         </ion-item>
 
         <!-- TOPICS -->
+
         <div  class="topics-search" *ngIf="giveForm.type !== 'nearby'">
-          <div padding class="topic-label">Topic(s)</div>
+          <div padding class="topic-label">{{ 'FORM_TOPICS' | translate }}</div>
+
           <ion-searchbar
-            [(ngModel)]="giveForm.topic"
+            [(ngModel)]="topicsDisplay"
             [showCancelButton]="shoudShowCancel"
             (ionFocus)="onTopicFocus()"
             animated="true"
-            placeholder="What would you like to teach?"
+            [placeholder]="'FORM_TOPICS_DESCRIPTION_GIVE' | translate"
             >
           </ion-searchbar>
         </div>
@@ -45,26 +47,42 @@
         <br  *ngIf="giveForm.type !== 'nearby'"/>
 
         <!-- LOCATION -->
+<<<<<<< HEAD
         <div  class="location-search" *ngIf="giveForm.type !== 'nearby'">
           <div padding class="location-label">City or location</div>
+||||||| merged common ancestors
+        <div  class="location-search">
+          <div padding class="location-label">City or location</div>
+=======
+        <div  class="location-search">
+          <div padding class="location-label">{{ 'FORM_LOCATION' | translate }}</div>
+>>>>>>> master
           <ion-searchbar
           [(ngModel)]="giveForm.location.fullAddress"
           [showCancelButton]="shouldShowCancel"
           (ionFocus)="onLocationFocus()"
           animated="true"
-          placeholder="Where will you give the lessons?"
+          [placeholder]="'FORM_LOCATION_DESCRIPTION_GIVE' | translate"
           >
           </ion-searchbar>
         </div>
 
 
         <!-- MOVE BUTTONS -->
+<<<<<<< HEAD
         <div class="move-panel" padding *ngIf="giveForm.type !== 'nearby'">
           <div class="move-label">Preference for the lesson</div>
+||||||| merged common ancestors
+        <div class="move-panel" padding>
+          <div class="move-label">Preference for the lesson</div>
+=======
+        <div class="move-panel" padding>
+          <div class="move-label">{{ 'FORM_PREFERENCE' | translate}}</div>
+>>>>>>> master
           <div class="move-buttons">
-            <button ion-button color="secondary" [outline]="giveForm.moving !== 'move'" (click)="setMoving('move')">I move</button>
-            <button ion-button color="secondary" [outline]="giveForm.moving !== 'host'" (click)="setMoving('host')">I host</button>
-            <button ion-button color="secondary" [outline]="giveForm.moving !== 'both'" (click)="setMoving('both')">Both</button>
+            <button ion-button color="secondary" [outline]="giveForm.moving !== 'move'" (click)="setMoving('move')">{{ 'FORM_MOVE' | translate}}</button>
+            <button ion-button color="secondary" [outline]="giveForm.moving !== 'host'" (click)="setMoving('host')">{{ 'FORM_HOST' | translate}}</button>
+            <button ion-button color="secondary" [outline]="giveForm.moving !== 'both'" (click)="setMoving('both')">{{ 'FORM_BOTH' | translate}}</button>
           </div>
         </div>
 
@@ -72,8 +90,8 @@
         <br *ngIf="giveForm.type !== 'nearby'"/>
 
         <div *ngIf="giveForm.type === 'punctual'">
-          <div padding class="calendar-label">Calendar</div>
-          <calendar (dates)="onDatesSelection($event)" mode="give" [initdates]="[]" [modifiable]="true"></calendar>
+          <div padding class="calendar-label">{{ 'FORM_CALENDAR' | translate }}</div>
+          <calendar (datesEmitter)="onDatesSelection($event)" mode="give" [dates]="giveForm.dates" [modifiable]="true"></calendar>
         </div>
 
          
@@ -81,8 +99,16 @@
 
 
         <!-- SUBMIT BUTTON -->
+<<<<<<< HEAD
         <div class="button-panel" *ngIf="giveForm.type !== 'nearby'">
           <button ion-button color="secondary" (click)="goToResults()">Show results</button>
+||||||| merged common ancestors
+        <div class="button-panel">
+          <button ion-button color="secondary" (click)="goToResults()">Show results</button>
+=======
+        <div class="button-panel">
+          <button ion-button color="secondary" (click)="goToResults()">{{ 'FORM_SHOWRESULTS' | translate }}</button>
+>>>>>>> master
         </div>
       </div>
 

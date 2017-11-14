@@ -1,19 +1,21 @@
 <ion-header>
   <ion-navbar>
-      <ion-icon padding-left name="arrow-back" (click)="closeModal()"></ion-icon>
-    <ion-title>Select Location</ion-title>
+    <div class="modal-header">
+      <ion-icon padding-left name="arrow-back" (click)="closeModal()" class="modal-header-icon"></ion-icon>
+      <ion-title>{{ 'LOCATION_HEADER' | translate }}</ion-title>
+    </div>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content>
   <ion-searchbar [(ngModel)]="autocomplete.query" [showCancelButton]="true"
-   (ionInput)="updateSearch($event)" (ionCancel)="closeModal() " placeholder="Enter an address"> </ion-searchbar>
+   (ionInput)="updateSearch($event)" (ionCancel)="closeModal() " [placeholder]="'LOCATION_SEARCH' | translate"> </ion-searchbar>
 
 
-    <ion-item  (click)="getposition()" style="cursor:pointer;">    
+    <ion-item  (click)="getposition()" style="cursor:pointer;">
       <ion-icon name="locate" item-start></ion-icon>
-      <ion-label>Your current position</ion-label>
+      <ion-label>{{ 'LOCATION_POSITION' | translate }}</ion-label>
     </ion-item>
 
   <ion-list>

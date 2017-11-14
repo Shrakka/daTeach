@@ -1,54 +1,61 @@
-lesson-card {
-}
-
-.result-card {
+.card-md {
   margin-top: 2em;
+  margin-bottom: 2em;
 }
 
-.picture-user-lesson-card {
-  width: 3em;
-  height: 3em;
-  margin: 0.5em 1em 0.5em 1em;
+.card-token {
+  border-left: solid 4px color($colors, primary);
 }
 
-.user-lesson-card {
-  background-color: color($colors, light);
+.card-given {
+  border-left: solid 4px color($colors, secondary);
 }
 
-.lesson-card-lesson {
-  display: flex;
+.card-inactive {
+  border-left: solid 4px color($colors, disable);
 }
 
-.lesson-discussion {
-  min-height: 100%;
-  width: 50px;
+.card-primary-picture {
+  min-width: 50px;
+  max-width: 50px;
+  margin: 1em;
+}
+
+.card-secondary-picture {
+  min-width: 40px;
+  max-width: 40px;
+  margin: 1em;
+}
+
+.card-both {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1.4em;
 }
 
-.lesson-info {
+.card-info {
   flex-grow: 1;
 }
 
-.lesson-info-profile {
+.card-short-desc {
+  max-height: 50px;
+  color: color($colors, grey);
+}
+
+.card-icon {
+  font-size: 20px;
+  margin: 1em;
+}
+
+.card-secondary {
+  background-color: color($colors, light)
+}
+
+.card-badges {
   display: flex;
+  justify-content: space-between;
 }
 
-.profile-result {
-  flex-grow: 1;
-}
-
-
-.give-lesson-card {
-  border-left: 4px solid color($colors, "secondary");
-}
-
-.take-lesson-card {
-  border-left: 4px solid color($colors, "primary");
-}
-
-.inactive-lesson-card {
-  border-left: 4px solid color($colors, "disable");
+.card-badge {
+  margin: 2px;
+  font-size: 10px;
 }

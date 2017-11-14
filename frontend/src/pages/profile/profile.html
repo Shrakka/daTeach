@@ -1,5 +1,5 @@
 <ion-header>
-  <header title="Profile"></header>
+  <header [title]="'TITLE_PROFILE' | translate"></header>
 </ion-header>
 
 <ion-content>
@@ -14,26 +14,26 @@
 
 	<ion-card (click)="modifyprofile($event)">
 	 <ion-card-header style='font-weight: bold;'>
-	    Contacts
+	    {{ 'PROFILE_CONTACTS' | translate }}
 	  </ion-card-header>
 
 	  <ion-card-content>
-	    	Mobile <br>{{userProvider.user.public.phone}}<br><br>
-	    	Email <br>{{userProvider.user.public.email}}
+	    	{{ 'PROFILE_MOBILE' | translate }} <br>{{userProvider.user.public.phone}}<br><br>
+	    	{{ 'PROFILE_EMAIL' | translate }} <br>{{userProvider.user.public.email}}
 	  </ion-card-content>
 
 	</ion-card>
 
 	<ion-card (click)="modifyprofile($event)">
 	  <ion-card-header style='font-weight: bold;'>
-	    Infos
+	    {{ 'PROFILE_INFOS' | translate }}
 	  </ion-card-header>
 
 	  <ion-card-content>
   		<div class="details">
-	    	<div>Sex <br>{{userProvider.user.public.gender}}</div>
-	    	<div>Age <br>{{userProvider.user.public.age}}</div>
-	    	<div>Level <br>{{userProvider.user.public.level}}</div>
+	    	<div>{{ 'PROFILE_SEX' | translate }} <br>{{userProvider.user.public.gender}}</div>
+	    	<div>{{ 'PROFILE_AGE' | translate }} <br>{{userProvider.user.public.age}}</div>
+	    	<div>{{ 'PROFILE_LEVEL' | translate }} <br>{{userProvider.user.public.level}}</div>
 	    </div>
 	  </ion-card-content>
 
@@ -41,7 +41,7 @@
 
 	<ion-card (click)="modifyprofile($event)">
 			<ion-card-header style='font-weight: bold;'>
-			Who are you ?
+			{{ 'PROFILE_SHORTDESCRIPTION' | translate }}
 			</ion-card-header>
 			<ion-card-content >
 				{{userProvider.user.public.shortDescription || 'This will be the description displayed on your announces. Make it punch! (100 characters max)'}}
@@ -50,12 +50,16 @@
 
 	<ion-card (click)="modifyprofile($event)">
 	  <ion-card-header style='font-weight: bold;'>
-	    Introduce yourself
+	    {{ 'PROFILE_LONGDESCRIPTION' | translate }}
 	  </ion-card-header>
 	  <ion-card-content>
   		{{userProvider.user.public.longDescription || 'Write more about yourself! What are you looking for? If you are a student, what are do you want to learn? If you are a teacher, why are you the best ?'}}
 	  </ion-card-content>
 	</ion-card>
+
+  <div class="button-panel">
+    <button ion-button color="secondary" (click)="logout()">{{ 'PROFILE_LOGOUT' | translate }}</button>
+  </div>
 
 </div>
 
@@ -64,5 +68,3 @@
 <ion-footer>
   <footer></footer>
 </ion-footer>
-
-

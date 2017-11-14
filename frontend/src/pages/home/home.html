@@ -1,11 +1,15 @@
 <ion-header>
-  <header title="Home"></header>
+  <header [title]="'TITLE_HOME' | translate"></header>
 </ion-header>
 
 <ion-content padding class="home-background">
+  <div class="flag-buttons">
+    <img *ngIf="sysOptions.systemLanguage == 'en'" class="flag-button" src="assets/img/flag-fr.svg" (click)="changeLanguage()"/>
+    <img *ngIf="sysOptions.systemLanguage == 'fr'" class="flag-button" src="assets/img/flag-gb.svg" (click)="changeLanguage()"/>
+  </div>
   <div class="lessons-buttons">
-    <button ion-button color="primary" class="take-button" (click)="goToTakeForm()">{{ 'HOME_TAKE' | translate }}</button>
-    <button ion-button color="secondary" class="give-button" (click)="goToGiveForm()">{{ 'HOME_GIVE' | translate }}</button>
+    <button ion-button color="primary" class="lesson-button" (click)="goToTakeForm()">{{ 'HOME_TAKE' | translate }}</button>
+    <button ion-button color="secondary" class="lesson-button" (click)="goToGiveForm()">{{ 'HOME_GIVE' | translate }}</button>
   </div>
 </ion-content>
 

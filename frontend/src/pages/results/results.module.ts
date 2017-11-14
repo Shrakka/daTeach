@@ -5,6 +5,7 @@ import { HeaderComponentModule } from '../../components/header/header.module';
 import { FooterComponentModule } from '../../components/footer/footer.module';
 import { ProfileBannerComponentModule } from '../../components/profile-banner/profile-banner.module';
 import { ResultComponentModule } from '../../components/result/result.module';
+import { TranslateModule } from 'ng2-translate/ng2-translate';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ResultComponentModule } from '../../components/result/result.module';
     ProfileBannerComponentModule,
     HeaderComponentModule,
     FooterComponentModule,
+    TranslateModule,
     IonicPageModule.forChild(ResultsPage),
   ],
 })

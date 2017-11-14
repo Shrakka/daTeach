@@ -26,6 +26,22 @@ export class ResultComponent {
         return 'light';
       }
     }
+    else if (key === 'town') {
+      if (value === this.lessonProvider.request.location.town) {
+        return (this.mode === 'give') ? 'primary' : 'secondary'
+      }
+      else {
+        return 'light';
+      }
+    }
+    else if (key === 'moving') {
+      if (value !== this.lessonProvider.request.moving) {
+        return (this.mode === 'give') ? 'primary' : 'secondary'
+      }
+      else {
+        return 'light';
+      }
+    }
     else {
       if (value === this.lessonProvider.request[key]) {
         return (this.mode === 'give') ? 'primary' : 'secondary'
