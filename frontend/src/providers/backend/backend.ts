@@ -11,6 +11,7 @@ export class BackendProvider {
     console.log('Hello BackendProvider Provider');
     // this.url = 'http://ec2-54-77-151-59.eu-west-1.compute.amazonaws.com:8080';
     this.url = 'http://localhost:8080';
+    this.url = 'http://10.42.0.1:8080';
     this.apikey = 'VxWSMnBRcTTGXMFRzAoAcyFQLDYZ8pQW';
   }
 
