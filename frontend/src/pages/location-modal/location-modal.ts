@@ -24,7 +24,7 @@ export class LocationModalPage {
   ];
 
   // searchQuery: string = '';
-  pickedLocation = '';
+  pickedLocation = {};
   // locations = [];
   give: boolean;
 
