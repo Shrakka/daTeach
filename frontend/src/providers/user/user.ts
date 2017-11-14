@@ -104,4 +104,8 @@ export class UserProvider {
     });
   }
 
+  sendPhoto() {
+    
+  }
+
 }

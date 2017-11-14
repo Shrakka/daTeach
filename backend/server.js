@@ -7,6 +7,7 @@ var app      = express();
 var port     = process.env.PORT || 8080;
 var mongoose = require('mongoose');
 var passport = require('passport');
+var path     = require('path');
 
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -32,6 +33,10 @@ var storage = multer.diskStorage({
   }
 });
 app.use(multer({storage: storage}).single('photo'));
+
+// Static serve
+var dir = path.join(__dirname, '/public');
+app.use('/public', express.static(dir));
 
 
 // configuration ===============================================================

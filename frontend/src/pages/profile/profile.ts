@@ -190,6 +190,7 @@ public pathForImage(img) {
   if (img === null) {
     return '';
   } else {
+    console.log(cordova.file.dataDirectory);
     return cordova.file.dataDirectory + img;
   }
 }
