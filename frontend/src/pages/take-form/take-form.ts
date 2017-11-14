@@ -78,7 +78,7 @@ export class TakeFormPage {
   }
 
   loadMap() {
-
+    
     let latLng = new google.maps.LatLng(-34.9290, 138.6010);
  
     let mapOptions = {
