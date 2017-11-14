@@ -87,7 +87,6 @@ exports.getDiscussionUserNumber = function(req, res) {
 }
 
 exports.putDiscussion = function(req, res) {
-  console.log(req.body)
   if (configAuth.apikey === req.query.apikey && req.user) {
     Discussion.findOne({_id: req.body.discussion }, function(error, discussion) {
       if (error) {

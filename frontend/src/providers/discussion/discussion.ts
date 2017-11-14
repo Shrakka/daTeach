@@ -28,7 +28,6 @@ export class DiscussionProvider {
       this.http.post(this.backendProvider.url + '/discussion/?apikey=' + this.backendProvider.apikey, body, options)
         .map(res => res.json())
         .subscribe(data => {
-          console.log(data);
         });
     });
   }
@@ -50,7 +49,6 @@ export class DiscussionProvider {
       this.http.get(this.backendProvider.url + '/discussion/user/' + this.userProvider.user.id + '/number/?apikey=' + this.backendProvider.apikey, options)
         .map(res => res.json())
         .subscribe(data => {
-          console.log(data.number)
           this.number = data.number
         });
     });
@@ -62,7 +60,6 @@ export class DiscussionProvider {
       this.http.put(this.backendProvider.url + '/discussion/?apikey=' + this.backendProvider.apikey, body, options)
         .map(res => res.json())
         .subscribe(data => {
-          console.log(data);
         });
     });
   }

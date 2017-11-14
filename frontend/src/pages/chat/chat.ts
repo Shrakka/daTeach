@@ -25,14 +25,12 @@ export class ChatPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private socket: Socket, public userProvider: UserProvider, private discussionProvider: DiscussionProvider) {
     this.result = this.navParams.get("result")
-    console.log(this.result)
 
     this.getMessages().subscribe(message => {
       this.result.discussion.messages.push(message);
       setTimeout(function() {
         this.discussionProvider.putDiscussion({discussion: this.result.discussion._id, user: this.userProvider.user.id, seen: true});
       }.bind(this), 100);
-      console.log("message received");
      // this.scrollToBottom();
     });
   }
