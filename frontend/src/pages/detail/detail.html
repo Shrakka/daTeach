@@ -12,9 +12,9 @@
       <div class="detail-longDesc">{{ result.user.public.longDescription }}</div>
     </div>
     <div *ngIf="result.lesson.type === 'punctual'">
-      <div padding class="calendar-label">{{ 'FORM_CALENDAR' | translate }}</div>
+      <!-- <div padding class="calendar-label">{{ 'FORM_CALENDAR' | translate }}</div> -->
       <div padding class="calendar-label">{{ result.user.public.firstname}} {{ 'DETAIL_AVAILABLE' | translate }}</div>
-      <calendar mode="take" [initdates]="result.lesson.dates" [modifiable]="false"></calendar>
+      <calendar mode="take" [dates]="result.lesson.dates" [modifiable]="false"></calendar>
     </div>
 
     <div *ngIf="userProvider.user">

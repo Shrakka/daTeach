@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { sysOptions } from '../../app/i18n.constants';
 
 /**
  * Generated class for the CalendarComponent component.
@@ -11,27 +12,25 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: 'calendar.html'
 })
 export class CalendarComponent {
-
+  sysOptions: any;
   // Format date: 'Mon. 23/10-AM'
 
-  @Input() initdates;
+  @Input() dates: Array<string>;
   @Input() modifiable: boolean;
   @Input() mode: string;
-  @Output() dates: EventEmitter<Array<string>> = new EventEmitter();
+  @Output() datesEmitter: EventEmitter<Array<string>> = new EventEmitter();
   days: Array<string> = [];
-  selecteds: Array<string> = [];
   names = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  namesFR = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+
 
   constructor() {
+    this.sysOptions = sysOptions;
     for (var i = 0; i < 10; i++) {
       var tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + i);
       this.days.push(this.dateToString(tomorrow));
     }
-  }
-
-  ngAfterViewInit() {
-    this.selecteds = this.initdates;
   }
 
   dateToString(date: Date) {
@@ -46,23 +45,33 @@ export class CalendarComponent {
   pickDate(day: string, period: string) {
     if (this.modifiable) {
       var date = day + '-' + period;
-      var index = this.selecteds.indexOf(date);
+      var index = this.dates.indexOf(date);
       if (index != -1) {
-        this.selecteds.splice(index, 1)
+        this.dates.splice(index, 1)
       }
       else {
-        this.selecteds.push(date)
+        this.dates.push(date)
       }
-      this.dates.emit(this.selecteds);
+      this.datesEmitter.emit(this.dates);
     }
   }
 
   isSelected(day: string, period: string) {
-    return (this.selecteds.includes(day + '-' + period)) ? 'selected calendar-' + this.mode : this.isWeekend(day);
+    return (this.dates.includes(day + '-' + period)) ? 'selected calendar-' + this.mode : this.isWeekend(day);
   }
 
   isWeekend(day: string) {
     return (day[0] === 'S') ? 'weekend' : '';
+  }
+
+  getDay(day: string) {
+    if (this.sysOptions.systemLanguage == 'fr') {
+      var index = this.names.indexOf(day.split('.')[0]);
+      return this.namesFR[index] + '.' + day.split('.')[1];
+    }
+    else {
+      return day;
+    }
   }
 
 }
