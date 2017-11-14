@@ -1,13 +1,29 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
+import { DiscussionProvider } from '../../providers/discussion/discussion';
 
 @Component({
   selector: 'footer',
   templateUrl: 'footer.html'
 })
 export class FooterComponent {
-  constructor(public navCtrl: NavController, private userProvider: UserProvider) {
+  discNumber: number;
+
+  constructor(public navCtrl: NavController, private userProvider: UserProvider, private discussionProvider: DiscussionProvider) {
+  }
+
+  ngOnInit() {
+    if (this.userProvider.user) {
+      this.discussionProvider.getUserDiscussions(this.userProvider.user.id);
+      this.discNumber = this.discussionProvider.results.length;
+    }
+    setInterval(() => {
+      if (this.userProvider.user) {
+        this.discussionProvider.getUserDiscussions(this.userProvider.user.id);
+        this.discNumber = this.discussionProvider.results.length;
+      }
+    }, 5000);
   }
 
   goToHome() {

@@ -1,7 +1,10 @@
 <ion-toolbar>
   <ion-buttons>
     <button (click)="goToLessons()" class="footer-button">
-        <ion-icon color="dark" name="archive" class="footer-icon"></ion-icon>
+        <div class="footer-icon-badge">
+          <div *ngIf="userProvider.user" class="footer-badge">23</div>
+          <ion-icon color="dark" name="archive" class="footer-icon"></ion-icon>
+        </div>
         {{ 'FOOTER_LESSONS' | translate }}
     </button>
     <button (click)="goToHome()" class="footer-button">

@@ -13,3 +13,23 @@ ion-buttons{
 .footer-icon {
   font-size: 24px;
 }
+
+.footer-badge {
+  font-size: 10px;
+  position: absolute;
+  right: -10px;
+  top: -6px;
+
+  color: white;
+  background-color: red;
+  border-radius: 50%;
+  height: 16px;
+  width: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-icon-badge {
+  position: relative;
+}
