@@ -30,7 +30,7 @@ export class CalendarComponent {
     }
   }
 
-  ngOnViewInit() {
+  ngAfterViewInit() {
     this.selecteds = this.initdates;
   }
 
