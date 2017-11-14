@@ -1,3 +1,14 @@
 page-location-modal {
 
 }
+
+.modal-header {
+  display: flex;
+  align-items: center;
+}
+
+.modal-header-icon {
+  font-size: 24px;
+  margin-left: 4px;
+  margin-right: 20px;
+}
