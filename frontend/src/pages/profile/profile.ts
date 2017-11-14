@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, PopoverController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
-import { PopoverController } from 'ionic-angular';
 import { EditProfilePage } from '../profile/editprofile/editprofile';
 
 
