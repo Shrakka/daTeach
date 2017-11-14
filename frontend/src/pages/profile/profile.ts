@@ -92,7 +92,7 @@ export class ProfilePage {
   }
 
   logout() {
-    this.navCtrl.setRoot('LoginPage');
+    this.navCtrl.push('LoginPage');
   }
 
 }
