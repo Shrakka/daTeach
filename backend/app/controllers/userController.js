@@ -62,11 +62,29 @@ exports.putUser = function(req, res) {
 }
 
 exports.postPhoto = function (req, res) {
+  console.log(1, req.params.id);
+  console.log(2, req.body);
+  console.log(3, req.file);
   if (configAuth.apikey === req.query.apikey) {
-    console.log(req.params.id);
-    console.log(req.body);
-    console.log(req.file);
-    res.send('OK');
+    console.log(6, "hey");
+    if(req.file !== null) {
+      User.findById(req.params.id, (err, user) => {
+        if(err) {
+          res.status(404).send('Error 404 - Error occured');
+        } else {
+          user.public.picture = req.file.originalname;
+          user.save((err, updatedUser) => {
+            if(err) {
+              res.status(404).send('Error 404 - Cannot save to db');
+            } else {
+              res.send(updatedUser.public);
+            }
+          })
+        }
+      });
+    } else {
+      res.status(404).send('Error 404 - Not Found')
+    }
   } else {
     res.status(403).send("Error 403 - Not authorized")
   }

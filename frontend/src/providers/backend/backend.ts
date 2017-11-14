@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class BackendProvider {
   url: string;
+  static: string;
   apikey: string;
 
   constructor(public http: Http) {
@@ -13,6 +14,7 @@ export class BackendProvider {
     //this.url = 'http://localhost:8080';
     this.url = 'http://192.168.2.1:8080'
     this.apikey = 'VxWSMnBRcTTGXMFRzAoAcyFQLDYZ8pQW';
+    this.static = this.url + '/public/photos/';
   }
 
 }

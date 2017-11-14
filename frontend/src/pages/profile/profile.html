@@ -8,7 +8,7 @@
 <div class="identite">
 	<div (click)="coverEdit()" class="cover" [style.backgroundImage]="'url(' + bannerURL + ')'"></div>
 	<div class="image">
-		<img (click)="photoEdit()" [src]="userProvider.user.public.picture" alt="" class="profile-photo-cirle">
+		<img (click)="photoEdit()" [src]="userProvider.getStatic(userProvider.user.public.picture)" alt="" class="profile-photo-cirle">
 	</div>
 	<div class="nom">{{userProvider.user.public.firstname}} {{userProvider.user.public.lastname}}</div>
 

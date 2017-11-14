@@ -104,8 +104,6 @@ export class ProfilePage {
   }
 
   // ------------------------- FILE UPLOAD -------------------------
-
-  lastImage: string = null;
   loading: Loading;
 
   presentActionSheet() {
@@ -151,14 +149,13 @@ export class ProfilePage {
             let correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
             let currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
             let fileName = this.createFileName();
-            this.copyFileToLocalDir(correctPath, currentName, fileName);
+            this.copyAndSend(correctPath, currentName, fileName);
           });
       } else {
         var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
         var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
         let fileName = this.createFileName();
-        console.log(correctPath, currentName, fileName);
-        this.copyFileToLocalDir(correctPath, currentName, fileName);
+        this.copyAndSend(correctPath, currentName, fileName);
       }
     }, (err) => {
       this.presentToast('Error while selecting image.');
@@ -167,18 +164,13 @@ export class ProfilePage {
 
   // Create a new name for the image
 private createFileName() {
-  var d = new Date(),
-  n = d.getTime(),
-  newFileName =  n + ".jpg";
-  return newFileName;
+  return Date.now() + '.jpg';
 }
  
-// Copy the image to a local folder
-private copyFileToLocalDir(namePath, currentName, newFileName) {
+// Copy the image to a local folder and send to backend.
+private copyAndSend(namePath, currentName, newFileName) {
   this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
-    this.lastImage = newFileName;
-    console.log(this.lastImage);
-    this.sendPhoto();
+    this.sendPhoto(newFileName);
   }, error => {
     this.presentToast('Error while storing file.');
   });
@@ -198,18 +190,15 @@ public pathForImage(img) {
   if (img === null) {
     return '';
   } else {
-    console.log(cordova.file.dataDirectory);
     return cordova.file.dataDirectory + img;
   }
 }
 
-  public sendPhoto() {
-    var url = "http://192.168.2.1:8080/photo/" + this.userProvider.user.id;
-    var targetPath = this.pathForImage(this.lastImage);
-    var fileName = this.lastImage;
-
+  public sendPhoto(fileName) {
+    var url = this.userProvider.getPostPhotoURL(this.userProvider.user.id);
+    var targetPath = this.pathForImage(fileName);
     var options = {
-      fileKey:"photo",
+      fileKey: "photo",
       fileName: fileName,
       chunkedMode: false,
       mimeType: "multipart/form-data",
@@ -224,9 +213,11 @@ public pathForImage(img) {
     this.loading.present();
 
     fileTransfer.upload(targetPath, url, options).then(data => {
+      this.userProvider.user.public.picture = (data.response as any).picture;
       this.loading.dismissAll()
-      this.presentToast('Image succesful uploaded.');
+      this.presentToast('Image succesfully uploaded.');
     }, err => {
+      console.log(err);
       this.loading.dismissAll()
       this.presentToast('Error while uploading file.');
     });

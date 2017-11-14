@@ -29,7 +29,7 @@ var storage = multer.diskStorage({
     cb(null, './public/photos');
   },
   filename: function(req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now())
+    cb(null, file.originalname);
   }
 });
 app.use(multer({storage: storage}).single('photo'));
