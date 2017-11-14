@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams  } from 'ionic-angular';
 import { LessonProvider } from '../../providers/lesson/lesson';
 
 @Component({
@@ -10,7 +10,11 @@ export class ResultComponent {
   @Input() result: any;
   @Input() mode: string;
 
-  constructor(public navCtrl: NavController, public lessonProvider: LessonProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public lessonProvider: LessonProvider) {
+    
+    if(navParams.data.result){//Access from the map
+    this.result = navParams.data.result;
+    }
   }
 
   goToClient() {

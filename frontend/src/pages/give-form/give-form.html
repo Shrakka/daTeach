@@ -3,7 +3,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="form" class="give-form">
+  <div class="form" class="give-form" >
 
       <!-- PROFILE BANNER NOT NECESSARY HERE -->
       <!-- <div *ngIf="userProvider.user">
@@ -19,12 +19,17 @@
                 <ion-segment-button value="punctual" (ionSelect)="selectedPunctual()">
                   {{ 'FORM_PUNCTUAL' | translate }}
                 </ion-segment-button>
+                <ion-segment-button value="nearby" (ionSelect)="selectedNearby()">
+                  NEARBY
+                </ion-segment-button>
             </ion-segment>
         </ion-item>
 
         <!-- TOPICS -->
-        <div  class="topics-search">
+
+        <div  class="topics-search" *ngIf="giveForm.type !== 'nearby'">
           <div padding class="topic-label">{{ 'FORM_TOPICS' | translate }}</div>
+
           <ion-searchbar
             [(ngModel)]="topicsDisplay"
             [showCancelButton]="shoudShowCancel"
@@ -36,14 +41,16 @@
         </div>
 
         <!-- TOPICS BADGES -->
-        <div class="topics-badges">
+        <div class="topics-badges" >
           <ion-badge color="secondary" *ngFor="let t of giveForm.topics">{{ t }}</ion-badge>
         </div>
-        <br/>
+        <br  *ngIf="giveForm.type !== 'nearby'"/>
 
         <!-- LOCATION -->
-        <div  class="location-search">
+
+        <div  class="location-search" *ngIf="giveForm.type !== 'nearby'">
           <div padding class="location-label">{{ 'FORM_LOCATION' | translate }}</div>
+
           <ion-searchbar
           [(ngModel)]="giveForm.location.fullAddress"
           [showCancelButton]="shouldShowCancel"
@@ -56,8 +63,10 @@
 
 
         <!-- MOVE BUTTONS -->
-        <div class="move-panel" padding>
+
+        <div class="move-panel" padding *ngIf="giveForm.type !== 'nearby'">
           <div class="move-label">{{ 'FORM_PREFERENCE' | translate}}</div>
+
           <div class="move-buttons">
             <button ion-button color="secondary" [outline]="giveForm.moving !== 'move'" (click)="setMoving('move')">{{ 'FORM_MOVE' | translate}}</button>
             <button ion-button color="secondary" [outline]="giveForm.moving !== 'host'" (click)="setMoving('host')">{{ 'FORM_HOST' | translate}}</button>
@@ -66,19 +75,27 @@
         </div>
 
         <!-- CALENDAR -->
-        <br/>
+        <br *ngIf="giveForm.type !== 'nearby'"/>
 
         <div *ngIf="giveForm.type === 'punctual'">
           <div padding class="calendar-label">{{ 'FORM_CALENDAR' | translate }}</div>
           <calendar (datesEmitter)="onDatesSelection($event)" mode="give" [dates]="giveForm.dates" [modifiable]="true"></calendar>
         </div>
 
+         
+        
+
 
         <!-- SUBMIT BUTTON -->
-        <div class="button-panel">
+
+        <div class="button-panel" *ngIf="giveForm.type !== 'nearby'">
           <button ion-button color="secondary" (click)="goToResults()">{{ 'FORM_SHOWRESULTS' | translate }}</button>
+
         </div>
       </div>
+
+       <!-- GOOGLE MAP -->
+       <div #map id="map" *ngIf="giveForm.type === 'nearby'"></div> 
 
 </ion-content>
 
