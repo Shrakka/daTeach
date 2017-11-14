@@ -18,10 +18,8 @@ import { UserProvider } from '../../providers/user/user';
 export class LoginPage {
   email: string = 'alexis@email.org';
   password: string = 'password';
-  firstname: string = 'John';
-  lastname: string = 'Doe';
-  birthyear: number = 1990;
-  gender: string = 'M';
+  oneTimeClicked: boolean = false;
+  logInterval;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider) {
   }
@@ -32,8 +30,14 @@ export class LoginPage {
 
   logIn() {
     this.userProvider.logIn({'email': this.email, 'password': this.password});
-    //this.navCtrl.setRoot('HomePage');
-    this.navCtrl.pop();
+    this.oneTimeClicked = true;
+    clearInterval(this.logInterval);
+    this.logInterval = setInterval(function() {
+      if (this.userProvider.isAuth) {
+        clearInterval(this.logInterval);
+        this.navCtrl.pop();
+      }
+    }.bind(this), 200);
   }
 
   logInFB() {

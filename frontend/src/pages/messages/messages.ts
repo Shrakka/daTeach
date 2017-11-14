@@ -11,7 +11,7 @@ import { DiscussionProvider } from '../../providers/discussion/discussion';
 export class MessagesPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public discussionProvider: DiscussionProvider) {
-    this.discussionProvider.getUserDiscussions(this.userProvider.user.id);
+    this.discussionProvider.getUserDiscussions();
   }
 
   ionViewDidLoad() {

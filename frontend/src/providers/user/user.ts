@@ -7,37 +7,11 @@ import { BackendProvider } from '../backend/backend';
 
 @Injectable()
 export class UserProvider {
-  firstname: string; //
-  lastname: string; //
-  age: number; //
-  picture: string;
-  sex: string; //
-  email: string; //
-  phone: string;
-  shortDescription: string;
-  longDescription: string;
-  level: string;
-  isAuth: boolean;
-
+  isAuth: boolean = false;
+  spinner: boolean = false;
   user: any;
 
-
   constructor(public http: Http, private fb: Facebook, public backendProvider: BackendProvider) {
-    this.load();
-  }
-
-  load() {
-    this.firstname = 'Jon';
-    this.lastname = 'Snow';
-    this.age = 25;
-    this.picture = 'assets/img/unknownprofile.png';
-    this.sex = 'M';
-    this.email = 'j.snow@winterfell.com';
-    this.phone = '01 23 45 67 89';
-    this.shortDescription = 'Knower of nothing';
-    this.longDescription = 'Long Description...'
-    this.level = 'Bac+3';
-    this.isAuth = true;
   }
 
   getAge(birthyear: number) {
@@ -45,27 +19,44 @@ export class UserProvider {
   }
 
   signUp(body) {
+    this.spinner = true;
     return new Promise(resolve => {
       var options = new RequestOptions({withCredentials: true});
       this.http.post(this.backendProvider.url + '/signup/?apikey=' + this.backendProvider.apikey, body, options)
         .map(res => res.json())
-        .subscribe(data => {
-          console.log("LOGIN", data);
-          this.user = data
-          this.user.public.age = this.getAge(this.user.public.birthyear)
-        });
+        .subscribe(
+          data => {
+            this.spinner = false;
+            this.user = data
+            this.user.public.age = this.getAge(this.user.public.birthyear)
+            this.isAuth = true;
+          },
+          err => {
+            this.spinner = false;
+            this.isAuth = false;
+          }
+        );
     });
   }
 
   logIn(body) {
+    this.spinner = true;
     return new Promise(resolve => {
       var options = new RequestOptions({withCredentials: true});
       this.http.post(this.backendProvider.url + '/login/?apikey=' + this.backendProvider.apikey, body, options)
         .map(res => res.json())
-        .subscribe(data => {
-          this.user = data
-          this.user.public.age = this.getAge(this.user.public.birthyear)
-        });
+        .subscribe(
+          data => {
+            this.spinner = false;
+            this.user = data
+            this.user.public.age = this.getAge(this.user.public.birthyear)
+            this.isAuth = true;
+          },
+          err => {
+            this.spinner = false;
+            this.isAuth = false;
+          }
+        );
     });
   }
 
@@ -88,6 +79,7 @@ export class UserProvider {
               .map(res => res.json())
               .subscribe(data => {
                 this.user = data
+                this.isAuth = true;
               });
           })
       })

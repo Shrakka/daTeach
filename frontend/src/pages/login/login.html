@@ -13,6 +13,10 @@
       <ion-label color="primary" stacked>{{ 'LOGIN_PASSWORD' | translate }}</ion-label>
       <ion-input [(ngModel)]="password" type="password"></ion-input>
     </ion-item>
+    <div class="login-spinner-error">
+      <ion-spinner *ngIf="userProvider.spinner"></ion-spinner>
+      <div *ngIf="oneTimeClicked && !userProvider.isAuth && !userProvider.spinner" class="no-results">{{ 'LOGIN_FAIL' | translate }}</div>
+    </div>
     <div class="login-buttons">
       <button ion-button (click)="logIn()" class="login-button">{{ 'LOGIN_LOGBUTTON' | translate }}</button>
       <button ion-button (click)="logInFB()" color="facebook" class="login-button">

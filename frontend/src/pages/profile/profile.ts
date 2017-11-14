@@ -99,7 +99,8 @@ export class ProfilePage {
   }
 
   logout() {
-    this.navCtrl.setRoot('LoginPage');
+    this.userProvider.isAuth = false;
+    this.navCtrl.push('LoginPage');
   }
 
   // ------------------------- FILE UPLOAD -------------------------
@@ -230,5 +231,7 @@ public pathForImage(img) {
       this.presentToast('Error while uploading file.');
     });
   }
+
+
 
 }

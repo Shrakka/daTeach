@@ -8,6 +8,7 @@
   "LOGIN_LOGBUTTON": "Connection",
   "LOGIN_FACEBOOK":"Login with facebook",
   "LOGIN_NOACCOUNT":"Do not have an account?",
+  "LOGIN_FAIL": "No matching account",
 
   "SIGNUP_SIGN":"Please sign up",
   "SIGNUP_EMAIL":"Email",
@@ -20,6 +21,7 @@
   "SIGNUP_FEMALE":"Female",
   "SIGNUP_NA":"Other",
   "SIGNUP_BUTTON":"Sign up",
+  "SIGNUP_FAIL": "This email address is already used",
 
   "TITLE_HOME": "daTeach",
   "TITLE_TAKE": "Take lessons",

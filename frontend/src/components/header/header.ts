@@ -13,7 +13,7 @@ export class HeaderComponent {
   }
 
   goToProfile() {
-    if(this.userProvider.user) {
+    if(this.userProvider.isAuth) {
       this.navCtrl.push('ProfilePage');
     } else {
       this.navCtrl.push('LoginPage');
