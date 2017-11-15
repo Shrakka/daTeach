@@ -75,7 +75,7 @@ export class TakeFormPage {
   }
 
   goToResults() {
-    if(this.takeForm.location === '' || this.takeForm.topics.length === 0){
+    if(Object.keys(this.takeForm.location).length === 0 || this.takeForm.topics.length === 0){
       const alert = this.alertCtrl.create({
         title:(this.translate.get("ALERT_COMPLETE_TITLE") as any).value,
         subTitle:(this.translate.get("ALERT_COMPLETE_TEXT") as any).value,

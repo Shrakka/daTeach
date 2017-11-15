@@ -73,7 +73,7 @@ export class GiveFormPage {
   }
 
   goToResults() {
-    if(this.giveForm.location === '' || this.giveForm.topics.length === 0){
+    if(Object.keys(this.giveForm.location).length === 0 || this.giveForm.topics.length === 0){
       const alert = this.alertCtrl.create({
         title: (this.translate.get("ALERT_COMPLETE_TITLE") as any).value,
         subTitle:(this.translate.get("ALERT_COMPLETE_TEXT") as any).value,

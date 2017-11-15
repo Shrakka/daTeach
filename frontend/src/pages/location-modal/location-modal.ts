@@ -18,8 +18,6 @@ export class LocationModalPage {
     'Nantes',
     'Atlanta',
     'Miami',
-    'Ibiza',
-    'Cordou',
     'Poitiers'
   ];
 

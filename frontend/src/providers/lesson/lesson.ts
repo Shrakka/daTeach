@@ -63,6 +63,7 @@ export class LessonProvider {
   }
 
   getUserLessons(id: string) {
+    console.log("user lessons")
     return new Promise(resolve => {
       var options = new RequestOptions({withCredentials: true});
       this.http.get(this.backendProvider.url + '/lesson/user/' + id + '/?apikey=' + this.backendProvider.apikey, options)

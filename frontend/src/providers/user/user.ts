@@ -96,4 +96,12 @@ export class UserProvider {
     });
   }
 
+  getStatic(url) {
+    return this.backendProvider.static + url;
+  }
+
+  getPostPhotoURL(id) {
+    return this.backendProvider.url + '/photo/' + id + '/?apikey=' + this.backendProvider.apikey;
+  }
+
 }

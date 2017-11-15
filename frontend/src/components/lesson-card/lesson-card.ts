@@ -4,6 +4,7 @@ import { LessonProvider } from '../../providers/lesson/lesson';
 import { DiscussionProvider } from '../../providers/discussion/discussion';
 import { NavController } from 'ionic-angular';
 
+
 @Component({
   selector: 'lesson-card',
   templateUrl: 'lesson-card.html'

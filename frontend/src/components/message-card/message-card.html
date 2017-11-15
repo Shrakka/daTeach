@@ -1,6 +1,6 @@
 <ion-card class="card-md" (click)="goToChat()">
   <div class="card-both card-primary">
-    <div class="card-primary-picture"><img [src]="result.user.public.picture"/></div>
+    <div class="card-primary-picture"><img class="thumbnail" [src]="userProvider.getStatic(result.user.public.picture)"/></div>
     <div class="card-info">
       <div class="card-name">
         {{ result.user.public.firstname }} {{ result.user.public.lastname }}

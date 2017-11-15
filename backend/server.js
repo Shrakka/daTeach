@@ -7,6 +7,7 @@ var app      = express();
 var port     = process.env.PORT || 8080;
 var mongoose = require('mongoose');
 var passport = require('passport');
+var path     = require('path');
 
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -20,6 +21,23 @@ var io = require('socket.io')(server);
 
 var cors = require('cors')
 app.use(cors({ origin: true , credentials :  true}))
+
+// Multer 
+var multer = require('multer');
+var storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './public/photos');
+  },
+  filename: function(req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
+app.use(multer({storage: storage}).single('photo'));
+
+// Static serve
+var dir = path.join(__dirname, '/public');
+app.use('/public', express.static(dir));
+
 
 // configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database

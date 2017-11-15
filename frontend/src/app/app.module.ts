@@ -31,6 +31,10 @@ import { UserProvider } from '../providers/user/user';
 import { BackendProvider } from '../providers/backend/backend';
 import { DiscussionProvider } from '../providers/discussion/discussion';
 import { LessonProvider } from '../providers/lesson/lesson';
+import { File } from '@ionic-native/file';
+import { Transfer } from '@ionic-native/transfer';
+import { FilePath } from '@ionic-native/file-path';
+import { Camera } from '@ionic-native/camera';
 
 export function createTranslateLoader(http: Http) {
 	return new TranslateStaticLoader(http, 'assets/i18n', '.json');
@@ -80,6 +84,10 @@ export function createTranslateLoader(http: Http) {
     Geolocation,
     NativeGeocoder,
     Globalization,
+    File,
+    Transfer,
+    Camera,
+    FilePath,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
     BackendProvider,

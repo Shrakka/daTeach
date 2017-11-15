@@ -11,16 +11,16 @@ page-profile {
 		background-size: 100% 100%;
 		background-position: center;
 		background-repeat: none;
+		overflow: hidden;
 
 	}
-	.identite .image{
+	.identite .thumbnail{
 		width: 40%;
 		margin: auto;
 		margin-top: -55px;
 		display: flex;
 		// flex-direction: column;
 		justify-content: space-around;
-		
 		// background-color:green;
 	}
 	.identite img{
@@ -41,5 +41,12 @@ page-profile {
 		display: flex;
 		justify-content: space-around;
 	}
+
+	.profile-photo-cirle {
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+	}
 	
+
 }
