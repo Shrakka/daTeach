@@ -19,7 +19,7 @@ declare var google;
   templateUrl: 'nearby.html',
 })
 export class NearbyPage {
-
+  spinner: boolean = true;
   @ViewChild('map') mapElement: ElementRef;
   map: any;
 
@@ -89,7 +89,7 @@ export class NearbyPage {
      // let LatLng=this.getLatLng()
      // var a=0;
      let latLng = new google.maps.LatLng(LatLng.lat, LatLng.lng);
-
+     this.spinner = false;
      let mapOptions = {
        center: latLng,
        zoom: 15,

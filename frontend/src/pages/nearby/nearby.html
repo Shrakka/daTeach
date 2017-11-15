@@ -7,7 +7,10 @@
     <ion-badge color='primary'>{{ 'MAP_TAKE' | translate }}</ion-badge>
     <ion-badge color='secondary'>{{ 'MAP_GIVE' | translate }}</ion-badge>
   </div>
-  <div #map id="map"></div>
+  <div *ngIf="spinner" class="spinner-screen">
+    <ion-spinner></ion-spinner>
+  </div>
+  <div *ngIf="!spinner" #map id="map"></div>
 </ion-content>
 
 <ion-footer>
