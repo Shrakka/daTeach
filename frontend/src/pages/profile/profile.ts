@@ -212,8 +212,9 @@ public pathForImage(img) {
     this.loading.present();
 
     fileTransfer.upload(targetPath, url, options).then(data => {
-      console.log(data);
-      this.userProvider.user = data;
+      let response = JSON.parse(data.response);
+      console.log(response);
+      this.userProvider.user.public = response;
       this.loading.dismissAll()
       this.presentToast('Image succesfully uploaded.');
     }, err => {
