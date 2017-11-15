@@ -28,9 +28,9 @@ export class FooterComponent {
     this.navCtrl.setRoot('HomePage');
   }
 
-  goToMessages() {
+  goToLessons() {
     if (this.userProvider.user) {
-      this.navCtrl.push('MessagesPage');
+      this.navCtrl.push('LessonsPage');
     }
     else {
       this.navCtrl.push('LoginPage');
