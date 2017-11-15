@@ -7,36 +7,50 @@
 	<ion-list [ngSwitch]="field">
 	
 	<!-- <p *ngSwitchDefault>Standard diet</p> -->
-  <ion-item *ngSwitchCase="'Contacts'">
+  <ion-item *ngSwitchCase="'Contact'">
     <ion-label stacked>Mobile</ion-label>
     <ion-input type="tel" [(ngModel)]="userProvider.user.public.phone" placeholder ="{{ userProvider.user.public.phone }}"></ion-input>
   </ion-item>
 
-  <ion-item *ngSwitchCase="'Contacts'">
+  <ion-item *ngSwitchCase="'Contact'">
     <ion-label stacked>Email</ion-label>
     <ion-input type="email" [(ngModel)]="userProvider.user.public.email" placeholder ="{{ userProvider.user.public.email }}"></ion-input>
   </ion-item>
 
-  <ion-item *ngSwitchCase="'Infos'">
+  <ion-item *ngSwitchCase="'Informations'">
     <ion-label stacked>Gender</ion-label>
     <ion-input type="text" [(ngModel)]="userProvider.user.public.gender" placeholder ="{{ userProvider.user.public.gender }}"></ion-input>
   </ion-item>
-  <ion-item *ngSwitchCase="'Infos'">
+  <ion-item *ngSwitchCase="'Informations'">
     <ion-label stacked>Age</ion-label>
     <ion-input type="text" [(ngModel)]="userProvider.user.public.age" placeholder ="{{ userProvider.user.public.age }}"></ion-input>
   </ion-item>
-  <ion-item *ngSwitchCase="'Infos'">
+  <ion-item *ngSwitchCase="'Informations'">
     <ion-label stacked>Level</ion-label>
     <ion-input type="text" [(ngModel)]="userProvider.user.public.level" placeholder ="{{ userProvider.user.public.level }}"></ion-input>
   </ion-item>
-  <ion-item *ngSwitchCase="'Who are you ?'">
-      <ion-label stacked>Who are you ?</ion-label>
-      <ion-input type="text" [(ngModel)]="userProvider.user.public.shortDescription" placeholder ="{{ userProvider.user.public.shortDescription }}"></ion-input>
+  <ion-item *ngSwitchCase="'Looking for?'">
+      <ion-label stacked>Looking for ?</ion-label>
+      <ion-textarea [(ngModel)]="userProvider.user.public.shortDescription" placeholder ="{{ userProvider.user.public.shortDescription }}"></ion-textarea>
     </ion-item>
-  <ion-item *ngSwitchCase="'Introduce yourself'">
-    <ion-label stacked>Introduce yourself</ion-label>
-    <ion-input type="text" [(ngModel)]="userProvider.user.public.longDescription" placeholder ="{{ userProvider.user.public.longDescription || ''}}"></ion-input>
+  <ion-item *ngSwitchCase="'Que recherches-tu ?'">
+      <ion-label stacked>Que recherches-tu ?</ion-label>
+      <ion-textarea [(ngModel)]="userProvider.user.public.shortDescription" placeholder ="{{ userProvider.user.public.shortDescription }}"></ion-textarea>
+    </ion-item>
+
+  <ion-item *ngSwitchCase="'Introduce yourself!'">
+    <ion-label stacked>Introduce yourself!</ion-label>
+    <ion-textarea [(ngModel)]="userProvider.user.public.longDescription" placeholder ="{{ userProvider.user.public.longDescription || ''}}"></ion-textarea>
   </ion-item>
+
+  <ion-item *ngSwitchCase="'Présente-toi'">
+    <ion-label stacked>Introduce yourself</ion-label>
+    <!-- <ion-input type="text" [(ngModel)]="userProvider.user.public.longDescription" placeholder ="{{ userProvider.user.public.longDescription || ''}}"></ion-input> -->
+    <ion-textarea [(ngModel)]="userProvider.user.public.longDescription" placeholder ="{{ userProvider.user.public.longDescription || ''}}"></ion-textarea>
+  </ion-item>
+  <!-- <ion-item>
+    <ion-textarea placeholder="Enter a description"></ion-textarea>
+  </ion-item> -->
 
 </ion-list>
 <button ion-button clear (click)="editprofile($event)">EDIT</button>
