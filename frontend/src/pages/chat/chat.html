@@ -4,7 +4,7 @@
 
 <ion-content padding>
   <div *ngFor="let message of result.discussion.messages" [class]="'message-container ' + ((message.author == userProvider.user.id) ? 'me-message-container' : 'you-message-container')">
-    <img [src]="(message.author == userProvider.user.id) ? userProvider.getStatic(userProvider.user.public.picture) : userProvider.getStatic(result.user.public.picture)" class="chat-picture">
+    <img[src]="(message.author == userProvider.user.id) ? userProvider.getStatic(userProvider.user.public.picture) : userProvider.getStatic(result.user.public.picture)" class="chat-picture thumbnail">
     <div [class]="'both-message ' + ((message.author == userProvider.user.id) ? 'me-message' : 'you-message')">
       {{ message.content }}
     </div>
