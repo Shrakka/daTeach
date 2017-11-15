@@ -31,19 +31,19 @@ export class ChatPage {
       setTimeout(function() {
         this.discussionProvider.putDiscussion({discussion: this.result.discussion._id, user: this.userProvider.user.id, seen: true});
       }.bind(this), 100);
-     // this.scrollToBottom();
+      this.scrollToBottom(200);
     });
   }
 
-  scrollToBottom() {
+  scrollToBottom(time: number) {
     setTimeout(() => {
       this.content.scrollToBottom();
-    });
+    }, time);
   }
 
   ionViewDidLoad() {
     this.socket.connect();
-    this.scrollToBottom();
+    this.scrollToBottom(500);
   }
 
   addMessage() {

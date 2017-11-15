@@ -1,8 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.dateach.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>MyApp</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <name>daTeach</name>
+    <description>An app for the CIC contest.</description>
+    <author email="alozano@georgiatech-metz.fr">Alexis Lozano</author>
+    <author email="etesta2@georgiatech-metz.fr">Enzo Testa</author>
+    <author email="ayankwaw@georgiatech-metz.fr">Arnaud Yankwa</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
