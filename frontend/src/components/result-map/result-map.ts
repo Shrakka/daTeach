@@ -8,13 +8,12 @@ import { UserProvider } from '../../providers/user/user';
   templateUrl: 'result-map.html'
 })
 export class ResultMapComponent {
-  @Input() result: any;
-  @Input() mode: string;
-
   constructor(public navCtrl: NavController, public navParams: NavParams, public lessonProvider: LessonProvider, public userProvider: UserProvider) {
-
-    if(navParams.data.result){//Access from the map
-    this.result = navParams.data.result;
+    if(navParams.data.result){
+      this.result = navParams.data.result;
+    }
+    if(navParams.data.mode){//Access from the map
+      this.mode = navParams.data.mode;
     }
   }
 
@@ -25,7 +24,7 @@ export class ResultMapComponent {
   getColor(key: string, value: string) {
     if (key === 'topic') {
       if (this.lessonProvider.request.topics.includes(value)) {
-        return (this.mode === 'give') ? 'primary' : 'secondary'
+        return (this.mode === 'take') ? 'primary' : 'secondary'
       }
       else {
         return 'light';
@@ -33,7 +32,7 @@ export class ResultMapComponent {
     }
     else if (key === 'town') {
       if (value === this.lessonProvider.request.location.town) {
-        return (this.mode === 'give') ? 'primary' : 'secondary'
+        return (this.mode === 'take') ? 'primary' : 'secondary'
       }
       else {
         return 'light';
@@ -41,7 +40,7 @@ export class ResultMapComponent {
     }
     else if (key === 'moving') {
       if (value !== this.lessonProvider.request.moving) {
-        return (this.mode === 'give') ? 'primary' : 'secondary'
+        return (this.mode === 'take') ? 'primary' : 'secondary'
       }
       else {
         return 'light';
@@ -49,7 +48,7 @@ export class ResultMapComponent {
     }
     else {
       if (value === this.lessonProvider.request[key]) {
-        return (this.mode === 'give') ? 'primary' : 'secondary'
+        return (this.mode === 'take') ? 'primary' : 'secondary'
       }
       else {
         return 'light';

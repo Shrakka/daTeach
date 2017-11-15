@@ -52,8 +52,10 @@ export class NearbyPage {
    }
 
    addMarker(latlng,map,label, result){
+     var url = (result.lesson.author.role === 'student') ? 'assets/img/map-marker-take.png' : 'assets/img/map-marker.png';
+     var mode = (result.lesson.author.role === 'student') ? 'take' : 'give';
       var image = {
-       url: 'assets/img/map-marker.png',
+       url: url,
        // This marker is 20 pixels wide by 32 pixels high.
        size: new google.maps.Size(48, 48),
        // The origin for this image is (0, 0).
@@ -71,7 +73,7 @@ export class NearbyPage {
        let me=this;
        if(result){
         marker.addListener('click', function(e) {
-             let popover = me.popoverCtrl.create(ResultMapComponent, {result:result});
+             let popover = me.popoverCtrl.create(ResultMapComponent, {result:result, mode: mode});
              popover.present({
                ev: e
              });

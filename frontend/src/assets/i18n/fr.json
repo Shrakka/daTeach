@@ -107,6 +107,9 @@
   "FOOTER_MESSAGES": "MESSAGES",
   "FOOTER_NEARBY": "PROCHE",
 
+  "MAP_GIVE": "Cours donnés",
+  "MAP_TAKE": "Cours demandés",
+
   "TOPIC_MAT":"Mathématiques",
   "TOPIC_ENG":"Anglais",
   "TOPIC_PHY":"Physique",
