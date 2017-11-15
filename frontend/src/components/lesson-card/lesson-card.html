@@ -6,7 +6,7 @@
         {{ author.public.firstname }} {{ author.public.lastname }} <span class="card-short-desc">({{ author.public.gender }} - {{ author.public.age }})</span>
       </div>
       <div class="card-short-desc" *ngIf="userProvider.user.id !== author.id">
-        {{ author.discussion.messages[author.discussion.messages.length - 1].content }}
+        {{ getMessages(author) }}
       </div>
     </div>
     <div *ngIf="userProvider.user.id !== author.id" class="card-icon" (click)="goToChat(author)">
@@ -33,7 +33,7 @@
         {{ user.public.firstname }} {{ user.public.lastname }} <span class="card-short-desc">({{ user.public.gender }} - {{ user.public.age }})</span>
       </div>
       <div class="card-short-desc" *ngIf="userProvider.user.id !== user.id">
-        {{ user.discussion.messages[user.discussion.messages.length - 1].content }}
+        {{ getMessages(user) }}
       </div>
     </div>
     <div *ngIf="userProvider.user.id !== user.id" class="card-icon" (click)="goToChat(user)">

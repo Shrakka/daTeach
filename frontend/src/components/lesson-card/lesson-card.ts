@@ -73,4 +73,13 @@ export class LessonCardComponent {
     return (this.userProvider.user.id === user.discussion.user1 && !user.discussion.seen1) || (this.userProvider.user.id === user.discussion.user2 && !user.discussion.seen2)
   }
 
+  getMessages(user: any) {
+    if (user.discussion.messages) {
+      return user.discussion.messages[user.discussion.messages.length - 1].content
+    }
+    else {
+      return '';
+    }
+  }
+
 }
