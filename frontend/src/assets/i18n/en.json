@@ -46,6 +46,7 @@
 
   "FORM_REGULAR": "Regular",
   "FORM_PUNCTUAL": "One-time",
+  "FORM_NEARBY": "Nearby",
   "FORM_TOPICS": "Topic(s)",
   "FORM_TOPICS_DESCRIPTION_GIVE": "What would you like to teach?",
   "FORM_TOPICS_DESCRIPTION_TAKE": "What would you like to learn?",

@@ -37,10 +37,15 @@ page-give-form {
   display: flex;
   justify-content: center;
 }
-#map {
-        width: 100%;
-        height: 100%;
-        // background-color: grey;
-        // display: block;
-        // margin-top: 5px;
-      }
+
+#map-form {
+  width: 100%;
+  height: calc(100% - 42px);
+}
+
+.segments {
+  background: white;
+}
+
+.segment {
+}

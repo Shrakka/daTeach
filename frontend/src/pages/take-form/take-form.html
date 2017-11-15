@@ -6,19 +6,17 @@
   <div class="form take-form">
 
         <!-- LESSON TYPE -->
-        <ion-item>
-          <ion-segment name="lessonType" [(ngModel)]="takeForm.type" color="primary">
-                <ion-segment-button value="regular" (ionSelect)="selectedRegular()">
-                    {{ 'FORM_REGULAR' | translate }}
+          <ion-segment class="segments" name="lessonType" [(ngModel)]="takeForm.type" color="primary">
+                <ion-segment-button class="segment" value="regular" (ionSelect)="selectedRegular()">
+                  {{ 'FORM_REGULAR' | translate }}
                 </ion-segment-button>
                 <ion-segment-button value="punctual" (ionSelect)="selectedPunctual()">
-                    {{ 'FORM_PUNCTUAL' | translate }}
+                  {{ 'FORM_PUNCTUAL' | translate }}
                 </ion-segment-button>
                <ion-segment-button value="nearby" (ionSelect)="selectedNearby()">
-                  NEARBY
+                  {{ 'FORM_NEARBY' | translate }}
                 </ion-segment-button>
             </ion-segment>
-        </ion-item>
 
         <!-- TOPICS -->
 
@@ -37,7 +35,7 @@
         </div>
 
         <!-- TOPICS BADGES -->
-        <div class="topics-badges">
+        <div class="topics-badges" *ngIf="takeForm.type !== 'nearby'">
           <ion-badge *ngFor="let topic of takeForm.topics">{{ topic }}</ion-badge>
         </div>
 
@@ -86,9 +84,9 @@
           <button ion-button color="primary" (click)="goToResults()">{{ 'FORM_SHOWRESULTS' | translate }}</button>
 
         </div>
-        
+
       </div>
-   <div #map id="map" *ngIf="takeForm.type === 'nearby'"></div> 
+   <div #map id="map-form" *ngIf="takeForm.type === 'nearby'"></div>
 </ion-content>
 
 <ion-footer>

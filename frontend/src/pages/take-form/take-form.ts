@@ -6,8 +6,8 @@ import { LessonProvider } from '../../providers/lesson/lesson';
 import { TopicModalPage } from '../../pages/topic-modal/topic-modal';
 import { LocationModalPage } from '../../pages/location-modal/location-modal';
 import { TranslateService } from 'ng2-translate';
-import {ResultComponent } from '../../components/result/result';
-declare var google; 
+import {ResultMapComponent } from '../../components/result-map/result-map';
+declare var google;
 
 
 @IonicPage()
@@ -25,11 +25,6 @@ export class TakeFormPage {
 
 
   constructor(public navCtrl: NavController,private geolocation: Geolocation, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider, public alertCtrl: AlertController, public popoverCtrl: PopoverController,public translate: TranslateService) {
-// ||||||| merged common ancestors
-//   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider, public alertCtrl: AlertController) {
-// =======
-//   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider, public alertCtrl: AlertController, public translate: TranslateService) {
-// >>>>>>> master
     // INIT FORM
     this.takeForm =   {
     role: 'student',
@@ -63,7 +58,7 @@ export class TakeFormPage {
        console.log('latitude', resp.coords.latitude);
        console.log('longitude', resp.coords.longitude);
         this.loadMap({lat:resp.coords.latitude,lng:resp.coords.longitude});
-      
+
      })
       .catch((error) => {
     console.log('Error getting location', error);});
@@ -74,7 +69,7 @@ export class TakeFormPage {
     let Gform={role: '', location: '', moving: '', dates: '', type: '', topics: '', usage:'Gmaps'};
     this.lessonProvider.postLessonRequest(Gform);
     this.getLatLng();
-   
+
    }
 
   setMoving(moving){
@@ -108,26 +103,25 @@ export class TakeFormPage {
 
   addMarker(latlng,map,label, result){
      var image = {
-      url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+      url: 'assets/img/map-marker.png',
       // This marker is 20 pixels wide by 32 pixels high.
-      size: new google.maps.Size(100, 60),
+      size: new google.maps.Size(48, 48),
       // The origin for this image is (0, 0).
       origin: new google.maps.Point(0, 0),
 
-      labelOrigin:new google.maps.Point(0, -2)
+      labelOrigin:new google.maps.Point(24, 48)
       // The anchor for this image is the base of the flagpole at (0, 32).
       // anchor: new google.maps.Point(0, 32)
     };
      var marker = new google.maps.Marker({
           position: latlng,
           icon:image,
-          map: map,
-          label: label
+          map: map
         });
       let me=this;
       if(result){
        marker.addListener('click', function(e) {
-            let popover = me.popoverCtrl.create(ResultComponent, {result:result});
+            let popover = me.popoverCtrl.create(ResultMapComponent, {result:result});
             popover.present({
               ev: e
             });
@@ -137,19 +131,19 @@ export class TakeFormPage {
           });
       }
   }
-  
+
 
   loadMap(LatLng) {
     // let LatLng=this.getLatLng()
     // var a=0;
     let latLng = new google.maps.LatLng(LatLng.lat, LatLng.lng);
- 
+
     let mapOptions = {
       center: latLng,
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
-    
+
      setTimeout(() => {
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
       for( var i=0; i<this.lessonProvider.results.length;i++){
@@ -157,11 +151,10 @@ export class TakeFormPage {
         let latlng=lessonObj.lesson.location.position;
         this.addMarker({lat:parseFloat(latlng.lat),lng:parseFloat(latlng.long)},this.map,lessonObj.lesson.topics[0],lessonObj);
       }
-      this.addMarker(latLng,this.map,'Me','');
     }, 200);
-    
+
   }
-  
+
   goToResults() {
     if(this.takeForm.location === '' || this.takeForm.topics.length === 0){
       const alert = this.alertCtrl.create({

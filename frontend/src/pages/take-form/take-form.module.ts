@@ -6,6 +6,7 @@ import { FooterComponentModule } from '../../components/footer/footer.module';
 import { CalendarComponentModule } from '../../components/calendar/calendar.module';
 import { ProfileBannerComponentModule } from '../../components/profile-banner/profile-banner.module'
 import { TranslateModule } from 'ng2-translate/ng2-translate';
+import { ResultMapComponentModule } from '../../components/result-map/result-map.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { TranslateModule } from 'ng2-translate/ng2-translate';
     HeaderComponentModule,
     FooterComponentModule,
     TranslateModule,
+    ResultMapComponentModule,
     IonicPageModule.forChild(TakeFormPage),
   ],
 })
