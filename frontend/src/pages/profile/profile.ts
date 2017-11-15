@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, PopoverController, ActionSheetController, ToastController, Platform, LoadingController, Loading } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { EditProfilePage } from '../profile/editprofile/editprofile';
+import { TranslateService } from 'ng2-translate'; 
 
 import { File } from '@ionic-native/file';
 import { Transfer, TransferObject } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
+
 
 declare var cordova: any;
 
@@ -19,7 +21,7 @@ export class ProfilePage {
 
   public bannerURL;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider,public popoverCtrl: PopoverController, public alertCtrl: AlertController, private camera: Camera, private transfer: Transfer, private file: File, private filePath: FilePath, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider,public popoverCtrl: PopoverController, public alertCtrl: AlertController, private camera: Camera, private transfer: Transfer, private file: File, private filePath: FilePath, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController, public translate: TranslateService) {
     }
 
   ionViewDidLoad() {
