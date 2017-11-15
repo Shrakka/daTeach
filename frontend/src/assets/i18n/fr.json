@@ -32,6 +32,7 @@
   "TITLE_PROFILE": "Mon profil",
   "TITLE_LOGIN": "Se connecter",
   "TITLE_SIGNUP": "S'inscrire",
+  "TITLE_NEARBY": "Proche",
 
   "PROFILE_CONTACTS": "Contact",
   "PROFILE_MOBILE": "Téléphone",
@@ -98,6 +99,7 @@
   "FOOTER_LESSONS": "COURS",
   "FOOTER_HOME": "MENU",
   "FOOTER_MESSAGES": "MESSAGES",
+  "FOOTER_NEARBY": "PROCHE",
 
   "TOPIC_MAT":"Mathématiques",
   "TOPIC_ENG":"Anglais",

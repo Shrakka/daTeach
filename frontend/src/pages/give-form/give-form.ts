@@ -6,6 +6,8 @@ import { TopicModalPage } from '../../pages/topic-modal/topic-modal';
 import { LocationModalPage } from '../../pages/location-modal/location-modal';
 import { TranslateService } from 'ng2-translate';
 
+declare var google;
+
 @IonicPage()
 @Component({
   selector: 'page-give-form',
@@ -18,6 +20,7 @@ export class GiveFormPage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider, public alertCtrl: AlertController, public translate: TranslateService) {
+
     this.giveForm =   {
       role: 'teacher',
       type: 'regular',
@@ -32,9 +35,13 @@ export class GiveFormPage {
     this.lessonProvider.getTopics();
   }
 
-  ionViewDidLoad() {console.log('ionViewDidLoad GiveFormPage');}
+  ionViewDidLoad() {
+
+    console.log('ionViewDidLoad GiveFormPage');
+  }
   selectedRegular() {}
   selectedPunctual() {}
+
 
   setMoving(moving){
     this.giveForm.moving = moving;

@@ -3,7 +3,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="form" class="give-form">
+  <div class="form" class="give-form" >
 
       <!-- PROFILE BANNER NOT NECESSARY HERE -->
       <!-- <div *ngIf="userProvider.user">
@@ -11,20 +11,20 @@
       </div> -->
 
         <!-- LESSON TYPE -->
-        <ion-item>
-          <ion-segment color="secondary" name="lessonType" [(ngModel)]="giveForm.type">
-                <ion-segment-button value="regular" (ionSelect)="selectedRegular()">
+          <ion-segment class="segments" color="secondary" name="lessonType" [(ngModel)]="giveForm.type">
+                <ion-segment-button class="segment" value="regular" (ionSelect)="selectedRegular()">
                   {{ 'FORM_REGULAR' | translate }}
                 </ion-segment-button>
                 <ion-segment-button value="punctual" (ionSelect)="selectedPunctual()">
                   {{ 'FORM_PUNCTUAL' | translate }}
                 </ion-segment-button>
             </ion-segment>
-        </ion-item>
 
         <!-- TOPICS -->
-        <div  class="topics-search">
+
+        <div  class="topics-search" >
           <div padding class="topic-label">{{ 'FORM_TOPICS' | translate }}</div>
+
           <ion-searchbar
             [(ngModel)]="topicsDisplay"
             [showCancelButton]="shoudShowCancel"
@@ -39,11 +39,13 @@
         <div class="topics-badges">
           <ion-badge color="secondary" *ngFor="let t of giveForm.topics">{{ t }}</ion-badge>
         </div>
-        <br/>
+        <br />
 
         <!-- LOCATION -->
+
         <div  class="location-search">
           <div padding class="location-label">{{ 'FORM_LOCATION' | translate }}</div>
+
           <ion-searchbar
           [(ngModel)]="giveForm.location.fullAddress"
           [showCancelButton]="shouldShowCancel"
@@ -56,8 +58,10 @@
 
 
         <!-- MOVE BUTTONS -->
+
         <div class="move-panel" padding>
           <div class="move-label">{{ 'FORM_PREFERENCE' | translate}}</div>
+
           <div class="move-buttons">
             <button ion-button color="secondary" [outline]="giveForm.moving !== 'move'" (click)="setMoving('move')">{{ 'FORM_MOVE' | translate}}</button>
             <button ion-button color="secondary" [outline]="giveForm.moving !== 'host'" (click)="setMoving('host')">{{ 'FORM_HOST' | translate}}</button>
@@ -66,7 +70,7 @@
         </div>
 
         <!-- CALENDAR -->
-        <br/>
+        <br />
 
         <div *ngIf="giveForm.type === 'punctual'">
           <div padding class="calendar-label">{{ 'FORM_CALENDAR' | translate }}</div>
@@ -74,9 +78,14 @@
         </div>
 
 
+
+
+
         <!-- SUBMIT BUTTON -->
+
         <div class="button-panel">
           <button ion-button color="secondary" (click)="goToResults()">{{ 'FORM_SHOWRESULTS' | translate }}</button>
+
         </div>
       </div>
 

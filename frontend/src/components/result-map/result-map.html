@@ -1,0 +1,23 @@
+<div (click)="goToClient()">
+  <div class="card-both card-primary">
+    <div class="card-primary-picture"><img [src]="result.user.public.picture"/></div>
+      <div class="card-info">
+        <div class="card-name">
+          {{ result.user.public.firstname }} {{ result.user.public.lastname }} <span class="card-short-desc">({{ result.user.public.gender }} - {{ result.user.public.age }})</span>
+        </div>
+        <div class="card-short-desc">
+          {{ result.user.public.shortDescription }}
+        </div>
+    </div>
+  </div>
+  <div class="card-badges">
+    <div>
+      <ion-badge *ngFor="let topic of result.lesson.topics" class="card-badge" [color]="getColor('topic', topic)">{{ topic }}</ion-badge>
+    </div>
+    <div>
+      <ion-badge class="card-badge" [color]="getColor('type', result.lesson.type)">{{ result.lesson.type.toUpperCase() }}</ion-badge>
+      <ion-badge class="card-badge" [color]="getColor('town', result.lesson.location.town)">{{ result.lesson.location.town.toUpperCase() }}</ion-badge>
+      <ion-badge class="card-badge" [color]="getColor('moving', result.lesson.moving)">{{ result.lesson.moving.toUpperCase() }}</ion-badge>
+    </div>
+  </div>
+</div>

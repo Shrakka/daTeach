@@ -13,6 +13,7 @@ import { Globalization } from '@ionic-native/globalization';
 
 import { MyApp } from './app.component';
 
+import { NearbyPageModule } from '../pages/nearby/nearby.module';
 import { LessonsPageModule } from '../pages/lessons/lessons.module';
 import { LoginPageModule } from '../pages/login/login.module';
 import { ChatPageModule } from '../pages/chat/chat.module';
@@ -44,6 +45,7 @@ export function createTranslateLoader(http: Http) {
     MyApp
   ],
   imports: [
+		NearbyPageModule,
     LessonsPageModule,
     LoginPageModule,
     ChatPageModule,

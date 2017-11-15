@@ -6,15 +6,16 @@ import { TopicModalPage } from '../../pages/topic-modal/topic-modal';
 import { LocationModalPage } from '../../pages/location-modal/location-modal';
 import { TranslateService } from 'ng2-translate';
 
+
 @IonicPage()
 @Component({
   selector: 'page-take-form',
   templateUrl: 'take-form.html',
 })
 export class TakeFormPage {
-
   takeForm: any;
   topicsDisplay: any;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public lessonProvider: LessonProvider, public alertCtrl: AlertController, public translate: TranslateService) {
     // INIT FORM

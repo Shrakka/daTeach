@@ -1,17 +1,17 @@
 import { Component, Input } from '@angular/core';
 import { NavController, NavParams  } from 'ionic-angular';
 import { LessonProvider } from '../../providers/lesson/lesson';
-import { UserProvider } from '../../providers/user/user';
 
 @Component({
-  selector: 'result',
-  templateUrl: 'result.html'
+  selector: 'result-map',
+  templateUrl: 'result-map.html'
 })
-export class ResultComponent {
+export class ResultMapComponent {
   @Input() result: any;
   @Input() mode: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public lessonProvider: LessonProvider, public userProvider: UserProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public lessonProvider: LessonProvider) {
+
     if(navParams.data.result){//Access from the map
     this.result = navParams.data.result;
     }
