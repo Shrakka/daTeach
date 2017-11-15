@@ -17,5 +17,7 @@ export class BackendProvider {
     this.apikey = 'VxWSMnBRcTTGXMFRzAoAcyFQLDYZ8pQW';
     this.static = this.url + '/public/photos/';
   }
-
 }
+
+//export const socketURL = 'http://10.42.0.1:8080';
+export const socketURL = 'http://192.168.2.1:8080';
