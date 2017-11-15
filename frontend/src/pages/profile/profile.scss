@@ -21,7 +21,6 @@ page-profile {
 		display: flex;
 		// flex-direction: column;
 		justify-content: space-around;
-		overflow: hidden;
 		// background-color:green;
 	}
 	.identite img{
@@ -46,7 +45,6 @@ page-profile {
 	.profile-photo-cirle {
 		width: 100%;
 		height: 100%;
-		transform: translate(0%,-20%);
 		border-radius: 50%;
 	}
 	

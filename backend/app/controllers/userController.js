@@ -80,10 +80,9 @@ exports.postPhoto = function (req, res) {
                 dst: 'public/photos/' + req.file.originalname,
                 width: 200,
                 heigth: 200,
-                cropwidth:200, 
-                cropheight:200,
                 x: 0,
                 y: 0,
+                fill: true
               }).then(
                 (img) => {console.log(img);},
                 (err) => {console.log(err);}

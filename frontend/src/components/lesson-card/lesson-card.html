@@ -1,6 +1,6 @@
 <ion-card [class]="'card-' + ((result.lesson.active) ? ((result.lesson.author.role) === 'student' ? 'token' : 'given') : 'inactive') + ' card-md'">
   <div class="card-both card-primary">
-    <div class="card-primary-picture"><img [src]="userProvider.getStatic(author.public.picture)"/></div>
+    <div class="card-primary-picture"><img class="thumbnail" [src]="userProvider.getStatic(author.public.picture)"/></div>
     <div class="card-info">
       <div class="card-name">
         {{ author.public.firstname }} {{ author.public.lastname }} <span class="card-short-desc">({{ author.public.gender }} - {{ author.public.age }})</span>
@@ -27,7 +27,7 @@
     </div>
   </div>
   <div *ngFor="let user of users" class="card-both card-secondary">
-    <div class="card-secondary-picture"><img [src]="userProvider.getStatic(user.public.picture)"/></div>
+    <div class="card-secondary-picture"><img class="thumbnail" [src]="userProvider.getStatic(user.public.picture)"/></div>
     <div class="card-info">
       <div class="card-name">
         {{ user.public.firstname }} {{ user.public.lastname }} <span class="card-short-desc">({{ user.public.gender }} - {{ user.public.age }})</span>
