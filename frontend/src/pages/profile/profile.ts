@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, PopoverController, ActionSheetController, ToastController, Platform, LoadingController, Loading } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ModalController, AlertController, PopoverController, ActionSheetController, ToastController, Platform, LoadingController, Loading } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { EditProfilePage } from '../profile/editprofile/editprofile';
 import { TranslateService } from 'ng2-translate'; 
@@ -21,7 +21,7 @@ export class ProfilePage {
 
   public bannerURL;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider,public popoverCtrl: PopoverController, public alertCtrl: AlertController, private camera: Camera, private transfer: Transfer, private file: File, private filePath: FilePath, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController, public translate: TranslateService) {
+  constructor(public navCtrl: NavController,public modalCtrl: ModalController, public navParams: NavParams, public userProvider: UserProvider,public popoverCtrl: PopoverController, public alertCtrl: AlertController, private camera: Camera, private transfer: Transfer, private file: File, private filePath: FilePath, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController, public translate: TranslateService) {
     }
 
   ionViewDidLoad() {
@@ -30,10 +30,21 @@ export class ProfilePage {
 
   modifyprofile(myEvent){
     let fieldname = myEvent.currentTarget.children[0].innerText;
-  	let popover = this.popoverCtrl.create(EditProfilePage, {field:fieldname});
-    popover.present({
-      ev: myEvent
-    });
+    if(fieldname=="Looking for?" || fieldname=="Que recherches-tu ?"
+    || fieldname=="Introduce yourself!" || fieldname=="Présente-toi"){
+       const editModal = this.modalCtrl.create(EditProfilePage, {field:fieldname});
+      editModal.onDidDismiss(data => {
+      // this.takeForm.topics = data.map(obj => obj.key);
+      // this.topicsDisplay = data.map(obj => obj.name);
+      // console.log(this.takeForm.topics);
+    })
+    editModal.present();
+    }else{
+    	let popover = this.popoverCtrl.create(EditProfilePage, {field:fieldname});
+      popover.present({
+        ev: myEvent
+      });
+    }
   }
 
   photoEdit() {
