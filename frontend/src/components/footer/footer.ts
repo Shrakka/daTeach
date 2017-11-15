@@ -37,12 +37,7 @@ export class FooterComponent {
     }
   }
 
-  goToLessons() {
-    if (this.userProvider.user) {
-      this.navCtrl.push('LessonsPage');
-    }
-    else {
-      this.navCtrl.push('LoginPage');
-    }
+  goToNearby() {
+    this.navCtrl.push('NearbyPage');
   }
 }

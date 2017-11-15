@@ -32,6 +32,7 @@
   "TITLE_PROFILE": "Mon profil",
   "TITLE_LOGIN": "Se connecter",
   "TITLE_SIGNUP": "S'inscrire",
+  "TITLE_NEARBY": "Proche",
 
   "PROFILE_CONTACTS": "Contact",
   "PROFILE_MOBILE": "Téléphone",
@@ -46,7 +47,6 @@
 
   "FORM_REGULAR": "Régulier",
   "FORM_PUNCTUAL": "Ponctuel",
-  "FORM_NEARBY": "Proche",
   "FORM_TOPICS": "Sujet(s)",
   "FORM_TOPICS_DESCRIPTION_GIVE": "Que souhaites-tu enseigner ?",
   "FORM_TOPICS_DESCRIPTION_TAKE": "Que souhaites-tu apprendre ?",
@@ -99,6 +99,7 @@
   "FOOTER_LESSONS": "COURS",
   "FOOTER_HOME": "MENU",
   "FOOTER_MESSAGES": "MESSAGES",
+  "FOOTER_NEARBY": "PROCHE",
 
   "TOPIC_MAT":"Mathématiques",
   "TOPIC_ENG":"Anglais",

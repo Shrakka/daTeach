@@ -1,23 +1,21 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { TakeFormPage } from './take-form';
+import { NearbyPage } from './nearby';
 import { HeaderComponentModule } from '../../components/header/header.module';
 import { FooterComponentModule } from '../../components/footer/footer.module';
-import { CalendarComponentModule } from '../../components/calendar/calendar.module';
-import { ProfileBannerComponentModule } from '../../components/profile-banner/profile-banner.module'
 import { TranslateModule } from 'ng2-translate/ng2-translate';
+import { ResultMapComponentModule } from '../../components/result-map/result-map.module';
 
 @NgModule({
   declarations: [
-    TakeFormPage,
+    NearbyPage,
   ],
   imports: [
-    CalendarComponentModule,
-    ProfileBannerComponentModule,
     HeaderComponentModule,
     FooterComponentModule,
+    IonicPageModule.forChild(NearbyPage),
     TranslateModule,
-    IonicPageModule.forChild(TakeFormPage),
+    ResultMapComponentModule
   ],
 })
-export class TakeFormPageModule {}
+export class NearbyPageModule {}

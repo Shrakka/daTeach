@@ -13,14 +13,11 @@
                 <ion-segment-button value="punctual" (ionSelect)="selectedPunctual()">
                   {{ 'FORM_PUNCTUAL' | translate }}
                 </ion-segment-button>
-               <ion-segment-button value="nearby" (ionSelect)="selectedNearby()">
-                  {{ 'FORM_NEARBY' | translate }}
-                </ion-segment-button>
             </ion-segment>
 
         <!-- TOPICS -->
 
-        <div  class="topics-search" *ngIf="takeForm.type !== 'nearby'">
+        <div  class="topics-search">
           <div padding class="topics-label">{{ 'FORM_TOPICS' | translate }}</div>
 
           <ion-searchbar
@@ -35,14 +32,14 @@
         </div>
 
         <!-- TOPICS BADGES -->
-        <div class="topics-badges" *ngIf="takeForm.type !== 'nearby'">
+        <div class="topics-badges">
           <ion-badge *ngFor="let topic of takeForm.topics">{{ topic }}</ion-badge>
         </div>
 
-        <br *ngIf="takeForm.type !== 'nearby'"/>
+        <br />
 
         <!-- LOCATION -->
-        <div  class="location-search" *ngIf="takeForm.type !== 'nearby'">
+        <div  class="location-search">
           <div padding class="location-label">{{ 'FORM_LOCATION' | translate }}</div>
 
           <ion-searchbar
@@ -59,7 +56,7 @@
 
         <!-- MOVE BUTTONS -->
 
-        <div class="move-panel" *ngIf="takeForm.type !== 'nearby'">
+        <div class="move-panel">
           <div class="move-label" padding>{{ 'FORM_PREFERENCE' | translate}}</div>
 
           <div class="move-buttons">
@@ -70,7 +67,7 @@
         </div>
 
         <!-- CALENDAR -->
-        <br  *ngIf="takeForm.type !== 'nearby'"/>
+        <br />
 
         <div *ngIf="takeForm.type === 'punctual'">
           <div padding class="calendar-label">{{ 'FORM_CALENDAR' | translate }}</div>
@@ -80,13 +77,12 @@
 
         <!-- SUBMIT BUTTON -->
 
-        <div class="button-panel" *ngIf="takeForm.type !== 'nearby'">
+        <div class="button-panel">
           <button ion-button color="primary" (click)="goToResults()">{{ 'FORM_SHOWRESULTS' | translate }}</button>
 
         </div>
 
       </div>
-   <div #map id="map-form" *ngIf="takeForm.type === 'nearby'"></div>
 </ion-content>
 
 <ion-footer>
