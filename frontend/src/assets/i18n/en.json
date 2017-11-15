@@ -44,6 +44,14 @@
   "PROFILE_SHORTDESCRIPTION": "Looking for?",
   "PROFILE_LONGDESCRIPTION": "Introduce yourself!",
   "PROFILE_LOGOUT": "Log out",
+  "PROFILE_CANCEL": "Cancel",
+  "PROFILE_ERROR": "An error occured. Try again later.",
+  "PROFILE_SUCCESS": "Image successfully uploaded.",
+  "PROFILE_SOURCE": "Select Image Source",
+  "PROFILE_LIBRARY": "Load from Library",
+  "PROFILE_CAMERA": "Use Camera",
+
+
 
   "FORM_REGULAR": "Regular",
   "FORM_PUNCTUAL": "One-time",

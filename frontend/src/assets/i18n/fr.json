@@ -44,6 +44,12 @@
   "PROFILE_SHORTDESCRIPTION": "Que recherches-tu ?",
   "PROFILE_LONGDESCRIPTION": "Présente-toi",
   "PROFILE_LOGOUT": "Déconnexion",
+  "PROFILE_CANCEL": "Annuler",
+  "PROFILE_ERROR": "Une erreur est survenue, réessaie plus tard.",
+  "PROFILE_SUCCESS": "Photo envoyée avec succès.",
+  "PROFILE_SOURCE": "Selectionne une photo",
+  "PROFILE_LIBRARY": "A partir de l'album",
+  "PROFILE_CAMERA": "Utiliser l'appareil photo",
 
   "FORM_REGULAR": "Régulier",
   "FORM_PUNCTUAL": "Ponctuel",

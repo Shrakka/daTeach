@@ -109,22 +109,22 @@ export class ProfilePage {
 
   presentActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({
-      title: 'Select Image Source',
+      title: (this.translate.get("PROFILE_SOURCE") as any).value,
       buttons: [
         {
-          text: 'Load from Library',
+          text: (this.translate.get("PROFILE_LIBRARY") as any).value,
           handler: () => {
             this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
           }
         },
         {
-          text: 'Use Camera',
+          text: (this.translate.get("PROFILE_CAMERA") as any).value,
           handler: () => {
             this.takePicture(this.camera.PictureSourceType.CAMERA);
           }
         },
         {
-          text: 'Cancel',
+          text: (this.translate.get("PROFILE_CANCEL") as any).value,
           role: 'cancel'
         }
       ]
@@ -159,7 +159,7 @@ export class ProfilePage {
         this.copyAndSend(correctPath, currentName, fileName);
       }
     }, (err) => {
-      this.presentToast('Error while selecting image.');
+      this.presentToast((this.translate.get("PROFILE_ERROR") as any).value);
     });
   }
 
@@ -173,7 +173,7 @@ private copyAndSend(namePath, currentName, newFileName) {
   this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
     this.sendPhoto(newFileName);
   }, error => {
-    this.presentToast('Error while storing file.');
+    this.presentToast((this.translate.get("PROFILE_ERROR") as any).value);
   });
 }
  
@@ -218,11 +218,11 @@ public pathForImage(img) {
       console.log(response);
       this.userProvider.user.public = response;
       this.loading.dismissAll()
-      this.presentToast('Image succesfully uploaded.');
+      this.presentToast((this.translate.get("PROFILE_SUCCESS") as any).value);
     }, err => {
       console.log(err);
       this.loading.dismissAll()
-      this.presentToast('Error while uploading file.');
+      this.presentToast((this.translate.get("PROFILE_ERROR") as any).value);
     });
   }
 
