@@ -1,4 +1,4 @@
-<ion-card [class]="'card-' + ((result.lesson.active) ? ((result.lesson.author.role === 'student' && result.lesson.author.id === userProvider.user.id) ? 'taken' : 'given') : 'inactive') + ' card-md'">
+<ion-card [class]="'card-' + (result.lesson.active ? ((result.lesson.author.role === 'student' && result.lesson.author.id === userProvider.user.id || result.lesson.author.role === 'teacher' && result.lesson.author.id !== userProvider.user.id) ? 'taken' : 'given') : 'inactive') + ' card-md'">
   <div class="card-both card-primary">
     <div class="card-primary-picture"><img class="thumbnail" [src]="userProvider.getStatic(author.public.picture)"/></div>
     <div class="card-info">
@@ -18,12 +18,12 @@
   </div>
   <div class="card-badges">
     <div>
-      <ion-badge *ngFor="let topic of result.lesson.topics" class="card-badge" [color]="(result.lesson.active ? ((result.lesson.author.role === 'student' && result.lesson.author.id === userProvider.user.id)? 'primary' : 'secondary') : 'disable')">{{ topic }}</ion-badge>
+      <ion-badge *ngFor="let topic of result.lesson.topics" class="card-badge" [color]="(result.lesson.active ? ((result.lesson.author.role === 'student' && result.lesson.author.id === userProvider.user.id || result.lesson.author.role === 'teacher' && result.lesson.author.id !== userProvider.user.id) ? 'primary' : 'secondary') : 'disable')">{{ topic }}</ion-badge>
     </div>
     <div>
-      <ion-badge class="card-badge" [color]="(result.lesson.active ? ((result.lesson.author.role === 'student' && result.lesson.author.id === userProvider.user.id) ? 'primary' : 'secondary') : 'disable')">{{ result.lesson.type.toUpperCase() }}</ion-badge>
-      <ion-badge class="card-badge" [color]="(result.lesson.active ? ((result.lesson.author.role === 'student' && result.lesson.author.id === userProvider.user.id) ? 'primary' : 'secondary') : 'disable')">{{ result.lesson.location.town.toUpperCase() }}</ion-badge>
-      <ion-badge class="card-badge" [color]="(result.lesson.active ? ((result.lesson.author.role === 'student' && result.lesson.author.id === userProvider.user.id) ? 'primary' : 'secondary') : 'disable')">{{ result.lesson.moving.toUpperCase() }}</ion-badge>
+      <ion-badge class="card-badge" [color]="(result.lesson.active ? ((result.lesson.author.role === 'student' && result.lesson.author.id === userProvider.user.id || result.lesson.author.role === 'teacher' && result.lesson.author.id !== userProvider.user.id) ? 'primary' : 'secondary') : 'disable')">{{ result.lesson.type.toUpperCase() }}</ion-badge>
+      <ion-badge class="card-badge" [color]="(result.lesson.active ? ((result.lesson.author.role === 'student' && result.lesson.author.id === userProvider.user.id || result.lesson.author.role === 'teacher' && result.lesson.author.id !== userProvider.user.id) ? 'primary' : 'secondary') : 'disable')">{{ result.lesson.location.town.toUpperCase() }}</ion-badge>
+      <ion-badge class="card-badge" [color]="(result.lesson.active ? ((result.lesson.author.role === 'student' && result.lesson.author.id === userProvider.user.id || result.lesson.author.role === 'teacher' && result.lesson.author.id !== userProvider.user.id) ? 'primary' : 'secondary') : 'disable')">{{ result.lesson.moving.toUpperCase() }}</ion-badge>
     </div>
   </div>
   <div *ngFor="let user of users" class="card-both card-secondary">
