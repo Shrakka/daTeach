@@ -1,65 +1,44 @@
-<!-- <ion-header>
-  <header title="EditProfile"></header>
-</ion-header> -->
-
 <ion-content>
 	<div class="editcontent">
 	<ion-list [ngSwitch]="field">
 	
 	<!-- <p *ngSwitchDefault>Standard diet</p> -->
-  <ion-item *ngSwitchCase="'Contact'">
-    <ion-label stacked>Mobile</ion-label>
+  <ion-item *ngSwitchCase="'PROFILE_CONTACTS' | translate">
+    <ion-label stacked>{{ 'PROFILE_MOBILE' | translate }}</ion-label>
     <ion-input type="tel" [(ngModel)]="userProvider.user.public.phone" placeholder ="{{ userProvider.user.public.phone }}"></ion-input>
   </ion-item>
 
-  <ion-item *ngSwitchCase="'Contact'">
-    <ion-label stacked>Email</ion-label>
+  <ion-item *ngSwitchCase="'PROFILE_CONTACTS' | translate">
+    <ion-label stacked>{{ 'PROFILE_EMAIL' | translate }}</ion-label>
     <ion-input type="email" [(ngModel)]="userProvider.user.public.email" placeholder ="{{ userProvider.user.public.email }}"></ion-input>
   </ion-item>
 
-  <ion-item *ngSwitchCase="'Informations'">
-    <ion-label stacked>Gender</ion-label>
+  <ion-item *ngSwitchCase="'PROFILE_INFOS' | translate">
+    <ion-label stacked>{{ 'PROFILE_SEX' | translate }}</ion-label>
     <ion-input type="text" [(ngModel)]="userProvider.user.public.gender" placeholder ="{{ userProvider.user.public.gender }}"></ion-input>
   </ion-item>
-  <ion-item *ngSwitchCase="'Informations'">
-    <ion-label stacked>Age</ion-label>
+  <ion-item *ngSwitchCase="'PROFILE_INFOS' | translate">
+    <ion-label stacked>{{ 'PROFILE_AGE' | translate }}</ion-label>
     <ion-input type="text" [(ngModel)]="userProvider.user.public.age" placeholder ="{{ userProvider.user.public.age }}"></ion-input>
   </ion-item>
-  <ion-item *ngSwitchCase="'Informations'">
-    <ion-label stacked>Level</ion-label>
+  <ion-item *ngSwitchCase="'PROFILE_INFOS' | translate">
+    <ion-label stacked>{{ 'PROFILE_LEVEL' | translate }}</ion-label>
     <ion-input type="text" [(ngModel)]="userProvider.user.public.level" placeholder ="{{ userProvider.user.public.level }}"></ion-input>
   </ion-item>
-  <ion-item *ngSwitchCase="'Looking for?'">
-      <ion-label stacked>Looking for ?</ion-label>
-      <ion-textarea [(ngModel)]="userProvider.user.public.shortDescription" placeholder ="{{ userProvider.user.public.shortDescription }}"></ion-textarea>
-    </ion-item>
-  <ion-item *ngSwitchCase="'Que recherches-tu ?'">
-      <ion-label stacked>Que recherches-tu ?</ion-label>
+  <ion-item *ngSwitchCase="'PROFILE_SHORTDESCRIPTION' | translate">
+      <ion-label stacked>{{ 'PROFILE_SHORTDESCRIPTION' | translate }}</ion-label>
       <ion-textarea [(ngModel)]="userProvider.user.public.shortDescription" placeholder ="{{ userProvider.user.public.shortDescription }}"></ion-textarea>
     </ion-item>
 
-  <ion-item *ngSwitchCase="'Introduce yourself!'">
-    <ion-label stacked>Introduce yourself!</ion-label>
+  <ion-item *ngSwitchCase="'PROFILE_LONGDESCRIPTION' | translate">
+    <ion-label stacked>{{'PROFILE_LONGDESCRIPTION' | translate }}</ion-label>
     <ion-textarea [(ngModel)]="userProvider.user.public.longDescription" placeholder ="{{ userProvider.user.public.longDescription || ''}}"></ion-textarea>
   </ion-item>
-
-  <ion-item *ngSwitchCase="'Présente-toi'">
-    <ion-label stacked>Introduce yourself</ion-label>
-    <!-- <ion-input type="text" [(ngModel)]="userProvider.user.public.longDescription" placeholder ="{{ userProvider.user.public.longDescription || ''}}"></ion-input> -->
-    <ion-textarea [(ngModel)]="userProvider.user.public.longDescription" placeholder ="{{ userProvider.user.public.longDescription || ''}}"></ion-textarea>
-  </ion-item>
-  <!-- <ion-item>
-    <ion-textarea placeholder="Enter a description"></ion-textarea>
-  </ion-item> -->
 
 </ion-list>
-<button ion-button clear (click)="editprofile($event)">EDIT</button>
-<button ion-button clear (click)="closepopover($event)">CLOSE</button>
+<button ion-button clear (click)="closepopover($event)">{{ 'PROFILE_CLOSE' | translate }}</button>
+<button ion-button clear (click)="editprofile($event)">{{ 'PROFILE_EDIT' | translate }}</button>
 </div>
 </ion-content>
-
-<!-- <ion-footer>
-  <footer></footer>
-</ion-footer> -->
 
 

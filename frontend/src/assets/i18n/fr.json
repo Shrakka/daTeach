@@ -41,6 +41,8 @@
   "PROFILE_SEX": "Genre",
   "PROFILE_AGE": "Age",
   "PROFILE_LEVEL": "Niveau",
+  "PROFILE_EDIT": "Modifier",
+  "PROFILE_CLOSE": "Annuler",
   "PROFILE_SHORTDESCRIPTION": "Que recherches-tu ?",
   "PROFILE_LONGDESCRIPTION": "Présente-toi",
   "PROFILE_LOGOUT": "Déconnexion",

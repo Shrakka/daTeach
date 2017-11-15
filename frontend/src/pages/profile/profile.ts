@@ -48,36 +48,7 @@ export class ProfilePage {
   }
 
   photoEdit() {
-    // const alert = this.alertCtrl.create({
-    //   title: 'Login',
-    //   inputs: [
-    //     {
-    //       name: 'url',
-    //       placeholder: 'New URL'
-    //     },
-    //   ],
-    //   buttons: [
-    //     {
-    //       text: 'Set',
-    //       handler: data => {
-    //         this.userProvider.user.public.picture = 'assets/img/' + data.url + '.png';
-    //         this.userProvider.updateUser();
-    //       }
-    //     },
-    //     {
-    //       text: 'Cancel',
-    //       role: 'cancel',
-    //       handler: data => {
-    //         console.log('Cancel clicked');
-    //       }
-    //     }
-    //   ]
-
-    // });
-    // alert.present();
     this.presentActionSheet();
-
-
   }
 
   coverEdit() {
