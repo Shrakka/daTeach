@@ -101,7 +101,7 @@ export class UserProvider {
   }
 
   getPostPhotoURL(id) {
-    return this.backendProvider.url + '/photo/' + id + + '/?apikey=' + this.backendProvider.apikey;
+    return this.backendProvider.url + '/photo/' + id + '/?apikey=' + this.backendProvider.apikey;
   }
 
 }
