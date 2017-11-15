@@ -84,10 +84,16 @@ exports.postPhoto = function (req, res) {
                 y: 0,
                 fill: true
               }).then(
-                (img) => {console.log(img);},
-                (err) => {console.log(err);}
+                (img) => {
+                  console.log(img);
+                  res.send(updatedUser.public);
+                },
+                (err) => {
+                  console.log(err);
+                  res.send(updatedUser.public);
+                }
               );
-              res.send(updatedUser.public);
+              
             }
           })
         }
