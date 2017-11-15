@@ -3,7 +3,7 @@ page-home {
 }
 
 .home-background {
-    background-image: url('../assets/img/background-image2.jpg');
+    background-image: url('../assets/img/background-image.jpg');
     background-size: 100% 100vh;
 }
 
@@ -18,9 +18,8 @@ page-home {
 
 .lesson-button {
   width: 80%;
-  margin-top: 1em;
-  margin-bottom: 1em;
-
+  margin-top: 6%;
+  margin-bottom: 6%;
 }
 
 .flag-buttons {
@@ -33,4 +32,10 @@ page-home {
   height: 100%;
   border-radius: 2px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.dateach-logo {
+  width: 40%;
+  height: auto;
+  margin-bottom: 10%;
 }
