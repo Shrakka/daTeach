@@ -27,7 +27,8 @@ export class GiveFormPage {
       moving: 'move',
       topics: [],
       location: [],
-      dates: []
+      dates: [],
+      usage: ''
       };
 
       this.topicsDisplay = []

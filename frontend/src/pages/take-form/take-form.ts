@@ -25,7 +25,8 @@ export class TakeFormPage {
     moving: 'move',
     topics: [],
     location: [],
-    dates: []
+    dates: [],
+    usage: ''
     }
     this.topicsDisplay = []
 
