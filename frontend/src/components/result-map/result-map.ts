@@ -8,6 +8,10 @@ import { UserProvider } from '../../providers/user/user';
   templateUrl: 'result-map.html'
 })
 export class ResultMapComponent {
+
+  result: any;
+  mode: string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public lessonProvider: LessonProvider, public userProvider: UserProvider) {
     if(navParams.data.result){
       this.result = navParams.data.result;
