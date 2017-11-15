@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LessonProvider } from '../../providers/lesson/lesson';
+import { UserProvider } from '../../providers/user/user';
 
 @Component({
   selector: 'result',
@@ -10,7 +11,7 @@ export class ResultComponent {
   @Input() result: any;
   @Input() mode: string;
 
-  constructor(public navCtrl: NavController, public lessonProvider: LessonProvider) {
+  constructor(public navCtrl: NavController, public lessonProvider: LessonProvider, public userProvider: UserProvider) {
   }
 
   goToClient() {

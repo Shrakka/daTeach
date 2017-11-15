@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { UserProvider } from '../../providers/user/user';
 
 /**
  * Generated class for the MessageCardComponent component.
@@ -14,7 +15,7 @@ import { NavController } from 'ionic-angular';
 export class MessageCardComponent {
   @Input() result: any;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public userProvider: UserProvider) {
   }
 
   goToChat() {

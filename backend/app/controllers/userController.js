@@ -62,11 +62,7 @@ exports.putUser = function(req, res) {
 }
 
 exports.postPhoto = function (req, res) {
-  console.log(1, req.params.id);
-  console.log(2, req.body);
-  console.log(3, req.file);
   if (configAuth.apikey === req.query.apikey) {
-    console.log(6, "hey");
     if(req.file !== null) {
       User.findById(req.params.id, (err, user) => {
         if(err) {
@@ -77,6 +73,21 @@ exports.postPhoto = function (req, res) {
             if(err) {
               res.status(404).send('Error 404 - Cannot save to db');
             } else {
+              // RESIZE IMAGE
+              var resizer = require('easyimage');
+              resizer.rescrop({
+                src: 'public/photos/' + req.file.originalname,
+                dst: 'public/photos/' + req.file.originalname,
+                width: 200,
+                heigth: 200,
+                cropwidth:200, 
+                cropheight:200,
+                x: 0,
+                y: 0,
+              }).then(
+                (img) => {console.log(img);},
+                (err) => {console.log(err);}
+              );
               res.send(updatedUser.public);
             }
           })

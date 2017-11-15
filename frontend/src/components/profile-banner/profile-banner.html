@@ -1,6 +1,6 @@
 <div class="profile-banner">
   <div class="card-both card-primary">
-    <div class="card-primary-picture"><img [src]="userProvider.user.public.picture"/></div>
+    <div class="card-primary-picture"><img [src]="userProvider.getStatic(userProvider.user.public.picture)"/></div>
     <div class="card-info">
       <div class="card-name">
         {{ userProvider.user.public.firstname }} {{ userProvider.user.public.lastname }}
